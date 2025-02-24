@@ -18,6 +18,11 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "DBUIComponents"),
+            name: "DBUIComponents",
+            plugins: [
+                .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLintPlugins")
+            ]
+        )
     ]
+    
 )
