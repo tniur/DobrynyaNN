@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E900F4D02D6CEBD000A460C2 /* Nivelir in Frameworks */ = {isa = PBXBuildFile; productRef = E900F4CF2D6CEBD000A460C2 /* Nivelir */; };
+		E900F4EB2D6D2FB700A460C2 /* DBUIComponents in Frameworks */ = {isa = PBXBuildFile; productRef = E900F4EA2D6D2FB700A460C2 /* DBUIComponents */; };
 		E92A2E9F2D6CE7E900D0D03C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E92A2E992D6CE7E900D0D03C /* Assets.xcassets */; };
 		E92A2EA12D6CE7E900D0D03C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E92A2E9C2D6CE7E900D0D03C /* LaunchScreen.storyboard */; };
 		E92A2EA22D6CE7E900D0D03C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92A2E982D6CE7E900D0D03C /* AppDelegate.swift */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E900F4E52D6D2EE400A460C2 /* DBUIComponents */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DBUIComponents; sourceTree = "<group>"; };
 		E92A2E802D6CE6C100D0D03C /* DobrynyaNN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DobrynyaNN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E92A2E982D6CE7E900D0D03C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E92A2E992D6CE7E900D0D03C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -28,6 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E900F4EB2D6D2FB700A460C2 /* DBUIComponents in Frameworks */,
 				E900F4D02D6CEBD000A460C2 /* Nivelir in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -35,10 +38,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E900F4E62D6D2F3600A460C2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E92A2E772D6CE6C100D0D03C = {
 			isa = PBXGroup;
 			children = (
+				E900F4E52D6D2EE400A460C2 /* DBUIComponents */,
 				E92A2E9E2D6CE7E900D0D03C /* DobrynyaNN */,
+				E900F4E62D6D2F3600A460C2 /* Frameworks */,
 				E92A2E812D6CE6C100D0D03C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -81,6 +93,7 @@
 			name = DobrynyaNN;
 			packageProductDependencies = (
 				E900F4CF2D6CEBD000A460C2 /* Nivelir */,
+				E900F4EA2D6D2FB700A460C2 /* DBUIComponents */,
 			);
 			productName = DobrynyaNN;
 			productReference = E92A2E802D6CE6C100D0D03C /* DobrynyaNN.app */;
@@ -390,6 +403,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E900F4CE2D6CEBD000A460C2 /* XCRemoteSwiftPackageReference "Nivelir" */;
 			productName = Nivelir;
+		};
+		E900F4EA2D6D2FB700A460C2 /* DBUIComponents */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DBUIComponents;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
