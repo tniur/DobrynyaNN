@@ -1,0 +1,24 @@
+{
+  "originHash" : "fe059de3457785590e5bb00fdfb5b3901c1ae2264dcaebb76c95978547a2b5ab",
+  "pins" : [
+    {
+      "identity" : "nivelir",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hhru/Nivelir.git",
+      "state" : {
+        "revision" : "8d97cafaa08c711bf1f428912195cc0b49c782fa",
+        "version" : "1.9.6"
+      }
+    },
+    {
+      "identity" : "swiftlintplugins",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SimplyDanny/SwiftLintPlugins",
+      "state" : {
+        "revision" : "7a3d77f3dd9f91d5cea138e52c20cfceabf352de",
+        "version" : "0.58.2"
+      }
+    }
+  ],
+  "version" : 3
+}

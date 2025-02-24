@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E900F4D02D6CEBD000A460C2 /* Nivelir in Frameworks */ = {isa = PBXBuildFile; productRef = E900F4CF2D6CEBD000A460C2 /* Nivelir */; };
 		E92A2E9F2D6CE7E900D0D03C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E92A2E992D6CE7E900D0D03C /* Assets.xcassets */; };
 		E92A2EA12D6CE7E900D0D03C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E92A2E9C2D6CE7E900D0D03C /* LaunchScreen.storyboard */; };
 		E92A2EA22D6CE7E900D0D03C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92A2E982D6CE7E900D0D03C /* AppDelegate.swift */; };
@@ -27,6 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E900F4D02D6CEBD000A460C2 /* Nivelir in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +80,7 @@
 			);
 			name = DobrynyaNN;
 			packageProductDependencies = (
+				E900F4CF2D6CEBD000A460C2 /* Nivelir */,
 			);
 			productName = DobrynyaNN;
 			productReference = E92A2E802D6CE6C100D0D03C /* DobrynyaNN.app */;
@@ -107,6 +110,10 @@
 			);
 			mainGroup = E92A2E772D6CE6C100D0D03C;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				E900F4CD2D6CEB9A00A460C2 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
+				E900F4CE2D6CEBD000A460C2 /* XCRemoteSwiftPackageReference "Nivelir" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E92A2E812D6CE6C100D0D03C /* Products */;
 			projectDirPath = "";
@@ -358,6 +365,33 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E900F4CD2D6CEB9A00A460C2 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SimplyDanny/SwiftLintPlugins";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.58.2;
+			};
+		};
+		E900F4CE2D6CEBD000A460C2 /* XCRemoteSwiftPackageReference "Nivelir" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hhru/Nivelir.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.9.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E900F4CF2D6CEBD000A460C2 /* Nivelir */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E900F4CE2D6CEBD000A460C2 /* XCRemoteSwiftPackageReference "Nivelir" */;
+			productName = Nivelir;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E92A2E782D6CE6C100D0D03C /* Project object */;
 }
