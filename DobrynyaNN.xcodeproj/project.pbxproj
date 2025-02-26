@@ -8,21 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		E900F4D02D6CEBD000A460C2 /* Nivelir in Frameworks */ = {isa = PBXBuildFile; productRef = E900F4CF2D6CEBD000A460C2 /* Nivelir */; };
-		E900F4EB2D6D2FB700A460C2 /* DBUIComponents in Frameworks */ = {isa = PBXBuildFile; productRef = E900F4EA2D6D2FB700A460C2 /* DBUIComponents */; };
+		E900F4EF2D6D3DDB00A460C2 /* Screens.swift in Sources */ = {isa = PBXBuildFile; fileRef = E900F4EE2D6D3DD700A460C2 /* Screens.swift */; };
 		E92A2E9F2D6CE7E900D0D03C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E92A2E992D6CE7E900D0D03C /* Assets.xcassets */; };
 		E92A2EA12D6CE7E900D0D03C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E92A2E9C2D6CE7E900D0D03C /* LaunchScreen.storyboard */; };
 		E92A2EA22D6CE7E900D0D03C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92A2E982D6CE7E900D0D03C /* AppDelegate.swift */; };
 		E92A2EA32D6CE7E900D0D03C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92A2E9D2D6CE7E900D0D03C /* SceneDelegate.swift */; };
+		E96DBC792D6E870000313677 /* DBHomeScreenExample in Frameworks */ = {isa = PBXBuildFile; productRef = E96DBC782D6E870000313677 /* DBHomeScreenExample */; };
+		E96DBC7E2D6E9EA300313677 /* DBSomeScreenExample in Frameworks */ = {isa = PBXBuildFile; productRef = E96DBC7D2D6E9EA300313677 /* DBSomeScreenExample */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E900F4E52D6D2EE400A460C2 /* DBUIComponents */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DBUIComponents; sourceTree = "<group>"; };
+		E900F4EE2D6D3DD700A460C2 /* Screens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screens.swift; sourceTree = "<group>"; };
 		E92A2E802D6CE6C100D0D03C /* DobrynyaNN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DobrynyaNN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E92A2E982D6CE7E900D0D03C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E92A2E992D6CE7E900D0D03C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E92A2E9A2D6CE7E900D0D03C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E92A2E9B2D6CE7E900D0D03C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E92A2E9D2D6CE7E900D0D03C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		E96DBC772D6E844C00313677 /* DBHomeScreenExample */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DBHomeScreenExample; sourceTree = "<group>"; };
+		E96DBC7C2D6E950A00313677 /* DBSomeScreenExample */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DBSomeScreenExample; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,7 +34,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E900F4EB2D6D2FB700A460C2 /* DBUIComponents in Frameworks */,
+				E96DBC792D6E870000313677 /* DBHomeScreenExample in Frameworks */,
+				E96DBC7E2D6E9EA300313677 /* DBSomeScreenExample in Frameworks */,
 				E900F4D02D6CEBD000A460C2 /* Nivelir in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -48,7 +53,8 @@
 		E92A2E772D6CE6C100D0D03C = {
 			isa = PBXGroup;
 			children = (
-				E900F4E52D6D2EE400A460C2 /* DBUIComponents */,
+				E96DBC7C2D6E950A00313677 /* DBSomeScreenExample */,
+				E96DBC772D6E844C00313677 /* DBHomeScreenExample */,
 				E92A2E9E2D6CE7E900D0D03C /* DobrynyaNN */,
 				E900F4E62D6D2F3600A460C2 /* Frameworks */,
 				E92A2E812D6CE6C100D0D03C /* Products */,
@@ -66,6 +72,7 @@
 		E92A2E9E2D6CE7E900D0D03C /* DobrynyaNN */ = {
 			isa = PBXGroup;
 			children = (
+				E900F4EE2D6D3DD700A460C2 /* Screens.swift */,
 				E92A2E992D6CE7E900D0D03C /* Assets.xcassets */,
 				E92A2E9A2D6CE7E900D0D03C /* Info.plist */,
 				E92A2E9C2D6CE7E900D0D03C /* LaunchScreen.storyboard */,
@@ -93,7 +100,8 @@
 			name = DobrynyaNN;
 			packageProductDependencies = (
 				E900F4CF2D6CEBD000A460C2 /* Nivelir */,
-				E900F4EA2D6D2FB700A460C2 /* DBUIComponents */,
+				E96DBC782D6E870000313677 /* DBHomeScreenExample */,
+				E96DBC7D2D6E9EA300313677 /* DBSomeScreenExample */,
 			);
 			productName = DobrynyaNN;
 			productReference = E92A2E802D6CE6C100D0D03C /* DobrynyaNN.app */;
@@ -154,6 +162,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E900F4EF2D6D3DDB00A460C2 /* Screens.swift in Sources */,
 				E92A2EA22D6CE7E900D0D03C /* AppDelegate.swift in Sources */,
 				E92A2EA32D6CE7E900D0D03C /* SceneDelegate.swift in Sources */,
 			);
@@ -404,9 +413,13 @@
 			package = E900F4CE2D6CEBD000A460C2 /* XCRemoteSwiftPackageReference "Nivelir" */;
 			productName = Nivelir;
 		};
-		E900F4EA2D6D2FB700A460C2 /* DBUIComponents */ = {
+		E96DBC782D6E870000313677 /* DBHomeScreenExample */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = DBUIComponents;
+			productName = DBHomeScreenExample;
+		};
+		E96DBC7D2D6E9EA300313677 /* DBSomeScreenExample */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DBSomeScreenExample;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
