@@ -13,13 +13,15 @@ let package = Package(
             targets: ["DBCore"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/SimplyDanny/SwiftLintPlugins", from: "0.58.0")
+        .package(url: "https://github.com/SimplyDanny/SwiftLintPlugins", from: "0.58.0"),
+        .package(url: "https://github.com/hmlongco/Factory", from: "2.4.0")
     ],
     targets: [
         .target(
             name: "DBCore",
             plugins: [
-                .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLintPlugins")
+                .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLintPlugins"),
+                .plugin(name: "Factory", package: "Factory")
             ]
         )
     ]
