@@ -14,6 +14,7 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../DBUIComponents"),
+        .package(path: "../DBCore"),
         .package(url: "https://github.com/SimplyDanny/SwiftLintPlugins", from: "0.58.0"),
         .package(url: "https://github.com/hhru/Nivelir.git", from: "1.9.6")
     ],
@@ -22,6 +23,7 @@ let package = Package(
             name: "DBHomeScreenExample",
             dependencies: [
                 .product(name: "DBUIComponents", package: "DBUIComponents"),
+                .product(name: "DBCore", package: "DBCore"),
                 .product(name: "Nivelir", package: "Nivelir")
             ],
             plugins: [
