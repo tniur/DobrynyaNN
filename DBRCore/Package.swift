@@ -3,14 +3,14 @@
 import PackageDescription
 
 let package = Package(
-    name: "DBCore",
+    name: "DBRCore",
     platforms: [
         .iOS(.v16)
     ],
     products: [
         .library(
-            name: "DBCore",
-            targets: ["DBCore"]),
+            name: "DBRCore",
+            targets: ["DBRCore"]),
     ],
     dependencies: [
         .package(url: "https://github.com/SimplyDanny/SwiftLintPlugins", from: "0.58.0"),
@@ -18,7 +18,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "DBCore",
+            name: "DBRCore",
             plugins: [
                 .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLintPlugins"),
                 .plugin(name: "Factory", package: "Factory")
