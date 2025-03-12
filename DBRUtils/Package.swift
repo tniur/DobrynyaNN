@@ -3,26 +3,25 @@
 import PackageDescription
 
 let package = Package(
-    name: "DBUtils",
+    name: "DBRUtils",
     defaultLocalization: "ru",
     platforms: [
         .iOS(.v16)
     ],
     products: [
         .library(
-            name: "DBUtils",
-            targets: ["DBUtils"]),
+            name: "DBRUtils",
+            targets: ["DBRUtils"]),
     ],
     dependencies: [
         .package(url: "https://github.com/SimplyDanny/SwiftLintPlugins", from: "0.58.0")
     ],
     targets: [
         .target(
-            name: "DBUtils",
+            name: "DBRUtils",
             plugins: [
                 .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLintPlugins")
             ]
         )
     ]
-    
 )
