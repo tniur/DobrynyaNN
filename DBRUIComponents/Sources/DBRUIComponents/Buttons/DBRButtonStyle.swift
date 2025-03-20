@@ -35,10 +35,14 @@ public struct DBRButtonStyle: ButtonStyle {
             .font(Font.system(size: 16, weight: .semibold))
             .frame(maxWidth: .infinity)
             .frame(height: Constant.height)
-            .foregroundStyle(configuration.isPressed ? type.pressedForegroundColor : type.foregroundColor)
-            .background(isEnabled ? (configuration.isPressed ? type.pressedBackgroundColor : type.backgroundColor) : type.disabledBackgroundColor)
-            .clipShape(
+            .foregroundStyle(isEnabled ? (configuration.isPressed ? type.pressedForegroundColor : type.foregroundColor) : type.disabledForegroundColor)
+            .background {
                 RoundedRectangle(cornerRadius: Constant.cornerRadius)
-            )
+                    .fill(isEnabled ? (configuration.isPressed ? type.pressedBackgroundColor : type.backgroundColor) : type.disabledBackgroundColor)
+            }
+            .overlay {
+                RoundedRectangle(cornerRadius: Constant.cornerRadius)
+                    .stroke(isEnabled ? (configuration.isPressed ? type.pressedStrokeColor : type.strokeColor) : type.disabledStrokeColor, lineWidth: type.strokeWidth)
+            }
     }
 }
