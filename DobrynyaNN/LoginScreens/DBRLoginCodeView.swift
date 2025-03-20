@@ -38,7 +38,9 @@ struct DBRLoginCodeView: View {
             VStack(spacing: 8) {
                 Text("Код из смс")
                     .font(Font.system(size: 40))
+                    .foregroundStyle(DBRColor.base10.swiftUIColor)
                 Text("Мы отправили вам код подтверждения на номер +7 (XXX) XXX 19 90.")
+                    .foregroundStyle(DBRColor.base10.swiftUIColor)
             }
             DBRCodeView(code: $viewModel.code, isError: $viewModel.isCodeIncorrect, isFocused: $isFocused, length: viewModel.codeLenght)
         }

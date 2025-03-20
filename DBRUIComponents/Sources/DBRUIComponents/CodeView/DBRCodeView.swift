@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DBRCodeView: View {
+public struct DBRCodeView: View {
 
     // MARK: - Constants
 
@@ -36,10 +36,15 @@ struct DBRCodeView: View {
 
     // MARK: - Body
 
-    var body: some View {
-        ZStack {
-            hidenTextField
-            inputFieldView
+    public var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            ZStack {
+                hidenTextField
+                inputFieldView
+            }
+            if isError {
+                incorrectCodeView
+            }
         }
     }
 
@@ -69,11 +74,37 @@ struct DBRCodeView: View {
             ForEach(0..<length, id: \.self) { index in
                 Text(character(at: index))
                     .font(Font.system(size: 20))
+                    .foregroundStyle(DBRColor.base10.swiftUIColor)
                     .frame(width: Constant.InputFieldView.size, height: Constant.InputFieldView.size)
-                    .background(isError ? .red : .white)
-                    .clipShape(.rect(cornerRadius: Constant.InputFieldView.cornerRadius))
+                    .background {
+                        RoundedRectangle(cornerRadius: Constant.InputFieldView.cornerRadius)
+                            .fill(DBRColor.base0.swiftUIColor)
+                    }
+                    .overlay {
+                        RoundedRectangle(cornerRadius: Constant.InputFieldView.cornerRadius)
+                            .stroke(isError ? DBRColor.red6.swiftUIColor : DBRColor.base3.swiftUIColor, lineWidth: Constant.InputFieldView.strokeWidth)
+                    }
             }
         }
+    }
+    
+    private var incorrectCodeView: some View {
+        Text("Неверный код подтверждения")
+            .foregroundColor(DBRColor.red6.swiftUIColor)
+            .font(Font.system(size: 16))
+            .transition(.opacity)
+    }
+    
+    public init(
+        code: Binding<String>,
+        isError: Binding<Bool>,
+        isFocused: FocusState<Bool>.Binding,
+        length: Int
+    ) {
+        self._code = code
+        self._isError = isError
+        self.isFocused = isFocused
+        self.length = length
     }
 
     // MARK: - Methods
