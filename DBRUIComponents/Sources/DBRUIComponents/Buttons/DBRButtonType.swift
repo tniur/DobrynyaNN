@@ -10,7 +10,7 @@ import SwiftUI
 public enum DBRButtonType {
     case primary
     case secondary
-    
+
     public var backgroundColor: SwiftUI.Color {
         switch self {
         case .primary:
