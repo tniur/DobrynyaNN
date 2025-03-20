@@ -34,6 +34,7 @@ struct DBRLoginView: View {
     private var inputView: some View {
         VStack(alignment: .center, spacing: 32) {
             Text("Вход")
+                .foregroundStyle(DBRColor.base10.swiftUIColor)
             
             VStack {
                 DBRTextField(placeholderText: "Логин", text: $login)
@@ -42,6 +43,7 @@ struct DBRLoginView: View {
                 HStack {
                     Spacer()
                     Button("Забыли пароль?", action: { })
+                        .foregroundStyle(DBRColor.base10.swiftUIColor)
                         .padding(.horizontal, 8)
                         .frame(height: 30)
                 }
@@ -56,10 +58,10 @@ struct DBRLoginView: View {
 
             HStack(spacing: 8) {
                 Text("Нет аккаунта?")
-                    .foregroundStyle(.black)
+                    .foregroundStyle(DBRColor.base10.swiftUIColor)
                 
                 Button("Зарегистрироваться", action: { })
-                    .foregroundStyle(.blue)
+                    .foregroundStyle(DBRColor.blue6.swiftUIColor)
             }
         }
     }

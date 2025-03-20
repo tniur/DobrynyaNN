@@ -36,6 +36,7 @@ public struct DBRTextField: View {
             } else {
                 TextField(placeholderText, text: $text)
                     .focused($isFocused)
+                    .foregroundStyle(isFocused ? DBRColor.base10.swiftUIColor : DBRColor.base3.swiftUIColor)
                     .onChange(of: text) { newValue in
                         text = newValue.formatUserInput(type: inputType)
                     }
@@ -47,7 +48,12 @@ public struct DBRTextField: View {
         .padding(.trailing, 20)
         .background {
             RoundedRectangle(cornerRadius: 12)
-                .stroke(Color.gray.opacity(0.3), lineWidth: 1)
+                .fill(DBRColor.base0.swiftUIColor)
+                .frame(height: 56)
+        }
+        .overlay {
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(DBRColor.base3.swiftUIColor, lineWidth: 1)
                 .frame(height: 56)
         }
     }
@@ -57,12 +63,14 @@ public struct DBRTextField: View {
             if isVisible {
                 SecureField(placeholderText, text: $text)
                     .focused($isFocused)
+                    .foregroundStyle(isFocused ? DBRColor.base10.swiftUIColor : DBRColor.base3.swiftUIColor)
                     .onChange(of: text) { newValue in
                         text = newValue.formatUserInput(type: inputType)
                     }
             } else {
                 TextField(placeholderText, text: $text)
                     .focused($isFocused)
+                    .foregroundStyle(isFocused ? DBRColor.base10.swiftUIColor : DBRColor.base3.swiftUIColor)
                     .onChange(of: text) { newValue in
                         text = newValue.formatUserInput(type: inputType)
                     }
@@ -71,7 +79,8 @@ public struct DBRTextField: View {
             Spacer()
 
             Image(systemName: isVisible ? "eye.slash" : "eye")
-                .foregroundColor(.gray)
+                .renderingMode(.template)
+                .foregroundColor(DBRColor.base5.swiftUIColor)
                 .onTapGesture {
                     isVisible.toggle()
                 }
