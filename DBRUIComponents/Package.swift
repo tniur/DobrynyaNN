@@ -23,6 +23,9 @@ let package = Package(
             exclude: [
                 "../../swiftgen.yml"
             ],
+            resources: [
+                .process("Resources/Fonts/Mulish")
+            ],
             plugins: [
                 .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLintPlugins"),
                 .plugin(name: "SwiftGenPlugin", package: "SwiftGenPlugin")

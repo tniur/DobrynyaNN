@@ -62,7 +62,7 @@ public enum DBRButtonType {
             DBRColor.base7.swiftUIColor
         }
     }
-    
+
     public var pressedStrokeColor: SwiftUI.Color {
         switch self {
         case .primary, .tertiary:

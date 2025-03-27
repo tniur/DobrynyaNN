@@ -32,7 +32,7 @@ public struct DBRButtonStyle: ButtonStyle {
 
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(Font.system(size: 16, weight: .semibold))
+            .font(DBRFont.R16)
             .frame(maxWidth: .infinity)
             .frame(height: Constant.height)
             .foregroundStyle(isEnabled ? (configuration.isPressed ? type.pressedForegroundColor : type.foregroundColor) : type.disabledForegroundColor)

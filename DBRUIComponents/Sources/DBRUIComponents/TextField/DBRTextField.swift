@@ -36,6 +36,7 @@ public struct DBRTextField: View {
             } else {
                 TextField(placeholderText, text: $text)
                     .focused($isFocused)
+                    .font(DBRFont.R14)
                     .foregroundStyle(isFocused ? DBRColor.base10.swiftUIColor : DBRColor.base3.swiftUIColor)
                     .onChange(of: text) { newValue in
                         text = newValue.formatUserInput(type: inputType)
@@ -63,6 +64,7 @@ public struct DBRTextField: View {
             if isVisible {
                 SecureField(placeholderText, text: $text)
                     .focused($isFocused)
+                    .font(DBRFont.R14)
                     .foregroundStyle(isFocused ? DBRColor.base10.swiftUIColor : DBRColor.base3.swiftUIColor)
                     .onChange(of: text) { newValue in
                         text = newValue.formatUserInput(type: inputType)
@@ -70,6 +72,7 @@ public struct DBRTextField: View {
             } else {
                 TextField(placeholderText, text: $text)
                     .focused($isFocused)
+                    .font(DBRFont.R14)
                     .foregroundStyle(isFocused ? DBRColor.base10.swiftUIColor : DBRColor.base3.swiftUIColor)
                     .onChange(of: text) { newValue in
                         text = newValue.formatUserInput(type: inputType)

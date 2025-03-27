@@ -19,7 +19,6 @@ public struct DBRCodeView: View {
 
         enum InputFieldView {
             static let spacing = 8.0
-            static let font = SwiftUI.Font.system(size: 24)
             static let size = 52.0
             static let cornerRadius = 16.0
             static let strokeWidth = 1.0
@@ -73,7 +72,7 @@ public struct DBRCodeView: View {
         HStack(spacing: Constant.InputFieldView.spacing) {
             ForEach(0..<length, id: \.self) { index in
                 Text(character(at: index))
-                    .font(Font.system(size: 20))
+                    .font(DBRFont.R14)
                     .foregroundStyle(DBRColor.base10.swiftUIColor)
                     .frame(width: Constant.InputFieldView.size, height: Constant.InputFieldView.size)
                     .background {
@@ -82,19 +81,22 @@ public struct DBRCodeView: View {
                     }
                     .overlay {
                         RoundedRectangle(cornerRadius: Constant.InputFieldView.cornerRadius)
-                            .stroke(isError ? DBRColor.red6.swiftUIColor : DBRColor.base3.swiftUIColor, lineWidth: Constant.InputFieldView.strokeWidth)
+                            .stroke(
+                                isError ? DBRColor.red6.swiftUIColor : DBRColor.base3.swiftUIColor,
+                                lineWidth: Constant.InputFieldView.strokeWidth
+                            )
                     }
             }
         }
     }
-    
+
     private var incorrectCodeView: some View {
         Text("Неверный код подтверждения")
             .foregroundColor(DBRColor.red6.swiftUIColor)
-            .font(Font.system(size: 16))
+            .font(DBRFont.R14)
             .transition(.opacity)
     }
-    
+
     public init(
         code: Binding<String>,
         isError: Binding<Bool>,
