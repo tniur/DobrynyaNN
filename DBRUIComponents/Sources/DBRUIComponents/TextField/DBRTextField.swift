@@ -37,7 +37,9 @@ public struct DBRTextField: View {
                 TextField(placeholderText, text: $text)
                     .focused($isFocused)
                     .font(DBRFont.R14)
-                    .foregroundStyle(isFocused ? DBRColor.base10.swiftUIColor : DBRColor.base3.swiftUIColor)
+                    .foregroundStyle(
+                        isFocused || !text.isEmpty ? DBRColor.base10.swiftUIColor : DBRColor.base3.swiftUIColor
+                    )
                     .onChange(of: text) { newValue in
                         text = newValue.formatUserInput(type: inputType)
                     }
@@ -61,11 +63,13 @@ public struct DBRTextField: View {
 
     private var secureTextField: some View {
         HStack(spacing: 8) {
-            if isVisible {
+            if !isVisible {
                 SecureField(placeholderText, text: $text)
                     .focused($isFocused)
                     .font(DBRFont.R14)
-                    .foregroundStyle(isFocused ? DBRColor.base10.swiftUIColor : DBRColor.base3.swiftUIColor)
+                    .foregroundStyle(
+                        isFocused || !text.isEmpty ? DBRColor.base10.swiftUIColor : DBRColor.base3.swiftUIColor
+                    )
                     .onChange(of: text) { newValue in
                         text = newValue.formatUserInput(type: inputType)
                     }
@@ -73,7 +77,9 @@ public struct DBRTextField: View {
                 TextField(placeholderText, text: $text)
                     .focused($isFocused)
                     .font(DBRFont.R14)
-                    .foregroundStyle(isFocused ? DBRColor.base10.swiftUIColor : DBRColor.base3.swiftUIColor)
+                    .foregroundStyle(
+                        isFocused || !text.isEmpty ? DBRColor.base10.swiftUIColor : DBRColor.base3.swiftUIColor
+                    )
                     .onChange(of: text) { newValue in
                         text = newValue.formatUserInput(type: inputType)
                     }
