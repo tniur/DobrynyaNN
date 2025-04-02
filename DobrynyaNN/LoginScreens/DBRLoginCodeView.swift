@@ -12,7 +12,7 @@ struct DBRLoginCodeView: View {
     
     // MARK: - Properties
 
-    @StateObject private var viewModel = DBRLoginCodeViewModel()
+    @StateObject private var viewModel: DBRLoginCodeViewModel
     @FocusState private var isFocused: Bool
     
     // MARK: - Body
@@ -47,5 +47,11 @@ struct DBRLoginCodeView: View {
             }
             DBRCodeView(code: $viewModel.code, isError: $viewModel.isCodeIncorrect, isFocused: $isFocused, length: viewModel.codeLenght)
         }
+    }
+    
+    // MARK: - Initializer
+
+    init(viewModel: DBRLoginCodeViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
     }
 }

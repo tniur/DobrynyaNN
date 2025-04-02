@@ -6,9 +6,12 @@
 //
 
 import Foundation
+import Nivelir
 
 final class DBRLoginCodeViewModel: ObservableObject {
     
+    // MARK: - Properties
+
     @Published var codeLenght: Int = 6
     @Published var isCodeIncorrect: Bool = false
     @Published var code: String = "" {
@@ -23,6 +26,11 @@ final class DBRLoginCodeViewModel: ObservableObject {
         }
     }
     
+    private var screenNavigator: ScreenNavigator
+    private let screens: DBRLoginCodeScreens
+    
+    // MARK: - Methods
+
     @MainActor
     private func sendCode() {
         if code == "000000" {
@@ -30,5 +38,12 @@ final class DBRLoginCodeViewModel: ObservableObject {
         } else {
             isCodeIncorrect = true
         }
+    }
+    
+    // MARK: - Initializer
+
+    init(screenNavigator: ScreenNavigator, screens: DBRLoginCodeScreens) {
+        self.screenNavigator = screenNavigator
+        self.screens = screens
     }
 }

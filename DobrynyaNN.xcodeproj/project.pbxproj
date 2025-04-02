@@ -36,6 +36,11 @@
 			path = RegistrationScreens;
 			sourceTree = "<group>";
 		};
+		7BDB6D192D9DBF6400A74403 /* Protocols */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +89,7 @@
 				E92A2E9C2D6CE7E900D0D03C /* LaunchScreen.storyboard */,
 				E92A2E982D6CE7E900D0D03C /* AppDelegate.swift */,
 				E92A2E9D2D6CE7E900D0D03C /* SceneDelegate.swift */,
+				7BDB6D192D9DBF6400A74403 /* Protocols */,
 				7BDB6D0A2D9DBC3A00A74403 /* RegistrationScreens */,
 				7BC750E92D88A06F00AA6FF0 /* LoginScreens */,
 			);
@@ -108,6 +114,7 @@
 			fileSystemSynchronizedGroups = (
 				7BC750E92D88A06F00AA6FF0 /* LoginScreens */,
 				7BDB6D0A2D9DBC3A00A74403 /* RegistrationScreens */,
+				7BDB6D192D9DBF6400A74403 /* Protocols */,
 			);
 			name = DobrynyaNN;
 			packageProductDependencies = (

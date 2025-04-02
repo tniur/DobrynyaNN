@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Nivelir
 
 final class DBRRegistrationViewModel: ObservableObject {
     
@@ -14,5 +15,14 @@ final class DBRRegistrationViewModel: ObservableObject {
     @Published var login: String = ""
     @Published var password: String = ""
     @Published var repeatedPassword: String = ""
-    @Published var phoneNumber: String = ""
+    
+    private var screenNavigator: ScreenNavigator
+    private let screens: DBRRegistrationScreens
+    
+    // MARK: - Initializer
+
+    init(screenNavigator: ScreenNavigator, screens: DBRRegistrationScreens) {
+        self.screenNavigator = screenNavigator
+        self.screens = screens
+    }
 }

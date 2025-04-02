@@ -11,6 +11,8 @@ import DBRUIComponents
 struct DBRLoginView: View {
     
     // MARK: - Properties
+    
+    @StateObject private var viewModel: DBRLoginViewModel
 
     @State private var login: String = ""
     @State private var password: String = ""
@@ -69,10 +71,11 @@ struct DBRLoginView: View {
             }
         }
     }
+    
+    // MARK: - Initializer
+    
+    init(viewModel: DBRLoginViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
 }
 
-// MARK: - Preview
-
-#Preview {
-    DBRLoginView()
-}

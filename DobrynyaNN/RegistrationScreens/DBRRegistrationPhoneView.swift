@@ -12,7 +12,7 @@ struct DBRRegistrationPhoneView: View {
     
     // MARK: - Properties
 
-    @StateObject private var viewModel = DBRRegistrationViewModel()
+    @StateObject private var viewModel: DBRRegistrationPhoneViewModel
     
     // MARK: - Body
     
@@ -67,10 +67,10 @@ struct DBRRegistrationPhoneView: View {
             }
         }
     }
-}
+    
+    // MARK: - Initializer
 
-// MARK: - Preview
-
-#Preview {
-    DBRRegistrationPhoneView()
+    init(viewModel: DBRRegistrationPhoneViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
 }
