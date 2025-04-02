@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7BB90BFB2D95874700AC5AAD /* DBRRegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB90BFA2D95873800AC5AAD /* DBRRegistrationView.swift */; };
-		7BB90BFD2D95876900AC5AAD /* DBRRegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB90BFC2D95876500AC5AAD /* DBRRegistrationViewModel.swift */; };
-		7BB90BFF2D95878900AC5AAD /* DBRRegistrationPhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB90BFE2D95877600AC5AAD /* DBRRegistrationPhoneView.swift */; };
 		7BC750E72D889EAE00AA6FF0 /* DBRUIComponents in Frameworks */ = {isa = PBXBuildFile; productRef = 7BC750E62D889EAE00AA6FF0 /* DBRUIComponents */; };
 		E900F4D02D6CEBD000A460C2 /* Nivelir in Frameworks */ = {isa = PBXBuildFile; productRef = E900F4CF2D6CEBD000A460C2 /* Nivelir */; };
 		E92A2E9F2D6CE7E900D0D03C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E92A2E992D6CE7E900D0D03C /* Assets.xcassets */; };
@@ -19,9 +16,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7BB90BFA2D95873800AC5AAD /* DBRRegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBRRegistrationView.swift; sourceTree = "<group>"; };
-		7BB90BFC2D95876500AC5AAD /* DBRRegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBRRegistrationViewModel.swift; sourceTree = "<group>"; };
-		7BB90BFE2D95877600AC5AAD /* DBRRegistrationPhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBRRegistrationPhoneView.swift; sourceTree = "<group>"; };
 		7BC750E82D889FFA00AA6FF0 /* DBRUIComponents */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DBRUIComponents; sourceTree = "<group>"; };
 		E92A2E802D6CE6C100D0D03C /* DobrynyaNN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DobrynyaNN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E92A2E982D6CE7E900D0D03C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +29,11 @@
 		7BC750E92D88A06F00AA6FF0 /* LoginScreens */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = LoginScreens;
+			sourceTree = "<group>";
+		};
+		7BDB6D0A2D9DBC3A00A74403 /* RegistrationScreens */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = RegistrationScreens;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -85,9 +84,7 @@
 				E92A2E9C2D6CE7E900D0D03C /* LaunchScreen.storyboard */,
 				E92A2E982D6CE7E900D0D03C /* AppDelegate.swift */,
 				E92A2E9D2D6CE7E900D0D03C /* SceneDelegate.swift */,
-				7BB90BFA2D95873800AC5AAD /* DBRRegistrationView.swift */,
-				7BB90BFC2D95876500AC5AAD /* DBRRegistrationViewModel.swift */,
-				7BB90BFE2D95877600AC5AAD /* DBRRegistrationPhoneView.swift */,
+				7BDB6D0A2D9DBC3A00A74403 /* RegistrationScreens */,
 				7BC750E92D88A06F00AA6FF0 /* LoginScreens */,
 			);
 			path = DobrynyaNN;
@@ -110,6 +107,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				7BC750E92D88A06F00AA6FF0 /* LoginScreens */,
+				7BDB6D0A2D9DBC3A00A74403 /* RegistrationScreens */,
 			);
 			name = DobrynyaNN;
 			packageProductDependencies = (
@@ -175,10 +173,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BB90BFB2D95874700AC5AAD /* DBRRegistrationView.swift in Sources */,
-				7BB90BFF2D95878900AC5AAD /* DBRRegistrationPhoneView.swift in Sources */,
 				E92A2EA22D6CE7E900D0D03C /* AppDelegate.swift in Sources */,
-				7BB90BFD2D95876900AC5AAD /* DBRRegistrationViewModel.swift in Sources */,
 				E92A2EA32D6CE7E900D0D03C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
