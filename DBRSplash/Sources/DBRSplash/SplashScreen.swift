@@ -2,13 +2,18 @@ import UIKit
 import SwiftUI
 import Nivelir
 
-protocol SplashScreens {
-    func showLoginScreen() -> ScreenWindowRoute
-    func showHomeScreen() -> ScreenWindowRoute
+public protocol SplashScreens {
+//    func showLoginScreen() -> ScreenWindowRoute
+//    func showHomeScreen() -> ScreenWindowRoute
 }
 
-struct SplashScreen: Screen {
+public struct SplashScreen: Screen {
     let screens: SplashScreens
+
+    public init(screens: SplashScreens) {
+        self.screens = screens
+    }
+
     public func build(navigator: ScreenNavigator) -> UIViewController {
         let viewModel = SplashViewModel()
         let view = SplashView(viewModel: viewModel)
