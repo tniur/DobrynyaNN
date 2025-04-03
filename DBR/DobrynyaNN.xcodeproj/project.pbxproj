@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		7BC750E72D889EAE00AA6FF0 /* DBRUIComponents in Frameworks */ = {isa = PBXBuildFile; productRef = 7BC750E62D889EAE00AA6FF0 /* DBRUIComponents */; };
-		7BEB5E4B2D9F23F200A15CF9 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEB5E482D9F23F200A15CF9 /* SplashView.swift */; };
-		7BEB5E4C2D9F23F200A15CF9 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEB5E492D9F23F200A15CF9 /* SplashViewModel.swift */; };
-		7BEB5E4D2D9F23F200A15CF9 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEB5E472D9F23F200A15CF9 /* SplashScreen.swift */; };
 		E900F4D02D6CEBD000A460C2 /* Nivelir in Frameworks */ = {isa = PBXBuildFile; productRef = E900F4CF2D6CEBD000A460C2 /* Nivelir */; };
 		E92A2E9F2D6CE7E900D0D03C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E92A2E992D6CE7E900D0D03C /* Assets.xcassets */; };
 		E92A2EA12D6CE7E900D0D03C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E92A2E9C2D6CE7E900D0D03C /* LaunchScreen.storyboard */; };
@@ -21,9 +18,6 @@
 
 /* Begin PBXFileReference section */
 		7BEB5E462D9F22E300A15CF9 /* DBRUIComponents */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DBRUIComponents; path = ../DBRUIComponents; sourceTree = SOURCE_ROOT; };
-		7BEB5E472D9F23F200A15CF9 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
-		7BEB5E482D9F23F200A15CF9 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
-		7BEB5E492D9F23F200A15CF9 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		E92A2E802D6CE6C100D0D03C /* DobrynyaNN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DobrynyaNN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E92A2E982D6CE7E900D0D03C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E92A2E992D6CE7E900D0D03C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -34,14 +28,29 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		7BC750E92D88A06F00AA6FF0 /* LoginScreens */ = {
+		7B6134182D9F2DE900AA138D /* Splash */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = LoginScreens;
+			path = Splash;
 			sourceTree = "<group>";
 		};
-		7BDB6D0A2D9DBC3A00A74403 /* RegistrationScreens */ = {
+		7B61341D2D9F2E8800AA138D /* Login */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = RegistrationScreens;
+			path = Login;
+			sourceTree = "<group>";
+		};
+		7B6134222D9F2E9800AA138D /* LoginCode */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = LoginCode;
+			sourceTree = "<group>";
+		};
+		7B6134232D9F2EA700AA138D /* RegistrationPhone */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = RegistrationPhone;
+			sourceTree = "<group>";
+		};
+		7BDB6D0A2D9DBC3A00A74403 /* Registration */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Registration;
 			sourceTree = "<group>";
 		};
 		7BDB6D192D9DBF6400A74403 /* Protocols */ = {
@@ -64,16 +73,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7BEB5E4A2D9F23F200A15CF9 /* DBRSplash */ = {
-			isa = PBXGroup;
-			children = (
-				7BEB5E472D9F23F200A15CF9 /* SplashScreen.swift */,
-				7BEB5E482D9F23F200A15CF9 /* SplashView.swift */,
-				7BEB5E492D9F23F200A15CF9 /* SplashViewModel.swift */,
-			);
-			path = DBRSplash;
-			sourceTree = "<group>";
-		};
 		E900F4E62D6D2F3600A460C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -108,10 +107,12 @@
 				E92A2E9C2D6CE7E900D0D03C /* LaunchScreen.storyboard */,
 				E92A2E982D6CE7E900D0D03C /* AppDelegate.swift */,
 				E92A2E9D2D6CE7E900D0D03C /* SceneDelegate.swift */,
-				7BEB5E4A2D9F23F200A15CF9 /* DBRSplash */,
 				7BDB6D192D9DBF6400A74403 /* Protocols */,
-				7BDB6D0A2D9DBC3A00A74403 /* RegistrationScreens */,
-				7BC750E92D88A06F00AA6FF0 /* LoginScreens */,
+				7B6134232D9F2EA700AA138D /* RegistrationPhone */,
+				7B6134222D9F2E9800AA138D /* LoginCode */,
+				7B61341D2D9F2E8800AA138D /* Login */,
+				7B6134182D9F2DE900AA138D /* Splash */,
+				7BDB6D0A2D9DBC3A00A74403 /* Registration */,
 			);
 			path = DobrynyaNN;
 			sourceTree = "<group>";
@@ -132,15 +133,17 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				7BC750E92D88A06F00AA6FF0 /* LoginScreens */,
-				7BDB6D0A2D9DBC3A00A74403 /* RegistrationScreens */,
+				7B6134182D9F2DE900AA138D /* Splash */,
+				7B61341D2D9F2E8800AA138D /* Login */,
+				7B6134222D9F2E9800AA138D /* LoginCode */,
+				7B6134232D9F2EA700AA138D /* RegistrationPhone */,
+				7BDB6D0A2D9DBC3A00A74403 /* Registration */,
 				7BDB6D192D9DBF6400A74403 /* Protocols */,
 			);
 			name = DobrynyaNN;
 			packageProductDependencies = (
 				E900F4CF2D6CEBD000A460C2 /* Nivelir */,
 				7BC750E62D889EAE00AA6FF0 /* DBRUIComponents */,
-				E9EE6C122D9DD62C006D5A9F /* DBRSplash */,
 			);
 			productName = DobrynyaNN;
 			productReference = E92A2E802D6CE6C100D0D03C /* DobrynyaNN.app */;
@@ -201,9 +204,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BEB5E4B2D9F23F200A15CF9 /* SplashView.swift in Sources */,
-				7BEB5E4C2D9F23F200A15CF9 /* SplashViewModel.swift in Sources */,
-				7BEB5E4D2D9F23F200A15CF9 /* SplashScreen.swift in Sources */,
 				E9E8686C2D9DD2610089E293 /* Screens.swift in Sources */,
 				E92A2EA22D6CE7E900D0D03C /* AppDelegate.swift in Sources */,
 				E92A2EA32D6CE7E900D0D03C /* SceneDelegate.swift in Sources */,
@@ -458,10 +458,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E900F4CE2D6CEBD000A460C2 /* XCRemoteSwiftPackageReference "Nivelir" */;
 			productName = Nivelir;
-		};
-		E9EE6C122D9DD62C006D5A9F /* DBRSplash */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DBRSplash;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

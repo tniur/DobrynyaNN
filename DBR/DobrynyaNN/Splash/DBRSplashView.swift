@@ -1,9 +1,9 @@
 import SwiftUI
 
-struct SplashView: View {
-    private var viewModel: SplashViewModel
+struct DBRSplashView: View {
+    private var viewModel: DBRSplashViewModel
 
-    init(viewModel: SplashViewModel) {
+    init(viewModel: DBRSplashViewModel) {
         self.viewModel = viewModel
     }
 

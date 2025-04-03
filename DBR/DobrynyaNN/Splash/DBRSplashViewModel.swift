@@ -1,10 +1,10 @@
 import Foundation
 import Nivelir
 
-final class SplashViewModel: ObservableObject {
+final class DBRSplashViewModel: ObservableObject {
     
     private var screenNavigator: ScreenNavigator
-    private let screens: SplashScreens
+    private let screens: DBRSplashScreens
     
     @MainActor
     func showRegistration() {
@@ -13,7 +13,7 @@ final class SplashViewModel: ObservableObject {
     
     // MARK: - Initializer
 
-    init(screenNavigator: ScreenNavigator, screens: SplashScreens) {
+    init(screenNavigator: ScreenNavigator, screens: DBRSplashScreens) {
         self.screenNavigator = screenNavigator
         self.screens = screens
     }

@@ -1,5 +1,4 @@
 import Nivelir
-import DBRSplash
 
 @MainActor
 struct Screens { }
@@ -9,12 +8,12 @@ struct Screens { }
 extension Screens: RootScreens {
     func showSplashRoute() -> ScreenWindowRoute {
         ScreenWindowRoute()
-            .setRoot(to: SplashScreen(screens: self))
+            .setRoot(to: DBRSplashScreen(screens: self))
             .makeKeyAndVisible()
     }
 }
 
-extension Screens: SplashScreens {
+extension Screens: DBRSplashScreens {
     func showRegistrationRoute() -> ScreenWindowRoute {
         ScreenWindowRoute()
             .setRoot(to: DBRRegistrationScreen(screens: self))
