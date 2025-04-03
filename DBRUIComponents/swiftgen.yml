@@ -1,0 +1,18 @@
+input_dir: Sources/DBRUIComponents/Resources
+output_dir: ${DERIVED_SOURCES_DIR}
+
+xcassets:
+  - inputs: Colors.xcassets
+    outputs:
+      - templatePath: dbrcustom.stencil
+        output: DBRColor.swift
+        params:
+          enumName: DBRColor
+          publicAccess: true
+  - inputs: Images.xcassets
+    outputs:
+      - templatePath: dbrcustom.stencil
+        output: DBRImage.swift
+        params:
+          enumName: DBRImage
+          publicAccess: true

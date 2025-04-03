@@ -11,6 +11,6 @@ struct SplashView: View {
         VStack {
             Spacer()
         }
-        .onAppear(perform: viewModel.)
+        .onAppear(perform: viewModel.showRegistration)
     }
 }

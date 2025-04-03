@@ -14,13 +14,21 @@ let package = Package(
             targets: ["DBRUIComponents"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/SimplyDanny/SwiftLintPlugins", from: "0.58.0")
+        .package(url: "https://github.com/SimplyDanny/SwiftLintPlugins", from: "0.58.0"),
+        .package(url: "https://github.com/SwiftGen/SwiftGenPlugin", exact: "6.6.2")
     ],
     targets: [
         .target(
             name: "DBRUIComponents",
+            exclude: [
+                "../../swiftgen.yml"
+            ],
+            resources: [
+                .process("Resources/Fonts/Mulish")
+            ],
             plugins: [
-                .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLintPlugins")
+                .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLintPlugins"),
+                .plugin(name: "SwiftGenPlugin", package: "SwiftGenPlugin")
             ]
         )
     ]

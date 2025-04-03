@@ -1,15 +1,6 @@
 {
-  "originHash" : "9f890565cdb9932b9be128b542168e5b519552b49d58c40175556d2847155c5c",
+  "originHash" : "0c904c9c53fc50c67190b7b09f2f841213aca2b5cc9655ed3f5f22f76da54411",
   "pins" : [
-    {
-      "identity" : "factory",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/hmlongco/Factory",
-      "state" : {
-        "revision" : "fb04a8918848e413d3921d346a23bae7f81088d9",
-        "version" : "2.4.3"
-      }
-    },
     {
       "identity" : "nivelir",
       "kind" : "remoteSourceControl",
@@ -17,6 +8,15 @@
       "state" : {
         "revision" : "8d97cafaa08c711bf1f428912195cc0b49c782fa",
         "version" : "1.9.6"
+      }
+    },
+    {
+      "identity" : "swiftgenplugin",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwiftGen/SwiftGenPlugin",
+      "state" : {
+        "revision" : "879b85a470cacd70c19e22eb7e11a3aed66f4068",
+        "version" : "6.6.2"
       }
     },
     {

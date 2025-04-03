@@ -2,7 +2,7 @@ import Nivelir
 import DBRSplash
 
 @MainActor
-struct Screens: SplashScreens { }
+struct Screens { }
 
 // MARK: - Root
 
@@ -13,3 +13,13 @@ extension Screens: RootScreens {
             .makeKeyAndVisible()
     }
 }
+
+extension Screens: SplashScreens {
+    func showRegistrationRoute() -> ScreenWindowRoute {
+        ScreenWindowRoute()
+            .setRoot(to: DBRRegistrationScreen(screens: self))
+            .makeKeyAndVisible()
+    }
+}
+
+extension Screens: DBRRegistrationScreens { }
