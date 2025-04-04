@@ -7,6 +7,7 @@
 
 import Nivelir
 import SwiftUI
+import UIKit
 
 public protocol DBRRegistrationPhoneScreens {
     func loginCodeRoute() -> ScreenWindowRoute
@@ -19,7 +20,7 @@ public struct DBRRegistrationPhoneScreen: Screen {
         self.screens = screens
     }
     
-    public func build(navigator: ScreenNavigator) -> some ScreenContainer {
+    public func build(navigator: ScreenNavigator) -> UIViewController {
         let viewModel = DBRRegistrationPhoneViewModel(screenNavigator: navigator, screens: screens)
         let view = DBRRegistrationPhoneView(viewModel: viewModel)
         let controller = UIHostingController(rootView: view)

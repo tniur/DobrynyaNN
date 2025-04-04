@@ -14,6 +14,12 @@ extension Screens: RootScreens {
 }
 
 extension Screens: DBRSplashScreens {
+    func showProfileRoute() -> ScreenWindowRoute {
+        ScreenWindowRoute()
+            .setRoot(to: DBRProfileScreen(screens: self))
+            .makeKeyAndVisible()
+    }
+    
     func showRegistrationRoute() -> ScreenWindowRoute {
         ScreenWindowRoute()
             .setRoot(to: DBRRegistrationScreen(screens: self))
@@ -22,3 +28,5 @@ extension Screens: DBRSplashScreens {
 }
 
 extension Screens: DBRRegistrationScreens { }
+
+extension Screens: DBRProfileScreens { }
