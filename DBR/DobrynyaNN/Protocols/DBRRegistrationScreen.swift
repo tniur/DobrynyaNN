@@ -9,6 +9,7 @@ import Nivelir
 import SwiftUI
 import UIKit
 
+@MainActor
 public protocol DBRRegistrationScreens {
 //    func showRegistrationPhoneRoute() -> ScreenWindowRoute
 }

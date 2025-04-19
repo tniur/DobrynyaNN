@@ -9,7 +9,10 @@ import Nivelir
 import SwiftUI
 import UIKit
 
-public protocol DBRProfileScreens { }
+@MainActor
+public protocol DBRProfileScreens {
+    func showResearchResultsRoute() -> ScreenWindowRoute
+}
 
 public struct DBRProfileScreen: Screen {
     let screens: DBRProfileScreens

@@ -27,6 +27,15 @@ extension Screens: DBRSplashScreens {
     }
 }
 
-extension Screens: DBRRegistrationScreens { }
+extension Screens: DBRProfileScreens {
+    func showResearchResultsRoute() -> ScreenWindowRoute {
+        ScreenWindowRoute()
+            .top(.stack)
+            .push(DBRResearchResultsScreen(screens: self))
+            .resolve()
+    }
+}
 
-extension Screens: DBRProfileScreens { }
+extension Screens: DBRResearchResultsScreens { }
+
+extension Screens: DBRRegistrationScreens { }

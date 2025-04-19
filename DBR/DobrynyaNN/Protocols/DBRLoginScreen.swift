@@ -9,6 +9,7 @@ import Nivelir
 import SwiftUI
 import UIKit
 
+@MainActor
 public protocol DBRLoginScreens {
     func loginCodeRoute() -> ScreenWindowRoute
 }

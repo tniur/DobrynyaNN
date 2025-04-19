@@ -17,6 +17,12 @@ struct DBRProfileView: View {
     // MARK: - Body
 
     var body: some View {
+        contentView
+    }
+    
+    // MARK: - Subviews
+    
+    private var contentView: some View {
         ZStack(alignment: .top) {
             DBRImage.profileBackground.swiftUIImage
                 .resizable()
@@ -43,8 +49,6 @@ struct DBRProfileView: View {
         }
     }
     
-    // MARK: - Subviews
-    
     private var avatarView: some View {
         VStack(spacing: 12.0) {
             DBRImage.avatarPlaceholder.swiftUIImage
@@ -63,7 +67,7 @@ struct DBRProfileView: View {
     private var buttonsView: some View {
         VStack(spacing: 16) {
             ForEach(viewModel.sections, id: \.name) { section in
-                DBRButton(section.name, icon: section.icon, action: { })
+                DBRButton(section.name, icon: section.icon, action: section.action)
             }
         }
     }

@@ -28,6 +28,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		7B0B077F2DB3CAD6009268DA /* ResearchResults */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ResearchResults;
+			sourceTree = "<group>";
+		};
 		7B1731362DA0524A00211C6A /* Profile */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Profile;
@@ -119,6 +124,7 @@
 				7B61341D2D9F2E8800AA138D /* Login */,
 				7B6134182D9F2DE900AA138D /* Splash */,
 				7BDB6D0A2D9DBC3A00A74403 /* Registration */,
+				7B0B077F2DB3CAD6009268DA /* ResearchResults */,
 			);
 			path = DobrynyaNN;
 			sourceTree = "<group>";
@@ -139,6 +145,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				7B0B077F2DB3CAD6009268DA /* ResearchResults */,
 				7B1731362DA0524A00211C6A /* Profile */,
 				7B6134182D9F2DE900AA138D /* Splash */,
 				7B61341D2D9F2E8800AA138D /* Login */,

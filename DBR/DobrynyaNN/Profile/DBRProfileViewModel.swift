@@ -13,18 +13,14 @@ import DBRUIComponents
 struct ProfileSection {
     let name: String
     let icon: Image
+    let action: () -> Void
 }
 
 final class DBRProfileViewModel: ObservableObject {
     
     // MARK: - Properties
     
-    @Published var sections: [ProfileSection] = [
-        .init(name: "Результаты исследований", icon: DBRImage.heartextIcon.swiftUIImage),
-        .init(name: "Документы", icon: DBRImage.docIcon.swiftUIImage),
-        .init(name: "Консультации", icon: DBRImage.staroflifeIcon.swiftUIImage),
-        .init(name: "Редактировать профиль", icon: DBRImage.pencilIcon.swiftUIImage)
-    ]
+    @Published var sections: [ProfileSection]
     
     private var screenNavigator: ScreenNavigator
     private let screens: DBRProfileScreens
@@ -34,5 +30,35 @@ final class DBRProfileViewModel: ObservableObject {
     init(screenNavigator: ScreenNavigator, screens: DBRProfileScreens) {
         self.screenNavigator = screenNavigator
         self.screens = screens
+        
+        self.sections = [
+            .init(name: "Результаты исследований", icon: DBRImage.heartextIcon.swiftUIImage, action: {
+                Task { @MainActor in
+                    screenNavigator.navigate(to: screens.showResearchResultsRoute())
+                }
+            }),
+            .init(name: "Документы", icon: DBRImage.docIcon.swiftUIImage, action: {
+                Task { @MainActor in
+                    screenNavigator.navigate(to: screens.showResearchResultsRoute())
+                }
+            }),
+            .init(name: "Консультации", icon: DBRImage.staroflifeIcon.swiftUIImage, action: {
+                Task { @MainActor in
+                    screenNavigator.navigate(to: screens.showResearchResultsRoute())
+                }
+            }),
+            .init(name: "Редактировать профиль", icon: DBRImage.pencilIcon.swiftUIImage, action: {
+                Task { @MainActor in
+                    screenNavigator.navigate(to: screens.showResearchResultsRoute())
+                }
+            })
+        ]
+    }
+    
+    // MARK: - Methods
+
+    @MainActor
+    func showResearchResults() {
+        screenNavigator.navigate(to: screens.showResearchResultsRoute())
     }
 }
