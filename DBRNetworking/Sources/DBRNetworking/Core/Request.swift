@@ -5,17 +5,20 @@ public struct Request<Response> {
     public let path: String
     public let query: [String: String]?
     public let body: Encodable?
+    public var headers: [String: String]?
 
     public init(
         method: HTTPMethod = .get,
         path: String,
         query: [String: String]? = nil,
         body: Encodable? = nil
+        headers: [String: String]? = nil
     ) {
         self.method = method
         self.path = path
         self.query = query
         self.body = body
+        self.headers = headers
     }
 }
 
