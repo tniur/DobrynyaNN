@@ -1,0 +1,5 @@
+"unauthorized" = "Unauthorized user";
+"notFound" = "Not found";
+"unacceptableStatusCode" = "Unacceptable status";
+"decodingError" = "Data decoding error";
+"unknown" = "Unknown error";

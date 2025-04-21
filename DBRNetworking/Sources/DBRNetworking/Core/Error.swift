@@ -11,17 +11,17 @@ public enum NetworkError: Error, LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .unauthorized:
-            return "Неавторизованный пользователь."
+            return NSLocalizedString("unauthorized", comment: "")
         case .notFound:
-            return "Не найдено."
+            return NSLocalizedString("notFound", comment: "")
         case .server(let error):
             return error.detail
         case .unacceptableStatusCode(let code):
-            return "Недопустимый статус: \(code)"
+            return "\(NSLocalizedString("unacceptableStatusCode", comment: "")): \(code)"
         case .decodingError:
-            return "Ошибка при разборе данных"
+            return NSLocalizedString("decodingError", comment: "")
         case .unknown:
-            return "Неизвестная ошибка"
+            return NSLocalizedString("unknown", comment: "")
         }
     }
 }
