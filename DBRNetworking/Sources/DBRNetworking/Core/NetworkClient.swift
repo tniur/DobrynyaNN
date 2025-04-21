@@ -70,7 +70,7 @@ extension NetworkClient {
             resolvingAgainstBaseURL: false
         )
         
-        components?.queryItems = request.query?.map { URLQueryItem(name: $0.key, value: $0.value) }
+        components?.queryItems = request.query?.map { URLQueryItem(name: $0.0, value: $0.1) }
 
         guard let finalURL = components?.url else {
             throw URLError(.badURL)

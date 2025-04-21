@@ -3,14 +3,14 @@ import Foundation
 public struct Request<Response> {
     public let method: HTTPMethod
     public let path: String
-    public let query: [String: String]?
+    public var query: [(String, String?)]?
     public let body: Encodable?
     public var headers: [String: String]?
 
     public init(
         method: HTTPMethod = .get,
         path: String,
-        query: [String: String]? = nil,
+        query: [(String, String?)]? = nil,
         body: Encodable? = nil,
         headers: [String: String]? = nil
     ) {
