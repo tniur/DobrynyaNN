@@ -2,6 +2,7 @@ import UIKit
 import SwiftUI
 import Nivelir
 
+@MainActor
 protocol RootScreens {
     func showSplashRoute() -> ScreenWindowRoute
 }

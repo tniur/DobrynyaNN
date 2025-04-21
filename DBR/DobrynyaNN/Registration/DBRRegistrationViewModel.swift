@@ -7,6 +7,8 @@
 
 import Foundation
 import Nivelir
+import UIKit
+import DBRUIComponents
 
 final class DBRRegistrationViewModel: ObservableObject {
     
@@ -24,5 +26,15 @@ final class DBRRegistrationViewModel: ObservableObject {
     init(screenNavigator: ScreenNavigator, screens: DBRRegistrationScreens) {
         self.screenNavigator = screenNavigator
         self.screens = screens
+    }
+    
+    // MARK: - Methods
+
+    @MainActor
+    func showRegistrationPhone() {
+        let topController = UIApplication.shared.topViewController()
+        topController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        topController?.navigationController?.navigationBar.tintColor = DBRColor.base10.color
+        screenNavigator.navigate(to: screens.showRegistrationPhoneRoute())
     }
 }
