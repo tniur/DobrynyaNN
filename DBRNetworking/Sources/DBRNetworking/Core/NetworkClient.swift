@@ -43,11 +43,22 @@ extension NetworkClient {
     
     private func validate(response: URLResponse, data: Data) throws {
         guard let httpResponse = response as? HTTPURLResponse else {
-            throw NetworkError.invalidURL
+            throw URLError(.badServerResponse)
         }
         
         guard (200..<300).contains(httpResponse.statusCode) else {
-            throw NetworkError.unacceptableStatusCode(httpResponse.statusCode)
+            if let serverError = try? decoder.decode(ServerError.self, from: data) {
+                switch httpResponse.statusCode {
+                case 401:
+                    throw NetworkError.unauthorized
+                case 404:
+                    throw NetworkError.notFound
+                default:
+                    throw NetworkError.server(serverError)
+                }
+            } else {
+                throw NetworkError.unacceptableStatusCode(httpResponse.statusCode)
+            }
         }
     }
 }
