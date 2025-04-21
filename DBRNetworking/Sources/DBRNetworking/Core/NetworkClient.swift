@@ -83,6 +83,12 @@ extension NetworkClient {
             urlRequest.httpBody = try encoder.encode(AnyEncodable(value: body))
             urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         }
+        
+        if let headers = request.headers {
+            for (key, value) in headers {
+                urlRequest.setValue(value, forHTTPHeaderField: key)
+            }
+        }
 
         urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
         return urlRequest
