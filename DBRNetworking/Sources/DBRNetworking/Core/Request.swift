@@ -11,7 +11,7 @@ public struct Request<Response> {
         method: HTTPMethod = .get,
         path: String,
         query: [String: String]? = nil,
-        body: Encodable? = nil
+        body: Encodable? = nil,
         headers: [String: String]? = nil
     ) {
         self.method = method
