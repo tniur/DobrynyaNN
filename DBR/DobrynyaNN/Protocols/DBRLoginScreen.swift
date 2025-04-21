@@ -8,8 +8,9 @@
 import Nivelir
 import SwiftUI
 
+@MainActor
 public protocol DBRLoginScreens {
-    func loginCodeRoute() -> ScreenWindowRoute
+    func showLoginCodeRoute() -> ScreenWindowRoute
 }
 
 public struct DBRLoginScreen: Screen {
@@ -19,7 +20,7 @@ public struct DBRLoginScreen: Screen {
         self.screens = screens
     }
     
-    public func build(navigator: ScreenNavigator) -> some ScreenContainer {
+    public func build(navigator: ScreenNavigator) -> UIViewController {
         let viewModel = DBRLoginViewModel(screenNavigator: navigator, screens: screens)
         let view = DBRLoginView(viewModel: viewModel)
         let controller = UIHostingController(rootView: view)

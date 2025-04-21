@@ -9,8 +9,9 @@ import Nivelir
 import SwiftUI
 import UIKit
 
+@MainActor
 public protocol DBRRegistrationScreens {
-//    func showRegistrationPhoneRoute() -> ScreenWindowRoute
+    func showRegistrationPhoneRoute() -> ScreenWindowRoute
 }
 
 public struct DBRRegistrationScreen: Screen {
@@ -24,6 +25,7 @@ public struct DBRRegistrationScreen: Screen {
         let viewModel = DBRRegistrationViewModel(screenNavigator: navigator, screens: screens)
         let view = DBRRegistrationView(viewModel: viewModel)
         let controller = UIHostingController(rootView: view)
-        return controller
+        let navController = UINavigationController(rootViewController: controller)
+        return navController
     }
 }

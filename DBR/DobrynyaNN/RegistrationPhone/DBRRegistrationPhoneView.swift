@@ -53,15 +53,19 @@ struct DBRRegistrationPhoneView: View {
     
     private var bottomView: some View {
         VStack(spacing: 24) {
-            DBRButton("Получить код", style: DBRButtonStyle(.primary), action: { })
-                .environment(\.isEnabled, !viewModel.phoneNumber.isEmpty)
-
+            DBRButton(
+                "Получить код",
+                style: DBRButtonStyle(.primary),
+                action: { }
+            )
+            .environment(\.isEnabled, !viewModel.phoneNumber.isEmpty)
+            
             HStack(spacing: 8) {
                 Text("Уже есть аккаунт?")
                     .font(DBRFont.R14)
                     .foregroundStyle(DBRColor.base10.swiftUIColor)
                 
-                Button("Войти", action: { })
+                Button("Войти", action: viewModel.showLoginCode)
                     .font(DBRFont.R14)
                     .foregroundStyle(DBRColor.blue6.swiftUIColor)
             }
