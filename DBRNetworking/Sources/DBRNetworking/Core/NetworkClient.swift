@@ -7,7 +7,7 @@ public actor NetworkClient {
     private let encoder = JSONEncoder()
     
     public init() {
-        self.baseURL = URL(string: "http://127.0.0.1:8000")!
+        self.baseURL = APIConstant.baseURL
         self.session = URLSession(configuration: .default)
         decoder.keyDecodingStrategy = .useDefaultKeys
     }
