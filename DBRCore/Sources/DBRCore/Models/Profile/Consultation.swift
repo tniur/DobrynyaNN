@@ -5,7 +5,7 @@ public struct Consultation: Sendable {
     public let title: String
     public let doctorId: Int
     public let status: String
-    
+
     public init(id: Int, title: String, doctorId: Int, status: String) {
         self.id = id
         self.title = title

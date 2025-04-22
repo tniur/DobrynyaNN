@@ -10,7 +10,7 @@ public struct Document: Sendable {
     public let recommendations: String
     public let isTemp: Bool
     public let dateReturn: String
-    
+
     public init(id: Int,
                 title: String,
                 doctorId: Int,

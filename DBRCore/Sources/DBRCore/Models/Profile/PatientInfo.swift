@@ -9,7 +9,7 @@ public struct PatientInfo: Sendable {
     public let gender: String
     public let mobile: String
     public let email: String
-    
+
     public init(
         lastName: String,
         firstName: String,
