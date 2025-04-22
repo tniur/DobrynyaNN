@@ -23,7 +23,7 @@ extension NetworkClient {
     public func send(_ request: Request<Void>) async throws -> Void {
         try await send(request) { _ in () }
     }
-    
+
     private func send<T: Sendable>(
         _ request: Request<T>,
         _ decode: @escaping (Data) async throws -> T) async throws -> T {
@@ -32,7 +32,7 @@ extension NetworkClient {
             try validate(response: response, data: data)
             return try await decode(data)
     }
-    
+
     private func send(_ request: URLRequest) async throws -> (Data, URLResponse) {
         try await session.data(for: request, delegate: nil)
     }
@@ -47,14 +47,14 @@ extension NetworkClient {
         }
         
         guard (200..<300).contains(httpResponse.statusCode) else {
-            if let serverError = try? decoder.decode(ServerError.self, from: data) {
+            if let errorResponse = try? decoder.decode(ErrorResponse.self, from: data) {
                 switch httpResponse.statusCode {
                 case 401:
                     throw NetworkError.unauthorized
                 case 404:
                     throw NetworkError.notFound
                 default:
-                    throw NetworkError.server(serverError)
+                    throw NetworkError.server(errorResponse)
                 }
             } else {
                 throw NetworkError.unacceptableStatusCode(httpResponse.statusCode)

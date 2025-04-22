@@ -3,7 +3,7 @@ import Foundation
 public enum NetworkError: Error, LocalizedError {
     case unauthorized
     case notFound
-    case server(ServerError)
+    case server(ErrorResponse)
     case unacceptableStatusCode(Int)
     case decodingError
     case unknown
@@ -26,6 +26,6 @@ public enum NetworkError: Error, LocalizedError {
     }
 }
 
-public struct ServerError: Decodable, Error {
+public struct ErrorResponse: Decodable, Error {
     let detail: String
 }
