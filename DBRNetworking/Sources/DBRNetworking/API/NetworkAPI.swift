@@ -7,7 +7,7 @@ public protocol NetworkProtocol {
 
 public final class NetworkAPI {
     let client: NetworkProtocol
-    
+
     public init(client: NetworkProtocol) {
         self.client = client
     }
