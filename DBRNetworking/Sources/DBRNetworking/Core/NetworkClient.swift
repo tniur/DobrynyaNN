@@ -6,8 +6,8 @@ public actor NetworkClient {
     private let decoder = JSONDecoder()
     private let encoder = JSONEncoder()
     
-    public init() {
-        self.baseURL = APIConstant.baseURL
+    public init(baseURL: URL) {
+        self.baseURL = baseURL
         self.session = URLSession(configuration: .default)
         decoder.keyDecodingStrategy = .useDefaultKeys
     }
