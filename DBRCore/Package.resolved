@@ -1,15 +1,6 @@
 {
-  "originHash" : "8a1d023d1f12fbd524b9c99daceb7c740aef466dcdc914034de9118f2981404c",
+  "originHash" : "77e94463b059f8c81fc56687b6116993e4e08458c7513320f3171e9a98d65975",
   "pins" : [
-    {
-      "identity" : "factory",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/hmlongco/Factory",
-      "state" : {
-        "revision" : "fb04a8918848e413d3921d346a23bae7f81088d9",
-        "version" : "2.4.3"
-      }
-    },
     {
       "identity" : "swiftlintplugins",
       "kind" : "remoteSourceControl",

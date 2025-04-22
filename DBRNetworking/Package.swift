@@ -14,11 +14,13 @@ let package = Package(
             targets: ["DBRNetworking"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/SimplyDanny/SwiftLintPlugins", from: "0.58.0")
+        .package(url: "https://github.com/SimplyDanny/SwiftLintPlugins", from: "0.58.0"),
+        .package(path: "../DBRCore")
     ],
     targets: [
         .target(
             name: "DBRNetworking",
+            dependencies: ["DBRCore"],
             resources: [.process("Resources")],
             plugins: [
                 .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLintPlugins")

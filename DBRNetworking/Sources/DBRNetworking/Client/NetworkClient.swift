@@ -5,7 +5,7 @@ public actor NetworkClient {
     private let session: URLSession
     private let decoder = JSONDecoder()
     private let encoder = JSONEncoder()
-    
+
     public init(baseURL: URL) {
         self.baseURL = baseURL
         self.session = URLSession(configuration: .default)
@@ -19,7 +19,7 @@ extension NetworkClient {
             try await self.decode(T.self, from: data)
         })
     }
-    
+
     public func send(_ request: Request<Void>) async throws -> Void {
         try await send(request) { _ in () }
     }
@@ -36,16 +36,16 @@ extension NetworkClient {
     private func send(_ request: URLRequest) async throws -> (Data, URLResponse) {
         try await session.data(for: request, delegate: nil)
     }
-    
+
     private func decode<T: Decodable>(_ type: T.Type, from data: Data) async throws -> T {
         return try decoder.decode(T.self, from: data)
     }
-    
+
     private func validate(response: URLResponse, data: Data) throws {
         guard let httpResponse = response as? HTTPURLResponse else {
             throw URLError(.badServerResponse)
         }
-        
+
         guard (200..<300).contains(httpResponse.statusCode) else {
             if let errorResponse = try? decoder.decode(ErrorResponse.self, from: data) {
                 switch httpResponse.statusCode {
@@ -69,7 +69,7 @@ extension NetworkClient {
             url: baseURL.appendingPathComponent(request.path),
             resolvingAgainstBaseURL: false
         )
-        
+
         components?.queryItems = request.query?.map { URLQueryItem(name: $0.0, value: $0.1) }
 
         guard let finalURL = components?.url else {
@@ -83,7 +83,7 @@ extension NetworkClient {
             urlRequest.httpBody = try encoder.encode(AnyEncodable(value: body))
             urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         }
-        
+
         if let headers = request.headers {
             for (key, value) in headers {
                 urlRequest.setValue(value, forHTTPHeaderField: key)
