@@ -3,9 +3,9 @@ import Foundation
 public struct Request<Response> {
     public let method: HTTPMethod
     public let path: String
-    public var query: [(String, String?)]?
+    public let query: [(String, String?)]?
     public let body: Encodable?
-    public var headers: [String: String]?
+    public let headers: [String: String]?
 
     public init(
         method: HTTPMethod = .get,
