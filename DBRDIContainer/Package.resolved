@@ -1,0 +1,24 @@
+{
+  "originHash" : "5f4271847e147c3fb57125c61c7a1e1d356958b61fb026d01b255ed1860faf70",
+  "pins" : [
+    {
+      "identity" : "factory",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hmlongco/Factory",
+      "state" : {
+        "revision" : "c8110886836ab4dd1136dbac0c04f0f36cd68540",
+        "version" : "2.4.5"
+      }
+    },
+    {
+      "identity" : "swiftlintplugins",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SimplyDanny/SwiftLintPlugins",
+      "state" : {
+        "revision" : "8545ddf4de043e6f2051c5cf204f39ef778ebf6b",
+        "version" : "0.59.1"
+      }
+    }
+  ],
+  "version" : 3
+}

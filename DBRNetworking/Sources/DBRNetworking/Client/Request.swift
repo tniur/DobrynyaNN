@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Request<Response> {
+public struct Request<Response>: @unchecked Sendable {
     public let method: HTTPMethod
     public let path: String
     public let query: [(String, String?)]?

@@ -1,6 +1,6 @@
 import Foundation
 
-public actor NetworkClient {
+public actor NetworkClient: NetworkProtocol {
     private let baseURL: URL
     private let session: URLSession
     private let decoder = JSONDecoder()
