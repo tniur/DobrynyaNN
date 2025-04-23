@@ -3,7 +3,7 @@ import DBRCore
 
 public protocol NetworkProtocol {
     func send<T: Decodable & Sendable>(_ request: Request<T>) async throws -> T
-    func send(_ request: Request<Void>) async throws -> Void
+    func send(_ request: Request<Void>) async throws
 }
 
 public final class NetworkAPI {

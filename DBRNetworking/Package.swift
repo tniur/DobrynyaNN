@@ -4,7 +4,6 @@ import PackageDescription
 
 let package = Package(
     name: "DBRNetworking",
-    defaultLocalization: "ru",
     platforms: [
         .iOS(.v16)
     ],
@@ -21,7 +20,6 @@ let package = Package(
         .target(
             name: "DBRNetworking",
             dependencies: ["DBRCore"],
-            resources: [.process("Resources")],
             plugins: [
                 .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLintPlugins")
             ]

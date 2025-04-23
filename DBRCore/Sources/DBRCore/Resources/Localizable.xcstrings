@@ -1,7 +1,42 @@
 {
-  "sourceLanguage" : "ru",
+  "sourceLanguage" : "en",
   "strings" : {
+    "badServerResponse" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid server response"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Некорректный ответ сервера"
+          }
+        }
+      }
+    },
+    "badURL" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid URL"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Некорректный URL"
+          }
+        }
+      }
+    },
     "decodingError" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -18,6 +53,7 @@
       }
     },
     "notFound" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -34,22 +70,24 @@
       }
     },
     "unacceptableStatusCode" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Unacceptable status"
+            "value" : "Unacceptable status code"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Недопустимый статус"
+            "value" : "Недопустимый статус код"
           }
         }
       }
     },
     "unauthorized" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -66,6 +104,7 @@
       }
     },
     "unknown" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
