@@ -21,7 +21,7 @@ extension NetworkClient {
         })
     }
 
-    public func send(_ request: Request<Void>) async throws -> Void {
+    public func send(_ request: Request<Void>) async throws {
         try await send(request) { _ in () }
     }
 
