@@ -1,4 +1,5 @@
 import Foundation
+import DBRCore
 
 public actor NetworkClient: NetworkProtocol {
     private let baseURL: URL
@@ -38,12 +39,16 @@ extension NetworkClient {
     }
 
     private func decode<T: Decodable>(_ type: T.Type, from data: Data) async throws -> T {
-        return try decoder.decode(T.self, from: data)
+        do {
+            return try decoder.decode(T.self, from: data)
+        } catch {
+            throw NetworkError.decodingError
+        }
     }
 
     private func validate(response: URLResponse, data: Data) throws {
         guard let httpResponse = response as? HTTPURLResponse else {
-            throw URLError(.badServerResponse)
+            throw NetworkError.badServerResponse
         }
 
         guard (200..<300).contains(httpResponse.statusCode) else {
@@ -73,7 +78,7 @@ extension NetworkClient {
         components?.queryItems = request.query?.map { URLQueryItem(name: $0.0, value: $0.1) }
 
         guard let finalURL = components?.url else {
-            throw URLError(.badURL)
+            throw NetworkError.badURL
         }
 
         var urlRequest = URLRequest(url: finalURL)
