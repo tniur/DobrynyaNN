@@ -2,6 +2,7 @@ import UIKit
 import SwiftUI
 import Nivelir
 
+@MainActor
 protocol RootScreens {
     func showSplashRoute() -> ScreenWindowRoute
 }
@@ -25,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navigator = ScreenNavigator(window: window)
         let screens = Screens()
         
-        navigator.navigate(to: screens.showSplashRoute())
+        navigator.navigate(to: screens.showMenuRoute())
         
         self.window = window
     }

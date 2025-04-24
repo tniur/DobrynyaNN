@@ -18,12 +18,11 @@ struct DBRRegistrationView: View {
     
     var body: some View {
         VStack {
-            Spacer()
             inputView
             Spacer()
             bottomView
         }
-        .padding(.top)
+        .padding(.top, 100)
         .padding(.horizontal)
         .padding(.bottom, 32)
     }
@@ -46,9 +45,13 @@ struct DBRRegistrationView: View {
     
     private var bottomView: some View {
         VStack(spacing: 24) {
-            DBRButton("Дальше", style: DBRButtonStyle(.primary), action: { })
-                .environment(\.isEnabled, true)
-
+            DBRButton(
+                "Дальше",
+                style: DBRButtonStyle(.primary),
+                action: viewModel.showRegistrationPhone
+            )
+            .environment(\.isEnabled, true)
+            
             HStack(spacing: 8) {
                 Text("Уже есть аккаунт?")
                     .font(DBRFont.R14)

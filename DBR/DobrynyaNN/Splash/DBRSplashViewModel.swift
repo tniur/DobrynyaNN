@@ -11,6 +11,16 @@ final class DBRSplashViewModel: ObservableObject {
         screenNavigator.navigate(to: screens.showRegistrationRoute())
     }
     
+    @MainActor
+    func showLogin() {
+        screenNavigator.navigate(to: screens.showLoginRoute())
+    }
+    
+    @MainActor
+    func showMenu() {
+        screenNavigator.navigate(to: screens.showMenuRoute())
+    }
+    
     // MARK: - Initializer
 
     init(screenNavigator: ScreenNavigator, screens: DBRSplashScreens) {

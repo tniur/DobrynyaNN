@@ -11,7 +11,7 @@ import UIKit
 
 @MainActor
 public protocol DBRLoginCodeScreens {
-    
+    func showMenuRoute() -> ScreenWindowRoute
 }
 
 public struct DBRLoginCodeScreen: Screen {

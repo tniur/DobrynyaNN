@@ -2,10 +2,11 @@ import UIKit
 import SwiftUI
 import Nivelir
 
+@MainActor
 public protocol DBRSplashScreens {
-//    func showLoginScreen() -> ScreenWindowRoute
-//    func showHomeScreen() -> ScreenWindowRoute
+    func showMenuRoute() -> ScreenWindowRoute
     func showRegistrationRoute() -> ScreenWindowRoute
+    func showLoginRoute() -> ScreenWindowRoute
 }
 
 public struct DBRSplashScreen: Screen {

@@ -7,6 +7,8 @@
 
 import Foundation
 import Nivelir
+import DBRUIComponents
+import UIKit
 
 final class DBRLoginCodeViewModel: ObservableObject {
     
@@ -34,7 +36,7 @@ final class DBRLoginCodeViewModel: ObservableObject {
     @MainActor
     private func sendCode() {
         if code == "000000" {
-            print("good")
+            showMenu()
         } else {
             isCodeIncorrect = true
         }
@@ -45,5 +47,15 @@ final class DBRLoginCodeViewModel: ObservableObject {
     init(screenNavigator: ScreenNavigator, screens: DBRLoginCodeScreens) {
         self.screenNavigator = screenNavigator
         self.screens = screens
+    }
+    
+    // MARK: - Methods
+
+    @MainActor
+    func showMenu() {
+        let topController = UIApplication.shared.topViewController()
+        topController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        topController?.navigationController?.navigationBar.tintColor = DBRColor.base10.color
+        screenNavigator.navigate(to: screens.showMenuRoute())
     }
 }

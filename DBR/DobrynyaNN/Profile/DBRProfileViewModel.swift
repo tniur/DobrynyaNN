@@ -59,6 +59,9 @@ final class DBRProfileViewModel: ObservableObject {
 
     @MainActor
     func showResearchResults() {
+        let topController = UIApplication.shared.topViewController()
+        topController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        topController?.navigationController?.navigationBar.tintColor = DBRColor.base10.color
         screenNavigator.navigate(to: screens.showResearchResultsRoute())
     }
 }

@@ -6,36 +6,87 @@ struct Screens { }
 // MARK: - Root
 
 extension Screens: RootScreens {
+    
     func showSplashRoute() -> ScreenWindowRoute {
-        ScreenWindowRoute()
-            .setRoot(to: DBRSplashScreen(screens: self))
+        let screen = DBRSplashScreen(screens: self)
+       
+        return ScreenWindowRoute()
+            .setRoot(to: screen)
             .makeKeyAndVisible()
     }
 }
 
 extension Screens: DBRSplashScreens {
-    func showProfileRoute() -> ScreenWindowRoute {
-        ScreenWindowRoute()
-            .setRoot(to: DBRProfileScreen(screens: self))
+
+    func showMenuRoute() -> ScreenWindowRoute {
+        let screen = DBRMenuScreen(screens: self)
+        
+        return ScreenWindowRoute()
+            .setRoot(to: screen)
             .makeKeyAndVisible()
     }
     
     func showRegistrationRoute() -> ScreenWindowRoute {
-        ScreenWindowRoute()
-            .setRoot(to: DBRRegistrationScreen(screens: self))
+        let screen = DBRRegistrationScreen(screens: self)
+        
+        return ScreenWindowRoute()
+            .setRoot(to: screen)
+            .makeKeyAndVisible()
+    }
+    
+    func showLoginRoute() -> ScreenWindowRoute {
+        let screen = DBRLoginScreen(screens: self)
+        
+        return ScreenWindowRoute()
+            .setRoot(to: screen)
             .makeKeyAndVisible()
     }
 }
 
 extension Screens: DBRProfileScreens {
     func showResearchResultsRoute() -> ScreenWindowRoute {
-        ScreenWindowRoute()
+        let screen = DBRResearchResultsScreen(screens: self)
+        
+        return ScreenWindowRoute()
             .top(.stack)
             .push(DBRResearchResultsScreen(screens: self))
+            .resolve()
+    }
+}
+    
+extension Screens: DBRMenuScreens {
+    
+    func profileScreen() -> AnyModalScreen {
+        DBRProfileScreen(screens: self)
+            .eraseToAnyScreen()
+    }
+}
+
+extension Screens: DBRLoginScreens {
+    func showLoginCodeRoute() -> ScreenWindowRoute {
+        let screen = DBRLoginCodeScreen(screens: self)
+        
+        return ScreenWindowRoute()
+            .top(.stack)
+            .push(screen)
             .resolve()
     }
 }
 
 extension Screens: DBRResearchResultsScreens { }
 
-extension Screens: DBRRegistrationScreens { }
+extension Screens: DBRRegistrationScreens {
+    
+    func showRegistrationPhoneRoute() -> ScreenWindowRoute {
+        let screen = DBRRegistrationPhoneScreen(screens: self)
+        
+        return ScreenWindowRoute()
+            .top(.stack)
+            .push(screen)
+            .resolve()
+    }
+}
+
+extension Screens: DBRRegistrationPhoneScreens { }
+
+extension Screens: DBRLoginCodeScreens { }
