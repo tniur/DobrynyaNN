@@ -63,6 +63,59 @@ public extension DBRButton where Label == Text {
     }
 }
 
+// MARK: - Label == AnyView
+
+public extension DBRButton where Label == AnyView {
+
+    init(
+        _ titleKey: String,
+        icon: Image,
+        action: @escaping () -> Void
+    ) {
+        self.init(style: .init(.secondary, fullRounded: true), action: action) {
+            AnyView(
+                HStack(spacing: 8) {
+                    icon
+                        .renderingMode(.template)
+                        .foregroundStyle(DBRColor.blue6.swiftUIColor)
+                    Text(titleKey)
+
+                    Spacer()
+
+                    Image(systemName: "chevron.right")
+                        .renderingMode(.template)
+                        .foregroundStyle(DBRColor.base3.swiftUIColor)
+                }
+                .padding()
+            )
+        }
+    }
+
+    init(
+        _ titleKey: LocalizedStringKey,
+        icon: Image,
+        action: @escaping () -> Void
+    ) {
+        self.init(style: .init(.secondary, fullRounded: true), action: action) {
+            AnyView(
+                HStack(spacing: 8) {
+                    icon
+                        .renderingMode(.template)
+                        .foregroundStyle(DBRColor.blue6.swiftUIColor)
+                    Text(titleKey)
+
+                    Spacer()
+
+                    Image(systemName: "chevron.right")
+                        .renderingMode(.template)
+                        .foregroundStyle(DBRColor.base3.swiftUIColor)
+                }
+                .padding()
+            )
+        }
+    }
+}
+
 // MARK: - Preview
 
 #Preview {

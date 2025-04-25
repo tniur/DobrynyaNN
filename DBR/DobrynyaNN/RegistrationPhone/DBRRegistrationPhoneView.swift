@@ -18,12 +18,11 @@ struct DBRRegistrationPhoneView: View {
     
     var body: some View {
         VStack {
-            Spacer()
             inputView
             Spacer()
             bottomView
         }
-        .padding(.top)
+        .padding(.top, 100)
         .padding(.horizontal)
         .padding(.bottom, 32)
     }

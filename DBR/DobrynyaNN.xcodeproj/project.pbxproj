@@ -28,6 +28,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		7B167EEC2DB6DE510029F0F8 /* Profile */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		7B167EF12DB6DE510029F0F8 /* ResearchResults */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ResearchResults;
+			sourceTree = "<group>";
+		};
 		7B6134182D9F2DE900AA138D /* Splash */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Splash;
@@ -107,6 +117,8 @@
 				E92A2E9C2D6CE7E900D0D03C /* LaunchScreen.storyboard */,
 				E92A2E982D6CE7E900D0D03C /* AppDelegate.swift */,
 				E92A2E9D2D6CE7E900D0D03C /* SceneDelegate.swift */,
+				7B167EEC2DB6DE510029F0F8 /* Profile */,
+				7B167EF12DB6DE510029F0F8 /* ResearchResults */,
 				7BDB6D192D9DBF6400A74403 /* Protocols */,
 				7B6134232D9F2EA700AA138D /* RegistrationPhone */,
 				7B6134222D9F2E9800AA138D /* LoginCode */,
@@ -133,6 +145,8 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				7B167EEC2DB6DE510029F0F8 /* Profile */,
+				7B167EF12DB6DE510029F0F8 /* ResearchResults */,
 				7B6134182D9F2DE900AA138D /* Splash */,
 				7B61341D2D9F2E8800AA138D /* Login */,
 				7B6134222D9F2E9800AA138D /* LoginCode */,

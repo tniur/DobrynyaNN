@@ -7,6 +7,7 @@
 
 import Nivelir
 import SwiftUI
+import UIKit
 
 @MainActor
 public protocol DBRRegistrationPhoneScreens {

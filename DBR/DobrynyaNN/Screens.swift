@@ -17,7 +17,7 @@ extension Screens: RootScreens {
 }
 
 extension Screens: DBRSplashScreens {
-    
+
     func showMenuRoute() -> ScreenWindowRoute {
         let screen = DBRMenuScreen(screens: self)
         
@@ -43,10 +43,21 @@ extension Screens: DBRSplashScreens {
     }
 }
 
+extension Screens: DBRProfileScreens {
+    func showResearchResultsRoute() -> ScreenWindowRoute {
+        let screen = DBRResearchResultsScreen(screens: self)
+        
+        return ScreenWindowRoute()
+            .top(.stack)
+            .push(DBRResearchResultsScreen(screens: self))
+            .resolve()
+    }
+}
+    
 extension Screens: DBRMenuScreens {
     
     func profileScreen() -> AnyModalScreen {
-        DBRLoginScreen(screens: self)
+        DBRProfileScreen(screens: self)
             .eraseToAnyScreen()
     }
 }
@@ -61,6 +72,8 @@ extension Screens: DBRLoginScreens {
             .resolve()
     }
 }
+
+extension Screens: DBRResearchResultsScreens { }
 
 extension Screens: DBRRegistrationScreens {
     
