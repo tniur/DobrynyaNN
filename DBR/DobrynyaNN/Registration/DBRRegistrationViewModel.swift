@@ -37,4 +37,9 @@ final class DBRRegistrationViewModel: ObservableObject {
         topController?.navigationController?.navigationBar.tintColor = DBRColor.base10.color
         screenNavigator.navigate(to: screens.showRegistrationPhoneRoute())
     }
+    
+    @MainActor
+    func showLogin() {
+        screenNavigator.navigate(to: screens.showLoginRoute())
+    }
 }

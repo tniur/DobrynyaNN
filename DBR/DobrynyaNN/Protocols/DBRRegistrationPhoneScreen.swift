@@ -12,6 +12,7 @@ import UIKit
 @MainActor
 public protocol DBRRegistrationPhoneScreens {
     func showLoginCodeRoute() -> ScreenWindowRoute
+    func showLoginRoute() -> ScreenWindowRoute
 }
 
 public struct DBRRegistrationPhoneScreen: Screen {

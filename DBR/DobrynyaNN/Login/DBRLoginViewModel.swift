@@ -24,4 +24,16 @@ final class DBRLoginViewModel: ObservableObject {
         self.screenNavigator = screenNavigator
         self.screens = screens
     }
+    
+    // MARK: - Methods
+
+    @MainActor
+    func showRegistration() {
+        screenNavigator.navigate(to: screens.showRegistrationRoute())
+    }
+    
+    @MainActor
+    func showLoginCode() {
+        screenNavigator.navigate(to: screens.showLoginCodeRoute())
+    }
 }

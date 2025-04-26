@@ -22,7 +22,7 @@ struct DBRRegistrationPhoneView: View {
             Spacer()
             bottomView
         }
-        .padding(.top, 100)
+        .padding(.top, 100.0)
         .padding(.horizontal)
         .padding(.bottom, 32)
     }
@@ -33,7 +33,7 @@ struct DBRRegistrationPhoneView: View {
         VStack(alignment: .center, spacing: 32) {
             VStack(spacing: 8) {
                 Text("Регистрация")
-                    .font(DBRFont.B36)
+                    .font(DBRFont.B30)
                     .foregroundStyle(DBRColor.base10.swiftUIColor)
                 
                 Text("Введите ваш номер телефона, и мы отправим код подтверждения")
@@ -55,7 +55,7 @@ struct DBRRegistrationPhoneView: View {
             DBRButton(
                 "Получить код",
                 style: DBRButtonStyle(.primary),
-                action: { }
+                action: viewModel.showRegistrationCode
             )
             .environment(\.isEnabled, !viewModel.phoneNumber.isEmpty)
             
@@ -64,7 +64,7 @@ struct DBRRegistrationPhoneView: View {
                     .font(DBRFont.R14)
                     .foregroundStyle(DBRColor.base10.swiftUIColor)
                 
-                Button("Войти", action: viewModel.showLoginCode)
+                Button("Войти", action: viewModel.showLogin)
                     .font(DBRFont.R14)
                     .foregroundStyle(DBRColor.blue6.swiftUIColor)
             }
