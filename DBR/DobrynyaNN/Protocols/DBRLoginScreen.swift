@@ -12,6 +12,7 @@ import UIKit
 @MainActor
 public protocol DBRLoginScreens {
     func showLoginCodeRoute() -> ScreenWindowRoute
+    func showRegistrationRoute() -> ScreenWindowRoute
 }
 
 public struct DBRLoginScreen: Screen {
@@ -25,6 +26,7 @@ public struct DBRLoginScreen: Screen {
         let viewModel = DBRLoginViewModel(screenNavigator: navigator, screens: screens)
         let view = DBRLoginView(viewModel: viewModel)
         let controller = UIHostingController(rootView: view)
-        return controller
+        let navController = UINavigationController(rootViewController: controller)
+        return navController
     }
 }

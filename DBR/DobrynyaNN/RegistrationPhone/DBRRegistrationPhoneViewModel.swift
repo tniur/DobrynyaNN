@@ -29,10 +29,15 @@ final class DBRRegistrationPhoneViewModel: ObservableObject {
     // MARK: - Methods
 
     @MainActor
-    func showLoginCode() {
+    func showRegistrationCode() {
         let topController = UIApplication.shared.topViewController()
         topController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         topController?.navigationController?.navigationBar.tintColor = DBRColor.base10.color
         screenNavigator.navigate(to: screens.showLoginCodeRoute())
+    }
+    
+    @MainActor
+    func showLogin() {
+        screenNavigator.navigate(to: screens.showLoginRoute())
     }
 }

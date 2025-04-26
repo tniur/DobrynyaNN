@@ -22,7 +22,7 @@ struct DBRRegistrationView: View {
             Spacer()
             bottomView
         }
-        .padding(.top, 100)
+        .padding(.top, 164.0)
         .padding(.horizontal)
         .padding(.bottom, 32)
     }
@@ -32,7 +32,7 @@ struct DBRRegistrationView: View {
     private var inputView: some View {
         VStack(alignment: .center, spacing: 32) {
             Text("Регистрация")
-                .font(DBRFont.B36)
+                .font(DBRFont.B30)
                 .foregroundStyle(DBRColor.base10.swiftUIColor)
             
             VStack {
@@ -57,7 +57,7 @@ struct DBRRegistrationView: View {
                     .font(DBRFont.R14)
                     .foregroundStyle(DBRColor.base10.swiftUIColor)
                 
-                Button("Войти", action: { })
+                Button("Войти", action: viewModel.showLogin)
                     .font(DBRFont.R14)
                     .foregroundStyle(DBRColor.blue6.swiftUIColor)
             }

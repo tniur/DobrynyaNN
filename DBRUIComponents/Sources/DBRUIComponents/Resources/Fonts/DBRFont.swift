@@ -10,7 +10,6 @@ import UIKit
 
 public enum DBRFont {
 
-    public static let B36 = Font.custom("Mulish-Bold", size: 36)
     public static let B30 = Font.custom("Mulish-Bold", size: 30)
     public static let B16 = Font.custom("Mulish-Bold", size: 16)
     public static let B14 = Font.custom("Mulish-Bold", size: 14)
@@ -58,8 +57,8 @@ public enum DBRFont {
 
 #Preview {
     VStack {
-        Text("B36")
-            .font(DBRFont.B36)
+        Text("B30")
+            .font(DBRFont.B30)
         Text("B16")
             .font(DBRFont.B16)
         Text("B14")

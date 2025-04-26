@@ -23,7 +23,7 @@ struct DBRLoginCodeView: View {
             Spacer()
             DBRButton("Получить новый код", action: { })
         }
-        .padding(.top, 100)
+        .padding(.top, 100.0)
         .padding(.horizontal)
         .padding(.bottom)
         .onAppear {

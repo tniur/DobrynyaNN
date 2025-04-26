@@ -21,14 +21,13 @@ struct DBRLoginView: View {
     
     var body: some View {
         VStack {
-            Spacer()
             inputView
             Spacer()
             bottomView
         }
-        .padding(.top)
+        .padding(.top, 164.0)
         .padding(.horizontal)
-        .padding(.bottom, 32)
+        .padding(.bottom, 32.0)
     }
     
     // MARK: - Subviews
@@ -36,7 +35,7 @@ struct DBRLoginView: View {
     private var inputView: some View {
         VStack(alignment: .center, spacing: 32) {
             Text("Вход")
-                .font(DBRFont.B36)
+                .font(DBRFont.B30)
                 .foregroundStyle(DBRColor.base10.swiftUIColor)
             
             VStack {
@@ -57,15 +56,19 @@ struct DBRLoginView: View {
     
     private var bottomView: some View {
         VStack(spacing: 24) {
-            DBRButton("Отправить код", style: DBRButtonStyle(.primary), action: { })
-                .environment(\.isEnabled, true)
-
+            DBRButton(
+                "Отправить код",
+                style: DBRButtonStyle(.primary),
+                action: viewModel.showLoginCode
+            )
+            .environment(\.isEnabled, true)
+            
             HStack(spacing: 8) {
                 Text("Нет аккаунта?")
                     .font(DBRFont.R14)
                     .foregroundStyle(DBRColor.base10.swiftUIColor)
                 
-                Button("Зарегистрироваться", action: { })
+                Button("Зарегистрироваться", action: viewModel.showRegistration)
                     .font(DBRFont.R14)
                     .foregroundStyle(DBRColor.blue6.swiftUIColor)
             }
