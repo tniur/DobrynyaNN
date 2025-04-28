@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DBRUIComponents
 
 struct DBRResearchResultsView: View {
     
@@ -16,8 +17,14 @@ struct DBRResearchResultsView: View {
     // MARK: - Body
 
     var body: some View {
-        contentView
-            .navigationTitle("Результаты исследований")
+        ZStack(alignment: .top) {
+            DBRNavigationBar<EmptyView>(
+                title:
+                    AnyView(Text("Результаты исследований"))
+            )
+            contentView
+                .padding(.top, 64.0)
+        }
     }
     
     // MARK: - Subviews

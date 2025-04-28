@@ -18,16 +18,20 @@ struct DBRLoginCodeView: View {
     // MARK: - Body
 
     var body: some View {
-        VStack {
-            codeInputView
-            Spacer()
-            DBRButton("Получить новый код", action: { })
-        }
-        .padding(.top, 100.0)
-        .padding(.horizontal)
-        .padding(.bottom)
-        .onAppear {
-            isFocused = true
+        ZStack(alignment: .top) {
+            DBRNavigationBar<EmptyView>()
+            
+            VStack {
+                codeInputView
+                Spacer()
+                DBRButton("Получить новый код", action: { })
+            }
+            .padding(.top, 164.0)
+            .padding(.horizontal)
+            .padding(.bottom)
+            .onAppear {
+                isFocused = true
+            }
         }
     }
     

@@ -17,14 +17,18 @@ struct DBRRegistrationPhoneView: View {
     // MARK: - Body
     
     var body: some View {
-        VStack {
-            inputView
-            Spacer()
-            bottomView
+        ZStack(alignment: .top) {
+            DBRNavigationBar<EmptyView>()
+            
+            VStack {
+                inputView
+                Spacer()
+                bottomView
+            }
+            .padding(.top, 164.0)
+            .padding(.horizontal)
+            .padding(.bottom, 32)
         }
-        .padding(.top, 100.0)
-        .padding(.horizontal)
-        .padding(.bottom, 32)
     }
     
     // MARK: - Subviews

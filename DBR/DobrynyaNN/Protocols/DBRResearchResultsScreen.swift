@@ -24,6 +24,8 @@ public struct DBRResearchResultsScreen: Screen {
     public func build(navigator: ScreenNavigator) -> UIViewController {
         let viewModel = DBRResearchResultsViewModel(screenNavigator: navigator, screens: screens)
         let view = DBRResearchResultsView(viewModel: viewModel)
-        return UIHostingController(rootView: view)
+        let controller = UIHostingController(rootView: view)
+        controller.navigationController?.navigationBar.isHidden = true
+        return controller
     }
 }

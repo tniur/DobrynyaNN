@@ -25,6 +25,7 @@ public struct DBRLoginCodeScreen: Screen {
         let viewModel = DBRLoginCodeViewModel(screenNavigator: navigator, screens: screens)
         let view = DBRLoginCodeView(viewModel: viewModel)
         let controller = UIHostingController(rootView: view)
+        controller.navigationController?.navigationBar.isHidden = true
         return controller
     }
 }
