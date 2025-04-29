@@ -1,19 +1,6 @@
 import Foundation
 import DBRCore
 
-public protocol NetworkProtocol {
-    func send<T: Decodable & Sendable>(_ request: Request<T>) async throws -> T
-    func send(_ request: Request<Void>) async throws
-}
-
-public final class NetworkAPI {
-    let client: NetworkProtocol
-
-    public init(client: NetworkProtocol) {
-        self.client = client
-    }
-}
-
 extension NetworkAPI: ProfileService {
     public func fetchPatientInfo() async throws -> PatientInfo {
         let data = try await client.send(Resources.patientInfo().get).data
@@ -25,13 +12,28 @@ extension NetworkAPI: ProfileService {
         return data.map { $0.toDomain() }
     }
 
+    public func fetchLabResultDetails(for id: Int) async throws -> LabResultDetails {
+        let data = try await client.send(Resources.labResultDetails(id: id).get).data
+        return data.toDomain()
+    }
+
     public func fetchDocuments() async throws -> [Document] {
         let data = try await client.send(Resources.documents().get).data
         return data.map { $0.toDomain() }
     }
 
+    public func fetchDocumentDetails(for id: Int) async throws -> DocumentDetails {
+        let data = try await client.send(Resources.documentDetails(id: id).get).data
+        return data.toDomain()
+    }
+
     public func fetchConsultations() async throws -> [Consultation] {
         let data = try await client.send(Resources.consultations().get).data
         return data.map { $0.toDomain() }
+    }
+
+    public func fetchConsultationDetails(for id: Int) async throws -> ConsultationDetails {
+        let data = try await client.send(Resources.consultationDetails(id: id).get).data
+        return data.toDomain()
     }
 }
