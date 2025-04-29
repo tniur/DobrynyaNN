@@ -8,4 +8,5 @@ public protocol ProfileService {
     func fetchDocumentDetails(for id: Int) async throws -> DocumentDetails
     func fetchConsultations() async throws -> [Consultation]
     func fetchConsultationDetails(for id: Int) async throws -> ConsultationDetails
+    func uploadProfileAvatar(withJpeg data: Data) async throws
 }

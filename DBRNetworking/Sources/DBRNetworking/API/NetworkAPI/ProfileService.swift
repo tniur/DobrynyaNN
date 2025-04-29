@@ -36,4 +36,11 @@ extension NetworkAPI: ProfileService {
         let data = try await client.send(Resources.consultationDetails(id: id).get).data
         return data.toDomain()
     }
+
+    public func uploadProfileAvatar(withJpeg data: Data) async throws {
+        let base64String = data.base64EncodedString()
+        let patientKey = Constant.mockPatientKey
+        let body = AvatarDTO(patientKey: patientKey, imageBase64String: base64String)
+        try await client.send(Resources.uploadAvatar(body: body).post)
+    }
 }

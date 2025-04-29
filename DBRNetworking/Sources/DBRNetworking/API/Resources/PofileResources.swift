@@ -133,3 +133,20 @@ extension Resources {
         ConsultationDetailsResource(path: Endpoint.consultationDetails, id: id)
     }
 }
+
+// MARK: - Avatar
+
+extension Resources {
+    public struct UploadAvatarResource {
+        let path: String = Endpoint.uploadPatientAvatar
+        let body: AvatarDTO
+
+        public var post: Request<Void> {
+            Request(method: .post, path: path, body: body)
+        }
+    }
+
+    public static func uploadAvatar(body: AvatarDTO) -> UploadAvatarResource {
+        UploadAvatarResource(body: body)
+    }
+}
