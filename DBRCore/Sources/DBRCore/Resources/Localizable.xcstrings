@@ -1,121 +1,53 @@
 {
-  "sourceLanguage" : "en",
+  "sourceLanguage" : "ru",
   "strings" : {
-    "badServerResponse" : {
+    "documentErrorBuilding" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Invalid server response"
+            "value" : "Document building error"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Некорректный ответ сервера"
+            "value" : "Ошибка создания документа"
           }
         }
       }
     },
-    "badURL" : {
+    "documentErrorEncoding" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Invalid URL"
+            "value" : "Document encoding error"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Некорректный URL"
+            "value" : "Ошибка кодирования документа"
           }
         }
       }
     },
-    "decodingError" : {
+    "documentErrorSaving" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Data decoding error"
+            "value" : "Document saving error"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ошибка декодирования данных"
-          }
-        }
-      }
-    },
-    "notFound" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Not found"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Не найдено"
-          }
-        }
-      }
-    },
-    "unacceptableStatusCode" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unacceptable status code"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Недопустимый статус код"
-          }
-        }
-      }
-    },
-    "unauthorized" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unauthorized user"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Неавторизованный пользователь"
-          }
-        }
-      }
-    },
-    "unknown" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unknown error"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Неизвестная ошибка"
+            "value" : "Ошибка сохранения документа"
           }
         }
       }
