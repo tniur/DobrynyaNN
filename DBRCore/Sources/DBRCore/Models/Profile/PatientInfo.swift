@@ -9,6 +9,7 @@ public struct PatientInfo: Sendable {
     public let gender: String
     public let mobile: String
     public let email: String
+    public let avatarUrl: String
 
     public init(
         lastName: String,
@@ -18,7 +19,8 @@ public struct PatientInfo: Sendable {
         age: Int,
         gender: String,
         mobile: String,
-        email: String
+        email: String,
+        avatarUrl: String
     ) {
         self.lastName = lastName
         self.firstName = firstName
@@ -28,5 +30,6 @@ public struct PatientInfo: Sendable {
         self.gender = gender
         self.mobile = mobile
         self.email = email
+        self.avatarUrl = avatarUrl
     }
 }
