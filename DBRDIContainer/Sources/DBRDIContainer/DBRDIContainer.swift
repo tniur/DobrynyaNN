@@ -7,3 +7,9 @@ public extension Container {
         Factory(self) { NetworkAPI(client: NetworkClient(baseURL: Constant.baseURL)) }
     }
 }
+
+public extension Container {
+    var pdfManager: Factory<PDFManager> {
+        Factory(self) { DocumentManager() }
+    }
+}
