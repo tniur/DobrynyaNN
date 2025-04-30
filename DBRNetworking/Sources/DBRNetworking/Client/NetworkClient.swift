@@ -6,6 +6,7 @@ public actor NetworkClient: NetworkProtocol {
     private let session: URLSession
     private let decoder = JSONDecoder()
     private let encoder = JSONEncoder()
+    private let retryStrategy = RetryStrategy()
 
     public init(baseURL: URL) {
         self.baseURL = baseURL
