@@ -10,6 +10,7 @@ public struct PatientInfoDTO: Codable, Sendable {
     let gender: String
     let mobile: String
     let email: String
+    let avatarUrl: String
 
     private enum CodingKeys: String, CodingKey {
         case age, gender, mobile, email
@@ -17,6 +18,7 @@ public struct PatientInfoDTO: Codable, Sendable {
         case firstName = "first_name"
         case thirdName = "third_name"
         case birthDate = "birth_date"
+        case avatarUrl = "avatar_url"
     }
 
     func toDomain() -> PatientInfo {
@@ -28,7 +30,8 @@ public struct PatientInfoDTO: Codable, Sendable {
             age: age,
             gender: gender,
             mobile: mobile,
-            email: email
+            email: email,
+            avatarUrl: avatarUrl
         )
     }
 }

@@ -12,7 +12,7 @@ public struct ConsultationDetailsDTO: Codable, Sendable {
         case id, title, status, desc
         case doctorId = "doctor_id"
     }
-    
+
     func toDomain() -> ConsultationDetails {
         ConsultationDetails(
             id: id,

@@ -12,4 +12,5 @@ extension Endpoint {
     static let documentDetails = "getPatientDocumentDetails"
     static let consultations = "getPatientConsultations"
     static let consultationDetails = "getPatientConsultationDetails"
+    static let uploadPatientAvatar = "uploadPatientAvatar"
 }
