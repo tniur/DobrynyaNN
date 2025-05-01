@@ -49,21 +49,21 @@ extension NetworkClient {
 
     private func validate(response: URLResponse, data: Data) throws {
         guard let httpResponse = response as? HTTPURLResponse else {
-            throw NetworkError.badServerResponse
+            throw NetworkError.invalidServerResponse
         }
 
         guard (200..<300).contains(httpResponse.statusCode) else {
-            if let errorResponse = try? decoder.decode(ErrorResponse.self, from: data) {
-                switch httpResponse.statusCode {
-                case 401:
-                    throw NetworkError.unauthorized
-                case 404:
-                    throw NetworkError.notFound
-                default:
-                    throw NetworkError.server(errorResponse)
+            switch httpResponse.statusCode {
+            case 401:
+                throw NetworkError.unauthorized
+            case 404:
+                throw NetworkError.notFound
+            default:
+                if let errorResponse = try? decoder.decode(ErrorResponse.self, from: data) {
+                    throw NetworkError.errorResponse(errorResponse)
+                } else {
+                    throw NetworkError.unexpectedResponse(httpResponse.statusCode)
                 }
-            } else {
-                throw NetworkError.unacceptableStatusCode(httpResponse.statusCode)
             }
         }
     }
@@ -79,7 +79,7 @@ extension NetworkClient {
         components?.queryItems = request.query?.map { URLQueryItem(name: $0.0, value: $0.1) }
 
         guard let finalURL = components?.url else {
-            throw NetworkError.badURL
+            throw NetworkError.invalidURL
         }
 
         var urlRequest = URLRequest(url: finalURL)

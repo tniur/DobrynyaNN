@@ -3,12 +3,12 @@ import Foundation
 public enum NetworkError: Error {
     case unauthorized
     case notFound
-    case server(ErrorResponse)
-    case unacceptableStatusCode(Int)
+    case errorResponse(ErrorResponse)
+    case unexpectedResponse(Int)
     case decodingError
     case unknown
-    case badURL
-    case badServerResponse
+    case invalidURL
+    case invalidServerResponse
 }
 
 extension NetworkError: LocalizedError {
@@ -22,13 +22,13 @@ extension NetworkError: LocalizedError {
             return NSLocalizedString("decodingError", bundle: Bundle.module, comment: "")
         case .unknown:
             return NSLocalizedString("unknown", bundle: Bundle.module, comment: "")
-        case .badServerResponse:
-            return NSLocalizedString("badServerResponse", bundle: Bundle.module, comment: "")
-        case .unacceptableStatusCode(let code):
-            return "\(NSLocalizedString("unacceptableStatusCode", bundle: Bundle.module, comment: "")): \(code)"
-        case .badURL:
-            return NSLocalizedString("badURL", bundle: Bundle.module, comment: "")
-        case .server(let error):
+        case .invalidServerResponse:
+            return NSLocalizedString("invalidServerResponse", bundle: Bundle.module, comment: "")
+        case .unexpectedResponse(let code):
+            return "\(NSLocalizedString("unexpectedResponse", bundle: Bundle.module, comment: "")): \(code)"
+        case .invalidURL:
+            return NSLocalizedString("invalidURL", bundle: Bundle.module, comment: "")
+        case .errorResponse(let error):
             return error.detail
         }
     }
