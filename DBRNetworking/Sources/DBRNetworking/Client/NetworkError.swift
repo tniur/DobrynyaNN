@@ -25,7 +25,7 @@ extension NetworkError: LocalizedError {
         case .badServerResponse:
             return NSLocalizedString("badServerResponse", bundle: Bundle.module, comment: "")
         case .unacceptableStatusCode(let code):
-            return "\(NSLocalizedString("badURL", bundle: Bundle.module, comment: "")): \(code)"
+            return "\(NSLocalizedString("unacceptableStatusCode", bundle: Bundle.module, comment: "")): \(code)"
         case .badURL:
             return NSLocalizedString("badURL", bundle: Bundle.module, comment: "")
         case .server(let error):
