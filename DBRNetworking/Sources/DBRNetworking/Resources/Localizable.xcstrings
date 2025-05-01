@@ -52,6 +52,23 @@
         }
       }
     },
+    "noConnection" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No internet connection"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет подключения к интернету"
+          }
+        }
+      }
+    },
     "notFound" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -65,6 +82,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Запрашиваемый ресурс не найден"
+          }
+        }
+      }
+    },
+    "timeout" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Request timed out"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Превышено время ожидания ответа"
           }
         }
       }

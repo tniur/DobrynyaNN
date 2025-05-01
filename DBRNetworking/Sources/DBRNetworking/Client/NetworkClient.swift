@@ -88,7 +88,7 @@ extension NetworkClient {
             } catch {
                 let isLastAttempt = attempt == maxAttempts
                 if isLastAttempt || !shouldRetry(error) {
-                    throw error
+                    throw NetworkError.from(error)
                 }
 
                 let wait = delay(attempt)
@@ -96,7 +96,7 @@ extension NetworkClient {
             }
         }
 
-        throw NetworkError.unknown
+        throw NetworkError.unknown()
     }
 }
 
@@ -134,25 +134,13 @@ extension NetworkClient {
 
 extension NetworkClient {
     private func shouldRetry(for error: Error) -> Bool {
-        if let urlError = error as? URLError {
-            switch urlError.code {
-            case .timedOut, .cannotFindHost, .cannotConnectToHost,
-                 .networkConnectionLost, .dnsLookupFailed, .notConnectedToInternet:
-                return true
-            default:
-                return false
-            }
+        switch NetworkError.from(error) {
+        case .timeout, .noConnection:
+            return true
+        case .unexpectedResponse(let code):
+            return (500...599).contains(code)
+        default:
+            return false
         }
-
-        if let networkError = error as? NetworkError {
-            switch networkError {
-            case .unexpectedResponse(let code):
-                return (500...599).contains(code)
-            default:
-                return false
-            }
-        }
-
-        return false
     }
 }
