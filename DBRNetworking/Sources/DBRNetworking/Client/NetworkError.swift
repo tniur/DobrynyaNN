@@ -66,7 +66,7 @@ extension NetworkError {
 
         if let urlError = error as? URLError {
             switch urlError.code {
-            case .notConnectedToInternet:
+            case .notConnectedToInternet, .networkConnectionLost:
                 return .noConnection
             case .timedOut:
                 return .timeout
