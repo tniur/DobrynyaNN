@@ -3,34 +3,79 @@ import Foundation
 public enum NetworkError: Error {
     case unauthorized
     case notFound
-    case server(ErrorResponse)
-    case unacceptableStatusCode(Int)
+    case errorResponse(ErrorResponse)
+    case unexpectedResponse(Int)
+
     case decodingError
-    case unknown
-    case badURL
-    case badServerResponse
+    case invalidURL
+    case invalidServerResponse
+
+    case noConnection
+    case timeout
+
+    case unknown(Error? = nil)
 }
 
 extension NetworkError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .unauthorized:
-            return NSLocalizedString("unauthorized", bundle: Bundle.module, comment: "")
+            return NSLocalizedString("unauthorized",
+                                     bundle: Bundle.module,
+                                     comment: "Unauthorized access")
         case .notFound:
-            return NSLocalizedString("notFound", bundle: Bundle.module, comment: "")
+            return NSLocalizedString("notFound",
+                                     bundle: Bundle.module,
+                                     comment: "Resource not found")
         case .decodingError:
-            return NSLocalizedString("decodingError", bundle: Bundle.module, comment: "")
-        case .unknown:
-            return NSLocalizedString("unknown", bundle: Bundle.module, comment: "")
-        case .badServerResponse:
-            return NSLocalizedString("badServerResponse", bundle: Bundle.module, comment: "")
-        case .unacceptableStatusCode(let code):
-            return "\(NSLocalizedString("badURL", bundle: Bundle.module, comment: "")): \(code)"
-        case .badURL:
-            return NSLocalizedString("badURL", bundle: Bundle.module, comment: "")
-        case .server(let error):
+            return NSLocalizedString("decodingError",
+                                     bundle: Bundle.module,
+                                     comment: "Failed to decode response")
+        case .invalidServerResponse:
+            return NSLocalizedString("invalidServerResponse",
+                                     bundle: Bundle.module,
+                                     comment: "Invalid response from server")
+        case .invalidURL:
+            return NSLocalizedString("invalidURL",
+                                     bundle: Bundle.module,
+                                     comment: "Invalid URL")
+        case .noConnection:
+            return NSLocalizedString("noConnection",
+                                     bundle: .module,
+                                     comment: "No internet connection")
+        case .timeout:
+            return NSLocalizedString("timeout",
+                                     bundle: .module,
+                                     comment: "Request timed out")
+        case .unexpectedResponse(let code):
+            return "\(NSLocalizedString("unexpectedResponse", bundle: Bundle.module, comment: "Unexpected response")): \(code)"
+        case .errorResponse(let error):
             return error.detail
+        case .unknown(let underlying):
+            return underlying?.localizedDescription ??
+            NSLocalizedString("unknown", bundle: Bundle.module, comment: "Unknown error")
         }
+    }
+}
+
+extension NetworkError {
+    public static func from(_ error: Error) -> NetworkError {
+        if let networkError = error as? NetworkError {
+            return networkError
+        }
+
+        if let urlError = error as? URLError {
+            switch urlError.code {
+            case .notConnectedToInternet, .networkConnectionLost:
+                return .noConnection
+            case .timedOut:
+                return .timeout
+            default:
+                return .unknown(urlError)
+            }
+        }
+
+        return .unknown(error)
     }
 }
 

@@ -6,9 +6,11 @@ public actor NetworkClient: NetworkProtocol {
     private let session: URLSession
     private let decoder = JSONDecoder()
     private let encoder = JSONEncoder()
+    private let retryStrategy: RetryStrategy
 
-    public init(baseURL: URL) {
+    public init(baseURL: URL, retryStrategy: RetryStrategy = .init()) {
         self.baseURL = baseURL
+        self.retryStrategy = retryStrategy
         self.session = URLSession(configuration: .default)
         decoder.keyDecodingStrategy = .useDefaultKeys
     }
@@ -27,11 +29,18 @@ extension NetworkClient {
 
     private func send<T: Sendable>(
         _ request: Request<T>,
-        _ decode: @escaping (Data) async throws -> T) async throws -> T {
-            let urlRequest = try await makeURLRequest(for: request)
-            let (data, response) = try await send(urlRequest)
-            try validate(response: response, data: data)
+        _ decode: @escaping (Data) async throws -> T
+    ) async throws -> T {
+        try await retrying(
+            maxAttempts: retryStrategy.maxAttempts,
+            delay: retryStrategy.delay(for:),
+            shouldRetry: shouldRetry(for:)
+        ) {
+            let urlRequest = try await self.makeURLRequest(for: request)
+            let (data, response) = try await self.send(urlRequest)
+            try self.validate(response: response, data: data)
             return try await decode(data)
+        }
     }
 
     private func send(_ request: URLRequest) async throws -> (Data, URLResponse) {
@@ -48,23 +57,46 @@ extension NetworkClient {
 
     private func validate(response: URLResponse, data: Data) throws {
         guard let httpResponse = response as? HTTPURLResponse else {
-            throw NetworkError.badServerResponse
+            throw NetworkError.invalidServerResponse
         }
 
         guard (200..<300).contains(httpResponse.statusCode) else {
-            if let errorResponse = try? decoder.decode(ErrorResponse.self, from: data) {
-                switch httpResponse.statusCode {
-                case 401:
-                    throw NetworkError.unauthorized
-                case 404:
-                    throw NetworkError.notFound
-                default:
-                    throw NetworkError.server(errorResponse)
+            switch httpResponse.statusCode {
+            case 401:
+                throw NetworkError.unauthorized
+            case 404:
+                throw NetworkError.notFound
+            default:
+                if let errorResponse = try? decoder.decode(ErrorResponse.self, from: data) {
+                    throw NetworkError.errorResponse(errorResponse)
+                } else {
+                    throw NetworkError.unexpectedResponse(httpResponse.statusCode)
                 }
-            } else {
-                throw NetworkError.unacceptableStatusCode(httpResponse.statusCode)
             }
         }
+    }
+
+    private func retrying<T: Sendable>(
+        maxAttempts: Int,
+        delay: (Int) -> TimeInterval,
+        shouldRetry: @escaping (Error) -> Bool,
+        operation: @escaping () async throws -> T
+    ) async throws -> T {
+        for attempt in 1...maxAttempts {
+            do {
+                return try await operation()
+            } catch {
+                let isLastAttempt = attempt == maxAttempts
+                if isLastAttempt || !shouldRetry(error) {
+                    throw NetworkError.from(error)
+                }
+
+                let wait = delay(attempt)
+                try? await Task.sleep(nanoseconds: UInt64(wait * 1_000_000_000))
+            }
+        }
+
+        throw NetworkError.unknown()
     }
 }
 
@@ -78,7 +110,7 @@ extension NetworkClient {
         components?.queryItems = request.query?.map { URLQueryItem(name: $0.0, value: $0.1) }
 
         guard let finalURL = components?.url else {
-            throw NetworkError.badURL
+            throw NetworkError.invalidURL
         }
 
         var urlRequest = URLRequest(url: finalURL)
@@ -97,5 +129,18 @@ extension NetworkClient {
 
         urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
         return urlRequest
+    }
+}
+
+extension NetworkClient {
+    private func shouldRetry(for error: Error) -> Bool {
+        switch NetworkError.from(error) {
+        case .timeout, .noConnection:
+            return true
+        case .unexpectedResponse(let code):
+            return (500...599).contains(code)
+        default:
+            return false
+        }
     }
 }
