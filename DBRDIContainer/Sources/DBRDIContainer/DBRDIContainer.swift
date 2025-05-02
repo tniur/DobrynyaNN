@@ -15,6 +15,12 @@ public extension Container {
 }
 
 public extension Container {
+    var doctorService: Factory<DoctorService> {
+        Factory(self) { NetworkAPI(client: NetworkClient(baseURL: Constant.baseURL)) }
+    }
+}
+
+public extension Container {
     var pdfManager: Factory<PDFManager> {
         Factory(self) { DocumentManager() }
     }

@@ -23,3 +23,10 @@ extension Endpoint {
     static let serviceCategories = "getServiceCategories"
     static let services = "getServices"
 }
+
+// MARK: - Doctor Info
+
+extension Endpoint {
+    static let users = "getUsers"
+    static let schedule = "getSchedule"
+}
