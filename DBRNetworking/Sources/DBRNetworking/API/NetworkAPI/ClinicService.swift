@@ -17,13 +17,13 @@ extension NetworkAPI: ClinicService {
         return data.map { $0.toDomain() }
     }
 
-    public func fetchServices(serviceId: [Int]?, professionId: Int?, categoryId: [Int]?) async throws -> [Service] {
-        let data = try await client.send(Resources.services(serviceId: serviceId, professionId: professionId, categoryId: categoryId).get).data
+    public func fetchServices(serviceIds: [Int]?, professionId: Int?, categoryIds: [Int]?) async throws -> [Service] {
+        let data = try await client.send(Resources.services(serviceIds: serviceIds, professionId: professionId, categoryIds: categoryIds).get).data
         return data.map { $0.toDomain() }
     }
 
     public func fetchServices(categoryId: Int) async throws -> [Service] {
-        let data = try await client.send(Resources.services(categoryId: [categoryId]).get).data
+        let data = try await client.send(Resources.services(categoryIds: [categoryId]).get).data
         return data.map { $0.toDomain() }
     }
 }

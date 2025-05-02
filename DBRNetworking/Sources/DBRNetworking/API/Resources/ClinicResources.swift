@@ -54,9 +54,9 @@ extension Resources {
 extension Resources {
     public struct ServicesResource {
         let path: String
-        let serviceId: [Int]?
+        let serviceIds: [Int]?
         let professionId: Int?
-        let categoryId: [Int]?
+        let categoryIds: [Int]?
 
         public var get: Request<DataResponse<[ServiceDTO]>> {
             var query: [(String, String?)] = []
@@ -65,13 +65,13 @@ extension Resources {
                 query.append(("profession_id", String(professionId)))
             }
 
-            if let categoryId, !categoryId.isEmpty {
-                let value = categoryId.map(String.init).joined(separator: ",")
+            if let categoryIds, !categoryIds.isEmpty {
+                let value = categoryIds.map(String.init).joined(separator: ",")
                 query.append(("category_id", value))
             }
 
-            if let serviceId, !serviceId.isEmpty {
-                let value = serviceId.map(String.init).joined(separator: ",")
+            if let serviceIds, !serviceIds.isEmpty {
+                let value = serviceIds.map(String.init).joined(separator: ",")
                 query.append(("service_id", value))
             }
 
@@ -79,7 +79,7 @@ extension Resources {
         }
     }
 
-    public static func services(serviceId: [Int]? = nil, professionId: Int? = nil, categoryId: [Int]? = nil) -> ServicesResource {
-        ServicesResource(path: Endpoint.services, serviceId: serviceId, professionId: professionId, categoryId: categoryId)
+    public static func services(serviceIds: [Int]? = nil, professionId: Int? = nil, categoryIds: [Int]? = nil) -> ServicesResource {
+        ServicesResource(path: Endpoint.services, serviceIds: serviceIds, professionId: professionId, categoryIds: categoryIds)
     }
 }
