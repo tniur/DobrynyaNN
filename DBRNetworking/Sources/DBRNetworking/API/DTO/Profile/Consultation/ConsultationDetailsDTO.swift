@@ -18,7 +18,7 @@ public struct ConsultationDetailsDTO: Codable, Sendable {
             id: id,
             title: title,
             doctorId: doctorId,
-            status: status,
+            status: ConsultationStatus(fromRawValue: status),
             desc: desc
         )
     }
