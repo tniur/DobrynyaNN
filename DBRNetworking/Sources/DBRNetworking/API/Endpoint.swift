@@ -14,3 +14,12 @@ extension Endpoint {
     static let consultationDetails = "getPatientConsultationDetails"
     static let uploadPatientAvatar = "uploadPatientAvatar"
 }
+
+// MARK: - Clinic Info
+
+extension Endpoint {
+    static let clinics = "getClinics"
+    static let professions = "getProfessions"
+    static let serviceCategories = "getServiceCategories"
+    static let services = "getServices"
+}
