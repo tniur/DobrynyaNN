@@ -10,7 +10,7 @@ public struct PatientInfoDTO: Codable, Sendable {
     let gender: String
     let mobile: String
     let email: String
-    let avatarPath: String
+    let avatarPath: String?
 
     private enum CodingKeys: String, CodingKey {
         case age, gender, mobile, email
@@ -31,7 +31,7 @@ public struct PatientInfoDTO: Codable, Sendable {
             gender: gender,
             mobile: mobile,
             email: email,
-            avatarUrl: "\(Constant.baseURL)\(avatarPath)"
+            avatarUrl: avatarPath.map { "\(Constant.baseURL)\($0)" }
         )
     }
 }
