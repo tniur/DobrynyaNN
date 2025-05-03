@@ -13,6 +13,6 @@ public struct ConsultationDTO: Codable, Sendable {
     }
 
     func toDomain() -> Consultation {
-        Consultation(id: id, title: title, doctorId: doctorId, status: status)
+        Consultation(id: id, title: title, doctorId: doctorId, status: ConsultationStatus(fromRawValue: status))
     }
 }
