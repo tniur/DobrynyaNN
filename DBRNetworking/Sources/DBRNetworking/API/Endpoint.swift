@@ -30,3 +30,11 @@ extension Endpoint {
     static let users = "getUsers"
     static let schedule = "getSchedule"
 }
+
+// MARK: - Appointments
+
+extension Endpoint {
+    static let appointments = "getPatientAppointments"
+    static let cancelAppointment = "cancelAppointment"
+    static let createAppointment = "createAppointment"
+}
