@@ -44,12 +44,13 @@ extension Screens: DBRSplashScreens {
 }
 
 extension Screens: DBRProfileScreens {
+    
     func showResearchResultsRoute() -> ScreenWindowRoute {
         let screen = DBRResearchResultsScreen(screens: self)
         
         return ScreenWindowRoute()
             .top(.stack)
-            .push(DBRResearchResultsScreen(screens: self))
+            .push(screen)
             .resolve()
     }
 }
@@ -60,9 +61,15 @@ extension Screens: DBRMenuScreens {
         DBRProfileScreen(screens: self)
             .eraseToAnyScreen()
     }
+    
+    func signUpServiceScreen() -> AnyModalScreen {
+        DBRSignUpServiceScreen(screens: self)
+            .eraseToAnyScreen()
+    }
 }
 
 extension Screens: DBRLoginScreens {
+    
     func showLoginCodeRoute() -> ScreenWindowRoute {
         let screen = DBRLoginCodeScreen(screens: self)
         
@@ -72,8 +79,6 @@ extension Screens: DBRLoginScreens {
             .resolve()
     }
 }
-
-extension Screens: DBRResearchResultsScreens { }
 
 extension Screens: DBRRegistrationScreens {
     
@@ -87,6 +92,58 @@ extension Screens: DBRRegistrationScreens {
     }
 }
 
+extension Screens: DBRSignUpServiceScreens {
+    
+    func showServiceType() -> ScreenWindowRoute {
+        let screen = DBRServiceTypeScreen(screens: self)
+        
+        return ScreenWindowRoute()
+            .top(.stack)
+            .push(screen)
+            .resolve()
+    }
+}
+
+extension Screens: DBRServiceTypeScreens {
+    
+    func showAvailableServicesRoute() -> ScreenWindowRoute {
+        let screen = DBRAvailableServicesScreen(screens: self)
+        
+        return ScreenWindowRoute()
+            .top(.stack)
+            .push(screen)
+            .resolve()
+    }
+}
+
+extension Screens: DBRAvailableServicesScreens {
+    
+    func showClinicAdressesRoute() -> ScreenWindowRoute {
+        let screen = DBRClinicAdressesScreen(screens: self)
+        
+        return ScreenWindowRoute()
+            .top(.stack)
+            .push(screen)
+            .resolve()
+    }
+}
+
+extension Screens: DBRClinicAdressesScreens {
+    
+    func showSpecialistsRoute() -> ScreenWindowRoute {
+        let screen = DBRSpecialistsScreen(screens: self)
+        
+        return ScreenWindowRoute()
+            .top(.stack)
+            .push(screen)
+            .resolve()
+    }
+}
+
 extension Screens: DBRRegistrationPhoneScreens { }
 
 extension Screens: DBRLoginCodeScreens { }
+
+extension Screens: DBRResearchResultsScreens { }
+
+extension Screens: DBRSpecialistsScreens { }
