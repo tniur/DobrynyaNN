@@ -19,7 +19,7 @@ public struct ImagePicker: UIViewControllerRepresentable {
         return picker
     }
 
-    public func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) {}
+    public func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) { }
 
     public func makeCoordinator() -> Coordinator {
         Coordinator(onImagePicked: onImagePicked)
