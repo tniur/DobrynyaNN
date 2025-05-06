@@ -1,5 +1,4 @@
 import Foundation
-import DBRCore
 
 // MARK: - Doctors
 
@@ -36,8 +35,19 @@ extension Resources {
         }
     }
 
-    public static func doctors(professionId: Int?, clinicId: Int?, userIds: [Int]?, serviceIds: [Int]?) -> DoctorsResource {
-        DoctorsResource(path: Endpoint.users, professionId: professionId, clinicId: clinicId, userIds: userIds, serviceIds: serviceIds)
+    public static func doctors(
+        professionId: Int?,
+        clinicId: Int?,
+        userIds: [Int]?,
+        serviceIds: [Int]?
+    ) -> DoctorsResource {
+        DoctorsResource(
+            path: Endpoint.users,
+            professionId: professionId,
+            clinicId: clinicId,
+            userIds: userIds,
+            serviceIds: serviceIds
+        )
     }
 }
 

@@ -1,5 +1,4 @@
 import Foundation
-import DBRCore
 
 public struct LabResultDTO: Codable, Sendable {
     public let resultId: Int
@@ -12,9 +11,5 @@ public struct LabResultDTO: Codable, Sendable {
         case filesCount = "files_count"
         case dateCreated = "date_created"
         case clinicId = "clinic_id"
-    }
-
-    func toDomain() -> LabResult {
-        LabResult(resultId: resultId, filesCount: filesCount, dateCreated: dateCreated, clinicId: clinicId)
     }
 }
