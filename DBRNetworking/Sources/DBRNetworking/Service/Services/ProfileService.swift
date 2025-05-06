@@ -1,7 +1,7 @@
 import Foundation
 import DBRCore
 
-extension NetworkAPI: ProfileService {
+extension NetworkService: ProfileService {
     public func fetchPatientInfo() async throws -> PatientInfo {
         let data = try await client.send(Resources.patientInfo(accessTokenKey: accessTokenKey).get).data
         return PatientInfoMapper.map(data)

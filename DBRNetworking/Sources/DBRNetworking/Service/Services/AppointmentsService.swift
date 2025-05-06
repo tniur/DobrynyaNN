@@ -1,7 +1,7 @@
 import Foundation
 import DBRCore
 
-extension NetworkAPI: AppointmentsService {
+extension NetworkService: AppointmentsService {
     public func fetchAppointments() async throws -> [Appointment] {
         let data = try await client.send(Resources.appointments(accessTokenKey: accessTokenKey).get).data
         return data.map { AppointmentMapper.map($0) }

@@ -1,7 +1,7 @@
 import Foundation
 import DBRCore
 
-extension NetworkAPI: DoctorService {
+extension NetworkService: DoctorService {
     public func fetchDoctors(
         professionId: Int?,
         clinicId: Int?,

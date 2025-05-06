@@ -1,7 +1,7 @@
 import Foundation
 import DBRCore
 
-extension NetworkAPI: ClinicService {
+extension NetworkService: ClinicService {
     public func fetchClinics() async throws -> [Clinic] {
         let data = try await client.send(Resources.clinics().get).data
         return data.map { ClinicMapper.map($0) }
