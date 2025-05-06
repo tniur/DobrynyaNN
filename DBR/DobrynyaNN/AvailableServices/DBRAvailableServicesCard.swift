@@ -79,7 +79,7 @@ struct DBRAvailableServicesCard: View {
     
     private var durationLabel: some View {
         HStack(spacing: 4.0) {
-            DBRImage.stopwatchIcon.swiftUIImage
+            DBRImage.stopWatchIcon.swiftUIImage
                 .resizable()
                 .frame(width: 28.0, height: 28.0)
             
@@ -97,7 +97,7 @@ struct DBRAvailableServicesCard: View {
     
     private var specialityLabel: some View {
         HStack(spacing: 4.0) {
-            DBRImage.medchestIcon.swiftUIImage
+            DBRImage.medChestIcon.swiftUIImage
                 .resizable()
                 .frame(width: 28.0, height: 28.0)
             
