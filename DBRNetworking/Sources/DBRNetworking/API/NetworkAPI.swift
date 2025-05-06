@@ -1,5 +1,4 @@
 import Foundation
-import DBRCore
 
 public protocol NetworkProtocol {
     func send<T: Decodable & Sendable>(_ request: Request<T>) async throws -> T
@@ -8,8 +7,10 @@ public protocol NetworkProtocol {
 
 public final class NetworkAPI {
     let client: NetworkProtocol
+    let accessTokenKey: String
 
     public init(client: NetworkProtocol) {
         self.client = client
+        self.accessTokenKey = "xyz789"
     }
 }

@@ -1,22 +1,22 @@
 import Foundation
-import DBRCore
 
 // MARK: - Appointments
 
 extension Resources {
     public struct AppointmentsResource {
         let path: String
+        let key: String
 
         public var get: Request<DataResponse<[AppointmentDTO]>> {
             var query: [(String, String?)] = []
-            query.append(("patient_key", Constant.mockPatientKey))
+            query.append(("patient_key", key))
 
             return Request(path: path, query: query.isEmpty ? nil : query)
         }
     }
 
-    public static func appointments() -> AppointmentsResource {
-        AppointmentsResource(path: Endpoint.appointments)
+    public static func appointments(accessTokenKey: String) -> AppointmentsResource {
+        AppointmentsResource(path: Endpoint.appointments, key: accessTokenKey)
     }
 }
 

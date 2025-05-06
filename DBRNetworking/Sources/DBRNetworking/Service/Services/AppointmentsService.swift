@@ -3,7 +3,7 @@ import DBRCore
 
 extension NetworkAPI: AppointmentsService {
     public func fetchAppointments() async throws -> [Appointment] {
-        let data = try await client.send(Resources.appointments().get).data
+        let data = try await client.send(Resources.appointments(accessTokenKey: accessTokenKey).get).data
         return data.map { AppointmentMapper.map($0) }
     }
 
