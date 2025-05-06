@@ -1,7 +1,7 @@
 import Foundation
 import DBRCore
 
-public struct DoctorScheduleDTO: Codable, Sendable {
+public struct ScheduleSlotDTO: Codable, Sendable {
     let clinicId: Int
     let date: String
     let timeStart: String
@@ -21,16 +21,19 @@ public struct DoctorScheduleDTO: Codable, Sendable {
         case isBusy = "is_busy"
     }
 
-    func toDomain() -> DoctorSchedule {
-        DoctorSchedule(
-            clinicId: clinicId,
+    func toDomain() throws -> ScheduleSlot {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+
+        guard let date = formatter.date(from: date) else {
+            throw NetworkError.decodingError
+        }
+
+        return ScheduleSlot(
             date: date,
-            timeStart: timeStart,
-            timeStartShort: timeStartShort,
-            timeEnd: timeEnd,
-            timeEndShort: timeEndShort,
-            room: room,
-            isBusy: isBusy
+            timeStart: timeStartShort,
+            timeEnd: timeEndShort,
+            slotDateInterval: SlotDateInterval(start: timeStart, end: timeEnd)
         )
     }
 }

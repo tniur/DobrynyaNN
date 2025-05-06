@@ -49,7 +49,7 @@ extension Resources {
         let doctorId: Int
         let clinicId: Int?
 
-        public var get: Request<DataResponse<[DoctorScheduleDTO]>> {
+        public var get: Request<DataResponse<[ScheduleSlotDTO]>> {
             var query: [(String, String?)] = []
 
             query.append(("user_id", String(doctorId)))
