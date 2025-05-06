@@ -9,8 +9,8 @@ public final class NetworkService {
     let client: NetworkClientProtocol
     let accessTokenKey: String
 
-    public init(client: NetworkClientProtocol) {
+    public init(client: NetworkClientProtocol, accessTokenKey: String) {
         self.client = client
-        self.accessTokenKey = "xyz789"
+        self.accessTokenKey = accessTokenKey
     }
 }
