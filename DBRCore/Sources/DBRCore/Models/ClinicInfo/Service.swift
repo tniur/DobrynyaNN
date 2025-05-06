@@ -1,14 +1,14 @@
 import Foundation
 
-public struct Service: Sendable {
+public struct Service: Sendable, Identifiable {
     public let id: Int
     public let title: String
     public let price: Int
     public let duration: Int
     public let professionId: Int
-    public let categoryId: [Int]
-    public let shortDesc: String
-    public let fullDesc: String
+    public let categoryIds: [Int]
+    public let shortDescription: String
+    public let fullDescription: String
 
     public init(
         id: Int,
@@ -16,17 +16,17 @@ public struct Service: Sendable {
         price: Int,
         duration: Int,
         professionId: Int,
-        categoryId: [Int],
-        shortDesc: String,
-        fullDesc: String
+        categoryIds: [Int],
+        shortDescription: String,
+        fullDescription: String
     ) {
         self.id = id
         self.title = title
         self.price = price
         self.duration = duration
         self.professionId = professionId
-        self.categoryId = categoryId
-        self.shortDesc = shortDesc
-        self.fullDesc = fullDesc
+        self.categoryIds = categoryIds
+        self.shortDescription = shortDescription
+        self.fullDescription = fullDescription
     }
 }

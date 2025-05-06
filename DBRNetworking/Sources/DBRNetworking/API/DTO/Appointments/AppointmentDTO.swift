@@ -1,5 +1,4 @@
 import Foundation
-import DBRCore
 
 public struct AppointmentDTO: Codable, Sendable {
     public let appointmentId: Int
@@ -19,19 +18,5 @@ public struct AppointmentDTO: Codable, Sendable {
         case timeEnd = "time_end"
         case clinicId = "clinic_id"
         case doctorId = "doctor_id"
-    }
-
-    func toDomain() -> Appointment {
-        Appointment(
-            appointmentId: appointmentId,
-            date: date,
-            time: time,
-            timeStart: timeStart,
-            timeEnd: timeEnd,
-            clinicId: clinicId,
-            doctorId: doctorId,
-            created: created,
-            status: AppointmentStatus(fromRawValue: status)
-        )
     }
 }

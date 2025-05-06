@@ -1,6 +1,6 @@
 import Foundation
 
-public struct ServiceCategory: Sendable {
+public struct ServiceCategory: Sendable, Identifiable {
     public let id: Int
     public let title: String
 

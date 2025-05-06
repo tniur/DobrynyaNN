@@ -1,5 +1,4 @@
 import Foundation
-import DBRCore
 
 public struct ConsultationDTO: Codable, Sendable {
     public let id: Int
@@ -10,9 +9,5 @@ public struct ConsultationDTO: Codable, Sendable {
     private enum CodingKeys: String, CodingKey {
         case id, title, status
         case doctorId = "doctor_id"
-    }
-
-    func toDomain() -> Consultation {
-        Consultation(id: id, title: title, doctorId: doctorId, status: ConsultationStatus(fromRawValue: status))
     }
 }

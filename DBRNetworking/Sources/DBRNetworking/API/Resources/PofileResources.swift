@@ -1,22 +1,22 @@
 import Foundation
-import DBRCore
 
 // MARK: - PatientInfo
 
 extension Resources {
     public struct PatientInfoResource {
         let path: String
+        let key: String
 
         public var get: Request<DataResponse<PatientInfoDTO>> {
             var query: [(String, String?)] = []
-            query.append(("patient_key", Constant.mockPatientKey))
+            query.append(("patient_key", key))
 
             return Request(path: path, query: query.isEmpty ? nil : query)
         }
     }
 
-    public static func patientInfo() -> PatientInfoResource {
-        PatientInfoResource(path: Endpoint.patientInfo)
+    public static func patientInfo(accessTokenKey: String) -> PatientInfoResource {
+        PatientInfoResource(path: Endpoint.patientInfo, key: accessTokenKey)
     }
 }
 
@@ -25,36 +25,38 @@ extension Resources {
 extension Resources {
     public struct LabResultsResource {
         let path: String
+        let key: String
 
         public var get: Request<DataResponse<[LabResultDTO]>> {
             var query: [(String, String?)] = []
-            query.append(("patient_key", Constant.mockPatientKey))
+            query.append(("patient_key", key))
 
             return Request(path: path, query: query.isEmpty ? nil : query)
         }
     }
 
-    public static func labResults() -> LabResultsResource {
-        LabResultsResource(path: Endpoint.labResults)
+    public static func labResults(accessTokenKey: String) -> LabResultsResource {
+        LabResultsResource(path: Endpoint.labResults, key: accessTokenKey)
     }
 }
 
 extension Resources {
     public struct LabResultDetailsResource {
         let path: String
+        let key: String
         let id: Int
 
         public var get: Request<DataResponse<LabResultDetailsDTO>> {
             var query: [(String, String?)] = []
-            query.append(("patient_key", Constant.mockPatientKey))
+            query.append(("patient_key", key))
             query.append(("result_id", String(id)))
 
             return Request(path: path, query: query.isEmpty ? nil : query)
         }
     }
 
-    public static func labResultDetails(id: Int) -> LabResultDetailsResource {
-        LabResultDetailsResource(path: Endpoint.labResultDetails, id: id)
+    public static func labResultDetails(accessTokenKey: String, id: Int) -> LabResultDetailsResource {
+        LabResultDetailsResource(path: Endpoint.labResultDetails, key: accessTokenKey, id: id)
     }
 }
 
@@ -63,36 +65,38 @@ extension Resources {
 extension Resources {
     public struct DocumentsResource {
         let path: String
+        let key: String
 
         public var get: Request<DataResponse<[DocumentDTO]>> {
             var query: [(String, String?)] = []
-            query.append(("patient_key", Constant.mockPatientKey))
+            query.append(("patient_key", key))
 
             return Request(path: path, query: query.isEmpty ? nil : query)
         }
     }
 
-    public static func documents() -> DocumentsResource {
-        DocumentsResource(path: Endpoint.documents)
+    public static func documents(accessTokenKey: String) -> DocumentsResource {
+        DocumentsResource(path: Endpoint.documents, key: accessTokenKey)
     }
 }
 
 extension Resources {
     public struct DocumentDetailsResource {
         let path: String
+        let key: String
         let id: Int
 
         public var get: Request<DataResponse<DocumentDetailsDTO>> {
             var query: [(String, String?)] = []
-            query.append(("patient_key", Constant.mockPatientKey))
+            query.append(("patient_key", key))
             query.append(("document_id", String(id)))
 
             return Request(path: path, query: query.isEmpty ? nil : query)
         }
     }
 
-    public static func documentDetails(id: Int) -> DocumentDetailsResource {
-        DocumentDetailsResource(path: Endpoint.documentDetails, id: id)
+    public static func documentDetails(accessTokenKey: String, id: Int) -> DocumentDetailsResource {
+        DocumentDetailsResource(path: Endpoint.documentDetails, key: accessTokenKey, id: id)
     }
 }
 
@@ -101,36 +105,38 @@ extension Resources {
 extension Resources {
     public struct ConsultationsResource {
         let path: String
+        let key: String
 
         public var get: Request<DataResponse<[ConsultationDTO]>> {
             var query: [(String, String?)] = []
-            query.append(("patient_key", Constant.mockPatientKey))
+            query.append(("patient_key", key))
 
             return Request(path: path, query: query.isEmpty ? nil : query)
         }
     }
 
-    public static func consultations() -> ConsultationsResource {
-        ConsultationsResource(path: Endpoint.consultations)
+    public static func consultations(accessTokenKey: String) -> ConsultationsResource {
+        ConsultationsResource(path: Endpoint.consultations, key: accessTokenKey)
     }
 }
 
 extension Resources {
     public struct ConsultationDetailsResource {
         let path: String
+        let key: String
         let id: Int
 
         public var get: Request<DataResponse<ConsultationDetailsDTO>> {
             var query: [(String, String?)] = []
-            query.append(("patient_key", Constant.mockPatientKey))
+            query.append(("patient_key", key))
             query.append(("consultation_id", String(id)))
 
             return Request(path: path, query: query.isEmpty ? nil : query)
         }
     }
 
-    public static func consultationDetails(id: Int) -> ConsultationDetailsResource {
-        ConsultationDetailsResource(path: Endpoint.consultationDetails, id: id)
+    public static func consultationDetails(accessTokenKey: String, id: Int) -> ConsultationDetailsResource {
+        ConsultationDetailsResource(path: Endpoint.consultationDetails, key: accessTokenKey, id: id)
     }
 }
 

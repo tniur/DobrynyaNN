@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Document: Sendable {
+public struct Document: Sendable, Identifiable {
     public let id: Int
     public let title: String
     public let doctorId: Int
@@ -8,7 +8,7 @@ public struct Document: Sendable {
     public let diagnosis: String
     public let conclusion: String
     public let recommendations: String
-    public let isTemp: Bool
+    public let isTemporary: Bool
     public let dateReturn: String
 
     public init(id: Int,
@@ -18,7 +18,7 @@ public struct Document: Sendable {
                 diagnosis: String,
                 conclusion: String,
                 recommendations: String,
-                isTemp: Bool,
+                isTemporary: Bool,
                 dateReturn: String
     ) {
         self.id = id
@@ -28,7 +28,7 @@ public struct Document: Sendable {
         self.diagnosis = diagnosis
         self.conclusion = conclusion
         self.recommendations = recommendations
-        self.isTemp = isTemp
+        self.isTemporary = isTemporary
         self.dateReturn = dateReturn
     }
 }
