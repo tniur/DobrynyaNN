@@ -30,7 +30,7 @@ struct DBRSpecialistsView: View {
             DBRButton(
                 "Далее",
                 style: .init(.primary),
-                action: { }
+                action: viewModel.showTimeSlots
             )
             .padding()
         }
@@ -97,5 +97,11 @@ struct DBRSpecialistsView: View {
                 .font(DBRFont.R14)
                 .foregroundStyle(DBRColor.base7.swiftUIColor)
         }
+    }
+    
+    // MARK: - Initializer
+
+    init(viewModel: DBRSpecialistsViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
     }
 }

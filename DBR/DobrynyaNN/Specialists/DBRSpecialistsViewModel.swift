@@ -33,7 +33,7 @@ final class DBRSpecialistsViewModel: ObservableObject {
     // MARK: - Methods
 
     @MainActor
-    func show() {
-    
+    func showTimeSlots() {
+        screenNavigator.navigate(to: screens.showTimeSlotsRoute())
     }
 }

@@ -12,7 +12,7 @@ import Nivelir
 
 @MainActor
 public protocol DBRSpecialistsScreens {
-    
+    func showTimeSlotsRoute() -> ScreenWindowRoute
 }
 
 public struct DBRSpecialistsScreen: Screen {

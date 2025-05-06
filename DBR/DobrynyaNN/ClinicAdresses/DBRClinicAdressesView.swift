@@ -85,4 +85,10 @@ struct DBRClinicAdressesView: View {
                 .foregroundStyle(DBRColor.base7.swiftUIColor)
         }
     }
+    
+    // MARK: - Initializer
+
+    init(viewModel: DBRClinicAdressesViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
 }
