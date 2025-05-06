@@ -1,14 +1,14 @@
 import Foundation
 
 public struct ServiceDTO: Codable, Sendable {
-    let id: Int
-    let title: String
-    let price: Int
-    let duration: Int
-    let professionId: Int
-    let categoryId: [Int]
-    let shortDesc: String
-    let fullDesc: String
+    public let id: Int
+    public let title: String
+    public let price: Int
+    public let duration: Int
+    public let professionId: Int
+    public let categoryId: [Int]
+    public let shortDesc: String
+    public let fullDesc: String
 
     private enum CodingKeys: String, CodingKey {
         case id, title, price, duration

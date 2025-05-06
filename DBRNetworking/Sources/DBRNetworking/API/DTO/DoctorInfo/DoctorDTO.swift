@@ -1,17 +1,17 @@
 import Foundation
 
 public struct DoctorDTO: Codable, Sendable {
-    let id: Int
-    let avatarPath: String?
-    let avatarSmallPath: String?
-    let name: String
-    let birthDate: String
-    let gender: String
-    let phone: String
-    let email: String
-    let profession: [Int]
-    let clinic: [Int]
-    let services: [Int]
+    public let id: Int
+    public let avatarPath: String?
+    public let avatarSmallPath: String?
+    public let name: String
+    public let birthDate: String
+    public let gender: String
+    public let phone: String
+    public let email: String
+    public let profession: [Int]
+    public let clinic: [Int]
+    public let services: [Int]
 
     private enum CodingKeys: String, CodingKey {
         case id, name, gender, phone, email, profession, clinic, services

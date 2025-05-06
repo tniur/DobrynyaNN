@@ -1,4 +1,5 @@
 import Foundation
+import DBRNetworking
 import DBRCore
 
 extension NetworkService: DoctorService {

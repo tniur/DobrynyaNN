@@ -1,5 +1,6 @@
 import Factory
 import DBRCore
+import DBRAPIService
 import DBRNetworking
 
 public extension Container {

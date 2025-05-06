@@ -1,14 +1,14 @@
 import Foundation
 
 public struct ScheduleSlotDTO: Codable, Sendable {
-    let clinicId: Int
-    let date: String
-    let timeStart: String
-    let timeStartShort: String
-    let timeEnd: String
-    let timeEndShort: String
-    let room: String
-    let isBusy: Bool
+    public let clinicId: Int
+    public let date: String
+    public let timeStart: String
+    public let timeStartShort: String
+    public let timeEnd: String
+    public let timeEndShort: String
+    public let room: String
+    public let isBusy: Bool
 
     private enum CodingKeys: String, CodingKey {
         case date, room

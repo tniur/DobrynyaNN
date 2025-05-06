@@ -1,6 +1,6 @@
 import Foundation
 
 public struct ServiceCategoryDTO: Codable, Sendable {
-    let id: Int
-    let title: String
+    public let id: Int
+    public let title: String
 }

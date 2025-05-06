@@ -15,14 +15,16 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/hmlongco/Factory", from: "2.4.0"),
         .package(path: "../DBRCore"),
-        .package(path: "../DBRNetworking")
+        .package(path: "../DBRNetworking"),
+        .package(path: "../DBRAPIService")
     ],
     targets: [
         .target(
             name: "DBRDIContainer",
             dependencies: [
                 "DBRCore",
-                "DBRNetworking"
+                "DBRNetworking",
+                "DBRAPIService"
             ],
             plugins: [
                 .plugin(name: "Factory", package: "Factory")

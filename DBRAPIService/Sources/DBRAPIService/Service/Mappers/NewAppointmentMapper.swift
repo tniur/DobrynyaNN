@@ -1,3 +1,5 @@
+import Foundation
+import DBRNetworking
 import DBRCore
 
 struct NewAppointmentMapper {
