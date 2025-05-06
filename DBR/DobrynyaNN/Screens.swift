@@ -140,10 +140,36 @@ extension Screens: DBRClinicAdressesScreens {
     }
 }
 
+
+extension Screens: DBRSpecialistsScreens {
+    
+    func showTimeSlotsRoute() -> ScreenWindowRoute {
+        let screen = DBRTimeSlotsScreen(screens: self)
+        
+        return ScreenWindowRoute()
+            .top(.stack)
+            .push(screen)
+            .resolve()
+    }
+}
+
+
+extension Screens: DBRTimeSlotsScreens {
+    
+    func showSuccessfulRecordRoute() -> ScreenWindowRoute {
+        let screen = DBRSuccessfulRecordScreen(screens: self)
+        
+        return ScreenWindowRoute()
+            .top(.stack)
+            .push(screen)
+            .resolve()
+    }
+}
+
 extension Screens: DBRRegistrationPhoneScreens { }
 
 extension Screens: DBRLoginCodeScreens { }
 
 extension Screens: DBRResearchResultsScreens { }
 
-extension Screens: DBRSpecialistsScreens { }
+extension Screens: DBRSuccessfulRecordScreens { }
