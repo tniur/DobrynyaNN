@@ -12,8 +12,9 @@ extension NetworkAPI: DoctorService {
         return data.map { $0.toDomain() }
     }
 
-    public func fetchDoctorSchedules(doctorId: Int, clinicId: Int) async throws -> [DoctorSchedule] {
+    public func fetchDoctorSchedule(doctorId: Int, clinicId: Int) async throws -> Schedule {
         let data = try await client.send(Resources.schedule(doctorId: doctorId, clinicId: clinicId).get).data
-        return data.map { $0.toDomain() }
+        let scheduleSlot: [ScheduleSlot] = try data.map { try $0.toDomain() }
+        return Schedule(slots: scheduleSlot)
     }
 }
