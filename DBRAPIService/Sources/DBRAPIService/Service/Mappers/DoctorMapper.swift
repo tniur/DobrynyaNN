@@ -13,9 +13,9 @@ struct DoctorMapper {
             gender: dto.gender,
             phone: dto.phone,
             email: dto.email,
-            profession: dto.profession,
-            clinic: dto.clinic,
-            services: dto.services
+            professionIds: dto.profession,
+            clinicIds: dto.clinic,
+            servicesIds: dto.services
         )
     }
 }

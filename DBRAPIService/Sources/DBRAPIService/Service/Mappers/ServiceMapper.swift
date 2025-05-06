@@ -10,9 +10,9 @@ struct ServiceMapper {
             price: dto.price,
             duration: dto.duration,
             professionId: dto.professionId,
-            categoryId: dto.categoryId,
-            shortDesc: dto.shortDesc,
-            fullDesc: dto.fullDesc
+            categoryIds: dto.categoryId,
+            shortDescription: dto.shortDesc,
+            fullDescription: dto.fullDesc
         )
     }
 }
