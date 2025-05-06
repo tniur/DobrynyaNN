@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Doctor: Sendable {
+public struct Doctor: Sendable, Identifiable {
     public let id: Int
     public let avatarUrl: String?
     public let avatarSmallUrl: String?
@@ -9,9 +9,9 @@ public struct Doctor: Sendable {
     public let gender: String
     public let phone: String
     public let email: String
-    public let profession: [Int]
-    public let clinic: [Int]
-    public let services: [Int]
+    public let professionIds: [Int]
+    public let clinicIds: [Int]
+    public let servicesIds: [Int]
 
     public init(
         id: Int,
@@ -22,9 +22,9 @@ public struct Doctor: Sendable {
         gender: String,
         phone: String,
         email: String,
-        profession: [Int],
-        clinic: [Int],
-        services: [Int]
+        professionIds: [Int],
+        clinicIds: [Int],
+        servicesIds: [Int]
     ) {
         self.id = id
         self.avatarUrl = avatarUrl
@@ -34,8 +34,8 @@ public struct Doctor: Sendable {
         self.gender = gender
         self.phone = phone
         self.email = email
-        self.profession = profession
-        self.clinic = clinic
-        self.services = services
+        self.professionIds = professionIds
+        self.clinicIds = clinicIds
+        self.servicesIds = servicesIds
     }
 }
