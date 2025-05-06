@@ -1,5 +1,4 @@
 import Foundation
-import DBRCore
 
 public struct PatientInfoDTO: Codable, Sendable {
     let lastName: String
@@ -19,19 +18,5 @@ public struct PatientInfoDTO: Codable, Sendable {
         case thirdName = "third_name"
         case birthDate = "birth_date"
         case avatarPath = "avatar_path"
-    }
-
-    func toDomain() -> PatientInfo {
-        PatientInfo(
-            lastName: lastName,
-            firstName: firstName,
-            thirdName: thirdName,
-            birthDate: birthDate,
-            age: age,
-            gender: gender,
-            mobile: mobile,
-            email: email,
-            avatarUrl: avatarPath.map { "\(Constant.baseURL)\($0)" }
-        )
     }
 }

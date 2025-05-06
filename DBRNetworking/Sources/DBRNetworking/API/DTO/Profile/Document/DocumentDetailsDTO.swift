@@ -1,5 +1,4 @@
 import Foundation
-import DBRCore
 
 public struct DocumentDetailsDTO: Codable, Sendable {
     public let title: String
@@ -18,19 +17,5 @@ public struct DocumentDetailsDTO: Codable, Sendable {
         case isTemp = "is_temp"
         case dateReturn = "date_return"
         case pdfContent = "pdf_content"
-    }
-
-    func toDomain() -> DocumentDetails {
-        DocumentDetails(
-            title: title,
-            doctorId: doctorId,
-            symptoms: symptoms,
-            diagnosis: diagnosis,
-            conclusion: conclusion,
-            recommendations: recommendations,
-            isTemp: isTemp,
-            dateReturn: dateReturn,
-            pdfContent: pdfContent
-        )
     }
 }

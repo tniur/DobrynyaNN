@@ -1,5 +1,4 @@
 import Foundation
-import DBRCore
 
 public struct ClinicDTO: Codable, Sendable {
     let title: String
@@ -12,9 +11,5 @@ public struct ClinicDTO: Codable, Sendable {
         case title, id, phone
         case doctorName = "doctor_name"
         case realAddress = "real_address"
-    }
-
-    func toDomain() -> Clinic {
-        Clinic(title: title, doctorName: doctorName, id: id, realAddress: realAddress, phone: phone)
     }
 }

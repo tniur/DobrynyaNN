@@ -1,5 +1,4 @@
 import Foundation
-import DBRCore
 
 public struct ScheduleSlotDTO: Codable, Sendable {
     let clinicId: Int
@@ -19,21 +18,5 @@ public struct ScheduleSlotDTO: Codable, Sendable {
         case timeEnd = "time_end"
         case timeEndShort = "time_end_short"
         case isBusy = "is_busy"
-    }
-
-    func toDomain() throws -> ScheduleSlot {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-
-        guard let date = formatter.date(from: date) else {
-            throw NetworkError.decodingError
-        }
-
-        return ScheduleSlot(
-            date: date,
-            timeStart: timeStartShort,
-            timeEnd: timeEndShort,
-            slotDateInterval: SlotDateInterval(start: timeStart, end: timeEnd)
-        )
     }
 }

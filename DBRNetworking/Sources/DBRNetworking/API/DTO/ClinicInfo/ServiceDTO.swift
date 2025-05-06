@@ -1,5 +1,4 @@
 import Foundation
-import DBRCore
 
 public struct ServiceDTO: Codable, Sendable {
     let id: Int
@@ -17,18 +16,5 @@ public struct ServiceDTO: Codable, Sendable {
         case categoryId = "category_id"
         case shortDesc = "short_desc"
         case fullDesc = "full_desc"
-    }
-
-    func toDomain() -> Service {
-        Service(
-            id: id,
-            title: title,
-            price: price,
-            duration: duration,
-            professionId: professionId,
-            categoryId: categoryId,
-            shortDesc: shortDesc,
-            fullDesc: fullDesc
-        )
     }
 }

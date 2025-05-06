@@ -1,5 +1,4 @@
 import Foundation
-import DBRCore
 
 public struct NewAppointmentDTO: Encodable {
     let patientKey: String
