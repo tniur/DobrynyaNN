@@ -48,7 +48,13 @@ extension NetworkError: LocalizedError {
                                      bundle: .module,
                                      comment: "Request timed out")
         case .unexpectedResponse(let code):
-            return "\(NSLocalizedString("unexpectedResponse", bundle: Bundle.module, comment: "Unexpected response")): \(code)"
+            let message = NSLocalizedString(
+                "unexpectedResponse",
+                bundle: Bundle.module,
+                comment: "Unexpected response"
+            )
+
+            return "\(message): \(code)"
         case .errorResponse(let error):
             return error.detail
         case .unknown(let underlying):

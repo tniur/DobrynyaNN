@@ -35,7 +35,12 @@ extension Resources {
         }
     }
 
-    public static func doctors(professionId: Int?, clinicId: Int?, userIds: [Int]?, serviceIds: [Int]?) -> DoctorsResource {
+    public static func doctors(
+        professionId: Int?,
+        clinicId: Int?,
+        userIds: [Int]?,
+        serviceIds: [Int]?
+    ) -> DoctorsResource {
         DoctorsResource(
             path: Endpoint.users,
             professionId: professionId,

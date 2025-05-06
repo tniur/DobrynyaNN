@@ -5,11 +5,11 @@ struct ScheduleSlotMapper {
     static func map(_ dto: ScheduleSlotDTO) throws -> ScheduleSlot {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        
+
         guard let date = formatter.date(from: dto.date) else {
             throw NetworkError.decodingError
         }
-        
+
         return ScheduleSlot(
             date: date,
             timeStart: dto.timeStartShort,
