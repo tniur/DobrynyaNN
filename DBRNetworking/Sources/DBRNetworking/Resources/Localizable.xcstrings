@@ -1,189 +1,155 @@
 {
-  "sourceLanguage" : "ru",
+  "sourceLanguage" : "en",
   "strings" : {
-    "appointmentStatusCompleted" : {
+    "decodingError" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Completed"
+            "value" : "Failed to process the server response"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Завершен"
+            "value" : "Не удалось обработать ответ от сервера"
           }
         }
       }
     },
-    "appointmentStatusRefused" : {
+    "invalidServerResponse" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Refused"
+            "value" : "Received an invalid response from the server"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Отменен"
+            "value" : "Получен некорректный ответ от сервера"
           }
         }
       }
     },
-    "appointmentStatusUnknown" : {
+    "invalidURL" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Unknown"
+            "value" : "Failed to build a valid request"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Неизвестно"
+            "value" : "Не удалось сформировать корректный запрос"
           }
         }
       }
     },
-    "appointmentStatusUpcoming" : {
+    "noConnection" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Upcoming"
+            "value" : "No internet connection"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Предстоящий"
+            "value" : "Нет подключения к интернету"
           }
         }
       }
     },
-    "consultationStatusActive" : {
+    "notFound" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Active"
+            "value" : "The requested resource was not found"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Активно"
+            "value" : "Запрашиваемый ресурс не найден"
           }
         }
       }
     },
-    "consultationStatusDone" : {
+    "timeout" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Done"
+            "value" : "Request timed out"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Завершено"
+            "value" : "Превышено время ожидания ответа"
           }
         }
       }
     },
-    "consultationStatusUnknown" : {
+    "unauthorized" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Unknown"
+            "value" : "Unauthorized user"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Неизвестно"
+            "value" : "Неавторизованный пользователь"
           }
         }
       }
     },
-    "consultationStatusWaiting" : {
+    "unexpectedResponse" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Waiting"
+            "value" : "Unexpected server response"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ожидание"
+            "value" : "Неожиданный ответ сервера"
           }
         }
       }
     },
-    "documentErrorBuilding" : {
+    "unknown" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Document building error"
+            "value" : "An unknown error occurred"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ошибка создания документа"
-          }
-        }
-      }
-    },
-    "documentErrorEncoding" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Document encoding error"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ошибка кодирования документа"
-          }
-        }
-      }
-    },
-    "documentErrorSaving" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Document saving error"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ошибка сохранения документа"
+            "value" : "Произошла неизвестная ошибка"
           }
         }
       }

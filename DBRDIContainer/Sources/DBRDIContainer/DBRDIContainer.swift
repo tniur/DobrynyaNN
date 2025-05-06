@@ -7,3 +7,27 @@ public extension Container {
         Factory(self) { NetworkAPI(client: NetworkClient(baseURL: Constant.baseURL)) }
     }
 }
+
+public extension Container {
+    var clinicService: Factory<ClinicService> {
+        Factory(self) { NetworkAPI(client: NetworkClient(baseURL: Constant.baseURL)) }
+    }
+}
+
+public extension Container {
+    var doctorService: Factory<DoctorService> {
+        Factory(self) { NetworkAPI(client: NetworkClient(baseURL: Constant.baseURL)) }
+    }
+}
+
+public extension Container {
+    var appointmentsService: Factory<AppointmentsService> {
+        Factory(self) { NetworkAPI(client: NetworkClient(baseURL: Constant.baseURL)) }
+    }
+}
+
+public extension Container {
+    var pdfManager: Factory<PDFManager> {
+        Factory(self) { DocumentManager() }
+    }
+}
