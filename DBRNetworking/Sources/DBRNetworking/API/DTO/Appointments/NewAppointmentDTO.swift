@@ -6,7 +6,7 @@ public struct NewAppointmentDTO: Encodable {
     public let clinicId: Int
     public let timeStart: String
     public let timeEnd: String
-    
+
     public init(
         patientKey: String,
         doctorId: Int,

@@ -7,7 +7,7 @@ public struct DocumentDetails: Sendable {
     public let diagnosis: String
     public let conclusion: String
     public let recommendations: String
-    public let isTemp: Bool
+    public let isTemporary: Bool
     public let dateReturn: String
     public let pdfContent: String
 
@@ -17,7 +17,7 @@ public struct DocumentDetails: Sendable {
                 diagnosis: String,
                 conclusion: String,
                 recommendations: String,
-                isTemp: Bool,
+                isTemporary: Bool,
                 dateReturn: String,
                 pdfContent: String
     ) {
@@ -27,7 +27,7 @@ public struct DocumentDetails: Sendable {
         self.diagnosis = diagnosis
         self.conclusion = conclusion
         self.recommendations = recommendations
-        self.isTemp = isTemp
+        self.isTemporary = isTemporary
         self.dateReturn = dateReturn
         self.pdfContent = pdfContent
     }

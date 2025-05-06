@@ -11,7 +11,7 @@ struct DocumentDetailsMapper {
             diagnosis: dto.diagnosis,
             conclusion: dto.conclusion,
             recommendations: dto.recommendations,
-            isTemp: dto.isTemp,
+            isTemporary: dto.isTemp,
             dateReturn: dto.dateReturn,
             pdfContent: dto.pdfContent
         )

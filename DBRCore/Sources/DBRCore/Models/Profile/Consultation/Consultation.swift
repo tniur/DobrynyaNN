@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Consultation: Sendable {
+public struct Consultation: Sendable, Identifiable {
     public let id: Int
     public let title: String
     public let doctorId: Int
