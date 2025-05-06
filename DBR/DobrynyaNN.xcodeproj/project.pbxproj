@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B348CE92DCA597000093BA3 /* DBRCore in Frameworks */ = {isa = PBXBuildFile; productRef = 7B348CE82DCA597000093BA3 /* DBRCore */; };
+		7B348CEB2DCA597400093BA3 /* DBRDIContainer in Frameworks */ = {isa = PBXBuildFile; productRef = 7B348CEA2DCA597400093BA3 /* DBRDIContainer */; };
+		7B348CED2DCA597800093BA3 /* DBRNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 7B348CEC2DCA597800093BA3 /* DBRNetworking */; };
+		7B348CEF2DCA597D00093BA3 /* DBRUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 7B348CEE2DCA597D00093BA3 /* DBRUtils */; };
 		7BC750E72D889EAE00AA6FF0 /* DBRUIComponents in Frameworks */ = {isa = PBXBuildFile; productRef = 7BC750E62D889EAE00AA6FF0 /* DBRUIComponents */; };
 		E900F4D02D6CEBD000A460C2 /* Nivelir in Frameworks */ = {isa = PBXBuildFile; productRef = E900F4CF2D6CEBD000A460C2 /* Nivelir */; };
 		E92A2E9F2D6CE7E900D0D03C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E92A2E992D6CE7E900D0D03C /* Assets.xcassets */; };
@@ -17,6 +21,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7B348CE12DCA507300093BA3 /* DBRCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DBRCore; path = ../DBRCore; sourceTree = SOURCE_ROOT; };
+		7B348CE22DCA507900093BA3 /* DBRDIContainer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DBRDIContainer; path = ../DBRDIContainer; sourceTree = SOURCE_ROOT; };
+		7B348CE32DCA507E00093BA3 /* DBRNetworking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DBRNetworking; path = ../DBRNetworking; sourceTree = SOURCE_ROOT; };
+		7B348CE42DCA508400093BA3 /* DBRUtils */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DBRUtils; path = ../DBRUtils; sourceTree = SOURCE_ROOT; };
 		7BEB5E462D9F22E300A15CF9 /* DBRUIComponents */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DBRUIComponents; path = ../DBRUIComponents; sourceTree = SOURCE_ROOT; };
 		E92A2E802D6CE6C100D0D03C /* DobrynyaNN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DobrynyaNN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E92A2E982D6CE7E900D0D03C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +71,16 @@
 			path = Specialists;
 			sourceTree = "<group>";
 		};
+		7B348C2A2DCA4DC900093BA3 /* TimeSlots */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TimeSlots;
+			sourceTree = "<group>";
+		};
+		7B348CF72DCAABA000093BA3 /* SuccessfulRecord */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = SuccessfulRecord;
+			sourceTree = "<group>";
+		};
 		7B6134182D9F2DE900AA138D /* Splash */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Splash;
@@ -100,7 +118,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B348CE92DCA597000093BA3 /* DBRCore in Frameworks */,
 				E900F4D02D6CEBD000A460C2 /* Nivelir in Frameworks */,
+				7B348CEB2DCA597400093BA3 /* DBRDIContainer in Frameworks */,
+				7B348CEF2DCA597D00093BA3 /* DBRUtils in Frameworks */,
+				7B348CED2DCA597800093BA3 /* DBRNetworking in Frameworks */,
 				7BC750E72D889EAE00AA6FF0 /* DBRUIComponents in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -118,6 +140,10 @@
 		E92A2E772D6CE6C100D0D03C = {
 			isa = PBXGroup;
 			children = (
+				7B348CE42DCA508400093BA3 /* DBRUtils */,
+				7B348CE32DCA507E00093BA3 /* DBRNetworking */,
+				7B348CE22DCA507900093BA3 /* DBRDIContainer */,
+				7B348CE12DCA507300093BA3 /* DBRCore */,
 				7BEB5E462D9F22E300A15CF9 /* DBRUIComponents */,
 				E92A2E9E2D6CE7E900D0D03C /* DobrynyaNN */,
 				E900F4E62D6D2F3600A460C2 /* Frameworks */,
@@ -136,6 +162,8 @@
 		E92A2E9E2D6CE7E900D0D03C /* DobrynyaNN */ = {
 			isa = PBXGroup;
 			children = (
+				7B348CF72DCAABA000093BA3 /* SuccessfulRecord */,
+				7B348C2A2DCA4DC900093BA3 /* TimeSlots */,
 				7B348B262DC7B52C00093BA3 /* Specialists */,
 				7B348B192DC6A68400093BA3 /* ClinicAdresses */,
 				7B348B092DC0E52700093BA3 /* AvailableServices */,
@@ -182,6 +210,8 @@
 				7B348B092DC0E52700093BA3 /* AvailableServices */,
 				7B348B192DC6A68400093BA3 /* ClinicAdresses */,
 				7B348B262DC7B52C00093BA3 /* Specialists */,
+				7B348C2A2DCA4DC900093BA3 /* TimeSlots */,
+				7B348CF72DCAABA000093BA3 /* SuccessfulRecord */,
 				7B6134182D9F2DE900AA138D /* Splash */,
 				7B61341D2D9F2E8800AA138D /* Login */,
 				7B6134222D9F2E9800AA138D /* LoginCode */,
@@ -193,6 +223,10 @@
 			packageProductDependencies = (
 				E900F4CF2D6CEBD000A460C2 /* Nivelir */,
 				7BC750E62D889EAE00AA6FF0 /* DBRUIComponents */,
+				7B348CE82DCA597000093BA3 /* DBRCore */,
+				7B348CEA2DCA597400093BA3 /* DBRDIContainer */,
+				7B348CEC2DCA597800093BA3 /* DBRNetworking */,
+				7B348CEE2DCA597D00093BA3 /* DBRUtils */,
 			);
 			productName = DobrynyaNN;
 			productReference = E92A2E802D6CE6C100D0D03C /* DobrynyaNN.app */;
@@ -499,6 +533,22 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7B348CE82DCA597000093BA3 /* DBRCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DBRCore;
+		};
+		7B348CEA2DCA597400093BA3 /* DBRDIContainer */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DBRDIContainer;
+		};
+		7B348CEC2DCA597800093BA3 /* DBRNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DBRNetworking;
+		};
+		7B348CEE2DCA597D00093BA3 /* DBRUtils */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DBRUtils;
+		};
 		7BC750E62D889EAE00AA6FF0 /* DBRUIComponents */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DBRUIComponents;

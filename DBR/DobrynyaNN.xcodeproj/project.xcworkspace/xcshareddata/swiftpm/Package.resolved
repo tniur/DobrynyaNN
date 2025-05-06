@@ -1,6 +1,15 @@
 {
-  "originHash" : "0c904c9c53fc50c67190b7b09f2f841213aca2b5cc9655ed3f5f22f76da54411",
+  "originHash" : "9a430d5702f3c5a1e7b2983ba988aa7e62b5d98d498ad03b05763c886888c176",
   "pins" : [
+    {
+      "identity" : "factory",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hmlongco/Factory",
+      "state" : {
+        "revision" : "98e965ba52769132a298769894f9741f8c291509",
+        "version" : "2.4.11"
+      }
+    },
     {
       "identity" : "nivelir",
       "kind" : "remoteSourceControl",
