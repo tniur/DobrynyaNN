@@ -4,6 +4,7 @@ public enum NetworkError: Error {
     case unauthorized
     case notFound
     case errorResponse(ErrorResponse)
+    case badRequest(ErrorResponse)
     case unexpectedResponse(Int)
 
     case decodingError
@@ -19,6 +20,14 @@ public enum NetworkError: Error {
 extension NetworkError: LocalizedError {
     public var errorDescription: String? {
         switch self {
+        case .badRequest(let error):
+            let message = NSLocalizedString(
+                "badRequest",
+                bundle: Bundle.module,
+                comment: "Bad request"
+            )
+
+            return "\(message): \(error.detail)"
         case .unauthorized:
             return NSLocalizedString("unauthorized",
                                      bundle: Bundle.module,

@@ -61,6 +61,12 @@ extension NetworkClient {
 
         guard (200..<300).contains(httpResponse.statusCode) else {
             switch httpResponse.statusCode {
+            case 400:
+                if let errorResponse = try? decoder.decode(ErrorResponse.self, from: data) {
+                    throw NetworkError.badRequest(errorResponse)
+                } else {
+                    throw NetworkError.unexpectedResponse(httpResponse.statusCode)
+                }
             case 401:
                 throw NetworkError.unauthorized
             case 404:
