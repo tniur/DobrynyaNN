@@ -14,6 +14,8 @@ public enum NetworkError: Error {
     case noConnection
     case timeout
 
+    case businessLogicError(String)
+
     case unknown(Error? = nil)
 }
 
@@ -66,6 +68,14 @@ extension NetworkError: LocalizedError {
             return "\(message): \(code)"
         case .errorResponse(let error):
             return error.detail
+        case .businessLogicError(let errorMessage):
+            let message = NSLocalizedString(
+                "businessLogicError",
+                bundle: Bundle.module,
+                comment: "Business logic error"
+            )
+
+            return "\(message): \(errorMessage)"
         case .unknown(let underlying):
             return underlying?.localizedDescription ??
             NSLocalizedString("unknown", bundle: Bundle.module, comment: "Unknown error")

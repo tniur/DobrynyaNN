@@ -1,6 +1,6 @@
 import Foundation
 
-public struct CreateAppointmentDTO: Codable, Sendable {
+public struct CreateAppointmentDTO: Codable, Sendable, ValidatableResponse {
     public let success: Bool
     public let appointmentId: Int
     public let message: String

@@ -1,6 +1,6 @@
 import Foundation
 
-public struct CancelAppointmentDTO: Codable, Sendable {
+public struct CancelAppointmentDTO: Codable, Sendable, ValidatableResponse {
     public let success: Bool
     public let appointmentId: Int
     public let status: String

@@ -41,7 +41,7 @@ extension NetworkService: ProfileService {
     public func uploadProfileAvatar(withJpeg data: Data) async throws -> UploadProfileAvatarResult {
         let base64String = data.base64EncodedString()
         let body = AvatarDTO(patientKey: accessTokenKey, imageBase64String: base64String)
-        let data = try await client.send(Resources.uploadAvatar(body: body).post).data
+        let data = try await client.sendValidated(Resources.uploadAvatar(body: body).post).data
         return UploadProfileAvatarMapper.map(data)
     }
 }

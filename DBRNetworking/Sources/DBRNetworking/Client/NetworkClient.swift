@@ -1,5 +1,7 @@
 import Foundation
 
+// MARK: - Client
+
 public actor NetworkClient: NetworkClientProtocol {
     private let baseURL: URL
     private let session: URLSession
@@ -14,6 +16,8 @@ public actor NetworkClient: NetworkClientProtocol {
         decoder.keyDecodingStrategy = .useDefaultKeys
     }
 }
+
+// MARK: - Send Methods
 
 extension NetworkClient {
     public func send<T: Decodable & Sendable>(_ request: Request<T>) async throws -> T {
@@ -45,7 +49,27 @@ extension NetworkClient {
     private func send(_ request: URLRequest) async throws -> (Data, URLResponse) {
         try await session.data(for: request, delegate: nil)
     }
+}
 
+// MARK: - Validated Send
+
+extension NetworkClient {
+    public func sendValidated<T: Decodable & Sendable & ValidatableResponse>(
+        _ request: Request<T>
+    ) async throws -> T {
+        let response = try await send(request)
+
+        guard response.success else {
+            throw NetworkError.businessLogicError(response.message)
+        }
+
+        return response
+    }
+}
+
+// MARK: - Supported
+
+extension NetworkClient {
     private func decode<T: Decodable>(_ type: T.Type, from data: Data) async throws -> T {
         do {
             return try decoder.decode(T.self, from: data)
@@ -81,31 +105,6 @@ extension NetworkClient {
         }
     }
 
-    private func retrying<T: Sendable>(
-        maxAttempts: Int,
-        delay: (Int) -> TimeInterval,
-        shouldRetry: @escaping (Error) -> Bool,
-        operation: @escaping () async throws -> T
-    ) async throws -> T {
-        for attempt in 1...maxAttempts {
-            do {
-                return try await operation()
-            } catch {
-                let isLastAttempt = attempt == maxAttempts
-                if isLastAttempt || !shouldRetry(error) {
-                    throw NetworkError.from(error)
-                }
-
-                let wait = delay(attempt)
-                try? await Task.sleep(nanoseconds: UInt64(wait * 1_000_000_000))
-            }
-        }
-
-        throw NetworkError.unknown()
-    }
-}
-
-extension NetworkClient {
     private func makeURLRequest<T>(for request: Request<T>) async throws -> URLRequest {
         var components = URLComponents(
             url: baseURL.appendingPathComponent(request.path),
@@ -137,7 +136,32 @@ extension NetworkClient {
     }
 }
 
+// MARK: - Retrying
+
 extension NetworkClient {
+    private func retrying<T: Sendable>(
+        maxAttempts: Int,
+        delay: (Int) -> TimeInterval,
+        shouldRetry: @escaping (Error) -> Bool,
+        operation: @escaping () async throws -> T
+    ) async throws -> T {
+        for attempt in 1...maxAttempts {
+            do {
+                return try await operation()
+            } catch {
+                let isLastAttempt = attempt == maxAttempts
+                if isLastAttempt || !shouldRetry(error) {
+                    throw NetworkError.from(error)
+                }
+
+                let wait = delay(attempt)
+                try? await Task.sleep(nanoseconds: UInt64(wait * 1_000_000_000))
+            }
+        }
+
+        throw NetworkError.unknown()
+    }
+
     private func shouldRetry(for error: Error) -> Bool {
         switch NetworkError.from(error) {
         case .timeout, .noConnection:

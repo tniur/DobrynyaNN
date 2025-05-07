@@ -18,6 +18,23 @@
         }
       }
     },
+    "businessLogicError" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Business logic error"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ошибка запроса"
+          }
+        }
+      }
+    },
     "decodingError" : {
       "extractionState" : "manual",
       "localizations" : {

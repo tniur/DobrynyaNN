@@ -1,6 +1,6 @@
 import Foundation
 
-public struct UploadProfileAvatarDTO: Codable, Sendable {
+public struct UploadProfileAvatarDTO: Codable, Sendable, ValidatableResponse {
     public let success: Bool
     public let avatarPath: String
     public let message: String
