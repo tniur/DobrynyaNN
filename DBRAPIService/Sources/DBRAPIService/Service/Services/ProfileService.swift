@@ -38,10 +38,10 @@ extension NetworkService: ProfileService {
         return ConsultationDetailsMapper.map(data)
     }
 
-    public func uploadProfileAvatar(withJpeg data: Data) async throws {
+    public func uploadProfileAvatar(withJpeg data: Data) async throws -> UploadProfileAvatarResult {
         let base64String = data.base64EncodedString()
-        let patientKey = Constant.mockPatientKey
-        let body = AvatarDTO(patientKey: patientKey, imageBase64String: base64String)
-        try await client.send(Resources.uploadAvatar(body: body).post)
+        let body = AvatarDTO(patientKey: accessTokenKey, imageBase64String: base64String)
+        let data = try await client.send(Resources.uploadAvatar(body: body).post).data
+        return UploadProfileAvatarMapper.map(data)
     }
 }

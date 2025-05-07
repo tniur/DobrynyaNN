@@ -8,12 +8,14 @@ extension NetworkService: AppointmentsService {
         return data.map { AppointmentMapper.map($0) }
     }
 
-    public func cancelAppointment(with id: Int) async throws {
-        try await client.send(Resources.cancelAppointment(id: id).post)
+    public func cancelAppointment(with id: Int) async throws -> CancelAppointmentResult {
+        let data = try await client.send(Resources.cancelAppointment(id: id).post).data
+        return CancelAppointmentMapper.map(data)
     }
 
-    public func createAppointment(_ newAppointment: NewAppointment) async throws {
+    public func createAppointment(_ newAppointment: NewAppointment) async throws -> CreateAppointmentResult {
         let newAppointmentBody = NewAppointmentMapper.map(newAppointment)
-        try await client.send(Resources.createAppointment(body: newAppointmentBody).post)
+        let data = try await client.send(Resources.createAppointment(body: newAppointmentBody).post).data
+        return CreateAppointmentMapper.map(data)
     }
 }
