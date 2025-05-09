@@ -89,17 +89,19 @@ extension NetworkClient {
                 if let errorResponse = try? decoder.decode(ErrorResponse.self, from: data) {
                     throw NetworkError.badRequest(errorResponse)
                 } else {
-                    throw NetworkError.unexpectedResponse(httpResponse.statusCode)
+                    throw NetworkError.badRequestCode(httpResponse.statusCode)
                 }
             case 401:
                 throw NetworkError.unauthorized
             case 404:
                 throw NetworkError.notFound
+            case 503:
+                throw NetworkError.serviceUnavailable
             default:
                 if let errorResponse = try? decoder.decode(ErrorResponse.self, from: data) {
                     throw NetworkError.errorResponse(errorResponse)
                 } else {
-                    throw NetworkError.unexpectedResponse(httpResponse.statusCode)
+                    throw NetworkError.unexpectedResponseBody(httpResponse.statusCode)
                 }
             }
         }
@@ -164,9 +166,11 @@ extension NetworkClient {
 
     private func shouldRetry(for error: Error) -> Bool {
         switch NetworkError.from(error) {
-        case .timeout, .noConnection:
+        case .connectionTimeout, .noConnected, .connectionLost:
             return true
-        case .unexpectedResponse(let code):
+        case .serviceUnavailable:
+            return true
+        case .unexpectedResponseBody(let code):
             return (500...599).contains(code)
         default:
             return false
