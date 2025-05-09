@@ -2,7 +2,7 @@ import Foundation
 import DBRNetworking
 import DBRCore
 
-extension NetworkService: AppointmentsService {
+extension APIService: AppointmentsService {
     public func fetchAppointments() async throws -> [Appointment] {
         do {
             let data = try await client.send(Resources.appointments(accessTokenKey: accessTokenKey).get).data

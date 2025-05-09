@@ -2,7 +2,7 @@ import Foundation
 import DBRNetworking
 import DBRCore
 
-extension NetworkService: ProfileService {
+extension APIService: ProfileService {
     public func fetchPatientInfo() async throws -> PatientInfo {
         do {
             let data = try await client.send(Resources.patientInfo(accessTokenKey: accessTokenKey).get).data

@@ -2,7 +2,7 @@ import Foundation
 import DBRCore
 import DBRNetworking
 
-public final class NetworkService {
+public final class APIService {
     let client: NetworkClientProtocol
     let accessTokenKey: String
 
