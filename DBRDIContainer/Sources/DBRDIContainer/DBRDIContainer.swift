@@ -28,6 +28,12 @@ public extension Container {
 }
 
 public extension Container {
+    var authService: Factory<AuthService> {
+        Factory(self) { APIService(client: NetworkClient(baseURL: Constant.baseURL), accessTokenKey: Constant.mockPatientKey) }
+    }
+}
+
+public extension Container {
     var pdfManager: Factory<PDFManager> {
         Factory(self) { DocumentManager() }
     }
