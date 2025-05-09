@@ -2,6 +2,13 @@ import Foundation
 
 enum Endpoint {}
 
+// MARK: - Auth
+
+extension Endpoint {
+    static let authConfirmCode = "auth/confirmCode"
+    static let authRequestCode = "auth/requestCode"
+}
+
 // MARK: - Profile
 
 extension Endpoint {
