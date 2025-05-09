@@ -1,18 +1,23 @@
 import Foundation
 
 public enum NetworkError: Error {
-    case unauthorized
-    case notFound
-    case errorResponse(ErrorResponse)
-    case badRequest(ErrorResponse)
-    case unexpectedResponse(Int)
-
-    case decodingError
     case invalidURL
     case invalidServerResponse
 
-    case noConnection
-    case timeout
+    case noConnected
+    case connectionLost
+    case connectionTimeout
+
+    case serviceUnavailable
+
+    case notFound
+    case unauthorized
+    case badRequest(ErrorResponse)
+    case badRequestCode(Int)
+    case errorResponse(ErrorResponse)
+    case unexpectedResponseBody(Int)
+
+    case decodingError
 
     case businessLogicError(String)
 
@@ -27,10 +32,12 @@ extension NetworkError {
 
         if let urlError = error as? URLError {
             switch urlError.code {
-            case .notConnectedToInternet, .networkConnectionLost:
-                return .noConnection
+            case .notConnectedToInternet:
+                return .noConnected
+            case .networkConnectionLost:
+                return .connectionLost
             case .timedOut:
-                return .timeout
+                return .connectionTimeout
             default:
                 return .unknown(urlError)
             }
@@ -38,8 +45,4 @@ extension NetworkError {
 
         return .unknown(error)
     }
-}
-
-public struct ErrorResponse: Decodable, Error {
-    let detail: String
 }
