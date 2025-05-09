@@ -1,6 +1,6 @@
 import Foundation
 
-public struct SlotDateInterval: Sendable {
+public struct SlotDateInterval: Sendable, Equatable {
     public let start: String
     public let end: String
 

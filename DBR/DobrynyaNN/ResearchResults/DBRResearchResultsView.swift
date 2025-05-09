@@ -35,6 +35,7 @@ struct DBRResearchResultsView: View {
             }
             .padding()
         }
+        .scrollIndicators(.hidden)
     }
     
     // MARK: - Initializer
