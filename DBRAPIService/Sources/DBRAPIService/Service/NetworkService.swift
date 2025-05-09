@@ -10,7 +10,7 @@ public final class NetworkService {
         self.client = client
         self.accessTokenKey = accessTokenKey
     }
-    
+
     func handle(_ error: Error) -> DomainError {
         if let networkError = error as? NetworkError {
             return NetworkErrorMapper.map(networkError)

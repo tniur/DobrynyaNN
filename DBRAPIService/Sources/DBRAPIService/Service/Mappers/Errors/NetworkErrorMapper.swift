@@ -30,7 +30,7 @@ struct NetworkErrorMapper {
             return .business(message: message)
 
         case .decodingError, .invalidServerResponse, .invalidURL,
-            .unexpectedResponseBody(_), .errorResponse(_), .unknown:
+            .unexpectedResponseBody, .errorResponse, .unknown:
             return .unknown
         }
     }
