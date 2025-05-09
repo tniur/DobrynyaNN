@@ -27,7 +27,7 @@ extension Resources {
         let path: String
         let id: Int
 
-        public var post: Request<Void> {
+        public var post: Request<DataResponse<CancelAppointmentDTO>> {
             Request(method: .post, path: path, body: "\(id)")
         }
     }
@@ -44,7 +44,7 @@ extension Resources {
         let path: String
         let body: NewAppointmentDTO
 
-        public var post: Request<Void> {
+        public var post: Request<DataResponse<CreateAppointmentDTO>> {
             Request(method: .post, path: path, body: body)
         }
     }

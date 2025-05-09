@@ -147,7 +147,7 @@ extension Resources {
         let path: String = Endpoint.uploadPatientAvatar
         let body: AvatarDTO
 
-        public var post: Request<Void> {
+        public var post: Request<DataResponse<UploadProfileAvatarDTO>> {
             Request(method: .post, path: path, body: body)
         }
     }

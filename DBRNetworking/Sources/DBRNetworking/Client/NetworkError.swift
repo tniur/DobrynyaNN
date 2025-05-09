@@ -4,6 +4,7 @@ public enum NetworkError: Error {
     case unauthorized
     case notFound
     case errorResponse(ErrorResponse)
+    case badRequest(ErrorResponse)
     case unexpectedResponse(Int)
 
     case decodingError
@@ -13,12 +14,22 @@ public enum NetworkError: Error {
     case noConnection
     case timeout
 
+    case businessLogicError(String)
+
     case unknown(Error? = nil)
 }
 
 extension NetworkError: LocalizedError {
     public var errorDescription: String? {
         switch self {
+        case .badRequest(let error):
+            let message = NSLocalizedString(
+                "badRequest",
+                bundle: Bundle.module,
+                comment: "Bad request"
+            )
+
+            return "\(message): \(error.detail)"
         case .unauthorized:
             return NSLocalizedString("unauthorized",
                                      bundle: Bundle.module,
@@ -57,6 +68,14 @@ extension NetworkError: LocalizedError {
             return "\(message): \(code)"
         case .errorResponse(let error):
             return error.detail
+        case .businessLogicError(let errorMessage):
+            let message = NSLocalizedString(
+                "businessLogicError",
+                bundle: Bundle.module,
+                comment: "Business logic error"
+            )
+
+            return "\(message): \(errorMessage)"
         case .unknown(let underlying):
             return underlying?.localizedDescription ??
             NSLocalizedString("unknown", bundle: Bundle.module, comment: "Unknown error")
