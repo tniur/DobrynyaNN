@@ -5,7 +5,8 @@ import DBRCore
 extension APIService: AppointmentsService {
     public func fetchAppointments() async throws -> [Appointment] {
         do {
-            let data = try await client.send(Resources.appointments(accessTokenKey: accessTokenKey).get).data
+            let key = try tokenProvider.getToken()
+            let data = try await client.send(Resources.appointments(accessTokenKey: key).get).data
             return data.map { AppointmentMapper.map($0) }
         } catch {
             throw handle(error)
@@ -23,7 +24,8 @@ extension APIService: AppointmentsService {
 
     public func createAppointment(_ newAppointment: NewAppointment) async throws -> CreateAppointmentResult {
         do {
-            let newAppointmentBody = NewAppointmentMapper.map(newAppointment)
+            let key = try tokenProvider.getToken()
+            let newAppointmentBody = NewAppointmentMapper.map(newAppointment, patientKey: key)
             let data = try await client.sendValidated(Resources.createAppointment(body: newAppointmentBody).post).data
             return CreateAppointmentMapper.map(data)
         } catch {
