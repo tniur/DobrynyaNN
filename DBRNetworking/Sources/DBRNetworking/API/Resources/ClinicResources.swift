@@ -4,15 +4,16 @@ import Foundation
 
 extension Resources {
     public struct ClinicsResource {
+        let url: URL
         let path: String
 
         public var get: Request<DataResponse<[ClinicDTO]>> {
-            Request(path: path, query: nil)
+            Request(url: url, path: path, query: nil)
         }
     }
 
     public static func clinics() -> ClinicsResource {
-        ClinicsResource(path: Endpoint.clinics)
+        ClinicsResource(url: Endpoint.baseURL, path: Endpoint.ClinicInfo.clinics)
     }
 }
 
@@ -20,15 +21,16 @@ extension Resources {
 
 extension Resources {
     public struct ProfessionsResource {
+        let url: URL
         let path: String
 
         public var get: Request<DataResponse<[ProfessionDTO]>> {
-            Request(path: path, query: nil)
+            Request(url: url, path: path, query: nil)
         }
     }
 
     public static func professions() -> ProfessionsResource {
-        ProfessionsResource(path: Endpoint.professions)
+        ProfessionsResource(url: Endpoint.baseURL, path: Endpoint.ClinicInfo.professions)
     }
 }
 
@@ -36,15 +38,16 @@ extension Resources {
 
 extension Resources {
     public struct ServiceCategoriesResource {
+        let url: URL
         let path: String
 
         public var get: Request<DataResponse<[ServiceCategoryDTO]>> {
-            Request(path: path, query: nil)
+            Request(url: url, path: path, query: nil)
         }
     }
 
     public static func serviceCategories() -> ServiceCategoriesResource {
-        ServiceCategoriesResource(path: Endpoint.serviceCategories)
+        ServiceCategoriesResource(url: Endpoint.baseURL, path: Endpoint.ClinicInfo.serviceCategories)
     }
 }
 
@@ -52,6 +55,7 @@ extension Resources {
 
 extension Resources {
     public struct ServicesResource {
+        let url: URL
         let path: String
         let serviceIds: [Int]?
         let professionId: Int?
@@ -74,7 +78,7 @@ extension Resources {
                 query.append(("service_id", value))
             }
 
-            return Request(path: path, query: query.isEmpty ? nil : query)
+            return Request(url: url, path: path, query: query.isEmpty ? nil : query)
         }
     }
 
@@ -84,7 +88,8 @@ extension Resources {
         categoryIds: [Int]? = nil
     ) -> ServicesResource {
         ServicesResource(
-            path: Endpoint.services,
+            url: Endpoint.baseURL,
+            path: Endpoint.ClinicInfo.services,
             serviceIds: serviceIds,
             professionId: professionId,
             categoryIds: categoryIds

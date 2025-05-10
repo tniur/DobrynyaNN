@@ -2,7 +2,7 @@ import Foundation
 import DBRNetworking
 import DBRCore
 
-extension NetworkService: ClinicService {
+extension APIService: ClinicService {
     public func fetchClinics() async throws -> [Clinic] {
         do {
             let data = try await client.send(Resources.clinics().get).data

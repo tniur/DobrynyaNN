@@ -3,14 +3,12 @@ import Foundation
 // MARK: - Client
 
 public actor NetworkClient: NetworkClientProtocol {
-    private let baseURL: URL
     private let session: URLSession
     private let decoder = JSONDecoder()
     private let encoder = JSONEncoder()
     private let retryStrategy: RetryStrategy
 
-    public init(baseURL: URL, retryStrategy: RetryStrategy = .init()) {
-        self.baseURL = baseURL
+    public init(retryStrategy: RetryStrategy = .init()) {
         self.retryStrategy = retryStrategy
         self.session = URLSession(configuration: .default)
         decoder.keyDecodingStrategy = .useDefaultKeys
@@ -109,7 +107,7 @@ extension NetworkClient {
 
     private func makeURLRequest<T>(for request: Request<T>) async throws -> URLRequest {
         var components = URLComponents(
-            url: baseURL.appendingPathComponent(request.path),
+            url: (request.url).appendingPathComponent(request.path),
             resolvingAgainstBaseURL: false
         )
 

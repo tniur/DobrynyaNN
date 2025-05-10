@@ -4,6 +4,7 @@ import Foundation
 
 extension Resources {
     public struct DoctorsResource {
+        let url: URL
         let path: String
         let professionId: Int?
         let clinicId: Int?
@@ -31,7 +32,7 @@ extension Resources {
                 query.append(("user_id", value))
             }
 
-            return Request(path: path, query: query.isEmpty ? nil : query)
+            return Request(url: url, path: path, query: query.isEmpty ? nil : query)
         }
     }
 
@@ -42,7 +43,8 @@ extension Resources {
         serviceIds: [Int]?
     ) -> DoctorsResource {
         DoctorsResource(
-            path: Endpoint.users,
+            url: Endpoint.baseURL,
+            path: Endpoint.DoctorInfo.users,
             professionId: professionId,
             clinicId: clinicId,
             userIds: userIds,
@@ -55,6 +57,7 @@ extension Resources {
 
 extension Resources {
     public struct DoctorScheduleResource {
+        let url: URL
         let path: String
         let doctorId: Int
         let clinicId: Int?
@@ -68,11 +71,16 @@ extension Resources {
                 query.append(("clinic_id", String(clinicId)))
             }
 
-            return Request(path: path, query: query.isEmpty ? nil : query)
+            return Request(url: url, path: path, query: query.isEmpty ? nil : query)
         }
     }
 
     public static func schedule(doctorId: Int, clinicId: Int?) -> DoctorScheduleResource {
-        DoctorScheduleResource(path: Endpoint.schedule, doctorId: doctorId, clinicId: clinicId)
+        DoctorScheduleResource(
+            url: Endpoint.baseURL,
+            path: Endpoint.DoctorInfo.schedule,
+            doctorId: doctorId,
+            clinicId: clinicId
+        )
     }
 }
