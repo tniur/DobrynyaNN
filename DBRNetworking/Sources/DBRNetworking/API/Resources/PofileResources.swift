@@ -4,6 +4,7 @@ import Foundation
 
 extension Resources {
     public struct PatientInfoResource {
+        let url: URL
         let path: String
         let key: String
 
@@ -11,12 +12,12 @@ extension Resources {
             var query: [(String, String?)] = []
             query.append(("patient_key", key))
 
-            return Request(path: path, query: query.isEmpty ? nil : query)
+            return Request(url: url, path: path, query: query.isEmpty ? nil : query)
         }
     }
 
     public static func patientInfo(accessTokenKey: String) -> PatientInfoResource {
-        PatientInfoResource(path: Endpoint.patientInfo, key: accessTokenKey)
+        PatientInfoResource(url: Endpoint.baseURL, path: Endpoint.Profile.patientInfo, key: accessTokenKey)
     }
 }
 
@@ -24,6 +25,7 @@ extension Resources {
 
 extension Resources {
     public struct LabResultsResource {
+        let url: URL
         let path: String
         let key: String
 
@@ -31,17 +33,18 @@ extension Resources {
             var query: [(String, String?)] = []
             query.append(("patient_key", key))
 
-            return Request(path: path, query: query.isEmpty ? nil : query)
+            return Request(url: url, path: path, query: query.isEmpty ? nil : query)
         }
     }
 
     public static func labResults(accessTokenKey: String) -> LabResultsResource {
-        LabResultsResource(path: Endpoint.labResults, key: accessTokenKey)
+        LabResultsResource(url: Endpoint.baseURL, path: Endpoint.Profile.labResults, key: accessTokenKey)
     }
 }
 
 extension Resources {
     public struct LabResultDetailsResource {
+        let url: URL
         let path: String
         let key: String
         let id: Int
@@ -51,12 +54,17 @@ extension Resources {
             query.append(("patient_key", key))
             query.append(("result_id", String(id)))
 
-            return Request(path: path, query: query.isEmpty ? nil : query)
+            return Request(url: url, path: path, query: query.isEmpty ? nil : query)
         }
     }
 
     public static func labResultDetails(accessTokenKey: String, id: Int) -> LabResultDetailsResource {
-        LabResultDetailsResource(path: Endpoint.labResultDetails, key: accessTokenKey, id: id)
+        LabResultDetailsResource(
+            url: Endpoint.baseURL,
+            path: Endpoint.Profile.labResultDetails,
+            key: accessTokenKey,
+            id: id
+        )
     }
 }
 
@@ -64,6 +72,7 @@ extension Resources {
 
 extension Resources {
     public struct DocumentsResource {
+        let url: URL
         let path: String
         let key: String
 
@@ -71,17 +80,18 @@ extension Resources {
             var query: [(String, String?)] = []
             query.append(("patient_key", key))
 
-            return Request(path: path, query: query.isEmpty ? nil : query)
+            return Request(url: url, path: path, query: query.isEmpty ? nil : query)
         }
     }
 
     public static func documents(accessTokenKey: String) -> DocumentsResource {
-        DocumentsResource(path: Endpoint.documents, key: accessTokenKey)
+        DocumentsResource(url: Endpoint.baseURL, path: Endpoint.Profile.documents, key: accessTokenKey)
     }
 }
 
 extension Resources {
     public struct DocumentDetailsResource {
+        let url: URL
         let path: String
         let key: String
         let id: Int
@@ -91,12 +101,17 @@ extension Resources {
             query.append(("patient_key", key))
             query.append(("document_id", String(id)))
 
-            return Request(path: path, query: query.isEmpty ? nil : query)
+            return Request(url: url, path: path, query: query.isEmpty ? nil : query)
         }
     }
 
     public static func documentDetails(accessTokenKey: String, id: Int) -> DocumentDetailsResource {
-        DocumentDetailsResource(path: Endpoint.documentDetails, key: accessTokenKey, id: id)
+        DocumentDetailsResource(
+            url: Endpoint.baseURL,
+            path: Endpoint.Profile.documentDetails,
+            key: accessTokenKey,
+            id: id
+        )
     }
 }
 
@@ -104,6 +119,7 @@ extension Resources {
 
 extension Resources {
     public struct ConsultationsResource {
+        let url: URL
         let path: String
         let key: String
 
@@ -111,17 +127,18 @@ extension Resources {
             var query: [(String, String?)] = []
             query.append(("patient_key", key))
 
-            return Request(path: path, query: query.isEmpty ? nil : query)
+            return Request(url: url, path: path, query: query.isEmpty ? nil : query)
         }
     }
 
     public static func consultations(accessTokenKey: String) -> ConsultationsResource {
-        ConsultationsResource(path: Endpoint.consultations, key: accessTokenKey)
+        ConsultationsResource(url: Endpoint.baseURL, path: Endpoint.Profile.consultations, key: accessTokenKey)
     }
 }
 
 extension Resources {
     public struct ConsultationDetailsResource {
+        let url: URL
         let path: String
         let key: String
         let id: Int
@@ -131,12 +148,17 @@ extension Resources {
             query.append(("patient_key", key))
             query.append(("consultation_id", String(id)))
 
-            return Request(path: path, query: query.isEmpty ? nil : query)
+            return Request(url: url, path: path, query: query.isEmpty ? nil : query)
         }
     }
 
     public static func consultationDetails(accessTokenKey: String, id: Int) -> ConsultationDetailsResource {
-        ConsultationDetailsResource(path: Endpoint.consultationDetails, key: accessTokenKey, id: id)
+        ConsultationDetailsResource(
+            url: Endpoint.baseURL,
+            path: Endpoint.Profile.consultationDetails,
+            key: accessTokenKey,
+            id: id
+        )
     }
 }
 
@@ -144,15 +166,16 @@ extension Resources {
 
 extension Resources {
     public struct UploadAvatarResource {
-        let path: String = Endpoint.uploadPatientAvatar
+        let url: URL
+        let path: String
         let body: AvatarDTO
 
         public var post: Request<DataResponse<UploadProfileAvatarDTO>> {
-            Request(method: .post, path: path, body: body)
+            Request(method: .post, url: url, path: path, body: body)
         }
     }
 
     public static func uploadAvatar(body: AvatarDTO) -> UploadAvatarResource {
-        UploadAvatarResource(body: body)
+        UploadAvatarResource(url: Endpoint.baseURL, path: Endpoint.Profile.uploadPatientAvatar, body: body)
     }
 }

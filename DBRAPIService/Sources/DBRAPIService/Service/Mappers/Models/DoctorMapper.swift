@@ -6,8 +6,8 @@ struct DoctorMapper {
     static func map(_ dto: DoctorDTO) -> Doctor {
         Doctor(
             id: dto.id,
-            avatarUrl: dto.avatarPath.map { "\(Constant.baseURL)\($0)" },
-            avatarSmallUrl: dto.avatarSmallPath.map { "\(Constant.baseURL)\($0)" },
+            avatarUrl: dto.avatarPath.map { "\(Endpoint.baseURL)\($0)" },
+            avatarSmallUrl: dto.avatarSmallPath.map { "\(Endpoint.baseURL)\($0)" },
             name: dto.name,
             birthDate: dto.birthDate,
             gender: dto.gender,

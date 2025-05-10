@@ -13,7 +13,7 @@ struct PatientInfoMapper {
             gender: dto.gender,
             mobile: dto.mobile,
             email: dto.email,
-            avatarUrl: dto.avatarPath.map { "\(Constant.baseURL)\($0)" }
+            avatarUrl: dto.avatarPath.map { "\(Endpoint.baseURL)\($0)" }
         )
     }
 }

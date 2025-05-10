@@ -2,6 +2,7 @@ import Foundation
 
 public struct Request<Response>: @unchecked Sendable {
     public let method: HTTPMethod
+    public let url: URL
     public let path: String
     public let query: [(String, String?)]?
     public let body: Encodable?
@@ -9,12 +10,14 @@ public struct Request<Response>: @unchecked Sendable {
 
     public init(
         method: HTTPMethod = .get,
+        url: URL,
         path: String,
         query: [(String, String?)]? = nil,
         body: Encodable? = nil,
         headers: [String: String]? = nil
     ) {
         self.method = method
+        self.url = url
         self.path = path
         self.query = query
         self.body = body

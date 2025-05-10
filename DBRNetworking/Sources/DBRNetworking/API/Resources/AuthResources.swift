@@ -4,17 +4,18 @@ import Foundation
 
 extension Resources {
     public struct RequestCodeResource {
+        let url: URL
         let path: String
         let login: String
         let password: String
 
         public var post: Request<DataResponse<RequestCodeDTO>> {
-            Request(method: .post, path: path, body: LoginDTO(login: login, password: password))
+            Request(method: .post, url: url, path: path, body: LoginDTO(login: login, password: password))
         }
     }
 
     public static func requestCode(login: String, password: String) -> RequestCodeResource {
-        RequestCodeResource(path: Endpoint.authRequestCode, login: login, password: password)
+        RequestCodeResource(url: Endpoint.baseURL, path: Endpoint.Auth.requestCode, login: login, password: password)
     }
 }
 
@@ -22,16 +23,17 @@ extension Resources {
 
 extension Resources {
     public struct ConfirmCodeResource {
+        let url: URL
         let path: String
         let login: String
         let code: String
 
         public var post: Request<DataResponse<ConfirmCodeDTO>> {
-            Request(method: .post, path: path, body: ConfirmDTO(login: login, code: code))
+            Request(method: .post, url: url, path: path, body: ConfirmDTO(login: login, code: code))
         }
     }
 
     public static func confirmCode(login: String, code: String) -> ConfirmCodeResource {
-        ConfirmCodeResource(path: Endpoint.authConfirmCode, login: login, code: code)
+        ConfirmCodeResource(url: Endpoint.baseURL, path: Endpoint.Auth.confirmCode, login: login, code: code)
     }
 }
