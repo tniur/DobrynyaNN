@@ -17,6 +17,7 @@ public enum DBRFont {
 
     public static let M20 = Font.custom("Mulish-Medium", size: 20)
 
+    public static let R20 = Font.custom("Mulish-Regular", size: 20)
     public static let R16 = Font.custom("Mulish-Regular", size: 16)
     public static let R14 = Font.custom("Mulish-Regular", size: 14)
     public static let R12 = Font.custom("Mulish-Regular", size: 12)
