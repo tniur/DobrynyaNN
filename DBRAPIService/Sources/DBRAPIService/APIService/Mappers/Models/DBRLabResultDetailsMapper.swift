@@ -7,6 +7,9 @@ struct DBRLabResultDetailsMapper {
         DBRLabResultDetails(
             dateCreated: dto.dateCreated,
             clinicId: dto.clinicId,
+            serviceId: dto.serviceId,
+            serviceTitle: dto.serviceName,
+            status: DBRLabResultStatus(fromRawValue: dto.status),
             pdfFiles: dto.pdfFiles
         )
     }

@@ -11,7 +11,11 @@ struct DBRAppointmentMapper {
             timeStart: dto.timeStart,
             timeEnd: dto.timeEnd,
             clinicId: dto.clinicId,
+            clinicAddress: dto.clinicAddress,
             doctorId: dto.doctorId,
+            doctorName: dto.doctorName,
+            serviceId: dto.serviceId,
+            serviceTitle: dto.serviceName,
             createdDate: dto.created,
             status: DBRAppointmentStatus(fromRawValue: dto.status)
         )

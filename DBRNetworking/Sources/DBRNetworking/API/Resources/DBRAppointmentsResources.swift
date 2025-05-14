@@ -21,6 +21,29 @@ extension DBRResources {
     }
 }
 
+// MARK: - Appointment
+
+extension DBRResources {
+    public struct AppointmentResource {
+        let url: URL
+        let path: String
+        let key: String
+        let id: Int
+
+        public var get: DBRRequest<DBRDataResponse<[DBRAppointmentDTO]>> {
+            var query: [(String, String?)] = []
+            query.append(("patient_key", key))
+            query.append(("appointment_id", String(id)))
+
+            return DBRRequest(url: url, path: path, query: query.isEmpty ? nil : query)
+        }
+    }
+
+    public static func appointment(id: Int, accessTokenKey: String) -> AppointmentResource {
+        AppointmentResource(url: DBREndpoint.baseURL, path: DBREndpoint.Appointments.all, key: accessTokenKey, id: id)
+    }
+}
+
 // MARK: - Cancel Appointment
 
 extension DBRResources {

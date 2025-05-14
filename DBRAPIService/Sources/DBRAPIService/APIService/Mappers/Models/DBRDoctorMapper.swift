@@ -13,7 +13,8 @@ struct DBRDoctorMapper {
             gender: dto.gender,
             phone: dto.phone,
             email: dto.email,
-            professionIds: dto.profession,
+            professionIds: dto.professionIds,
+            professionsTitle: dto.professionsTitle,
             clinicIds: dto.clinic,
             servicesIds: dto.services
         )
