@@ -8,7 +8,10 @@ struct DBRLabResultMapper {
             id: dto.resultId,
             filesCount: dto.filesCount,
             dateCreated: dto.dateCreated,
-            clinicId: dto.clinicId
+            clinicId: dto.clinicId,
+            serviceId: dto.serviceId,
+            serviceTitle: dto.serviceName,
+            status: DBRLabResultStatus(fromRawValue: dto.status)
         )
     }
 }
