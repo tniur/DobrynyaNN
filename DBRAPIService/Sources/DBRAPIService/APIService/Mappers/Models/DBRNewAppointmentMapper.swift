@@ -8,6 +8,7 @@ struct DBRNewAppointmentMapper {
             patientKey: patientKey,
             doctorId: domain.doctorId,
             clinicId: domain.clinicId,
+            serviceId: domain.serviceId,
             timeStart: domain.timeStart,
             timeEnd: domain.timeEnd
         )
