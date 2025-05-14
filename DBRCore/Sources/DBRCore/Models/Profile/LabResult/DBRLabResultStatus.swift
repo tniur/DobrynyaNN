@@ -18,8 +18,6 @@ public enum DBRLabResultStatus: String, Sendable {
         default:
             self = .unknown
         }
-
-        self = DBRLabResultStatus(rawValue: rawValue) ?? .unknown
     }
 
     public var localizedTitle: String {
