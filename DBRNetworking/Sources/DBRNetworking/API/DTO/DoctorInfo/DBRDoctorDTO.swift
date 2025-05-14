@@ -9,14 +9,17 @@ public struct DBRDoctorDTO: Codable, Sendable {
     public let gender: String
     public let phone: String
     public let email: String
-    public let profession: [Int]
+    public let professionIds: [Int]
+    public let professionsTitle: String
     public let clinic: [Int]
     public let services: [Int]
 
     private enum CodingKeys: String, CodingKey {
-        case id, name, gender, phone, email, profession, clinic, services
+        case id, name, gender, phone, email, clinic, services
         case avatarPath = "avatar_path"
         case avatarSmallPath = "avatar_small_path"
         case birthDate = "birth_date"
+        case professionIds = "profession_ids"
+        case professionsTitle = "professions_title"
     }
 }
