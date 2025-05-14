@@ -10,6 +10,7 @@ public struct DBRDoctor: Sendable, Identifiable {
     public let phone: String
     public let email: String
     public let professionIds: [Int]
+    public let professionsTitle: String
     public let clinicIds: [Int]
     public let servicesIds: [Int]
 
@@ -23,6 +24,7 @@ public struct DBRDoctor: Sendable, Identifiable {
         phone: String,
         email: String,
         professionIds: [Int],
+        professionsTitle: String,
         clinicIds: [Int],
         servicesIds: [Int]
     ) {
@@ -35,6 +37,7 @@ public struct DBRDoctor: Sendable, Identifiable {
         self.phone = phone
         self.email = email
         self.professionIds = professionIds
+        self.professionsTitle = professionsTitle
         self.clinicIds = clinicIds
         self.servicesIds = servicesIds
     }

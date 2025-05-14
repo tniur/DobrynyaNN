@@ -6,6 +6,7 @@ public struct DBRService: Sendable, Identifiable {
     public let price: Int
     public let duration: Int
     public let professionId: Int
+    public let professionTitle: String
     public let categoryIds: [Int]
     public let shortDescription: String
     public let fullDescription: String
@@ -16,6 +17,7 @@ public struct DBRService: Sendable, Identifiable {
         price: Int,
         duration: Int,
         professionId: Int,
+        professionTitle: String,
         categoryIds: [Int],
         shortDescription: String,
         fullDescription: String
@@ -25,6 +27,7 @@ public struct DBRService: Sendable, Identifiable {
         self.price = price
         self.duration = duration
         self.professionId = professionId
+        self.professionTitle = professionTitle
         self.categoryIds = categoryIds
         self.shortDescription = shortDescription
         self.fullDescription = fullDescription
