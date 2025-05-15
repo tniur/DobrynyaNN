@@ -16,12 +16,11 @@ final class DBRAvailableServicesViewModel: ObservableObject {
     
     @Injected(\.clinicService) private var clinicService: DBRClinicService
     
-    private let appointmentBuilder: AppointmentBuilder
-    
     @Published var services: [DBRService] = []
+    @Published var selectedServiceId: Int?
     
-    @Published var selectedService: DBRService?
-    
+    private let appointmentBuilder: AppointmentBuilder
+
     private var screenNavigator: ScreenNavigator
     private let screens: DBRAvailableServicesScreens
         
@@ -65,6 +64,11 @@ final class DBRAvailableServicesViewModel: ObservableObject {
 
     @MainActor
     func showClinicAdresses() {
-        screenNavigator.navigate(to: screens.showClinicAdressesRoute())
+        screenNavigator.navigate(to: screens.showClinicAdressesRoute(builder: appointmentBuilder))
+    }
+    
+    func serviceDidSelected(with serviceId: Int) {
+        selectedServiceId = serviceId
+        appointmentBuilder.setService(id: serviceId)
     }
 }

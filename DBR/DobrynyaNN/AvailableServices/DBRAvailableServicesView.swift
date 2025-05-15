@@ -19,6 +19,7 @@ struct DBRAvailableServicesView: View {
 
     var body: some View {
         contentView
+            .onAppear(perform: viewModel.fetchData)
     }
     
     // MARK: - Subviews
@@ -36,11 +37,9 @@ struct DBRAvailableServicesView: View {
                         style: .init(.primary),
                         action: viewModel.showClinicAdresses
                     )
+                    .disabled(viewModel.selectedServiceId == nil)
                     .padding()
             }
-        }
-        .onAppear {
-            viewModel.fetchData()
         }
     }
     
@@ -55,10 +54,10 @@ struct DBRAvailableServicesView: View {
                     ForEach(viewModel.services) { service in
                         DBRAvailableServicesCard(
                             service: service,
-                            selectedService: $viewModel.selectedService
+                            selectedServiceId: $viewModel.selectedServiceId
                         )
                         .onTapGesture {
-                            viewModel.selectedService = service
+                            viewModel.serviceDidSelected(with: service.id)
                         }
                     }
                 }

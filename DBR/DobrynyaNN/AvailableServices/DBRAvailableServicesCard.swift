@@ -13,7 +13,7 @@ struct DBRAvailableServicesCard: View {
     
     // MARK: - Properties
 
-    @Binding private var selectedService: DBRService?
+    @Binding private var selectedServiceId: Int?
     
     private var service: DBRService
     
@@ -26,7 +26,7 @@ struct DBRAvailableServicesCard: View {
             .overlay(
                 RoundedRectangle(cornerRadius: 20.0)
                     .stroke(
-                        selectedService?.id == service.id ? DBRColor.blue6.swiftUIColor : DBRColor.base3.swiftUIColor,
+                        selectedServiceId == service.id ? DBRColor.blue6.swiftUIColor : DBRColor.base3.swiftUIColor,
                         lineWidth: 1.0
                     )
             )
@@ -116,8 +116,8 @@ struct DBRAvailableServicesCard: View {
     
     // MARK: - Initializer
 
-    init(service: DBRService, selectedService: Binding<DBRService?>) {
+    init(service: DBRService, selectedServiceId: Binding<Int?>) {
         self.service = service
-        self._selectedService = selectedService
+        self._selectedServiceId = selectedServiceId
     }
 }
