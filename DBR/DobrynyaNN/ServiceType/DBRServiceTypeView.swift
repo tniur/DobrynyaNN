@@ -19,6 +19,7 @@ struct DBRServiceTypeView: View {
 
     var body: some View {
         contentView
+            .onAppear(perform: viewModel.fetchData)
     }
     
     // MARK: - Subviews
@@ -36,11 +37,9 @@ struct DBRServiceTypeView: View {
                     style: .init(.primary),
                     action: viewModel.showAvailableServices
                 )
+                .disabled(viewModel.selectedTypeId == nil)
                 .padding()
             }
-        }
-        .onAppear {
-            viewModel.fetchData()
         }
     }
     

@@ -16,13 +16,12 @@ final class DBRServiceTypeViewModel: ObservableObject {
     // MARK: - Properties
     
     @Injected(\.clinicService) private var clinicService: DBRClinicService
-    
-    private let appointmentBuilder: AppointmentBuilder
-    
+        
     @Published var serviceTypes: [DBRServiceCategory] = []
-    
     @Published var selectedTypeId: Int?
     
+    private let appointmentBuilder: AppointmentBuilder
+
     private var screenNavigator: ScreenNavigator
     private let screens: DBRServiceTypeScreens
         
