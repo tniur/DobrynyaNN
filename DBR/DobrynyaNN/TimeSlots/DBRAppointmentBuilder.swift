@@ -14,6 +14,7 @@ final class DBRAppointmentBuilder {
     var isReadyForSubmission: Bool {
         doctorId != nil &&
         clinicId != nil &&
+        serviceId != nil &&
         dateInterval != nil
     }
 
@@ -21,20 +22,22 @@ final class DBRAppointmentBuilder {
     private var clinicId: Int?
     private var categoryId: Int?
     private var serviceId: Int?
-    private var dateInterval: SlotDateInterval?
+    private var dateInterval: DBRSlotDateInterval?
 
     // MARK: - Methods
     
-    func build() -> NewAppointment? {
+    func build() -> DBRNewAppointment? {
         guard let doctorId = doctorId,
               let clinicId = clinicId,
+              let serviceId = serviceId,
               let dateInterval = dateInterval else {
             return nil
         }
 
-        return NewAppointment(
+        return DBRNewAppointment(
             doctorId: doctorId,
             clinicId: clinicId,
+            serviceId: serviceId,
             timeStart: dateInterval.start,
             timeEnd: dateInterval.end
         )
@@ -56,7 +59,7 @@ final class DBRAppointmentBuilder {
         self.serviceId = id
     }
 
-    func setDateInterval(interval: SlotDateInterval) {
+    func setDateInterval(interval: DBRSlotDateInterval) {
         self.dateInterval = interval
     }
 
@@ -76,7 +79,7 @@ final class DBRAppointmentBuilder {
         serviceId
     }
     
-    func getDateInterval() -> SlotDateInterval? {
+    func getDateInterval() -> DBRSlotDateInterval? {
         dateInterval
     }
 }
