@@ -7,33 +7,72 @@
 
 import Nivelir
 import Foundation
+import Factory
+import DBRCore
 
 final class DBRSpecialistsViewModel: ObservableObject {
     
     // MARK: - Properties
     
-    @Published var specialists: [DBRSpecialist] = [
-        .init(id: "1", name: "Петрова Анна Сергеевна", speciality: "Невролог", photoURL: ""),
-        .init(id: "2", name: "Петрова Анна Сергеевна", speciality: "Невролог", photoURL: ""),
-        .init(id: "3", name: "Петрова Анна Сергеевна", speciality: "Невролог", photoURL: "")
-    ]
+    @Injected(\.doctorService) private var doctorService: DBRDoctorService
     
-    @Published var selectedSpecialist: DBRSpecialist? 
-    
+    @Published var specialists: [DBRDoctor] = []
+    @Published var selectedSpecialist: DBRDoctor?
+
+    private let appointmentBuilder: AppointmentBuilder
+
     private var screenNavigator: ScreenNavigator
     private let screens: DBRSpecialistsScreens
         
     // MARK: - Initializer
 
-    init(screenNavigator: ScreenNavigator, screens: DBRSpecialistsScreens) {
+    init(
+        screenNavigator: ScreenNavigator,
+        screens: DBRSpecialistsScreens,
+        appointmentBuilder: AppointmentBuilder
+    ) {
         self.screenNavigator = screenNavigator
         self.screens = screens
+        self.appointmentBuilder = appointmentBuilder
     }
     
     // MARK: - Methods
 
     @MainActor
+    func fetchData() {
+        Task {
+            guard
+                let clinicId = appointmentBuilder.getClinicId(),
+                let serviceId = appointmentBuilder.getServiceId()
+            else { return }
+            do {
+                specialists = try await doctorService.fetchDoctors(
+                    clinicId: clinicId,
+                    serviceId: serviceId
+                )
+            } catch let error as DBRError {
+                switch error {
+                case .unauthorized:
+                    print(error.localizedDescription)
+                    // навигация до экранок авторизации
+                default:
+                    // потеря сети, выключенная связь и другие DomainError
+                    print(error.localizedDescription)
+                }
+            } catch {
+                // необрабатываемые ошибки
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    @MainActor
     func showTimeSlots() {
         screenNavigator.navigate(to: screens.showTimeSlotsRoute())
+    }
+    
+    func specialistDidSelected(with specialist: DBRDoctor) {
+        selectedSpecialist = specialist
+        appointmentBuilder.setDoctor(id: specialist.id)
     }
 }

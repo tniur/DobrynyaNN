@@ -55,7 +55,7 @@ struct DBRSpecialistsView: View {
                                     .font(DBRFont.B16)
                                     .foregroundStyle(DBRColor.blue6.swiftUIColor)
                                 
-                                Text(specialist.speciality)
+                                Text(specialist.professionsTitle)
                                     .font(DBRFont.R12)
                                     .foregroundStyle(DBRColor.base5.swiftUIColor)
                             }
@@ -75,7 +75,7 @@ struct DBRSpecialistsView: View {
                                 )
                         )
                         .onTapGesture {
-                            viewModel.selectedSpecialist = specialist
+                            viewModel.specialistDidSelected(with: specialist)
                         }
                     }
                 }

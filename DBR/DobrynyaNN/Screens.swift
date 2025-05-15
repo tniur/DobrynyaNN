@@ -115,7 +115,7 @@ extension Screens: DBRServiceTypeScreens {
             .resolve()
     }
     
-    func availableServicesScreen(builder: AppointmentBuilder) -> AnyModalScreen {
+    private func availableServicesScreen(builder: AppointmentBuilder) -> AnyModalScreen {
         DBRAvailableServicesScreen(
             builder: builder,
             screens: self
@@ -125,25 +125,39 @@ extension Screens: DBRServiceTypeScreens {
 
 extension Screens: DBRAvailableServicesScreens {
     
-    func showClinicAdressesRoute() -> ScreenWindowRoute {
-        let screen = DBRClinicAdressesScreen(screens: self)
+    func showClinicAdressesRoute(builder: AppointmentBuilder) -> ScreenWindowRoute {
+        let screen = clinicAdressesScreen(builder: builder)
         
         return ScreenWindowRoute()
             .top(.stack)
             .push(screen)
             .resolve()
     }
+    
+    private func clinicAdressesScreen(builder: AppointmentBuilder) -> AnyModalScreen {
+        DBRClinicAdressesScreen(
+            builder: builder,
+            screens: self
+        ).eraseToAnyScreen()
+    }
 }
 
 extension Screens: DBRClinicAdressesScreens {
     
-    func showSpecialistsRoute() -> ScreenWindowRoute {
-        let screen = DBRSpecialistsScreen(screens: self)
+    func showSpecialistsRoute(builder: AppointmentBuilder) -> ScreenWindowRoute {
+        let screen = specialistsScreen(builder: builder)
         
         return ScreenWindowRoute()
             .top(.stack)
             .push(screen)
             .resolve()
+    }
+    
+    private func specialistsScreen(builder: AppointmentBuilder) -> AnyModalScreen {
+        DBRSpecialistsScreen(
+            builder: builder,
+            screens: self
+        ).eraseToAnyScreen()
     }
 }
 

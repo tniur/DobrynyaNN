@@ -16,14 +16,16 @@ public protocol DBRSpecialistsScreens {
 }
 
 public struct DBRSpecialistsScreen: Screen {
+    let builder: AppointmentBuilder
     let screens: DBRSpecialistsScreens
 
-    public init(screens: DBRSpecialistsScreens) {
+    public init(builder: AppointmentBuilder, screens: DBRSpecialistsScreens) {
         self.screens = screens
+        self.builder = builder
     }
 
     public func build(navigator: ScreenNavigator) -> UIViewController {
-        let viewModel = DBRSpecialistsViewModel(screenNavigator: navigator, screens: screens)
+        let viewModel = DBRSpecialistsViewModel(screenNavigator: navigator, screens: screens, appointmentBuilder: builder)
         let view = DBRSpecialistsView(viewModel: viewModel)
         return UIHostingController(rootView: view)
     }
