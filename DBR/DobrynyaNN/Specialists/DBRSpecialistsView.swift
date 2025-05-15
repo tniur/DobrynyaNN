@@ -19,6 +19,7 @@ struct DBRSpecialistsView: View {
 
     var body: some View {
         contentView
+            .onAppear(perform: viewModel.fetchData)
     }
     
     // MARK: - Subviews
@@ -32,6 +33,7 @@ struct DBRSpecialistsView: View {
                 style: .init(.primary),
                 action: viewModel.showTimeSlots
             )
+            .disabled(viewModel.selectedSpecialistId == nil)
             .padding()
         }
     }
@@ -70,12 +72,12 @@ struct DBRSpecialistsView: View {
                         .overlay(
                             RoundedRectangle(cornerRadius: 20.0)
                                 .stroke(
-                                    viewModel.selectedSpecialist?.id == specialist.id ? DBRColor.blue6.swiftUIColor : DBRColor.base3.swiftUIColor,
+                                    viewModel.selectedSpecialistId == specialist.id ? DBRColor.blue6.swiftUIColor : DBRColor.base3.swiftUIColor,
                                     lineWidth: 1.0
                                 )
                         )
                         .onTapGesture {
-                            viewModel.specialistDidSelected(with: specialist)
+                            viewModel.specialistDidSelected(with: specialist.id)
                         }
                     }
                 }

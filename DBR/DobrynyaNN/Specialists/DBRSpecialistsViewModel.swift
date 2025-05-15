@@ -17,7 +17,7 @@ final class DBRSpecialistsViewModel: ObservableObject {
     @Injected(\.doctorService) private var doctorService: DBRDoctorService
     
     @Published var specialists: [DBRDoctor] = []
-    @Published var selectedSpecialist: DBRDoctor?
+    @Published var selectedSpecialistId: Int?
 
     private let appointmentBuilder: AppointmentBuilder
 
@@ -71,8 +71,8 @@ final class DBRSpecialistsViewModel: ObservableObject {
         screenNavigator.navigate(to: screens.showTimeSlotsRoute())
     }
     
-    func specialistDidSelected(with specialist: DBRDoctor) {
-        selectedSpecialist = specialist
-        appointmentBuilder.setDoctor(id: specialist.id)
+    func specialistDidSelected(with specialistId: Int) {
+        selectedSpecialistId = specialistId
+        appointmentBuilder.setDoctor(id: specialistId)
     }
 }
