@@ -11,18 +11,13 @@ import Nivelir
 
 @MainActor
 public protocol DBRAvailableServicesScreens {
-    func showClinicAdressesRoute() -> ScreenWindowRoute
+    func showClinicAdressesRoute(builder: AppointmentBuilder) -> ScreenWindowRoute
 }
 
 public struct DBRAvailableServicesScreen: Screen {
-    
     let builder: AppointmentBuilder
     let screens: DBRAvailableServicesScreens
 
-    public var traits: AppointmentBuilder {
-        builder
-    }
-    
     public init(builder: AppointmentBuilder, screens: DBRAvailableServicesScreens) {
         self.builder = builder
         self.screens = screens

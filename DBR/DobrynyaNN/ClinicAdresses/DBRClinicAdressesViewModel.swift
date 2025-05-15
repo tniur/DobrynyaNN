@@ -7,32 +7,65 @@
 
 import Nivelir
 import Foundation
+import Factory
+import DBRCore
 
 final class DBRClinicAdressesViewModel: ObservableObject {
     
     // MARK: - Properties
     
-    @Published var adresses: [String] = [
-        "«Добрыня НН», ул. Пушкина, 10",
-        "«Добрыня НН», ул. Пушкина, 1"
-    ]
+    @Injected(\.clinicService) private var clinicService: DBRClinicService
     
-    @Published var selectedAdress: String = ""
+    @Published var clinics: [DBRClinic] = []
+    @Published var selectedClinicId: Int?
+    
+    private let appointmentBuilder: AppointmentBuilder
     
     private var screenNavigator: ScreenNavigator
     private let screens: DBRClinicAdressesScreens
-        
+    
     // MARK: - Initializer
 
-    init(screenNavigator: ScreenNavigator, screens: DBRClinicAdressesScreens) {
+    init(
+        screenNavigator: ScreenNavigator,
+        screens: DBRClinicAdressesScreens,
+        appointmentBuilder: AppointmentBuilder
+    ) {
         self.screenNavigator = screenNavigator
         self.screens = screens
+        self.appointmentBuilder = appointmentBuilder
     }
     
     // MARK: - Methods
+    
+    @MainActor
+    func fetchData() {
+        Task {
+            do {
+                clinics = try await clinicService.fetchClinics()
+            } catch let error as DBRError {
+                switch error {
+                case .unauthorized:
+                    print(error.localizedDescription)
+                    // навигация до экранок авторизации
+                default:
+                    // потеря сети, выключенная связь и другие DomainError
+                    print(error.localizedDescription)
+                }
+            } catch {
+                // необрабатываемые ошибки
+                print(error.localizedDescription)
+            }
+        }
+    }
 
     @MainActor
     func showSpecialists() {
-        screenNavigator.navigate(to: screens.showSpecialistsRoute())
+        screenNavigator.navigate(to: screens.showSpecialistsRoute(builder: appointmentBuilder))
+    }
+    
+    func clinicDidSelected(with clinicId: Int) {
+        selectedClinicId = clinicId
+        appointmentBuilder.setClinic(id: clinicId)
     }
 }

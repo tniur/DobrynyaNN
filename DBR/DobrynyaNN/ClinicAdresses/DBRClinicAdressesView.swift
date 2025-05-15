@@ -18,6 +18,7 @@ struct DBRClinicAdressesView: View {
 
     var body: some View {
         contentView
+            .onAppear(perform: viewModel.fetchData)
     }
     
     // MARK: - Subviews
@@ -31,6 +32,7 @@ struct DBRClinicAdressesView: View {
                 style: .init(.primary),
                 action: viewModel.showSpecialists
             )
+            .disabled(viewModel.selectedClinicId == nil)
             .padding()
         }
     }
@@ -43,8 +45,8 @@ struct DBRClinicAdressesView: View {
                     .foregroundStyle(DBRColor.blue6.swiftUIColor)
                 
                 LazyVStack(spacing: 16.0) {
-                    ForEach(viewModel.adresses, id: \.self) { adress in
-                        Text(adress)
+                    ForEach(viewModel.clinics) { clinic in
+                        Text("\(clinic.title), \(clinic.realAddress)")
                             .font(DBRFont.R14)
                             .foregroundStyle(DBRColor.base10.swiftUIColor)
                             .padding()
@@ -57,12 +59,12 @@ struct DBRClinicAdressesView: View {
                             .overlay(
                                 Capsule()
                                     .stroke(
-                                        viewModel.selectedAdress == adress ? DBRColor.blue6.swiftUIColor : DBRColor.base3.swiftUIColor,
+                                        viewModel.selectedClinicId == clinic.id ? DBRColor.blue6.swiftUIColor : DBRColor.base3.swiftUIColor,
                                         lineWidth: 1.0
                                     )
                             )
                             .onTapGesture {
-                                viewModel.selectedAdress = adress
+                                viewModel.clinicDidSelected(with: clinic.id)
                             }
                     }
                 }
