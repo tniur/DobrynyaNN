@@ -7,14 +7,15 @@
 
 import SwiftUI
 import DBRUIComponents
+import DBRCore
 
 struct DBRAvailableServicesCard: View {
     
     // MARK: - Properties
 
-    @Binding private var selectedService: DBRAvailableService?
+    @Binding private var selectedService: DBRService?
     
-    private var service: DBRAvailableService
+    private var service: DBRService
     
     // MARK: - Body
 
@@ -41,7 +42,7 @@ struct DBRAvailableServicesCard: View {
                     .foregroundStyle(DBRColor.blue6.swiftUIColor)
                     .multilineTextAlignment(.leading)
                 
-                Text(service.description)
+                Text(service.shortDescription)
                     .font(DBRFont.R14)
                     .foregroundStyle(DBRColor.base7.swiftUIColor)
                     .multilineTextAlignment(.leading)
@@ -70,7 +71,7 @@ struct DBRAvailableServicesCard: View {
                     .font(DBRFont.I12)
                     .foregroundStyle(DBRColor.base5.swiftUIColor)
                 
-                Text(service.price)
+                Text(String(service.price))
                     .font(DBRFont.B14)
                     .foregroundStyle(DBRColor.blue6.swiftUIColor)
             }
@@ -88,7 +89,7 @@ struct DBRAvailableServicesCard: View {
                     .font(DBRFont.I12)
                     .foregroundStyle(DBRColor.base5.swiftUIColor)
                 
-                Text(service.duration)
+                Text(String(service.duration))
                     .font(DBRFont.B14)
                     .foregroundStyle(DBRColor.blue6.swiftUIColor)
             }
@@ -106,7 +107,7 @@ struct DBRAvailableServicesCard: View {
                     .font(DBRFont.I12)
                     .foregroundStyle(DBRColor.base5.swiftUIColor)
                 
-                Text(service.speciality)
+                Text(service.professionTitle)
                     .font(DBRFont.B14)
                     .foregroundStyle(DBRColor.blue6.swiftUIColor)
             }
@@ -115,7 +116,7 @@ struct DBRAvailableServicesCard: View {
     
     // MARK: - Initializer
 
-    init(service: DBRAvailableService, selectedService: Binding<DBRAvailableService?>) {
+    init(service: DBRService, selectedService: Binding<DBRService?>) {
         self.service = service
         self._selectedService = selectedService
     }

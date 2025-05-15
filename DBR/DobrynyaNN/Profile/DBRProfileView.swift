@@ -47,6 +47,9 @@ struct DBRProfileView: View {
             }
             .padding(.horizontal)
         }
+        .onAppear {
+            viewModel.verifyCode()
+        }
     }
     
     private var avatarView: some View {

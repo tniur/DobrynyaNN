@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DBRCore
 import DBRUIComponents
 
 struct DBRServiceTypeView: View {
@@ -24,14 +25,22 @@ struct DBRServiceTypeView: View {
 
     private var contentView: some View {
         ZStack(alignment: .bottom) {
-            scrollView
-            
-            DBRButton(
-                "Далее",
-                style: .init(.primary),
-                action: viewModel.showAvailableServices
-            )
-            .padding()
+            if viewModel.serviceTypes.isEmpty {
+                ProgressView("Загрузка...")
+                    .frame(maxWidth: .infinity, alignment: .center)
+            } else {
+                scrollView
+                
+                DBRButton(
+                    "Далее",
+                    style: .init(.primary),
+                    action: viewModel.showAvailableServices
+                )
+                .padding()
+            }
+        }
+        .onAppear {
+            viewModel.fetchData()
         }
     }
     
@@ -43,8 +52,8 @@ struct DBRServiceTypeView: View {
                     .foregroundStyle(DBRColor.blue6.swiftUIColor)
                 
                 LazyVStack(spacing: 16.0) {
-                    ForEach(viewModel.serviceTypes, id: \.self) { type in
-                        Text(type)
+                    ForEach(viewModel.serviceTypes) { type in
+                        Text(type.title)
                             .font(DBRFont.R14)
                             .foregroundStyle(DBRColor.base10.swiftUIColor)
                             .padding()
@@ -57,12 +66,12 @@ struct DBRServiceTypeView: View {
                             .overlay(
                                 Capsule()
                                     .stroke(
-                                        viewModel.selectedType == type ? DBRColor.blue6.swiftUIColor : DBRColor.base3.swiftUIColor,
+                                        viewModel.selectedTypeId == type.id ? DBRColor.blue6.swiftUIColor : DBRColor.base3.swiftUIColor,
                                         lineWidth: 1.0
                                     )
                             )
                             .onTapGesture {
-                                viewModel.typeDidSelected(with: type)
+                                viewModel.typeDidSelected(with: type.id)
                             }
                     }
                 }

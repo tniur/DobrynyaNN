@@ -15,14 +15,21 @@ public protocol DBRAvailableServicesScreens {
 }
 
 public struct DBRAvailableServicesScreen: Screen {
+    
+    let builder: AppointmentBuilder
     let screens: DBRAvailableServicesScreens
 
-    public init(screens: DBRAvailableServicesScreens) {
+    public var traits: AppointmentBuilder {
+        builder
+    }
+    
+    public init(builder: AppointmentBuilder, screens: DBRAvailableServicesScreens) {
+        self.builder = builder
         self.screens = screens
     }
 
     public func build(navigator: ScreenNavigator) -> UIViewController {
-        let viewModel = DBRAvailableServicesViewModel(screenNavigator: navigator, screens: screens)
+        let viewModel = DBRAvailableServicesViewModel(screenNavigator: navigator, screens: screens, appointmentBuilder: builder)
         let view = DBRAvailableServicesView(viewModel: viewModel)
         return UIHostingController(rootView: view)
     }

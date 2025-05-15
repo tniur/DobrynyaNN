@@ -11,7 +11,7 @@ import Nivelir
 
 @MainActor
 public protocol DBRServiceTypeScreens {
-    func showAvailableServicesRoute() -> ScreenWindowRoute
+    func showAvailableServicesRoute(builder: AppointmentBuilder) -> ScreenWindowRoute
 }
 
 public struct DBRServiceTypeScreen: Screen {
@@ -22,7 +22,8 @@ public struct DBRServiceTypeScreen: Screen {
     }
 
     public func build(navigator: ScreenNavigator) -> UIViewController {
-        let viewModel = DBRServiceTypeViewModel(screenNavigator: navigator, screens: screens)
+        let builder = DBRAppointmentBuilder()
+        let viewModel = DBRServiceTypeViewModel(builder: builder, screenNavigator: navigator, screens: screens)
         let view = DBRServiceTypeView(viewModel: viewModel)
         return UIHostingController(rootView: view)
     }

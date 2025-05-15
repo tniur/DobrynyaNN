@@ -7,17 +7,20 @@
 
 import Nivelir
 import Foundation
+import Factory
+import DBRCore
 
 final class DBRAvailableServicesViewModel: ObservableObject {
     
     // MARK: - Properties
     
-    @Published var services: [DBRAvailableService] = [
-        .init(id: "1", title: "Общий анализ крови", description: "Забор венозной крови и проведение общего анализа, результаты через 1 день.", price: "700", duration: "10 мин.", speciality: "Медсестра"),
-        .init(id: "2", title: "Общий анализ крови", description: "Забор венозной крови и проведение общего анализа, результаты через 1 день.", price: "700", duration: "10 мин.", speciality: "Медсестра")
-    ]
+    @Injected(\.clinicService) private var clinicService: DBRClinicService
     
-    @Published var selectedService: DBRAvailableService?
+    private let appointmentBuilder: AppointmentBuilder
+    
+    @Published var services: [DBRService] = []
+    
+    @Published var selectedService: DBRService?
     
     private var screenNavigator: ScreenNavigator
     private let screens: DBRAvailableServicesScreens
@@ -26,13 +29,39 @@ final class DBRAvailableServicesViewModel: ObservableObject {
 
     init(
         screenNavigator: ScreenNavigator,
-        screens: DBRAvailableServicesScreens
+        screens: DBRAvailableServicesScreens,
+        appointmentBuilder: AppointmentBuilder
     ) {
         self.screenNavigator = screenNavigator
         self.screens = screens
+        self.appointmentBuilder = appointmentBuilder
     }
     
     // MARK: - Methods
+    
+    @MainActor
+    func fetchData() {
+        Task {
+            do {
+                guard let id = appointmentBuilder.getCategoryId() else {
+                    return
+                }
+                services = try await clinicService.fetchServices(categoryId: id)
+            } catch let error as DBRError {
+                switch error {
+                case .unauthorized:
+                    print(error.localizedDescription)
+                    // навигация до экранок авторизации
+                default:
+                    // потеря сети, выключенная связь и другие DomainError
+                    print(error.localizedDescription)
+                }
+            } catch {
+                // необрабатываемые ошибки
+                print(error.localizedDescription)
+            }
+        }
+    }
 
     @MainActor
     func showClinicAdresses() {

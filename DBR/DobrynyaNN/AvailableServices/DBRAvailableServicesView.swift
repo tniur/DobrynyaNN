@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DBRCore
 import DBRUIComponents
 
 struct DBRAvailableServicesView: View {
@@ -24,14 +25,22 @@ struct DBRAvailableServicesView: View {
 
     private var contentView: some View {
         ZStack(alignment: .bottom) {
-            scrollView
-            
-            DBRButton(
-                "Далее",
-                style: .init(.primary),
-                action: viewModel.showClinicAdresses
-            )
-            .padding()
+            if viewModel.services.isEmpty {
+                ProgressView("Загрузка...")
+                    .frame(maxWidth: .infinity, alignment: .center)
+            } else {
+                    scrollView
+                    
+                    DBRButton(
+                        "Далее",
+                        style: .init(.primary),
+                        action: viewModel.showClinicAdresses
+                    )
+                    .padding()
+            }
+        }
+        .onAppear {
+            viewModel.fetchData()
         }
     }
     

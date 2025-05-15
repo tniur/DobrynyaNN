@@ -106,13 +106,20 @@ extension Screens: DBRSignUpServiceScreens {
 
 extension Screens: DBRServiceTypeScreens {
     
-    func showAvailableServicesRoute() -> ScreenWindowRoute {
-        let screen = DBRAvailableServicesScreen(screens: self)
+    func showAvailableServicesRoute(builder: AppointmentBuilder) -> ScreenWindowRoute {
+        let screen = availableServicesScreen(builder: builder)
         
         return ScreenWindowRoute()
             .top(.stack)
             .push(screen)
             .resolve()
+    }
+    
+    func availableServicesScreen(builder: AppointmentBuilder) -> AnyModalScreen {
+        DBRAvailableServicesScreen(
+            builder: builder,
+            screens: self
+        ).eraseToAnyScreen()
     }
 }
 
