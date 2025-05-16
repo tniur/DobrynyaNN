@@ -164,13 +164,20 @@ extension Screens: DBRClinicAdressesScreens {
 
 extension Screens: DBRSpecialistsScreens {
     
-    func showTimeSlotsRoute() -> ScreenWindowRoute {
-        let screen = DBRTimeSlotsScreen(screens: self)
+    func showTimeSlotsRoute(builder: AppointmentBuilder) -> ScreenWindowRoute {
+        let screen = timeSlotsScreen(builder: builder)
         
         return ScreenWindowRoute()
             .top(.stack)
             .push(screen)
             .resolve()
+    }
+    
+    private func timeSlotsScreen(builder: AppointmentBuilder) -> AnyModalScreen {
+        DBRTimeSlotsScreen(
+            builder: builder,
+            screens: self
+        ).eraseToAnyScreen()
     }
 }
 

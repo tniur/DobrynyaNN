@@ -23,9 +23,7 @@ struct DBRTimeSlotsView: View {
 
     var body: some View {
         contentView
-            .onAppear {
-                viewModel.loadData()
-            }
+            .onAppear(perform: viewModel.fetchData)
     }
     
     // MARK: - Subviews
@@ -39,6 +37,7 @@ struct DBRTimeSlotsView: View {
                 style: .init(.primary),
                 action: viewModel.showSuccessfulRecord
             )
+            .disabled(viewModel.selectedSlot == nil)
             .padding()
         }
     }
@@ -76,7 +75,7 @@ struct DBRTimeSlotsView: View {
             ForEach(viewModel.slots(for: viewModel.selectedDate)) { slot in
                 Button(
                     action: {
-                        viewModel.setAppoinmentTime(slotDateInterval: slot.slotDateInterval)
+                        viewModel.appoinmentTimeDidSelected(slotDateInterval: slot.slotDateInterval)
                     },
                     label: {
                         Text(slot.timeStart)

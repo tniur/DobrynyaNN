@@ -68,7 +68,7 @@ final class DBRSpecialistsViewModel: ObservableObject {
     
     @MainActor
     func showTimeSlots() {
-        screenNavigator.navigate(to: screens.showTimeSlotsRoute())
+        screenNavigator.navigate(to: screens.showTimeSlotsRoute(builder: appointmentBuilder))
     }
     
     func specialistDidSelected(with specialistId: Int) {

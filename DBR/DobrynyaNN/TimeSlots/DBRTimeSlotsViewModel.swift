@@ -8,38 +8,69 @@
 import Foundation
 import DBRCore
 import Nivelir
+import Factory
+import DBRCore
 
 final class DBRTimeSlotsViewModel: ObservableObject {
     
     // MARK: - Properties
 
-//    let appoinmentBuilder: DBRAppointmentBuilder
-    let doctorService = DoctorService()
-    
+    @Injected(\.doctorService) private var doctorService: DBRDoctorService
+
     @Published var schedule: DBRSchedule?
     @Published var selectedDate = Date()
-    @Published var selectedSlot = DBRSlotDateInterval(start: "", end: "")
+    @Published var selectedSlot: DBRSlotDateInterval?
     
+    private let appointmentBuilder: AppointmentBuilder
+
     private var screenNavigator: ScreenNavigator
     private let screens: DBRTimeSlotsScreens
     
     // MARK: - Initializer
 
-    init(screenNavigator: ScreenNavigator, screens: DBRTimeSlotsScreens) {
+    init(
+        screenNavigator: ScreenNavigator,
+        screens: DBRTimeSlotsScreens,
+        appointmentBuilder: AppointmentBuilder
+    ) {
         self.screenNavigator = screenNavigator
         self.screens = screens
+        self.appointmentBuilder = appointmentBuilder
     }
     
     // MARK: - Methods
 
-    func loadData() {
-        schedule = doctorService.fetchSchedule()
+    @MainActor
+    func fetchData() {
+        Task {
+            guard
+                let clinicId = appointmentBuilder.getClinicId(),
+                let doctorId = appointmentBuilder.getDoctorId()
+            else { return }
+            do {
+                schedule = try await doctorService.fetchDoctorSchedule(
+                    doctorId: doctorId,
+                    clinicId: clinicId
+                )
+            } catch let error as DBRError {
+                switch error {
+                case .unauthorized:
+                    print(error.localizedDescription)
+                    // навигация до экранок авторизации
+                default:
+                    // потеря сети, выключенная связь и другие DomainError
+                    print(error.localizedDescription)
+                }
+            } catch {
+                // необрабатываемые ошибки
+                print(error.localizedDescription)
+            }
+        }
     }
     
-    func setAppoinmentTime(slotDateInterval: DBRSlotDateInterval) {
-        print("Appoinment Builder set: ", slotDateInterval)
+    func appoinmentTimeDidSelected(slotDateInterval: DBRSlotDateInterval) {
         selectedSlot = slotDateInterval
-//        appoinmentBuilder.setDateInterval(interval: slotDateInterval)
+        appointmentBuilder.setDateInterval(interval: slotDateInterval)
     }
 
     func slots(for date: Date) -> [DBRScheduleSlot] {
@@ -49,47 +80,5 @@ final class DBRTimeSlotsViewModel: ObservableObject {
     @MainActor
     func showSuccessfulRecord() {
         screenNavigator.navigate(to: screens.showSuccessfulRecordRoute())
-    }
-}
-
-class DoctorService {
-    func fetchSchedule() -> DBRSchedule {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        
-        let slots: [DBRScheduleSlot] = [
-            DBRScheduleSlot(
-                date: formatter.date(from: "2025-05-05")!,
-                timeStart: "09:00",
-                timeEnd: "09:30",
-                slotDateInterval: DBRSlotDateInterval(start: "2025-05-05 09:00", end: "2025-05-05 09:30")
-            ),
-            DBRScheduleSlot(
-                date: formatter.date(from: "2025-05-05")!,
-                timeStart: "10:00",
-                timeEnd: "10:30",
-                slotDateInterval: DBRSlotDateInterval(start: "2025-05-05 10:00", end: "2025-05-05 10:30")
-            ),
-            DBRScheduleSlot(
-                date: formatter.date(from: "2025-05-05")!,
-                timeStart: "11:00",
-                timeEnd: "11:30",
-                slotDateInterval: DBRSlotDateInterval(start: "2025-05-05 11:00", end: "2025-05-05 11:30")
-            ),
-            DBRScheduleSlot(
-                date: formatter.date(from: "2025-05-06")!,
-                timeStart: "09:00",
-                timeEnd: "09:30",
-                slotDateInterval: DBRSlotDateInterval(start: "2025-05-06 09:00", end: "2025-05-06 09:30")
-            ),
-            DBRScheduleSlot(
-                date: formatter.date(from: "2025-05-06")!,
-                timeStart: "10:00",
-                timeEnd: "10:30",
-                slotDateInterval: DBRSlotDateInterval(start: "2025-05-06 10:00", end: "2025-05-06 10:30")
-            ),
-        ]
-        
-        return DBRSchedule(slots: slots)
     }
 }
