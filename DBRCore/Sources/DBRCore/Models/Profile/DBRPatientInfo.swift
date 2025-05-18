@@ -1,23 +1,23 @@
 import Foundation
 
 public struct DBRPatientInfo: Sendable {
-    public let lastName: String
-    public let firstName: String
-    public let thirdName: String
-    public let birthDate: String
-    public let age: Int
-    public let gender: String
+    public let lastName: String?
+    public let firstName: String?
+    public let thirdName: String?
+    public let birthDate: String?
+    public let age: Int?
+    public let gender: String?
     public let mobile: String
     public let email: String
     public let avatarUrl: String?
 
     public init(
-        lastName: String,
-        firstName: String,
-        thirdName: String,
-        birthDate: String,
-        age: Int,
-        gender: String,
+        lastName: String?,
+        firstName: String?,
+        thirdName: String?,
+        birthDate: String?,
+        age: Int?,
+        gender: String?,
         mobile: String,
         email: String,
         avatarUrl: String?
