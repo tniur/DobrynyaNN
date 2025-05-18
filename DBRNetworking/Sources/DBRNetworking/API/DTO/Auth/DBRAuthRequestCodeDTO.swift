@@ -1,6 +1,6 @@
 import Foundation
 
-public struct DBRRequestCodeDTO: Codable, Sendable {
+public struct DBRAuthRequestCodeResultDTO: Codable, Sendable {
     public let message: String
     public let phoneMasked: String
 

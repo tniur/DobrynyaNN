@@ -1,11 +1,11 @@
 import Foundation
 
-public struct DBRLoginDTO: Encodable, Sendable {
+public struct DBRAuthConfirmDTO: Encodable, Sendable {
     public let login: String
-    public let password: String
+    public let code: String
 
     private enum CodingKeys: String, CodingKey {
         case login = "email"
-        case password
+        case code
     }
 }
