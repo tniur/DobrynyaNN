@@ -1,12 +1,12 @@
 import Foundation
 
 public struct DBRPatientInfoDTO: Codable, Sendable {
-    public let lastName: String
-    public let firstName: String
-    public let thirdName: String
-    public let birthDate: String
-    public let age: Int
-    public let gender: String
+    public let lastName: String?
+    public let firstName: String?
+    public let thirdName: String?
+    public let birthDate: String?
+    public let age: Int?
+    public let gender: String?
     public let mobile: String
     public let email: String
     public let avatarPath: String?

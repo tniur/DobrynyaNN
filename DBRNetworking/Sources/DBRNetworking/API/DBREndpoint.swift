@@ -8,6 +8,17 @@ public enum DBREndpoint {
         static let requestCode = "auth/requestCode"
     }
 
+    enum Register {
+        static let confirmCode = "register/confirmCode"
+        static let requestCode = "register/requestCode"
+    }
+
+    enum Recover {
+        static let confirmCode = "recover/confirmCode"
+        static let requestCode = "recover/requestCode"
+        static let setPassword = "recover/setPassword"
+    }
+
     enum Profile {
         static let patientInfo = "getPatientInfo"
         static let labResults = "getPatientLabResults"
