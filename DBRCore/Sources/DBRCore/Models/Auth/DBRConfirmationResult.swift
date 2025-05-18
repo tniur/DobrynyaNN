@@ -1,6 +1,6 @@
 import Foundation
 
-public struct DBRConfirmationResult: Sendable {
+public struct DBRAuthConfirmationResult: Sendable {
     public let accessToken: String
 
     public init(accessToken: String) {
