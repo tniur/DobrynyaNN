@@ -86,6 +86,23 @@
         }
       }
     },
+    "conflict" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conflict."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Произошел конфликт."
+          }
+        }
+      }
+    },
     "connection" : {
       "extractionState" : "manual",
       "localizations" : {

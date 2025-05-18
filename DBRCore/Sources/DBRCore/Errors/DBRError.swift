@@ -2,6 +2,7 @@ import Foundation
 
 public enum DBRError: Error, Equatable {
     case unauthorized
+    case conflict
     case notFound
     case invalidRequest(String)
     case serviceUnavailable
@@ -18,6 +19,10 @@ extension DBRError: LocalizedError {
             return NSLocalizedString("unauthorized",
                                      bundle: Bundle.module,
                                      comment: "unauthorized access")
+        case .conflict:
+            return NSLocalizedString("conflict",
+                                     bundle: Bundle.module,
+                                     comment: "conflict")
         case .notFound:
             return NSLocalizedString("notFound",
                                      bundle: Bundle.module,
