@@ -1,6 +1,6 @@
 import Foundation
 
-public struct DBRRequestCodeResult: Sendable {
+public struct DBRAuthRequestCodeResult: Sendable {
     public let phoneMasked: String
 
     public init(phoneMasked: String) {

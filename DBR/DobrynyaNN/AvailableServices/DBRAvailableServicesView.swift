@@ -46,6 +46,8 @@ struct DBRAvailableServicesView: View {
     private var scrollView: some View {
         ScrollView {
             LazyVStack(alignment: .center, spacing: 32.0) {
+                DBRSegmentedProgressView(progress: 2, totalSegments: 5)
+
                 Text("Доступные услуги")
                     .font(DBRFont.R20)
                     .foregroundStyle(DBRColor.blue6.swiftUIColor)
@@ -62,7 +64,6 @@ struct DBRAvailableServicesView: View {
                     }
                 }
             }
-            .padding(.top, 32.0)
             .padding(.horizontal)
             .padding(.bottom, 84.0)
         }

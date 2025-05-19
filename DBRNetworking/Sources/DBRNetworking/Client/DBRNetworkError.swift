@@ -12,6 +12,7 @@ public enum DBRNetworkError: Error {
 
     case notFound
     case unauthorized
+    case conflict
     case badRequest(DBRErrorResponse)
     case badRequestCode(Int)
     case errorResponse(DBRErrorResponse)

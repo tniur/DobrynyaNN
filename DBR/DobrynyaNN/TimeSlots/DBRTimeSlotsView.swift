@@ -44,7 +44,9 @@ struct DBRTimeSlotsView: View {
     
     private var scrollView: some View {
         ScrollView {
-            VStack(spacing: 32.0) {
+            LazyVStack(spacing: 32.0) {
+                DBRSegmentedProgressView(progress: 5, totalSegments: 5)
+
                 DatePicker(
                     "",
                     selection: $viewModel.selectedDate,
@@ -66,8 +68,9 @@ struct DBRTimeSlotsView: View {
                 
                 slotsView
             }
+            .padding(.horizontal)
+            .padding(.bottom, 84.0)
         }
-        .padding()
     }
     
     private var slotsView: some View {

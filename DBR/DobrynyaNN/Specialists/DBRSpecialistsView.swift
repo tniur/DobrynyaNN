@@ -41,6 +41,8 @@ struct DBRSpecialistsView: View {
     private var scrollView: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 32.0) {
+                DBRSegmentedProgressView(progress: 4, totalSegments: 5)
+
                 Text("Специалисты")
                     .font(DBRFont.R20)
                     .foregroundStyle(DBRColor.blue6.swiftUIColor)
@@ -82,7 +84,6 @@ struct DBRSpecialistsView: View {
                     }
                 }
             }
-            .padding(.top, 32.0)
             .padding(.horizontal)
             .padding(.bottom, 84.0)
         }
