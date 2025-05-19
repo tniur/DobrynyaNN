@@ -35,7 +35,7 @@ struct DBRTimeSlotsView: View {
             DBRButton(
                 "Записаться",
                 style: .init(.primary),
-                action: viewModel.showSuccessfulRecord
+                action: viewModel.createAppointment
             )
             .disabled(viewModel.selectedSlot == nil)
             .padding()

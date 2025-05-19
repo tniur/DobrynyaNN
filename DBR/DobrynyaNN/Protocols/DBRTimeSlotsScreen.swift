@@ -11,7 +11,7 @@ import Nivelir
 
 @MainActor
 public protocol DBRTimeSlotsScreens {
-    func showSuccessfulRecordRoute() -> ScreenWindowRoute
+    func showSuccessfulRecordRoute(newAppointmentId: Int) -> ScreenWindowRoute
 }
 
 public struct DBRTimeSlotsScreen: Screen {

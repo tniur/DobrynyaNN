@@ -16,11 +16,13 @@ final class DBRTimeSlotsViewModel: ObservableObject {
     // MARK: - Properties
 
     @Injected(\.doctorService) private var doctorService: DBRDoctorService
+    @Injected(\.appointmentsService) private var appointmentsService: DBRAppointmentsService
 
     @Published var schedule: DBRSchedule?
     @Published var selectedDate = Date()
     @Published var selectedSlot: DBRSlotDateInterval?
     
+    private var createAppointmentResult: DBRCreateAppointmentResult?
     private let appointmentBuilder: AppointmentBuilder
 
     private var screenNavigator: ScreenNavigator
@@ -68,6 +70,31 @@ final class DBRTimeSlotsViewModel: ObservableObject {
         }
     }
     
+    @MainActor
+    func createAppointment() {
+        Task {
+            guard
+                let appointment = appointmentBuilder.build()
+            else { return }
+            do {
+                createAppointmentResult = try await appointmentsService.createAppointment(appointment)
+                showSuccessfulRecord(with: createAppointmentResult?.newAppointmentId ?? 0)
+            } catch let error as DBRError {
+                switch error {
+                case .unauthorized:
+                    print(error.localizedDescription)
+                    // навигация до экранок авторизации
+                default:
+                    // потеря сети, выключенная связь и другие DomainError
+                    print(error.localizedDescription)
+                }
+            } catch {
+                // необрабатываемые ошибки
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     func appoinmentTimeDidSelected(slotDateInterval: DBRSlotDateInterval) {
         selectedSlot = slotDateInterval
         appointmentBuilder.setDateInterval(interval: slotDateInterval)
@@ -78,7 +105,7 @@ final class DBRTimeSlotsViewModel: ObservableObject {
     }
     
     @MainActor
-    func showSuccessfulRecord() {
-        screenNavigator.navigate(to: screens.showSuccessfulRecordRoute())
+    private func showSuccessfulRecord(with newAppointmentId: Int) {
+        screenNavigator.navigate(to: screens.showSuccessfulRecordRoute(newAppointmentId: newAppointmentId))
     }
 }

@@ -184,13 +184,20 @@ extension Screens: DBRSpecialistsScreens {
 
 extension Screens: DBRTimeSlotsScreens {
     
-    func showSuccessfulRecordRoute() -> ScreenWindowRoute {
-        let screen = DBRSuccessfulRecordScreen(screens: self)
+    func showSuccessfulRecordRoute(newAppointmentId: Int) -> ScreenWindowRoute {
+        let screen = successfulRecordScreen(newAppointmentId: newAppointmentId)
         
         return ScreenWindowRoute()
             .top(.stack)
             .push(screen)
             .resolve()
+    }
+    
+    private func successfulRecordScreen(newAppointmentId: Int) -> AnyModalScreen {
+        DBRSuccessfulRecordScreen(
+            newAppointmentId: newAppointmentId,
+            screens: self
+        ).eraseToAnyScreen()
     }
 }
 
