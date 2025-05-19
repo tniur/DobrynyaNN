@@ -25,15 +25,20 @@ struct DBRClinicAdressesView: View {
 
     private var contentView: some View {
         ZStack(alignment: .bottom) {
-            scrollView
-            
-            DBRButton(
-                "Далее",
-                style: .init(.primary),
-                action: viewModel.showSpecialists
-            )
-            .disabled(viewModel.selectedClinicId == nil)
-            .padding()
+            if viewModel.clinics.isEmpty {
+                ProgressView("Загрузка...")
+                    .frame(maxWidth: .infinity, alignment: .center)
+            } else {
+                scrollView
+                
+                DBRButton(
+                    "Далее",
+                    style: .init(.primary),
+                    action: viewModel.showSpecialists
+                )
+                .disabled(viewModel.selectedClinicId == nil)
+                .padding()
+            }
         }
     }
     

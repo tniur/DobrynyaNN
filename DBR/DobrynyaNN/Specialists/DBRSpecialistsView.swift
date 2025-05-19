@@ -26,15 +26,20 @@ struct DBRSpecialistsView: View {
 
     private var contentView: some View {
         ZStack(alignment: .bottom) {
-            scrollView
-            
-            DBRButton(
-                "Далее",
-                style: .init(.primary),
-                action: viewModel.showTimeSlots
-            )
-            .disabled(viewModel.selectedSpecialistId == nil)
-            .padding()
+            if viewModel.specialists.isEmpty {
+                ProgressView("Загрузка...")
+                    .frame(maxWidth: .infinity, alignment: .center)
+            } else {
+                scrollView
+                
+                DBRButton(
+                    "Далее",
+                    style: .init(.primary),
+                    action: viewModel.showTimeSlots
+                )
+                .disabled(viewModel.selectedSpecialistId == nil)
+                .padding()
+            }
         }
     }
     

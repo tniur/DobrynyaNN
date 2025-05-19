@@ -24,16 +24,23 @@ struct DBRSuccessfulRecordView: View {
     // MARK: - Subviews
     
     private var contentView: some View {
-        VStack(alignment: .leading, spacing: 32.0) {
-            titleView
-            analisysView
-            
-            Spacer()
-            
-            buttonsView
+        ZStack {
+            if viewModel.appointment == nil {
+                ProgressView("Загрузка...")
+                    .frame(maxWidth: .infinity, alignment: .center)
+            } else {
+                VStack(alignment: .leading, spacing: 32.0) {
+                    titleView
+                    analisysView
+                    
+                    Spacer()
+                    
+                    buttonsView
+                }
+                .padding(.horizontal)
+                .padding(.bottom)
+            }
         }
-        .padding(.horizontal)
-        .padding(.bottom)
     }
 
     private var titleView: some View {
@@ -41,7 +48,7 @@ struct DBRSuccessfulRecordView: View {
             Text("Вы успешно записаны!")
                 .font(DBRFont.B30)
                 .foregroundStyle(DBRColor.blue6.swiftUIColor)
-            Text("Ваша запись на услугу “\(String(describing: viewModel.appointment?.serviceTitle))” подтверждена.")
+            Text("Ваша запись на услугу “\(viewModel.appointment?.serviceTitle ?? "")” подтверждена.")
                 .font(DBRFont.R14)
                 .foregroundStyle(DBRColor.base7.swiftUIColor)
         }
@@ -49,7 +56,7 @@ struct DBRSuccessfulRecordView: View {
     
     private var analisysView: some View {
         VStack(alignment: .leading, spacing: .zero) {
-            Text(String(describing: viewModel.appointment?.serviceTitle))
+            Text(viewModel.appointment?.serviceTitle ?? "")
                 .font(DBRFont.R20)
                 .foregroundStyle(DBRColor.blue6.swiftUIColor)
                 .padding(.bottom, 16.0)
@@ -62,7 +69,7 @@ struct DBRSuccessfulRecordView: View {
                         .foregroundStyle(DBRColor.blue6.swiftUIColor)
                         .frame(width: 28.0, height: 28.0)
                     
-                    Text(String(describing: viewModel.appointment?.clinicAddress))
+                    Text(viewModel.appointment?.clinicAddress ?? "")
                         .font(DBRFont.R14)
                         .foregroundStyle(DBRColor.base7.swiftUIColor)
                         .lineLimit(1)
@@ -75,7 +82,7 @@ struct DBRSuccessfulRecordView: View {
                         .foregroundStyle(DBRColor.blue6.swiftUIColor)
                         .frame(width: 28.0, height: 28.0)
                     
-                    Text(String(describing: viewModel.appointment?.doctorName))
+                    Text(viewModel.appointment?.doctorName ?? "")
                         .font(DBRFont.R14)
                         .foregroundStyle(DBRColor.base7.swiftUIColor)
                         .lineLimit(1)
@@ -88,7 +95,7 @@ struct DBRSuccessfulRecordView: View {
                         .foregroundStyle(DBRColor.blue6.swiftUIColor)
                         .frame(width: 28.0, height: 28.0)
                     
-                    Text(String(describing: viewModel.appointment?.createdDate))
+                    Text(viewModel.appointment?.createdDate ?? "")
                         .font(DBRFont.R14)
                         .foregroundStyle(DBRColor.base7.swiftUIColor)
                         .lineLimit(1)
