@@ -1,6 +1,6 @@
 import Foundation
 
-public struct DBRConfirmDTO: Encodable, Sendable {
+public struct DBRRecoverConfirmationDTO: Encodable, Sendable {
     public let login: String
     public let code: String
 

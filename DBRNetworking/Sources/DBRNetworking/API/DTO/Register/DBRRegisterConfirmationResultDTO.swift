@@ -1,6 +1,6 @@
 import Foundation
 
-public struct DBRConfirmCodeDTO: Codable, Sendable {
+public struct DBRRegisterConfirmationResultDTO: Codable, Sendable {
     public let message: String
     public let patientKey: String
 

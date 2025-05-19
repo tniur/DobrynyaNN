@@ -50,3 +50,15 @@ public extension Container {
         Factory(self) { DBRAPIService(client: DBRNetworkClient(), tokenProvider: Container.shared.tokenProvider()) }
     }
 }
+
+public extension Container {
+    var registerService: Factory<DBRRegisterService> {
+        Factory(self) { DBRAPIService(client: DBRNetworkClient(), tokenProvider: Container.shared.tokenProvider()) }
+    }
+}
+
+public extension Container {
+    var recoverService: Factory<DBRRecoverService> {
+        Factory(self) { DBRAPIService(client: DBRNetworkClient(), tokenProvider: Container.shared.tokenProvider()) }
+    }
+}

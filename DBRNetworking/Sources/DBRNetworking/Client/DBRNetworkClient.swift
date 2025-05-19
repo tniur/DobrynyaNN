@@ -93,6 +93,8 @@ extension DBRNetworkClient {
                 throw DBRNetworkError.unauthorized
             case 404:
                 throw DBRNetworkError.notFound
+            case 409:
+                throw DBRNetworkError.conflict
             case 503:
                 throw DBRNetworkError.serviceUnavailable
             default:

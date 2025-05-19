@@ -11,6 +11,9 @@ struct DBRNetworkErrorMapper {
         case .notFound:
             return .notFound
 
+        case .conflict:
+            return .conflict
+
         case .badRequest(let response):
             return .invalidRequest(response.detail)
 
