@@ -26,7 +26,7 @@ struct DBRServiceTypeView: View {
 
     private var contentView: some View {
         ZStack(alignment: .bottom) {
-            if viewModel.serviceTypes.isEmpty {
+            if viewModel.isLoading {
                 ProgressView("Загрузка...")
                     .frame(maxWidth: .infinity, alignment: .center)
             } else {

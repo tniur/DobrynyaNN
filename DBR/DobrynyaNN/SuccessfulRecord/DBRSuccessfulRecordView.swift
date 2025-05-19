@@ -25,7 +25,7 @@ struct DBRSuccessfulRecordView: View {
     
     private var contentView: some View {
         ZStack {
-            if viewModel.appointment == nil {
+            if viewModel.isLoading {
                 ProgressView("Загрузка...")
                     .frame(maxWidth: .infinity, alignment: .center)
             } else {

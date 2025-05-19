@@ -17,6 +17,7 @@ final class DBRServiceTypeViewModel: ObservableObject {
     
     @Injected(\.clinicService) private var clinicService: DBRClinicService
         
+    @Published var isLoading = false
     @Published var serviceTypes: [DBRServiceCategory] = []
     @Published var selectedTypeId: Int?
     
@@ -37,6 +38,8 @@ final class DBRServiceTypeViewModel: ObservableObject {
     
     @MainActor
     func fetchData() {
+        isLoading = true
+        
         Task {
             do {
                 serviceTypes = try await clinicService.fetchServiceCategories()
@@ -53,6 +56,7 @@ final class DBRServiceTypeViewModel: ObservableObject {
                 // необрабатываемые ошибки
                 print(error.localizedDescription)
             }
+            isLoading = false
         }
     }
 

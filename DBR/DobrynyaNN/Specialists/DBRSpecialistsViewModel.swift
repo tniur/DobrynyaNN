@@ -16,6 +16,7 @@ final class DBRSpecialistsViewModel: ObservableObject {
     
     @Injected(\.doctorService) private var doctorService: DBRDoctorService
     
+    @Published var isLoading = false
     @Published var specialists: [DBRDoctor] = []
     @Published var selectedSpecialistId: Int?
 
@@ -40,6 +41,7 @@ final class DBRSpecialistsViewModel: ObservableObject {
 
     @MainActor
     func fetchData() {
+        isLoading = true
         Task {
             guard
                 let clinicId = appointmentBuilder.getClinicId(),
@@ -63,6 +65,7 @@ final class DBRSpecialistsViewModel: ObservableObject {
                 // необрабатываемые ошибки
                 print(error.localizedDescription)
             }
+            isLoading = false
         }
     }
     

@@ -16,6 +16,7 @@ final class DBRSuccessfulRecordViewModel: ObservableObject {
     
     @Injected(\.appointmentsService) private var appointmentsService: DBRAppointmentsService
     
+    @Published var isLoading = false
     @Published var appointment: DBRAppointment?
 
     private let newAppointmentId: Int
@@ -40,6 +41,8 @@ final class DBRSuccessfulRecordViewModel: ObservableObject {
 
     @MainActor
     func fetchData() {
+        isLoading  = true
+        
         Task {
             do {
                 appointment = try await appointmentsService.fetchAppointment(by: newAppointmentId)
@@ -56,6 +59,7 @@ final class DBRSuccessfulRecordViewModel: ObservableObject {
                 // необрабатываемые ошибки
                 print(error.localizedDescription)
             }
+            isLoading = false
         }
     }
     

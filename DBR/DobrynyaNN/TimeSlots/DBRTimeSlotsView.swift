@@ -66,7 +66,7 @@ struct DBRTimeSlotsView: View {
                         .stroke(DBRColor.base3.swiftUIColor, lineWidth: 1.0)
                 )
                 
-                if viewModel.slots(for: viewModel.selectedDate).isEmpty {
+                if viewModel.isLoading {
                     ProgressView("Загрузка...")
                         .frame(maxWidth: .infinity, alignment: .center)
                 } else {

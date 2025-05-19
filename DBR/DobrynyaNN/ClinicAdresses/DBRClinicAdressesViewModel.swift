@@ -16,6 +16,7 @@ final class DBRClinicAdressesViewModel: ObservableObject {
     
     @Injected(\.clinicService) private var clinicService: DBRClinicService
     
+    @Published var isLoading = false
     @Published var clinics: [DBRClinic] = []
     @Published var selectedClinicId: Int?
     
@@ -40,6 +41,8 @@ final class DBRClinicAdressesViewModel: ObservableObject {
     
     @MainActor
     func fetchData() {
+        isLoading = true
+        
         Task {
             do {
                 clinics = try await clinicService.fetchClinics()
@@ -56,6 +59,7 @@ final class DBRClinicAdressesViewModel: ObservableObject {
                 // необрабатываемые ошибки
                 print(error.localizedDescription)
             }
+            isLoading = false
         }
     }
 

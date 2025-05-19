@@ -18,6 +18,7 @@ final class DBRTimeSlotsViewModel: ObservableObject {
     @Injected(\.doctorService) private var doctorService: DBRDoctorService
     @Injected(\.appointmentsService) private var appointmentsService: DBRAppointmentsService
 
+    @Published var isLoading = false
     @Published var schedule: DBRSchedule?
     @Published var selectedDate = Date()
     @Published var selectedSlot: DBRSlotDateInterval?
@@ -44,6 +45,8 @@ final class DBRTimeSlotsViewModel: ObservableObject {
 
     @MainActor
     func fetchData() {
+        isLoading = true
+        
         Task {
             guard
                 let clinicId = appointmentBuilder.getClinicId(),
@@ -67,6 +70,7 @@ final class DBRTimeSlotsViewModel: ObservableObject {
                 // необрабатываемые ошибки
                 print(error.localizedDescription)
             }
+            isLoading = false
         }
     }
     
