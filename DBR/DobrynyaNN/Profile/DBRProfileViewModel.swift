@@ -22,6 +22,7 @@ final class DBRProfileViewModel: ObservableObject {
     
     // MARK: - Properties
     
+    @Injected(\.tokenProvider) private var tokenProvider: DBRTokenProvider
     @Injected(\.authService) private var authService: DBRAuthService
     
     @Published var sections: [ProfileSection]
@@ -68,6 +69,7 @@ final class DBRProfileViewModel: ObservableObject {
         Task {
             do {
                 let result = try await authService.confirmCode(login: "ivanova@example.com", code: "123456")
+                try tokenProvider.saveToken(result.accessToken)
                 print(result.accessToken)
             } catch {
                 self.errorMessage = "Неверный логин или пароль"
