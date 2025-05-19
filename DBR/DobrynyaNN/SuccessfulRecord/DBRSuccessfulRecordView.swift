@@ -17,6 +17,13 @@ struct DBRSuccessfulRecordView: View {
     // MARK: - Body
 
     var body: some View {
+        contentView
+            .onAppear(perform: viewModel.fetchData)
+    }
+    
+    // MARK: - Subviews
+    
+    private var contentView: some View {
         VStack(alignment: .leading, spacing: 32.0) {
             titleView
             analisysView
@@ -28,15 +35,13 @@ struct DBRSuccessfulRecordView: View {
         .padding(.horizontal)
         .padding(.bottom)
     }
-    
-    // MARK: - Subviews
 
     private var titleView: some View {
         VStack(alignment: .leading, spacing: 8.0) {
             Text("Вы успешно записаны!")
                 .font(DBRFont.B30)
                 .foregroundStyle(DBRColor.blue6.swiftUIColor)
-            Text("Ваша запись на услугу “Общий анализ крови” подтверждена.")
+            Text("Ваша запись на услугу “\(String(describing: viewModel.appointment?.serviceTitle))” подтверждена.")
                 .font(DBRFont.R14)
                 .foregroundStyle(DBRColor.base7.swiftUIColor)
         }
@@ -44,7 +49,7 @@ struct DBRSuccessfulRecordView: View {
     
     private var analisysView: some View {
         VStack(alignment: .leading, spacing: .zero) {
-            Text("Общий анализ крови")
+            Text(String(describing: viewModel.appointment?.serviceTitle))
                 .font(DBRFont.R20)
                 .foregroundStyle(DBRColor.blue6.swiftUIColor)
                 .padding(.bottom, 16.0)
@@ -57,7 +62,7 @@ struct DBRSuccessfulRecordView: View {
                         .foregroundStyle(DBRColor.blue6.swiftUIColor)
                         .frame(width: 28.0, height: 28.0)
                     
-                    Text("«Добрыня НН», ул. Пушкина, 10")
+                    Text(String(describing: viewModel.appointment?.clinicAddress))
                         .font(DBRFont.R14)
                         .foregroundStyle(DBRColor.base7.swiftUIColor)
                         .lineLimit(1)
@@ -70,7 +75,7 @@ struct DBRSuccessfulRecordView: View {
                         .foregroundStyle(DBRColor.blue6.swiftUIColor)
                         .frame(width: 28.0, height: 28.0)
                     
-                    Text("Петрова Анна Сергеевна")
+                    Text(String(describing: viewModel.appointment?.doctorName))
                         .font(DBRFont.R14)
                         .foregroundStyle(DBRColor.base7.swiftUIColor)
                         .lineLimit(1)
@@ -83,7 +88,7 @@ struct DBRSuccessfulRecordView: View {
                         .foregroundStyle(DBRColor.blue6.swiftUIColor)
                         .frame(width: 28.0, height: 28.0)
                     
-                    Text("19 мая 2025, 13:00-13:10")
+                    Text(String(describing: viewModel.appointment?.createdDate))
                         .font(DBRFont.R14)
                         .foregroundStyle(DBRColor.base7.swiftUIColor)
                         .lineLimit(1)
@@ -117,7 +122,7 @@ struct DBRSuccessfulRecordView: View {
             DBRButton(
                 "Отменить запись",
                 style: .init(.secondary),
-                action: { }
+                action: viewModel.cancelAppointment
             )
         }
     }
