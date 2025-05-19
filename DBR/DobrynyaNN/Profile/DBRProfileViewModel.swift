@@ -70,7 +70,6 @@ final class DBRProfileViewModel: ObservableObject {
             do {
                 let result = try await authService.confirmCode(login: "ivanova@example.com", code: "123456")
                 try tokenProvider.saveToken(result.accessToken)
-                print(result.accessToken)
             } catch {
                 self.errorMessage = "Неверный логин или пароль"
             }
