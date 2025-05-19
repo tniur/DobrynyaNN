@@ -71,6 +71,7 @@ final class DBRAvailableServicesViewModel: ObservableObject {
         screenNavigator.navigate(to: screens.showClinicAdressesRoute(builder: appointmentBuilder))
     }
     
+    @MainActor
     func serviceDidSelected(with serviceId: Int) {
         selectedServiceId = serviceId
         appointmentBuilder.setService(id: serviceId)

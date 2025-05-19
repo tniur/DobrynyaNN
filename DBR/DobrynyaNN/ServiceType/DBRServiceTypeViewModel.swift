@@ -65,6 +65,7 @@ final class DBRServiceTypeViewModel: ObservableObject {
         screenNavigator.navigate(to: screens.showAvailableServicesRoute(builder: appointmentBuilder))
     }
     
+    @MainActor
     func typeDidSelected(with typeId: Int) {
         selectedTypeId = typeId
         appointmentBuilder.setCategory(id: typeId)

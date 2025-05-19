@@ -68,6 +68,7 @@ final class DBRClinicAdressesViewModel: ObservableObject {
         screenNavigator.navigate(to: screens.showSpecialistsRoute(builder: appointmentBuilder))
     }
     
+    @MainActor
     func clinicDidSelected(with clinicId: Int) {
         selectedClinicId = clinicId
         appointmentBuilder.setClinic(id: clinicId)

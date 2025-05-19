@@ -74,6 +74,7 @@ final class DBRSpecialistsViewModel: ObservableObject {
         screenNavigator.navigate(to: screens.showTimeSlotsRoute(builder: appointmentBuilder))
     }
     
+    @MainActor
     func specialistDidSelected(with specialistId: Int) {
         selectedSpecialistId = specialistId
         appointmentBuilder.setDoctor(id: specialistId)

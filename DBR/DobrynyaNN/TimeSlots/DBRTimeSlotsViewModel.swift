@@ -99,11 +99,13 @@ final class DBRTimeSlotsViewModel: ObservableObject {
         }
     }
     
+    @MainActor
     func appoinmentTimeDidSelected(slotDateInterval: DBRSlotDateInterval) {
         selectedSlot = slotDateInterval
         appointmentBuilder.setDateInterval(interval: slotDateInterval)
     }
 
+    @MainActor
     func slots(for date: Date) -> [DBRScheduleSlot] {
         schedule?.slots(for: date) ?? []
     }
