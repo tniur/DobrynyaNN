@@ -76,6 +76,7 @@ final class DBRTimeSlotsViewModel: ObservableObject {
     
     @MainActor
     func createAppointment() {
+        isLoading = true
         Task {
             guard
                 let appointment = appointmentBuilder.build()
@@ -96,6 +97,7 @@ final class DBRTimeSlotsViewModel: ObservableObject {
                 // необрабатываемые ошибки
                 print(error.localizedDescription)
             }
+            isLoading = false
         }
     }
     
