@@ -128,7 +128,7 @@ struct DBRSuccessfulRecordView: View {
             
             DBRButton(
                 "Отменить запись",
-                style: .init(.secondary),
+                style: .init(.secondaryRed),
                 action: viewModel.cancelAppointment
             )
         }

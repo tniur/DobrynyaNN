@@ -43,7 +43,7 @@ struct DBRProfileView: View {
                 
                 Spacer()
                 
-                DBRButton("Выйти", style: .init(.tertiary), action: { })
+                DBRButton("Выйти", style: .init(.tertiaryRed), action: { })
             }
             .padding(.horizontal)
         }

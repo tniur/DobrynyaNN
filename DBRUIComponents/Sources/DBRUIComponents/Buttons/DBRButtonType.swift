@@ -10,15 +10,17 @@ import SwiftUI
 public enum DBRButtonType {
     case primary
     case secondary
+    case secondaryRed
     case tertiary
+    case tertiaryRed
 
     public var backgroundColor: SwiftUI.Color {
         switch self {
         case .primary:
             DBRColor.blue6.swiftUIColor
-        case .secondary:
+        case .secondary, .secondaryRed:
             DBRColor.base0.swiftUIColor
-        case .tertiary:
+        case .tertiary, .tertiaryRed:
             .clear
         }
     }
@@ -29,17 +31,23 @@ public enum DBRButtonType {
             DBRColor.base0.swiftUIColor
         case .secondary:
             DBRColor.base7.swiftUIColor
+        case .secondaryRed:
+            DBRColor.red6.swiftUIColor
         case .tertiary:
             DBRColor.base10.swiftUIColor
+        case .tertiaryRed:
+            DBRColor.red6.swiftUIColor
         }
     }
 
     public var strokeColor: SwiftUI.Color {
         switch self {
-        case .primary, .tertiary:
+        case .primary, .tertiary, .tertiaryRed:
             .clear
         case .secondary:
             DBRColor.base3.swiftUIColor
+        case .secondaryRed:
+            DBRColor.red6.swiftUIColor
         }
     }
 
@@ -47,9 +55,9 @@ public enum DBRButtonType {
         switch self {
         case .primary:
             DBRColor.blue8.swiftUIColor
-        case .secondary:
+        case .secondary, .secondaryRed:
             DBRColor.base0.swiftUIColor
-        case .tertiary:
+        case .tertiary, .tertiaryRed:
             .clear
         }
     }
@@ -60,15 +68,19 @@ public enum DBRButtonType {
             DBRColor.base0.swiftUIColor
         case .secondary, .tertiary:
             DBRColor.base7.swiftUIColor
+        case .secondaryRed, .tertiaryRed:
+            DBRColor.red8.swiftUIColor
         }
     }
 
     public var pressedStrokeColor: SwiftUI.Color {
         switch self {
-        case .primary, .tertiary:
+        case .primary, .tertiary, .tertiaryRed:
             .clear
         case .secondary:
             DBRColor.base7.swiftUIColor
+        case .secondaryRed:
+            DBRColor.red8.swiftUIColor
         }
     }
 
@@ -76,9 +88,9 @@ public enum DBRButtonType {
         switch self {
         case .primary:
             DBRColor.blue3.swiftUIColor
-        case .secondary:
+        case .secondary, .secondaryRed:
             DBRColor.base0.swiftUIColor
-        case .tertiary:
+        case .tertiary, .tertiaryRed:
             .clear
         }
     }
@@ -89,23 +101,27 @@ public enum DBRButtonType {
             DBRColor.base0.swiftUIColor
         case .secondary, .tertiary:
             DBRColor.base3.swiftUIColor
+        case .secondaryRed, .tertiaryRed:
+            DBRColor.red3.swiftUIColor
         }
     }
 
     public var disabledStrokeColor: SwiftUI.Color {
         switch self {
-        case .primary, .tertiary:
+        case .primary, .tertiary, .tertiaryRed:
             .clear
         case .secondary:
             DBRColor.base3.swiftUIColor
+        case .secondaryRed:
+            DBRColor.red3.swiftUIColor
         }
     }
 
     public var strokeWidth: CGFloat {
         switch self {
-        case .primary, .tertiary:
+        case .primary, .tertiary, .tertiaryRed:
             .zero
-        case .secondary:
+        case .secondary, .secondaryRed:
             1.0
         }
     }
