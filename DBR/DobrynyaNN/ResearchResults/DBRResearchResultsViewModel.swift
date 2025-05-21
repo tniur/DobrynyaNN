@@ -34,6 +34,7 @@ final class DBRResearchResultsViewModel: ObservableObject {
             date: "01 . 01 . 1999, 18:15",
             result: .inProcess)
     ]
+    
     private var screenNavigator: ScreenNavigator
     private let screens: DBRResearchResultsScreens
     
