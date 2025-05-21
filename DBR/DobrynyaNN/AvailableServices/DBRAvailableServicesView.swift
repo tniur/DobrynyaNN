@@ -26,28 +26,37 @@ struct DBRAvailableServicesView: View {
 
     private var contentView: some View {
         ZStack(alignment: .bottom) {
-            if viewModel.isLoading {
-                ProgressView("Загрузка...")
-                    .frame(maxWidth: .infinity, alignment: .center)
-            } else {
-                    scrollView
+            VStack(spacing: 32.0) {
+                DBRSegmentedProgressView(progress: 2, totalSegments: 5)
+                    .padding(.horizontal)
+                          
+                if viewModel.isLoading {
+                    Spacer()
                     
-                    DBRButton(
-                        "Далее",
-                        style: .init(.primary),
-                        action: viewModel.showClinicAdresses
-                    )
-                    .disabled(viewModel.selectedServiceId == nil)
-                    .padding()
+                    ProgressView("Загрузка...")
+                        .frame(maxWidth: .infinity, alignment: .center)
+                    
+                    Spacer()
+                } else if viewModel.services.isEmpty {
+                    emptyView
+                } else {
+                    scrollView
+                }
             }
+            
+            DBRButton(
+                "Далее",
+                style: .init(.primary),
+                action: viewModel.showClinicAdresses
+            )
+            .disabled(viewModel.selectedServiceId == nil)
+            .padding()
         }
     }
     
     private var scrollView: some View {
         ScrollView {
             LazyVStack(alignment: .center, spacing: 32.0) {
-                DBRSegmentedProgressView(progress: 2, totalSegments: 5)
-
                 Text("Доступные услуги")
                     .font(DBRFont.R20)
                     .foregroundStyle(DBRColor.blue6.swiftUIColor)
@@ -71,7 +80,7 @@ struct DBRAvailableServicesView: View {
     }
     
     private var emptyView: some View {
-        VStack(spacing: 8.0) {
+        VStack(alignment: .leading, spacing: 8.0) {
             Text("В данной категории нет услуг")
                 .font(DBRFont.R20)
                 .foregroundStyle(DBRColor.blue6.swiftUIColor)
@@ -79,6 +88,9 @@ struct DBRAvailableServicesView: View {
             Text("К сожалению, сейчас по выбранной категории услуги не найдены. Попробуйте другую категорию или обратитесь в клинику.")
                 .font(DBRFont.R14)
                 .foregroundStyle(DBRColor.base7.swiftUIColor)
+            
+            Spacer()
         }
+        .padding(.horizontal)
     }
 }

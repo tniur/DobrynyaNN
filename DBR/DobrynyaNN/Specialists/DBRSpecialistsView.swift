@@ -26,28 +26,37 @@ struct DBRSpecialistsView: View {
 
     private var contentView: some View {
         ZStack(alignment: .bottom) {
-            if viewModel.isLoading {
-                ProgressView("Загрузка...")
-                    .frame(maxWidth: .infinity, alignment: .center)
-            } else {
-                scrollView
+            VStack(alignment: .leading, spacing: 32.0) {
+                DBRSegmentedProgressView(progress: 4, totalSegments: 5)
+                    .padding(.horizontal)
                 
-                DBRButton(
-                    "Далее",
-                    style: .init(.primary),
-                    action: viewModel.showTimeSlots
-                )
-                .disabled(viewModel.selectedSpecialistId == nil)
-                .padding()
+                if viewModel.isLoading {
+                    Spacer()
+                    
+                    ProgressView("Загрузка...")
+                        .frame(maxWidth: .infinity, alignment: .center)
+                    
+                    Spacer()
+                } else if viewModel.specialists.isEmpty {
+                    emptyView
+                } else {
+                    scrollView
+                }
             }
+            
+            DBRButton(
+                "Далее",
+                style: .init(.primary),
+                action: viewModel.showTimeSlots
+            )
+            .disabled(viewModel.selectedSpecialistId == nil)
+            .padding()
         }
     }
     
     private var scrollView: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 32.0) {
-                DBRSegmentedProgressView(progress: 4, totalSegments: 5)
-
                 Text("Специалисты")
                     .font(DBRFont.R20)
                     .foregroundStyle(DBRColor.blue6.swiftUIColor)
@@ -96,7 +105,7 @@ struct DBRSpecialistsView: View {
     }
     
     private var emptyView: some View {
-        VStack(spacing: 8.0) {
+        VStack(alignment: .leading, spacing: 8.0) {
             Text("Специалисты недоступны")
                 .font(DBRFont.R20)
                 .foregroundStyle(DBRColor.blue6.swiftUIColor)
@@ -104,7 +113,10 @@ struct DBRSpecialistsView: View {
             Text("На данный момент отсутствуют специалисты для оказания этой услуги. Пожалуйста, выберите другую услугу или обратитесь в клинику.")
                 .font(DBRFont.R14)
                 .foregroundStyle(DBRColor.base7.swiftUIColor)
+            
+            Spacer()
         }
+        .padding(.horizontal)
     }
     
     // MARK: - Initializer

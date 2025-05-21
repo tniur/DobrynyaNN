@@ -44,7 +44,7 @@ struct DBRTimeSlotsView: View {
     
     private var scrollView: some View {
         ScrollView {
-            LazyVStack(spacing: 32.0) {
+            LazyVStack(alignment: .leading, spacing: 32.0) {
                 DBRSegmentedProgressView(progress: 5, totalSegments: 5)
 
                 DatePicker(
@@ -69,6 +69,8 @@ struct DBRTimeSlotsView: View {
                 if viewModel.isLoading {
                     ProgressView("Загрузка...")
                         .frame(maxWidth: .infinity, alignment: .center)
+                } else if viewModel.slots(for: viewModel.selectedDate).isEmpty {
+                    emptyView
                 } else {
                     slotsView
                 }
@@ -76,6 +78,7 @@ struct DBRTimeSlotsView: View {
             .padding(.horizontal)
             .padding(.bottom, 84.0)
         }
+        .scrollIndicators(.hidden)
     }
     
     private var slotsView: some View {
@@ -107,7 +110,7 @@ struct DBRTimeSlotsView: View {
     }
     
     private var emptyView: some View {
-        VStack(spacing: 8.0) {
+        VStack(alignment: .leading, spacing: 8.0) {
             Text("Нет свободных слотов")
                 .font(DBRFont.R20)
                 .foregroundStyle(DBRColor.blue6.swiftUIColor)

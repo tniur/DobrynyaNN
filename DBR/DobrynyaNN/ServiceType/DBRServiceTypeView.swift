@@ -26,28 +26,35 @@ struct DBRServiceTypeView: View {
 
     private var contentView: some View {
         ZStack(alignment: .bottom) {
-            if viewModel.isLoading {
-                ProgressView("Загрузка...")
-                    .frame(maxWidth: .infinity, alignment: .center)
-            } else {
-                scrollView
-                
-                DBRButton(
-                    "Далее",
-                    style: .init(.primary),
-                    action: viewModel.showAvailableServices
-                )
-                .disabled(viewModel.selectedTypeId == nil)
-                .padding()
+            VStack(alignment: .leading, spacing: 32.0) {
+                DBRSegmentedProgressView(progress: 1, totalSegments: 5)
+                    .padding(.horizontal)
+
+                if viewModel.isLoading {
+                    Spacer()
+
+                    ProgressView("Загрузка...")
+                        .frame(maxWidth: .infinity, alignment: .center)
+                    
+                    Spacer()
+                } else {
+                    scrollView
+                }
             }
+            
+            DBRButton(
+                "Далее",
+                style: .init(.primary),
+                action: viewModel.showAvailableServices
+            )
+            .disabled(viewModel.selectedTypeId == nil)
+            .padding()
         }
     }
     
     private var scrollView: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 32.0) {
-                DBRSegmentedProgressView(progress: 1, totalSegments: 5)
-
                 Text("Типы услуг")
                     .font(DBRFont.R20)
                     .foregroundStyle(DBRColor.blue6.swiftUIColor)

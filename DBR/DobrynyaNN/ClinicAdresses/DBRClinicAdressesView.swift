@@ -25,28 +25,37 @@ struct DBRClinicAdressesView: View {
 
     private var contentView: some View {
         ZStack(alignment: .bottom) {
-            if viewModel.isLoading {
-                ProgressView("Загрузка...")
-                    .frame(maxWidth: .infinity, alignment: .center)
-            } else {
-                scrollView
+            VStack(spacing: 32.0) {
+                DBRSegmentedProgressView(progress: 3, totalSegments: 5)
+                    .padding(.horizontal)
                 
-                DBRButton(
-                    "Далее",
-                    style: .init(.primary),
-                    action: viewModel.showSpecialists
-                )
-                .disabled(viewModel.selectedClinicId == nil)
-                .padding()
+                if viewModel.isLoading {
+                    Spacer()
+                    
+                    ProgressView("Загрузка...")
+                        .frame(maxWidth: .infinity, alignment: .center)
+                    
+                    Spacer()
+                } else if viewModel.clinics.isEmpty {
+                    emptyView
+                } else {
+                    scrollView
+                }
             }
+            
+            DBRButton(
+                "Далее",
+                style: .init(.primary),
+                action: viewModel.showSpecialists
+            )
+            .disabled(viewModel.selectedClinicId == nil)
+            .padding()
         }
     }
     
     private var scrollView: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 32.0) {
-                DBRSegmentedProgressView(progress: 3, totalSegments: 5)
-
                 Text("Филиалы")
                     .font(DBRFont.R20)
                     .foregroundStyle(DBRColor.blue6.swiftUIColor)
@@ -83,7 +92,7 @@ struct DBRClinicAdressesView: View {
     }
     
     private var emptyView: some View {
-        VStack(spacing: 8.0) {
+        VStack(alignment: .leading, spacing: 8.0) {
             Text("Нет доступных филиалов")
                 .font(DBRFont.R20)
                 .foregroundStyle(DBRColor.blue6.swiftUIColor)
@@ -91,7 +100,10 @@ struct DBRClinicAdressesView: View {
             Text("В настоящий момент филиалы для данной услуги недоступны. Попробуйте вернуться и выбрать другую услугу.")
                 .font(DBRFont.R14)
                 .foregroundStyle(DBRColor.base7.swiftUIColor)
+            
+            Spacer()
         }
+        .padding(.horizontal)
     }
     
     // MARK: - Initializer
