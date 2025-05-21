@@ -31,7 +31,13 @@ struct DBRSuccessfulRecordView: View {
             } else {
                 VStack(alignment: .leading, spacing: 32.0) {
                     titleView
-                    analisysView
+                    
+                    DBRAnalisysView(
+                        title: viewModel.appointment?.serviceTitle ?? "",
+                        adress: viewModel.appointment?.clinicAddress ?? "",
+                        doctorName: viewModel.appointment?.doctorName ?? "",
+                        createdDate: viewModel.appointment?.createdDate ?? ""
+                    )
                     
                     Spacer()
                     
@@ -52,63 +58,6 @@ struct DBRSuccessfulRecordView: View {
                 .font(DBRFont.R14)
                 .foregroundStyle(DBRColor.base7.swiftUIColor)
         }
-    }
-    
-    private var analisysView: some View {
-        VStack(alignment: .leading, spacing: .zero) {
-            Text(viewModel.appointment?.serviceTitle ?? "")
-                .font(DBRFont.R20)
-                .foregroundStyle(DBRColor.blue6.swiftUIColor)
-                .padding(.bottom, 16.0)
-            
-            VStack(alignment: .leading, spacing: 8.0) {
-                HStack(spacing: 8.0) {
-                    DBRImage.houseIcon.swiftUIImage
-                        .resizable()
-                        .renderingMode(.template)
-                        .foregroundStyle(DBRColor.blue6.swiftUIColor)
-                        .frame(width: 28.0, height: 28.0)
-                    
-                    Text(viewModel.appointment?.clinicAddress ?? "")
-                        .font(DBRFont.R14)
-                        .foregroundStyle(DBRColor.base7.swiftUIColor)
-                        .lineLimit(1)
-                }
-                
-                HStack(spacing: 8.0) {
-                    DBRImage.medChestIcon.swiftUIImage
-                        .resizable()
-                        .renderingMode(.template)
-                        .foregroundStyle(DBRColor.blue6.swiftUIColor)
-                        .frame(width: 28.0, height: 28.0)
-                    
-                    Text(viewModel.appointment?.doctorName ?? "")
-                        .font(DBRFont.R14)
-                        .foregroundStyle(DBRColor.base7.swiftUIColor)
-                        .lineLimit(1)
-                }
-                
-                HStack(spacing: 8.0) {
-                    DBRImage.calendarIcon.swiftUIImage
-                        .resizable()
-                        .renderingMode(.template)
-                        .foregroundStyle(DBRColor.blue6.swiftUIColor)
-                        .frame(width: 28.0, height: 28.0)
-                    
-                    Text(viewModel.appointment?.createdDate ?? "")
-                        .font(DBRFont.R14)
-                        .foregroundStyle(DBRColor.base7.swiftUIColor)
-                        .lineLimit(1)
-                }
-            }
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding()
-        .background(
-            RoundedRectangle(cornerRadius: 20.0)
-                .fill(DBRColor.base0.swiftUIColor)
-                .shadow(color: .black.opacity(0.05), radius: 4, x: 0, y: 2)
-        )
     }
     
     private var buttonsView: some View {
