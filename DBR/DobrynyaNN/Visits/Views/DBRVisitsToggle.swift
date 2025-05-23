@@ -12,8 +12,8 @@ struct DBRVisitsToggle: View {
     
     // MARK: - Properties
 
-    @State private var selectedIndex: Int = 0
-    
+    @Binding var selectedIndex: Int
+
     private let sections: [String]
     
     private var indicatorWidth: CGFloat {
@@ -59,8 +59,8 @@ struct DBRVisitsToggle: View {
         .padding(.horizontal)
     }
     
-    init(selectedIndex: Int = 0, sections: [String]) {
-        self.selectedIndex = selectedIndex
+    init(selectedIndex: Binding<Int>, sections: [String]) {
+        self._selectedIndex = selectedIndex
         self.sections = sections
     }
 }

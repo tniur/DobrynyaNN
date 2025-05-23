@@ -20,6 +20,17 @@ final class DBRVisitsViewModel: ObservableObject {
     @Published var selectedIndex: Int = 0
     @Published var visits: [DBRAppointment] = []
     
+    var filteredVisits: [DBRAppointment] {
+        switch selectedIndex {
+        case 0:
+            return visits.filter { $0.status == .upcoming }
+        case 1:
+            return visits.filter { $0.status == .completed }
+        default:
+            return visits
+        }
+    }
+    
     private var screenNavigator: ScreenNavigator
     private let screens: DBRVisitsScreens
     

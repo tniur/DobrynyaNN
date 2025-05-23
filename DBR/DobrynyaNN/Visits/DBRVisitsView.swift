@@ -26,23 +26,24 @@ struct DBRVisitsView: View {
 
     private var contentView: some View {
         VStack {
-            DBRVisitsToggle(sections: ["Будущие", "Прошедшие"])
+            DBRVisitsToggle(
+                selectedIndex: $viewModel.selectedIndex,
+                sections: ["Будущие", "Прошедшие"]
+            )
             
             if viewModel.isLoading {
                 Spacer()
-
                 ProgressView("Загрузка...")
                     .frame(maxWidth: .infinity, alignment: .center)
-                
-                Spacer()
-            } else if viewModel.visits.isEmpty {
                 Spacer()
                 
+            } else if viewModel.filteredVisits.isEmpty {
+                Spacer()
                 emptyView
                     .frame(width: 226.0, alignment: .center)
                     .padding(.horizontal)
-                
                 Spacer()
+                
             } else {
                 scrollView
             }
@@ -53,7 +54,7 @@ struct DBRVisitsView: View {
     private var scrollView: some View {
         ScrollView {
             LazyVStack {
-                ForEach(viewModel.visits) { visit in
+                ForEach(viewModel.filteredVisits) { visit in
                     DBRAnalisysView(
                         title: visit.serviceTitle,
                         adress: visit.clinicAddress,
