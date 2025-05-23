@@ -12,6 +12,7 @@ struct DBRAppointmentMapper {
             timeEnd: dto.timeEnd,
             clinicId: dto.clinicId,
             clinicAddress: dto.clinicAddress,
+            clinicTitle: dto.clinicTitle,
             doctorId: dto.doctorId,
             doctorName: dto.doctorName,
             serviceId: dto.serviceId,
