@@ -66,6 +66,11 @@ extension Screens: DBRMenuScreens {
         DBRSignUpServiceScreen(screens: self)
             .eraseToAnyScreen()
     }
+    
+    func visitsScreen() -> AnyModalScreen {
+        DBRVisitsScreen(screens: self)
+            .eraseToAnyScreen()
+    }
 }
 
 extension Screens: DBRLoginScreens {
@@ -208,3 +213,5 @@ extension Screens: DBRLoginCodeScreens { }
 extension Screens: DBRResearchResultsScreens { }
 
 extension Screens: DBRSuccessfulRecordScreens { }
+
+extension Screens: DBRVisitsScreens { }

@@ -14,6 +14,7 @@ import DBRUIComponents
 public protocol DBRMenuScreens {
     func profileScreen() -> AnyModalScreen
     func signUpServiceScreen() -> AnyModalScreen
+    func visitsScreen() -> AnyModalScreen
 }
 
 public struct DBRMenuScreen: Screen {
@@ -39,6 +40,12 @@ public struct DBRMenuScreen: Screen {
                         .withStackContainer()
                         .withTabBarItem(.DBRSignUpService)
                 )
+                .setupTab(
+                    with: screens
+                        .visitsScreen()
+                        .withStackContainer()
+                        .withTabBarItem(.DBRVisits)
+                )
                 .selectTab(
                     of: UINavigationController.self,
                     with: .index(0)
@@ -59,5 +66,10 @@ extension UITabBarItem {
     static let DBRSignUpService = UITabBarItem(
         title: "",
         image: DBRImage.plusIcon.image,
-        tag: 1)
+        tag: 2)
+    
+    static let DBRVisits = UITabBarItem(
+        title: "",
+        image: DBRImage.calendarIcon.image,
+        tag: 3)
 }
