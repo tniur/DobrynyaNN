@@ -8,6 +8,7 @@ public struct DBRAppointment: Sendable, Identifiable {
     public let timeEnd: String
     public let clinicId: Int
     public let clinicAddress: String
+    public let clinicTitle: String
     public let doctorId: Int
     public let doctorName: String
     public let serviceId: Int
@@ -23,6 +24,7 @@ public struct DBRAppointment: Sendable, Identifiable {
         timeEnd: String,
         clinicId: Int,
         clinicAddress: String,
+        clinicTitle: String,
         doctorId: Int,
         doctorName: String,
         serviceId: Int,
@@ -37,6 +39,7 @@ public struct DBRAppointment: Sendable, Identifiable {
         self.timeEnd = timeEnd
         self.clinicId = clinicId
         self.clinicAddress = clinicAddress
+        self.clinicTitle = clinicTitle
         self.doctorId = doctorId
         self.doctorName = doctorName
         self.serviceId = serviceId
