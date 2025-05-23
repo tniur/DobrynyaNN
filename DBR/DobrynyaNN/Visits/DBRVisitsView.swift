@@ -19,6 +19,7 @@ struct DBRVisitsView: View {
     var body: some View {
         contentView
             .navigationTitle("Мои визиты")
+            .onAppear(perform: viewModel.fetchData)
     }
     
     // MARK: - Subviews
@@ -27,7 +28,14 @@ struct DBRVisitsView: View {
         VStack {
             DBRVisitsToggle(sections: ["Будущие", "Прошедшие"])
             
-            if viewModel.visits.isEmpty {
+            if viewModel.isLoading {
+                Spacer()
+
+                ProgressView("Загрузка...")
+                    .frame(maxWidth: .infinity, alignment: .center)
+                
+                Spacer()
+            } else if viewModel.visits.isEmpty {
                 Spacer()
                 
                 emptyView
