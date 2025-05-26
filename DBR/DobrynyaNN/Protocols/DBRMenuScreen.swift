@@ -52,6 +52,18 @@ public struct DBRMenuScreen: Screen {
                 )
         }
         controller.navigationController?.navigationBar.isHidden = true
+        
+        controller.tabBar.isTranslucent = true
+        controller.tabBar.backgroundImage = nil
+        controller.tabBar.shadowImage = nil
+        controller.tabBar.barTintColor = nil
+        controller.tabBar.backgroundColor = nil
+        
+        let appearance = UITabBarAppearance()
+        appearance.configureWithDefaultBackground()
+        controller.tabBar.standardAppearance = appearance
+        controller.tabBar.scrollEdgeAppearance = appearance
+        
         return controller
     }
 }

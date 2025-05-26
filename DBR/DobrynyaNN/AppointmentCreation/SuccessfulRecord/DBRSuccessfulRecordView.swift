@@ -71,7 +71,7 @@ struct DBRSuccessfulRecordView: View {
             DBRButton(
                 "В мои визиты",
                 style: .init(.primary),
-                action: { }
+                action: viewModel.show
             )
             .padding(.bottom, 12.0)
             

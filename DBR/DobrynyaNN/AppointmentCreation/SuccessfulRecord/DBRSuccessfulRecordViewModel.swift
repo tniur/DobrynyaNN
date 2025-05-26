@@ -86,6 +86,10 @@ final class DBRSuccessfulRecordViewModel: ObservableObject {
 
     @MainActor
     func show() {
-
+        screenNavigator.navigate(to: screens.backRootRoute())
+        
+        if let tabs = screenNavigator.topTabsContainer {
+            tabs.selectedIndex = 2
+        }
     }
 }

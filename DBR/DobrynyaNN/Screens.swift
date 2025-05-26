@@ -206,12 +206,19 @@ extension Screens: DBRTimeSlotsScreens {
     }
 }
 
+extension Screens: DBRSuccessfulRecordScreens {
+    func backRootRoute() -> ScreenWindowRoute {
+        return ScreenWindowRoute()
+            .top(.stack)
+            .popToRoot()
+            .resolve()
+    }
+}
+
 extension Screens: DBRRegistrationPhoneScreens { }
 
 extension Screens: DBRLoginCodeScreens { }
 
 extension Screens: DBRResearchResultsScreens { }
-
-extension Screens: DBRSuccessfulRecordScreens { }
 
 extension Screens: DBRVisitsScreens { }

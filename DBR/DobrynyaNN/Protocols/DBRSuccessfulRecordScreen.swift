@@ -11,7 +11,7 @@ import Nivelir
 
 @MainActor
 public protocol DBRSuccessfulRecordScreens {
-    
+    func backRootRoute() -> ScreenWindowRoute
 }
 
 public struct DBRSuccessfulRecordScreen: Screen {
