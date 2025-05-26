@@ -179,3 +179,21 @@ extension DBRResources {
         UploadAvatarResource(url: DBREndpoint.baseURL, path: DBREndpoint.Profile.uploadPatientAvatar, body: body)
     }
 }
+
+// MARK: - Update Info
+
+extension DBRResources {
+    public struct UpdatePatientInfoResource {
+        let url: URL
+        let path: String
+        let body: DBRUpdatePatientInfoDTO
+
+        public var put: DBRRequest<DBRDataResponse<DBRUpdatePatientInfoResultDTO>> {
+            DBRRequest(method: .put, url: url, path: path, body: body)
+        }
+    }
+
+    public static func updatePatientInfo(body: DBRUpdatePatientInfoDTO) -> UpdatePatientInfoResource {
+        UpdatePatientInfoResource(url: DBREndpoint.baseURL, path: DBREndpoint.Profile.updatePatientInfo, body: body)
+    }
+}
