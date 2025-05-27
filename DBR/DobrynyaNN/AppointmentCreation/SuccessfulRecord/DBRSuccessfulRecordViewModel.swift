@@ -68,6 +68,7 @@ final class DBRSuccessfulRecordViewModel: ObservableObject {
         Task {
             do {
                 cancelAppointmentResult = try await appointmentsService.cancelAppointment(with: newAppointmentId)
+                screenNavigator.navigate(to: screens.backRootRoute())
             } catch let error as DBRError {
                 switch error {
                 case .unauthorized:
@@ -85,7 +86,7 @@ final class DBRSuccessfulRecordViewModel: ObservableObject {
     }
 
     @MainActor
-    func show() {
+    func showVisits() {
         screenNavigator.navigate(to: screens.backRootRoute())
         
         if let tabs = screenNavigator.topTabsContainer {
