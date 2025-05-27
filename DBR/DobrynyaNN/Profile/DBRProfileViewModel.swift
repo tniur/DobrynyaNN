@@ -8,6 +8,8 @@
 import Foundation
 import Nivelir
 import SwiftUI
+import Factory
+import DBRCore
 import DBRUIComponents
 
 struct ProfileSection {
@@ -20,7 +22,12 @@ final class DBRProfileViewModel: ObservableObject {
     
     // MARK: - Properties
     
+    @Injected(\.tokenProvider) private var tokenProvider: DBRTokenProvider
+    @Injected(\.authService) private var authService: DBRAuthService
+    
     @Published var sections: [ProfileSection]
+    
+    @Published var errorMessage: String?
     
     private var screenNavigator: ScreenNavigator
     private let screens: DBRProfileScreens
@@ -56,6 +63,18 @@ final class DBRProfileViewModel: ObservableObject {
     }
     
     // MARK: - Methods
+    
+    @MainActor
+    func verifyCode() {
+        Task {
+            do {
+                let result = try await authService.confirmCode(login: "ivanova@example.com", code: "123456")
+                try tokenProvider.saveToken(result.accessToken)
+            } catch {
+                self.errorMessage = "Неверный логин или пароль"
+            }
+        }
+    }
 
     @MainActor
     func showResearchResults() {

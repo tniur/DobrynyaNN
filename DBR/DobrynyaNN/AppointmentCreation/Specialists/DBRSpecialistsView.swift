@@ -19,19 +19,37 @@ struct DBRSpecialistsView: View {
 
     var body: some View {
         contentView
+            .onAppear(perform: viewModel.fetchData)
     }
     
     // MARK: - Subviews
 
     private var contentView: some View {
         ZStack(alignment: .bottom) {
-            scrollView
+            VStack(alignment: .leading, spacing: 32.0) {
+                DBRSegmentedProgressView(progress: 4, totalSegments: 5)
+                    .padding(.horizontal)
+                
+                if viewModel.isLoading {
+                    Spacer()
+                    
+                    ProgressView("Загрузка...")
+                        .frame(maxWidth: .infinity, alignment: .center)
+                    
+                    Spacer()
+                } else if viewModel.specialists.isEmpty {
+                    emptyView
+                } else {
+                    scrollView
+                }
+            }
             
             DBRButton(
                 "Далее",
                 style: .init(.primary),
                 action: viewModel.showTimeSlots
             )
+            .disabled(viewModel.selectedSpecialistId == nil)
             .padding()
         }
     }
@@ -39,8 +57,6 @@ struct DBRSpecialistsView: View {
     private var scrollView: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 32.0) {
-                DBRSegmentedProgressView(progress: 4, totalSegments: 5)
-
                 Text("Специалисты")
                     .font(DBRFont.R20)
                     .foregroundStyle(DBRColor.blue6.swiftUIColor)
@@ -57,7 +73,7 @@ struct DBRSpecialistsView: View {
                                     .font(DBRFont.B16)
                                     .foregroundStyle(DBRColor.blue6.swiftUIColor)
                                 
-                                Text(specialist.speciality)
+                                Text(specialist.professionsTitle)
                                     .font(DBRFont.R12)
                                     .foregroundStyle(DBRColor.base5.swiftUIColor)
                             }
@@ -72,12 +88,12 @@ struct DBRSpecialistsView: View {
                         .overlay(
                             RoundedRectangle(cornerRadius: 20.0)
                                 .stroke(
-                                    viewModel.selectedSpecialist?.id == specialist.id ? DBRColor.blue6.swiftUIColor : DBRColor.base3.swiftUIColor,
+                                    viewModel.selectedSpecialistId == specialist.id ? DBRColor.blue6.swiftUIColor : DBRColor.base3.swiftUIColor,
                                     lineWidth: 1.0
                                 )
                         )
                         .onTapGesture {
-                            viewModel.selectedSpecialist = specialist
+                            viewModel.specialistDidSelected(with: specialist.id)
                         }
                     }
                 }
@@ -89,7 +105,7 @@ struct DBRSpecialistsView: View {
     }
     
     private var emptyView: some View {
-        VStack(spacing: 8.0) {
+        VStack(alignment: .leading, spacing: 8.0) {
             Text("Специалисты недоступны")
                 .font(DBRFont.R20)
                 .foregroundStyle(DBRColor.blue6.swiftUIColor)
@@ -97,7 +113,10 @@ struct DBRSpecialistsView: View {
             Text("На данный момент отсутствуют специалисты для оказания этой услуги. Пожалуйста, выберите другую услугу или обратитесь в клинику.")
                 .font(DBRFont.R14)
                 .foregroundStyle(DBRColor.base7.swiftUIColor)
+            
+            Spacer()
         }
+        .padding(.horizontal)
     }
     
     // MARK: - Initializer

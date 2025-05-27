@@ -11,18 +11,20 @@ import Nivelir
 
 @MainActor
 public protocol DBRSuccessfulRecordScreens {
-    
+    func backRootRoute() -> ScreenWindowRoute
 }
 
 public struct DBRSuccessfulRecordScreen: Screen {
+    let newAppointmentId: Int
     let screens: DBRSuccessfulRecordScreens
 
-    public init(screens: DBRSuccessfulRecordScreens) {
+    public init(newAppointmentId: Int, screens: DBRSuccessfulRecordScreens) {
+        self.newAppointmentId = newAppointmentId
         self.screens = screens
     }
 
     public func build(navigator: ScreenNavigator) -> UIViewController {
-        let viewModel = DBRSuccessfulRecordViewModel(screenNavigator: navigator, screens: screens)
+        let viewModel = DBRSuccessfulRecordViewModel(screenNavigator: navigator, screens: screens, newAppointmentId: newAppointmentId)
         let view = DBRSuccessfulRecordView(viewModel: viewModel)
         return UIHostingController(rootView: view)
     }

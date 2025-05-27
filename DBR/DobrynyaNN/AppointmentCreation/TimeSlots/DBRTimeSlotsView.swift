@@ -23,9 +23,7 @@ struct DBRTimeSlotsView: View {
 
     var body: some View {
         contentView
-            .onAppear {
-                viewModel.loadData()
-            }
+            .onAppear(perform: viewModel.fetchData)
     }
     
     // MARK: - Subviews
@@ -37,15 +35,16 @@ struct DBRTimeSlotsView: View {
             DBRButton(
                 "Записаться",
                 style: .init(.primary),
-                action: viewModel.showSuccessfulRecord
+                action: viewModel.createAppointment
             )
+            .disabled(viewModel.selectedSlot == nil)
             .padding()
         }
     }
     
     private var scrollView: some View {
         ScrollView {
-            LazyVStack(spacing: 32.0) {
+            LazyVStack(alignment: .leading, spacing: 32.0) {
                 DBRSegmentedProgressView(progress: 5, totalSegments: 5)
 
                 DatePicker(
@@ -67,11 +66,19 @@ struct DBRTimeSlotsView: View {
                         .stroke(DBRColor.base3.swiftUIColor, lineWidth: 1.0)
                 )
                 
-                slotsView
+                if viewModel.isLoading {
+                    ProgressView("Загрузка...")
+                        .frame(maxWidth: .infinity, alignment: .center)
+                } else if viewModel.slots(for: viewModel.selectedDate).isEmpty {
+                    emptyView
+                } else {
+                    slotsView
+                }
             }
             .padding(.horizontal)
             .padding(.bottom, 84.0)
         }
+        .scrollIndicators(.hidden)
     }
     
     private var slotsView: some View {
@@ -79,7 +86,7 @@ struct DBRTimeSlotsView: View {
             ForEach(viewModel.slots(for: viewModel.selectedDate)) { slot in
                 Button(
                     action: {
-                        viewModel.setAppoinmentTime(slotDateInterval: slot.slotDateInterval)
+                        viewModel.appoinmentTimeDidSelected(slotDateInterval: slot.slotDateInterval)
                     },
                     label: {
                         Text(slot.timeStart)
@@ -103,7 +110,7 @@ struct DBRTimeSlotsView: View {
     }
     
     private var emptyView: some View {
-        VStack(spacing: 8.0) {
+        VStack(alignment: .leading, spacing: 8.0) {
             Text("Нет свободных слотов")
                 .font(DBRFont.R20)
                 .foregroundStyle(DBRColor.blue6.swiftUIColor)

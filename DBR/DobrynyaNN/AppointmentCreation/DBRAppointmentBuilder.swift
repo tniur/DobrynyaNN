@@ -7,7 +7,21 @@
 
 import DBRCore
 
-final class DBRAppointmentBuilder {
+public protocol AppointmentBuilder {
+    func build() -> DBRNewAppointment?
+    func setDoctor(id: Int)
+    func setClinic(id: Int)
+    func setCategory(id: Int)
+    func setService(id: Int)
+    func setDateInterval(interval: DBRSlotDateInterval)
+    func getDoctorId() -> Int?
+    func getClinicId() -> Int?
+    func getCategoryId() -> Int?
+    func getServiceId() -> Int?
+    func getDateInterval() -> DBRSlotDateInterval?
+}
+
+final class DBRAppointmentBuilder: AppointmentBuilder {
     
     // MARK: - Properties
 

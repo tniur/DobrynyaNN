@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DBRCore
 import DBRUIComponents
 
 struct DBRAvailableServicesView: View {
@@ -18,19 +19,37 @@ struct DBRAvailableServicesView: View {
 
     var body: some View {
         contentView
+            .onAppear(perform: viewModel.fetchData)
     }
     
     // MARK: - Subviews
 
     private var contentView: some View {
         ZStack(alignment: .bottom) {
-            scrollView
+            VStack(spacing: 32.0) {
+                DBRSegmentedProgressView(progress: 2, totalSegments: 5)
+                    .padding(.horizontal)
+                          
+                if viewModel.isLoading {
+                    Spacer()
+                    
+                    ProgressView("Загрузка...")
+                        .frame(maxWidth: .infinity, alignment: .center)
+                    
+                    Spacer()
+                } else if viewModel.services.isEmpty {
+                    emptyView
+                } else {
+                    scrollView
+                }
+            }
             
             DBRButton(
                 "Далее",
                 style: .init(.primary),
                 action: viewModel.showClinicAdresses
             )
+            .disabled(viewModel.selectedServiceId == nil)
             .padding()
         }
     }
@@ -38,8 +57,6 @@ struct DBRAvailableServicesView: View {
     private var scrollView: some View {
         ScrollView {
             LazyVStack(alignment: .center, spacing: 32.0) {
-                DBRSegmentedProgressView(progress: 2, totalSegments: 5)
-
                 Text("Доступные услуги")
                     .font(DBRFont.R20)
                     .foregroundStyle(DBRColor.blue6.swiftUIColor)
@@ -48,10 +65,10 @@ struct DBRAvailableServicesView: View {
                     ForEach(viewModel.services) { service in
                         DBRAvailableServicesCard(
                             service: service,
-                            selectedService: $viewModel.selectedService
+                            selectedServiceId: $viewModel.selectedServiceId
                         )
                         .onTapGesture {
-                            viewModel.selectedService = service
+                            viewModel.serviceDidSelected(with: service.id)
                         }
                     }
                 }
@@ -63,7 +80,7 @@ struct DBRAvailableServicesView: View {
     }
     
     private var emptyView: some View {
-        VStack(spacing: 8.0) {
+        VStack(alignment: .leading, spacing: 8.0) {
             Text("В данной категории нет услуг")
                 .font(DBRFont.R20)
                 .foregroundStyle(DBRColor.blue6.swiftUIColor)
@@ -71,6 +88,9 @@ struct DBRAvailableServicesView: View {
             Text("К сожалению, сейчас по выбранной категории услуги не найдены. Попробуйте другую категорию или обратитесь в клинику.")
                 .font(DBRFont.R14)
                 .foregroundStyle(DBRColor.base7.swiftUIColor)
+            
+            Spacer()
         }
+        .padding(.horizontal)
     }
 }

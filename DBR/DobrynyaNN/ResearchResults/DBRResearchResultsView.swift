@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DBRUIComponents
 
 struct DBRResearchResultsView: View {
     
@@ -23,6 +24,17 @@ struct DBRResearchResultsView: View {
     // MARK: - Subviews
 
     private var contentView: some View {
+        ZStack {
+            if viewModel.researches.isEmpty {
+                emptyView
+                    .frame(width: 226.0, alignment: .center)
+            } else {
+                scrollView
+            }
+        }
+    }
+    
+    private var scrollView: some View {
         ScrollView {
             VStack(spacing: 16.0) {
                 ForEach(viewModel.researches) { research in
@@ -36,6 +48,13 @@ struct DBRResearchResultsView: View {
             .padding()
         }
         .scrollIndicators(.hidden)
+    }
+    
+    private var emptyView: some View {
+        Text("У вас пока нет результатов исследований. Как только они появятся, вы сможете просмотреть их здесь.")
+            .font(DBRFont.R16)
+            .foregroundStyle(DBRColor.base4.swiftUIColor)
+            .multilineTextAlignment(.center)
     }
     
     // MARK: - Initializer

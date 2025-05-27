@@ -46,39 +46,9 @@
 			path = ResearchResults;
 			sourceTree = "<group>";
 		};
-		7B348AEF2DBFC1BE00093BA3 /* SignUpService */ = {
+		7B348E2B2DDE825800093BA3 /* AppointmentCreation */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = SignUpService;
-			sourceTree = "<group>";
-		};
-		7B348AFB2DBFE91A00093BA3 /* ServiceType */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = ServiceType;
-			sourceTree = "<group>";
-		};
-		7B348B092DC0E52700093BA3 /* AvailableServices */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = AvailableServices;
-			sourceTree = "<group>";
-		};
-		7B348B192DC6A68400093BA3 /* ClinicAdresses */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = ClinicAdresses;
-			sourceTree = "<group>";
-		};
-		7B348B262DC7B52C00093BA3 /* Specialists */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Specialists;
-			sourceTree = "<group>";
-		};
-		7B348C2A2DCA4DC900093BA3 /* TimeSlots */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = TimeSlots;
-			sourceTree = "<group>";
-		};
-		7B348CF72DCAABA000093BA3 /* SuccessfulRecord */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = SuccessfulRecord;
+			path = AppointmentCreation;
 			sourceTree = "<group>";
 		};
 		7B6134182D9F2DE900AA138D /* Splash */ = {
@@ -99,6 +69,11 @@
 		7B6134232D9F2EA700AA138D /* RegistrationPhone */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = RegistrationPhone;
+			sourceTree = "<group>";
+		};
+		7B6739872DDF9A7700F0996A /* Visits */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Visits;
 			sourceTree = "<group>";
 		};
 		7BDB6D0A2D9DBC3A00A74403 /* Registration */ = {
@@ -162,19 +137,14 @@
 		E92A2E9E2D6CE7E900D0D03C /* DobrynyaNN */ = {
 			isa = PBXGroup;
 			children = (
-				7B348CF72DCAABA000093BA3 /* SuccessfulRecord */,
-				7B348C2A2DCA4DC900093BA3 /* TimeSlots */,
-				7B348B262DC7B52C00093BA3 /* Specialists */,
-				7B348B192DC6A68400093BA3 /* ClinicAdresses */,
-				7B348B092DC0E52700093BA3 /* AvailableServices */,
-				7B348AFB2DBFE91A00093BA3 /* ServiceType */,
-				7B348AEF2DBFC1BE00093BA3 /* SignUpService */,
-				E9E8686B2D9DD2590089E293 /* Screens.swift */,
+				7B6739872DDF9A7700F0996A /* Visits */,
+				7B348E2B2DDE825800093BA3 /* AppointmentCreation */,
 				E92A2E992D6CE7E900D0D03C /* Assets.xcassets */,
 				E92A2E9A2D6CE7E900D0D03C /* Info.plist */,
 				E92A2E9C2D6CE7E900D0D03C /* LaunchScreen.storyboard */,
 				E92A2E982D6CE7E900D0D03C /* AppDelegate.swift */,
 				E92A2E9D2D6CE7E900D0D03C /* SceneDelegate.swift */,
+				E9E8686B2D9DD2590089E293 /* Screens.swift */,
 				7B167EEC2DB6DE510029F0F8 /* Profile */,
 				7B167EF12DB6DE510029F0F8 /* ResearchResults */,
 				7BDB6D192D9DBF6400A74403 /* Protocols */,
@@ -205,17 +175,12 @@
 			fileSystemSynchronizedGroups = (
 				7B167EEC2DB6DE510029F0F8 /* Profile */,
 				7B167EF12DB6DE510029F0F8 /* ResearchResults */,
-				7B348AEF2DBFC1BE00093BA3 /* SignUpService */,
-				7B348AFB2DBFE91A00093BA3 /* ServiceType */,
-				7B348B092DC0E52700093BA3 /* AvailableServices */,
-				7B348B192DC6A68400093BA3 /* ClinicAdresses */,
-				7B348B262DC7B52C00093BA3 /* Specialists */,
-				7B348C2A2DCA4DC900093BA3 /* TimeSlots */,
-				7B348CF72DCAABA000093BA3 /* SuccessfulRecord */,
+				7B348E2B2DDE825800093BA3 /* AppointmentCreation */,
 				7B6134182D9F2DE900AA138D /* Splash */,
 				7B61341D2D9F2E8800AA138D /* Login */,
 				7B6134222D9F2E9800AA138D /* LoginCode */,
 				7B6134232D9F2EA700AA138D /* RegistrationPhone */,
+				7B6739872DDF9A7700F0996A /* Visits */,
 				7BDB6D0A2D9DBC3A00A74403 /* Registration */,
 				7BDB6D192D9DBF6400A74403 /* Protocols */,
 			);

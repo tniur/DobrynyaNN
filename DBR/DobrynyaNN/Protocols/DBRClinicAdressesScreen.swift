@@ -11,18 +11,20 @@ import Nivelir
 
 @MainActor
 public protocol DBRClinicAdressesScreens {
-    func showSpecialistsRoute() -> ScreenWindowRoute
+    func showSpecialistsRoute(builder: AppointmentBuilder) -> ScreenWindowRoute
 }
 
 public struct DBRClinicAdressesScreen: Screen {
+    let builder: AppointmentBuilder
     let screens: DBRClinicAdressesScreens
 
-    public init(screens: DBRClinicAdressesScreens) {
+    public init(builder: AppointmentBuilder, screens: DBRClinicAdressesScreens) {
+        self.builder = builder
         self.screens = screens
     }
 
     public func build(navigator: ScreenNavigator) -> UIViewController {
-        let viewModel = DBRClinicAdressesViewModel(screenNavigator: navigator, screens: screens)
+        let viewModel = DBRClinicAdressesViewModel(screenNavigator: navigator, screens: screens, appointmentBuilder: builder)
         let view = DBRClinicAdressesView(viewModel: viewModel)
         return UIHostingController(rootView: view)
     }
