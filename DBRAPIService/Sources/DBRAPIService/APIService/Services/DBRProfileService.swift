@@ -99,7 +99,7 @@ extension DBRAPIService: DBRProfileService {
             throw handle(error)
         }
     }
-    
+
     public func updatePatientInfo(
         with data: DBRUpdatePatientInfo
     ) async throws -> DBRUpdatePatientInfoResult {
