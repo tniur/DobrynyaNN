@@ -25,6 +25,7 @@
 		7B348CE22DCA507900093BA3 /* DBRDIContainer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DBRDIContainer; path = ../DBRDIContainer; sourceTree = SOURCE_ROOT; };
 		7B348CE32DCA507E00093BA3 /* DBRNetworking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DBRNetworking; path = ../DBRNetworking; sourceTree = SOURCE_ROOT; };
 		7B348CE42DCA508400093BA3 /* DBRUtils */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DBRUtils; path = ../DBRUtils; sourceTree = SOURCE_ROOT; };
+		7B673A382DE64EA200F0996A /* DBRAPIService */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DBRAPIService; path = ../DBRAPIService; sourceTree = SOURCE_ROOT; };
 		7BEB5E462D9F22E300A15CF9 /* DBRUIComponents */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DBRUIComponents; path = ../DBRUIComponents; sourceTree = SOURCE_ROOT; };
 		E92A2E802D6CE6C100D0D03C /* DobrynyaNN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DobrynyaNN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E92A2E982D6CE7E900D0D03C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +116,7 @@
 		E92A2E772D6CE6C100D0D03C = {
 			isa = PBXGroup;
 			children = (
+				7B673A382DE64EA200F0996A /* DBRAPIService */,
 				7B348CE42DCA508400093BA3 /* DBRUtils */,
 				7B348CE32DCA507E00093BA3 /* DBRNetworking */,
 				7B348CE22DCA507900093BA3 /* DBRDIContainer */,
