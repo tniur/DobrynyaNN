@@ -8,6 +8,7 @@ public struct DBRAppointmentDTO: Codable, Sendable {
     public let timeEnd: String
     public let clinicId: Int
     public let clinicAddress: String
+    public let clinicTitle: String
     public let doctorId: Int
     public let doctorName: String
     public let serviceId: Int
@@ -22,6 +23,7 @@ public struct DBRAppointmentDTO: Codable, Sendable {
         case timeEnd = "time_end"
         case clinicId = "clinic_id"
         case clinicAddress = "clinic_address"
+        case clinicTitle = "clinic_title"
         case doctorId = "doctor_id"
         case doctorName = "doctor_name"
         case serviceId = "service_id"
