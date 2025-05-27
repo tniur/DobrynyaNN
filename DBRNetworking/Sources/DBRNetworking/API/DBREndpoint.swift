@@ -28,6 +28,7 @@ public enum DBREndpoint {
         static let consultations = "getPatientConsultations"
         static let consultationDetails = "getPatientConsultationDetails"
         static let uploadPatientAvatar = "uploadPatientAvatar"
+        static let updatePatientInfo = "updatePatientInfo"
     }
 
     enum ClinicInfo {

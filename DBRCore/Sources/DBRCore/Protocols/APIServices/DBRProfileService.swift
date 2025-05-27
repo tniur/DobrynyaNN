@@ -9,4 +9,5 @@ public protocol DBRProfileService {
     func fetchConsultations() async throws -> [DBRConsultation]
     func fetchConsultationDetails(for id: Int) async throws -> DBRConsultationDetails
     func uploadProfileAvatar(withJpeg data: Data) async throws -> DBRUploadProfileAvatarResult
+    func updatePatientInfo(with data: DBRUpdatePatientInfo) async throws -> DBRUpdatePatientInfoResult
 }

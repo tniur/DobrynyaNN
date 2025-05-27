@@ -99,4 +99,17 @@ extension DBRAPIService: DBRProfileService {
             throw handle(error)
         }
     }
+    
+    public func updatePatientInfo(
+        with data: DBRUpdatePatientInfo
+    ) async throws -> DBRUpdatePatientInfoResult {
+        do {
+            let key = try tokenProvider.getToken()
+            let body = DBRUpdatePatientInfoMapper.map(data, patientKey: key)
+            let data = try await client.send(DBRResources.updatePatientInfo(body: body).put).data
+            return DBRUpdatePatientInfoResultMapper.map(data)
+        } catch {
+            throw handle(error)
+        }
+    }
 }
