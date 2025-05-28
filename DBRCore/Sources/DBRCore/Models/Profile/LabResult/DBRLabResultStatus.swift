@@ -1,4 +1,6 @@
 import Foundation
+import SwiftUICore
+import DBRUIComponents
 
 public enum DBRLabResultStatus: String, Sendable {
     case normal
@@ -23,17 +25,62 @@ public enum DBRLabResultStatus: String, Sendable {
     public var localizedTitle: String {
         switch self {
         case .normal:
-            return NSLocalizedString("labResultStatusNormal",
-                                     bundle: Bundle.module, comment: "Normal")
+            return String(localized: "labResultStatusNormal", bundle: .module)
         case .abnormal:
-            return NSLocalizedString("labResultStatusAbnormal",
-                                     bundle: Bundle.module, comment: "Abnormal")
+            return String(localized: "labResultStatusAbnormal", bundle: .module)
         case .inProgress:
-            return NSLocalizedString("labResultStatusInProgress",
-                                     bundle: Bundle.module, comment: "In progress")
+            return String(localized: "labResultStatusInProgress", bundle: .module)
         case .unknown:
-            return NSLocalizedString("labResultStatusUnknown",
-                                     bundle: Bundle.module, comment: "Unknown")
+            return String(localized: "labResultStatusUnknown", bundle: .module)
+        }
+    }
+
+    public var capsuleForegroundColor: Color {
+        switch self {
+        case .inProgress, .unknown:
+            return DBRColor.base4.swiftUIColor
+        case .normal:
+            return DBRColor.green5.swiftUIColor
+        case .abnormal:
+            return DBRColor.red5.swiftUIColor
+        }
+    }
+
+    public var capsuleBackgroundColor: Color {
+        switch self {
+        case .inProgress, .unknown:
+            return DBRColor.base1.swiftUIColor
+        case .normal:
+            return DBRColor.green2.swiftUIColor
+        case .abnormal:
+            return DBRColor.red2.swiftUIColor
+        }
+    }
+
+    public var foregroundColor: Color {
+        switch self {
+        case .inProgress, .unknown:
+            return DBRColor.base3.swiftUIColor
+        case .normal, .abnormal:
+            return DBRColor.blue3.swiftUIColor
+        }
+    }
+
+    public var backgroundColor: Color {
+        switch self {
+        case .inProgress, .unknown:
+            return DBRColor.base1.swiftUIColor
+        case .normal, .abnormal:
+            return DBRColor.blue1.swiftUIColor
+        }
+    }
+
+    public var textForegroundColor: Color {
+        switch self {
+        case .inProgress, .unknown:
+            return DBRColor.base5.swiftUIColor
+        case .normal, .abnormal:
+            return DBRColor.blue6.swiftUIColor
         }
     }
 }

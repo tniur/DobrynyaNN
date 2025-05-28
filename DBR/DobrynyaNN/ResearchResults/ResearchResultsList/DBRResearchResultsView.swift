@@ -19,6 +19,7 @@ struct DBRResearchResultsView: View {
     var body: some View {
         contentView
             .navigationTitle("Результаты исследований")
+            .onAppear(perform: viewModel.fetchData)
     }
     
     // MARK: - Subviews
@@ -39,10 +40,13 @@ struct DBRResearchResultsView: View {
             VStack(spacing: 16.0) {
                 ForEach(viewModel.researches) { research in
                     DBRResearchResultCard(
-                        title: research.title,
-                        date: research.date,
-                        result: research.result
+                        title: research.serviceTitle,
+                        date: research.dateCreated,
+                        result: research.status
                     )
+                    .onTapGesture {
+                        viewModel.showResearchDetails(for: research.id)
+                    }
                 }
             }
             .padding()
