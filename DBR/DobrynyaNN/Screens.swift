@@ -207,6 +207,7 @@ extension Screens: DBRTimeSlotsScreens {
 }
 
 extension Screens: DBRSuccessfulRecordScreens {
+    
     func backRootRoute() -> ScreenWindowRoute {
         return ScreenWindowRoute()
             .top(.stack)
@@ -215,10 +216,29 @@ extension Screens: DBRSuccessfulRecordScreens {
     }
 }
 
+extension Screens: DBRResearchResultsScreens {
+    
+    func showResearchDetailsRoute(for researchId: Int) -> ScreenWindowRoute {
+        let screen = researchDetailsScreen(researchId: researchId)
+        
+        return ScreenWindowRoute()
+            .top(.stack)
+            .push(screen)
+            .resolve()
+    }
+    
+    private func researchDetailsScreen(researchId: Int) -> AnyModalScreen {
+        DBRResearchResultsDetailScreen(
+            researchId: researchId,
+            screens: self
+        ).eraseToAnyScreen()
+    }
+}
+
 extension Screens: DBRRegistrationPhoneScreens { }
 
 extension Screens: DBRLoginCodeScreens { }
 
-extension Screens: DBRResearchResultsScreens { }
-
 extension Screens: DBRVisitsScreens { }
+
+extension Screens: DBRResearchResultsDetailScreens { }
