@@ -26,7 +26,14 @@ struct DBRResearchResultsView: View {
 
     private var contentView: some View {
         ZStack {
-            if viewModel.researches.isEmpty {
+            if viewModel.isLoading {
+                Spacer()
+                
+                ProgressView("Загрузка...")
+                    .frame(maxWidth: .infinity, alignment: .center)
+                
+                Spacer()
+            } else if viewModel.researches.isEmpty {
                 emptyView
                     .frame(width: 226.0, alignment: .center)
             } else {
@@ -45,7 +52,10 @@ struct DBRResearchResultsView: View {
                         result: research.status
                     )
                     .onTapGesture {
-                        viewModel.showResearchDetails(for: research.id)
+                        if research.status != .inProgress,
+                           research.status != .unknown {
+                            viewModel.showResearchDetails(for: research.id)
+                        }
                     }
                 }
             }
@@ -59,6 +69,7 @@ struct DBRResearchResultsView: View {
             .font(DBRFont.R16)
             .foregroundStyle(DBRColor.base4.swiftUIColor)
             .multilineTextAlignment(.center)
+            .frame(maxWidth: 226.0)
     }
     
     // MARK: - Initializer
