@@ -11,7 +11,7 @@ import Nivelir
 
 @MainActor
 public protocol DBRResearchResultsScreens {
-
+    func showResearchDetailsRoute(for researchId: Int) -> ScreenWindowRoute
 }
 
 public struct DBRResearchResultsScreen: Screen {

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import DBRUIComponents
+import DBRCore
 
 struct DBRResearchResultCard: View {
     
@@ -14,7 +15,7 @@ struct DBRResearchResultCard: View {
 
     private let title: String
     private let date: String
-    private let result: DBRResultState
+    private let result: DBRLabResultStatus
     
     // MARK: - Body
 
@@ -46,7 +47,7 @@ struct DBRResearchResultCard: View {
                     .font(DBRFont.I12)
                     .foregroundStyle(result.textForegroundColor)
                     .padding(.bottom, 12.0)
-                Text(result.title)
+                Text(result.localizedTitle)
                     .font(DBRFont.B12)
                     .foregroundStyle(result.capsuleForegroundColor)
                     .padding(.horizontal, 8.0)
@@ -77,7 +78,7 @@ struct DBRResearchResultCard: View {
     
     // MARK: - Initializer
 
-    init(title: String, date: String, result: DBRResultState) {
+    init(title: String, date: String, result: DBRLabResultStatus) {
         self.title = title
         self.date = date
         self.result = result
