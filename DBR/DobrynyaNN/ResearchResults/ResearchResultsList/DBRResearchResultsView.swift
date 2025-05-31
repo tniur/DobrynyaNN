@@ -49,7 +49,7 @@ struct DBRResearchResultsView: View {
                     DBRResearchResultCard(
                         title: research.serviceTitle,
                         date: research.dateCreated,
-                        result: research.status
+                        result: DBRLabResultStatusUI(from: research.status)
                     )
                     .onTapGesture {
                         if research.status != .inProgress,
