@@ -7,7 +7,6 @@
 
 import SwiftUI
 import DBRUIComponents
-import DBRCore
 
 struct DBRResearchResultCard: View {
     
@@ -15,7 +14,7 @@ struct DBRResearchResultCard: View {
 
     private let title: String
     private let date: String
-    private let result: DBRLabResultStatus
+    private let result: DBRLabResultStatusUI
     
     // MARK: - Body
 
@@ -78,7 +77,7 @@ struct DBRResearchResultCard: View {
     
     // MARK: - Initializer
 
-    init(title: String, date: String, result: DBRLabResultStatus) {
+    init(title: String, date: String, result: DBRLabResultStatusUI) {
         self.title = title
         self.date = date
         self.result = result
