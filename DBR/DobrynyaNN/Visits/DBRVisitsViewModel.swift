@@ -25,7 +25,7 @@ final class DBRVisitsViewModel: ObservableObject {
         case 0:
             return visits.filter { $0.status == .upcoming }
         case 1:
-            return visits.filter { $0.status == .completed }
+            return visits.filter { $0.status == .completed || $0.status == .refused || $0.status == .unknown }
         default:
             return visits
         }
