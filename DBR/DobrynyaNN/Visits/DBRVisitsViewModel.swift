@@ -31,6 +31,8 @@ final class DBRVisitsViewModel: ObservableObject {
         }
     }
     
+    private var cancelAppointmentResult: DBRCancelAppointmentResult?
+
     private var screenNavigator: ScreenNavigator
     private let screens: DBRVisitsScreens
     
@@ -68,5 +70,32 @@ final class DBRVisitsViewModel: ObservableObject {
             }
             isLoading = false
         }
+    }
+    
+    @MainActor
+    func cancelAppointment(with id: Int) {
+        Task {
+            do {
+                cancelAppointmentResult = try await appointmentsService.cancelAppointment(with: id)
+                fetchData()
+            } catch let error as DBRError {
+                switch error {
+                case .unauthorized:
+                    print(error.localizedDescription)
+                    // навигация до экранок авторизации
+                default:
+                    // потеря сети, выключенная связь и другие DomainError
+                    print(error.localizedDescription)
+                }
+            } catch {
+                // необрабатываемые ошибки
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    @MainActor
+    func editAppointment(with id: Int) {
+        
     }
 }
