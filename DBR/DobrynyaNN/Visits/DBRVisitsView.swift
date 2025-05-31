@@ -33,10 +33,11 @@ struct DBRVisitsView: View {
             
             if viewModel.isLoading {
                 Spacer()
+                
                 ProgressView("Загрузка...")
                     .frame(maxWidth: .infinity, alignment: .center)
-                Spacer()
                 
+                Spacer()
             } else if viewModel.filteredVisits.isEmpty {
                 Spacer()
                 emptyView
@@ -55,12 +56,36 @@ struct DBRVisitsView: View {
         ScrollView {
             LazyVStack {
                 ForEach(viewModel.filteredVisits) { visit in
-                    DBRAnalisysView(
+                    let view = DBRAnalisysView(
                         title: visit.serviceTitle,
                         adress: visit.clinicAddress,
                         doctorName: visit.doctorName,
                         createdDate: visit.createdDate
                     )
+                    
+                    switch visit.status {
+                    case .completed, .refused, .unknown:
+                        view
+                            .overlay(
+                                DBRColor.base0.swiftUIColor.opacity(0.5)
+                            )
+                    case .upcoming:
+                        view
+                            .contextMenu {
+                                Button(role: .none) {
+                                    viewModel.editAppointment(with: visit.id)
+                                } label: {
+                                    Text("Редактировать")
+                                        .font(DBRFont.R14)
+                                }
+                                Button(role: .destructive) {
+                                    viewModel.cancelAppointment(with: visit.id)
+                                } label: {
+                                    Text("Удалить")
+                                        .font(DBRFont.R14)
+                                }
+                            }
+                    }
                 }
             }
             .padding(.horizontal)
@@ -82,4 +107,3 @@ struct DBRVisitsView: View {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
 }
-

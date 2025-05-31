@@ -19,6 +19,15 @@ struct DBRSuccessfulRecordView: View {
     var body: some View {
         contentView
             .onAppear(perform: viewModel.fetchData)
+            .sheet(isPresented: $viewModel.isCancelApproveViewPresented) {
+                DBRApproveView(
+                    title: "Вы уверены?",
+                    description: "Подтвердите отмену записи",
+                    cancelAction: viewModel.showCancelApproveView,
+                    approveAction: viewModel.cancelAppointment
+                )
+                .presentationDragIndicator(.visible)
+            }
     }
     
     // MARK: - Subviews
@@ -78,7 +87,7 @@ struct DBRSuccessfulRecordView: View {
             DBRButton(
                 "Отменить запись",
                 style: .init(.secondaryRed),
-                action: viewModel.cancelAppointment
+                action: viewModel.showCancelApproveView
             )
         }
     }

@@ -18,6 +18,7 @@ final class DBRSuccessfulRecordViewModel: ObservableObject {
     
     @Published var isLoading = false
     @Published var appointment: DBRAppointment?
+    @Published var isCancelApproveViewPresented = false
 
     private let newAppointmentId: Int
     private var cancelAppointmentResult: DBRCancelAppointmentResult?
@@ -92,5 +93,10 @@ final class DBRSuccessfulRecordViewModel: ObservableObject {
         if let tabs = screenNavigator.topTabsContainer {
             tabs.selectedIndex = 2
         }
+    }
+    
+    @MainActor
+    func showCancelApproveView() {
+        isCancelApproveViewPresented.toggle()
     }
 }

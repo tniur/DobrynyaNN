@@ -13,17 +13,13 @@ public enum DBRAppointmentStatus: String, Sendable {
     public var localizedTitle: String {
         switch self {
         case .upcoming:
-            return NSLocalizedString("appointmentStatusUpcoming",
-                                     bundle: Bundle.module, comment: "Upcoming")
+            return String(localized: "appointmentStatusUpcoming", bundle: .module)
         case .completed:
-            return NSLocalizedString("appointmentStatusCompleted",
-                                     bundle: Bundle.module, comment: "Completed")
+            return String(localized: "appointmentStatusCompleted", bundle: .module)
         case .refused:
-            return NSLocalizedString("appointmentStatusRefused",
-                                     bundle: Bundle.module, comment: "Refused")
+            return String(localized: "appointmentStatusRefused", bundle: .module)
         case .unknown:
-            return NSLocalizedString("appointmentStatusUnknown",
-                                     bundle: Bundle.module, comment: "Unknown")
+            return String(localized: "appointmentStatusUnknown", bundle: .module)
         }
     }
 }
