@@ -12,22 +12,19 @@ import Factory
 import DBRCore
 import DBRUIComponents
 
-struct ProfileSection {
-    let name: String
-    let icon: Image
-    let action: () -> Void
-}
-
 final class DBRProfileViewModel: ObservableObject {
     
     // MARK: - Properties
-    
+
+    @Injected(\.profileService) private var profileService: DBRProfileService
     @Injected(\.tokenProvider) private var tokenProvider: DBRTokenProvider
     @Injected(\.authService) private var authService: DBRAuthService
     
-    @Published var sections: [ProfileSection]
+    @Published var sections: [DBRProfileSection]
+    @Published var patientInfo: DBRPatientInfo?
     
     @Published var errorMessage: String?
+    @Published var isLoading: Bool = false
     
     private var screenNavigator: ScreenNavigator
     private let screens: DBRProfileScreens
@@ -39,26 +36,21 @@ final class DBRProfileViewModel: ObservableObject {
         self.screens = screens
         
         self.sections = [
-            .init(name: "Результаты исследований", icon: DBRImage.heartextIcon.swiftUIImage, action: {
-                Task { @MainActor in
-                    screenNavigator.navigate(to: screens.showResearchResultsRoute())
-                }
-            }),
-            .init(name: "Документы", icon: DBRImage.docIcon.swiftUIImage, action: {
-                Task { @MainActor in
-                    screenNavigator.navigate(to: screens.showResearchResultsRoute())
-                }
-            }),
-            .init(name: "Консультации", icon: DBRImage.staroflifeIcon.swiftUIImage, action: {
-                Task { @MainActor in
-                    screenNavigator.navigate(to: screens.showResearchResultsRoute())
-                }
-            }),
-            .init(name: "Редактировать профиль", icon: DBRImage.pencilIcon.swiftUIImage, action: {
-                Task { @MainActor in
-                    screenNavigator.navigate(to: screens.showResearchResultsRoute())
-                }
-            })
+            DBRProfileSection(
+                name: "Результаты исследований",
+                icon: DBRImage.heartextIcon.swiftUIImage,
+                type: .researchResults
+            ),
+            DBRProfileSection(
+                name: "Консультации",
+                icon: DBRImage.staroflifeIcon.swiftUIImage,
+                type: .consultations
+                ),
+            DBRProfileSection(
+                name: "Редактировать профиль",
+                icon: DBRImage.pencilIcon.swiftUIImage,
+                type: .editProfile
+            )
         ]
     }
     
@@ -70,6 +62,7 @@ final class DBRProfileViewModel: ObservableObject {
             do {
                 let result = try await authService.confirmCode(login: "ivanova@example.com", code: "123456")
                 try tokenProvider.saveToken(result.accessToken)
+                fetchData()
             } catch {
                 self.errorMessage = "Неверный логин или пароль"
             }
@@ -82,5 +75,35 @@ final class DBRProfileViewModel: ObservableObject {
         topController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         topController?.navigationController?.navigationBar.tintColor = DBRColor.base10.color
         screenNavigator.navigate(to: screens.showResearchResultsRoute())
+    }
+    
+    @MainActor
+    func editProfile() {
+        Task { @MainActor in
+            screenNavigator.navigate(to: screens.showProfileSettingsRoute(with: patientInfo))
+        }
+    }
+    
+    @MainActor
+    private func fetchData() {
+        isLoading = true
+        Task {
+            do {
+                patientInfo = try await profileService.fetchPatientInfo()
+            } catch let error as DBRError {
+                switch error {
+                case .unauthorized:
+                    print(error.localizedDescription)
+                    // навигация до экранок авторизации
+                default:
+                    // потеря сети, выключенная связь и другие DomainError
+                    print(error.localizedDescription)
+                }
+            } catch {
+                // необрабатываемые ошибки
+                print(error.localizedDescription)
+            }
+            isLoading = false
+        }
     }
 }

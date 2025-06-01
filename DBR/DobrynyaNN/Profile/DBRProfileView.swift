@@ -54,13 +54,38 @@ struct DBRProfileView: View {
     
     private var avatarView: some View {
         VStack(spacing: 12.0) {
-            DBRImage.avatarPlaceholder.swiftUIImage
-                .frame(width: 100.0, height: 100.0)
+            if let imageURL = viewModel.patientInfo?.avatarUrl,
+                      let url = URL(string: imageURL) {
+                AsyncImage(url: url) { phase in
+                    switch phase {
+                    case .empty:
+                        ProgressView()
+                            .frame(width: 100, height: 100)
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 100, height: 100)
+                            .clipShape(Circle())
+                    case .failure(_):
+                        DBRImage.avatarPlaceholder.swiftUIImage
+                            .resizable()
+                            .frame(width: 100, height: 100)
+                    @unknown default:
+                        EmptyView()
+                    }
+                }
+            } else {
+                DBRImage.avatarPlaceholder.swiftUIImage
+                    .resizable()
+                    .frame(width: 100, height: 100)
+            }
+            
             VStack(spacing: 4.0) {
-                Text("Anastasia")
+                Text("\(viewModel.patientInfo?.lastName ?? "") \(viewModel.patientInfo?.firstName ?? "")")
                     .font(DBRFont.M20)
                     .foregroundStyle(DBRColor.base10.swiftUIColor)
-                Text("+7-900-777-77-17")
+                Text(viewModel.patientInfo?.mobile ?? "")
                     .font(DBRFont.R12)
                     .foregroundStyle(DBRColor.blue6.swiftUIColor)
             }
@@ -69,8 +94,20 @@ struct DBRProfileView: View {
     
     private var buttonsView: some View {
         VStack(spacing: 16) {
-            ForEach(viewModel.sections, id: \.name) { section in
-                DBRButton(section.name, icon: section.icon, action: section.action)
+            ForEach(viewModel.sections) { section in
+                DBRButton(
+                    section.name,
+                    icon: section.icon
+                ) {
+                    switch section.type {
+                    case .researchResults:
+                        viewModel.showResearchResults()
+                    case .consultations:
+                        viewModel.showResearchResults()
+                    case .editProfile:
+                        viewModel.editProfile()
+                    }
+                }
             }
         }
     }
