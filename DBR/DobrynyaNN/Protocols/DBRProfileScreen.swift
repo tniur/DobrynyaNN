@@ -8,10 +8,12 @@
 import Nivelir
 import SwiftUI
 import UIKit
+import DBRCore
 
 @MainActor
 public protocol DBRProfileScreens {
     func showResearchResultsRoute() -> ScreenWindowRoute
+    func showProfileSettingsRoute(with patientInfo: DBRPatientInfo?) -> ScreenWindowRoute
 }
 
 public struct DBRProfileScreen: Screen {
