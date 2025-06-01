@@ -26,7 +26,7 @@ struct DBRVisitsView: View {
 
     private var contentView: some View {
         VStack {
-            DBRVisitsToggle(
+            DBRToggle(
                 selectedIndex: $viewModel.selectedIndex,
                 sections: ["Будущие", "Прошедшие"]
             )

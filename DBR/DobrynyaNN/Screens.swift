@@ -1,4 +1,5 @@
 import Nivelir
+import DBRCore
 
 @MainActor
 struct Screens { }
@@ -44,6 +45,15 @@ extension Screens: DBRSplashScreens {
 }
 
 extension Screens: DBRProfileScreens {
+    
+    func showProfileSettingsRoute(with patientInfo: DBRPatientInfo?) -> ScreenWindowRoute {
+        let screen = DBRProfileSettingsScreen(patientInfo: patientInfo, screens: self)
+        
+        return ScreenWindowRoute()
+            .top(.stack)
+            .push(screen)
+            .resolve()
+    }
     
     func showResearchResultsRoute() -> ScreenWindowRoute {
         let screen = DBRResearchResultsScreen(screens: self)
@@ -242,3 +252,13 @@ extension Screens: DBRLoginCodeScreens { }
 extension Screens: DBRVisitsScreens { }
 
 extension Screens: DBRResearchResultsDetailScreens { }
+
+extension Screens: DBRProfileSettingsScreens {
+    
+    func backtoProfileRoute() -> ScreenWindowRoute {
+        return ScreenWindowRoute()
+            .top(.stack)
+            .popToRoot()
+            .resolve()
+    }
+}
