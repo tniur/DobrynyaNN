@@ -8,7 +8,13 @@ extension DBRResources {
         let path: String
 
         public var get: DBRRequest<DBRDataResponse<[DBRClinicDTO]>> {
-            DBRRequest(url: url, path: path, query: nil)
+            var headers = [String: String]()
+
+            if let lang = Bundle.main.preferredLocalizations.first {
+                headers["Accept-Language"] = lang
+            }
+
+            return DBRRequest(url: url, path: path, query: nil, headers: headers)
         }
     }
 
@@ -42,7 +48,13 @@ extension DBRResources {
         let path: String
 
         public var get: DBRRequest<DBRDataResponse<[DBRServiceCategoryDTO]>> {
-            DBRRequest(url: url, path: path, query: nil)
+            var headers = [String: String]()
+
+            if let lang = Bundle.main.preferredLocalizations.first {
+                headers["Accept-Language"] = lang
+            }
+
+            return DBRRequest(url: url, path: path, query: nil, headers: headers)
         }
     }
 
