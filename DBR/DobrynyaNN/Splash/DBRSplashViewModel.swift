@@ -1,23 +1,41 @@
 import Foundation
 import Nivelir
+import Factory
+import DBRDIContainer
+import DBRCore
 
 final class DBRSplashViewModel: ObservableObject {
+    
+    // MARK: - Properties
+
+    @Injected(\.tokenProvider) private var tokenProvider: DBRTokenProvider
     
     private var screenNavigator: ScreenNavigator
     private let screens: DBRSplashScreens
     
+    // MARK: - Methods
+    
     @MainActor
-    func showRegistration() {
+    func checkAuth() {
+        if tokenProvider.checkToken() {
+            showMenu()
+        } else {
+            showLogin()
+        }
+    }
+    
+    @MainActor
+    private func showRegistration() {
         screenNavigator.navigate(to: screens.showRegistrationRoute())
     }
     
     @MainActor
-    func showLogin() {
+    private func showLogin() {
         screenNavigator.navigate(to: screens.showLoginRoute())
     }
     
     @MainActor
-    func showMenu() {
+    private func showMenu() {
         screenNavigator.navigate(to: screens.showMenuRoute())
     }
     
