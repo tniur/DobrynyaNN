@@ -15,15 +15,19 @@ public protocol DBRLoginCodeScreens {
 }
 
 public struct DBRLoginCodeScreen: Screen {
+    let login: String
+    let phoneNumber: String
     let screens: DBRLoginCodeScreens
     
-    public init(screens: DBRLoginCodeScreens) {
+    public init(login: String, phoneNumber: String, screens: DBRLoginCodeScreens) {
         self.screens = screens
+        self.login = login
+        self.phoneNumber = phoneNumber
     }
     
     public func build(navigator: ScreenNavigator) -> UIViewController {
-        let viewModel = DBRLoginCodeViewModel(screenNavigator: navigator, screens: screens)
-        let view = DBRLoginCodeView(viewModel: viewModel)
+        let viewModel = DBRLoginCodeViewModel(login: login, phoneNumber: phoneNumber, screenNavigator: navigator, screens: screens)
+        let view = DBRVerificationCodeView(viewModel: viewModel)
         let controller = UIHostingController(rootView: view)
         return controller
     }
