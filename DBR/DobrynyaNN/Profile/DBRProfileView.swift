@@ -43,12 +43,12 @@ struct DBRProfileView: View {
                 
                 Spacer()
                 
-                DBRButton("Выйти", style: .init(.tertiaryRed), action: { })
+                DBRButton("Выйти", style: .init(.tertiaryRed), action: viewModel.logout)
             }
             .padding(.horizontal)
         }
         .onAppear {
-            viewModel.verifyCode()
+            viewModel.fetchData()
         }
     }
     
