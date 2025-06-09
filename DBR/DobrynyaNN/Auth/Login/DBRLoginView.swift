@@ -13,9 +13,6 @@ struct DBRLoginView: View {
     // MARK: - Properties
     
     @StateObject private var viewModel: DBRLoginViewModel
-
-    @State private var login: String = ""
-    @State private var password: String = ""
     
     // MARK: - Body
     
@@ -39,9 +36,8 @@ struct DBRLoginView: View {
                 .foregroundStyle(DBRColor.base10.swiftUIColor)
             
             VStack {
-                DBRTextField(placeholderText: "Логин", text: $login)
-                DBRTextField(placeholderText: "Пароль", text: $password, isSecure: true)
-
+                DBRTextField(placeholderText: "Логин", text: $viewModel.login)
+                DBRTextField(placeholderText: "Пароль", text: $viewModel.password, isSecure: true)
                 HStack {
                     Spacer()
                     Button("Забыли пароль?", action: { })
@@ -59,7 +55,7 @@ struct DBRLoginView: View {
             DBRButton(
                 "Отправить код",
                 style: DBRButtonStyle(.primary),
-                action: viewModel.showLoginCode
+                action: viewModel.requestCode
             )
             .environment(\.isEnabled, true)
             
@@ -81,4 +77,3 @@ struct DBRLoginView: View {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
 }
-
