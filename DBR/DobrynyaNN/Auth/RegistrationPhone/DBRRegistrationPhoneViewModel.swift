@@ -1,29 +1,31 @@
 //
-//  DBRRegistrationViewModel.swift
+//  DBRRegistrationPhoneViewModel.swift
 //  DobrynyaNN
 //
-//  Created by Анастасия Журавлева on 27.03.2025.
+//  Created by Анастасия Журавлева on 02.04.2025.
 //
 
-import Foundation
 import Nivelir
-import UIKit
 import DBRUIComponents
+import UIKit
 
-final class DBRRegistrationViewModel: ObservableObject {
+final class DBRRegistrationPhoneViewModel: ObservableObject {
     
     // MARK: - Properties
-
-    @Published var login: String = ""
-    @Published var password: String = ""
-    @Published var repeatedPassword: String = ""
+    
+    @Published var phoneNumber: String = ""
     
     private var screenNavigator: ScreenNavigator
-    private let screens: DBRRegistrationScreens
+    private let screens: DBRRegistrationPhoneScreens
+    
+    let login: String
+    let password: String
     
     // MARK: - Initializer
 
-    init(screenNavigator: ScreenNavigator, screens: DBRRegistrationScreens) {
+    init(login: String, password: String, screenNavigator: ScreenNavigator, screens: DBRRegistrationPhoneScreens) {
+        self.login = login
+        self.password = password
         self.screenNavigator = screenNavigator
         self.screens = screens
     }
@@ -31,11 +33,11 @@ final class DBRRegistrationViewModel: ObservableObject {
     // MARK: - Methods
 
     @MainActor
-    func showRegistrationPhone() {
+    func showRegistrationCode() {
         let topController = UIApplication.shared.topViewController()
         topController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         topController?.navigationController?.navigationBar.tintColor = DBRColor.base10.color
-        screenNavigator.navigate(to: screens.showRegistrationPhoneRoute())
+        screenNavigator.navigate(to: screens.showRegistrationCodeRoute(login: login, password: password, phoneNumber: phoneNumber))
     }
     
     @MainActor

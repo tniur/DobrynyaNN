@@ -11,7 +11,7 @@ import UIKit
 
 @MainActor
 public protocol DBRRegistrationScreens {
-    func showRegistrationPhoneRoute() -> ScreenWindowRoute
+    func showRegistrationPhoneRoute(login: String, password: String) -> ScreenWindowRoute
     func showLoginRoute() -> ScreenWindowRoute
 }
 
