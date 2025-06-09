@@ -90,6 +90,7 @@ struct DBRVisitsView: View {
             }
             .padding(.horizontal)
             .padding(.top, 32.0)
+            .padding(.bottom)
         }
         .scrollIndicators(.hidden)
     }
