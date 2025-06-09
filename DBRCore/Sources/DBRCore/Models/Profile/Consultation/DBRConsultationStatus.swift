@@ -13,17 +13,13 @@ public enum DBRConsultationStatus: String, Sendable {
     public var localizedTitle: String {
         switch self {
         case .waiting:
-            return NSLocalizedString("consultationStatusWaiting",
-                                     bundle: Bundle.module, comment: "Waiting")
+            return String(localized: "consultationStatusWaiting", bundle: .module)
         case .active:
-            return NSLocalizedString("consultationStatusActive",
-                                     bundle: Bundle.module, comment: "Active")
+            return String(localized: "consultationStatusActive", bundle: .module)
         case .done:
-            return NSLocalizedString("consultationStatusDone",
-                                     bundle: Bundle.module, comment: "Done")
+            return String(localized: "consultationStatusDone", bundle: .module)
         case .unknown:
-            return NSLocalizedString("consultationStatusUnknown",
-                                     bundle: Bundle.module, comment: "Unknown")
+            return String(localized: "consultationStatusUnknown", bundle: .module)
         }
     }
 }

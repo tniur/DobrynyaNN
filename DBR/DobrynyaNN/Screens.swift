@@ -46,6 +46,15 @@ extension Screens: DBRSplashScreens {
 
 extension Screens: DBRProfileScreens {
     
+    func showConsultationsRoute() -> ScreenWindowRoute {
+        let screen = DBRConsultationsScreen(screens: self)
+        
+        return ScreenWindowRoute()
+            .top(.stack)
+            .push(screen)
+            .resolve()
+    }
+    
     func showProfileSettingsRoute(with patientInfo: DBRPatientInfo?) -> ScreenWindowRoute {
         let screen = DBRProfileSettingsScreen(patientInfo: patientInfo, screens: self)
         
@@ -256,14 +265,6 @@ extension Screens: DBRRegistrationPhoneScreens {
     }
 }
 
-extension Screens: DBRRegisterCodeScreens { }
-
-extension Screens: DBRLoginCodeScreens { }
-
-extension Screens: DBRVisitsScreens { }
-
-extension Screens: DBRResearchResultsDetailScreens { }
-
 extension Screens: DBRProfileSettingsScreens {
     
     func backtoProfileRoute() -> ScreenWindowRoute {
@@ -273,3 +274,32 @@ extension Screens: DBRProfileSettingsScreens {
             .resolve()
     }
 }
+
+extension Screens: DBRConsultationsScreens {
+    
+    func showConsultationDetailsRoute(consultationId: Int) -> ScreenWindowRoute {
+        let screen = researchDetailsScreen(consultationId: consultationId)
+        
+        return ScreenWindowRoute()
+            .top(.stack)
+            .push(screen)
+            .resolve()
+    }
+    
+    private func researchDetailsScreen(consultationId: Int) -> AnyModalScreen {
+        DBRConsultationDetailsScreen(
+            consultationId: consultationId,
+            screens: self
+        ).eraseToAnyScreen()
+    }
+}
+
+extension Screens: DBRLoginCodeScreens { }
+
+extension Screens: DBRVisitsScreens { }
+
+extension Screens: DBRResearchResultsDetailScreens { }
+
+extension Screens: DBRConsultationDetailsScreens { }
+
+extension Screens: DBRRegisterCodeScreens { }
