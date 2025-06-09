@@ -14,6 +14,7 @@ import DBRCore
 public protocol DBRProfileScreens {
     func showResearchResultsRoute() -> ScreenWindowRoute
     func showProfileSettingsRoute(with patientInfo: DBRPatientInfo?) -> ScreenWindowRoute
+    func showConsultationsRoute() -> ScreenWindowRoute
 }
 
 public struct DBRProfileScreen: Screen {

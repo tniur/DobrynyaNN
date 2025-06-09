@@ -45,7 +45,7 @@ final class DBRProfileViewModel: ObservableObject {
                 name: "Консультации",
                 icon: DBRImage.staroflifeIcon.swiftUIImage,
                 type: .consultations
-                ),
+            ),
             DBRProfileSection(
                 name: "Редактировать профиль",
                 icon: DBRImage.pencilIcon.swiftUIImage,
@@ -75,6 +75,14 @@ final class DBRProfileViewModel: ObservableObject {
         topController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         topController?.navigationController?.navigationBar.tintColor = DBRColor.base10.color
         screenNavigator.navigate(to: screens.showResearchResultsRoute())
+    }
+    
+    @MainActor
+    func showConsultationsResults() {
+        let topController = UIApplication.shared.topViewController()
+        topController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        topController?.navigationController?.navigationBar.tintColor = DBRColor.base10.color
+        screenNavigator.navigate(to: screens.showConsultationsRoute())
     }
     
     @MainActor

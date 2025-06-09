@@ -77,6 +77,11 @@
 			path = Visits;
 			sourceTree = "<group>";
 		};
+		7BC00B1B2DF447780017FC30 /* Consultations */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Consultations;
+			sourceTree = "<group>";
+		};
 		7BDB6D0A2D9DBC3A00A74403 /* Registration */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Registration;
@@ -139,6 +144,7 @@
 		E92A2E9E2D6CE7E900D0D03C /* DobrynyaNN */ = {
 			isa = PBXGroup;
 			children = (
+				7BC00B1B2DF447780017FC30 /* Consultations */,
 				7B6739872DDF9A7700F0996A /* Visits */,
 				7B348E2B2DDE825800093BA3 /* AppointmentCreation */,
 				E92A2E992D6CE7E900D0D03C /* Assets.xcassets */,
@@ -183,6 +189,7 @@
 				7B6134222D9F2E9800AA138D /* LoginCode */,
 				7B6134232D9F2EA700AA138D /* RegistrationPhone */,
 				7B6739872DDF9A7700F0996A /* Visits */,
+				7BC00B1B2DF447780017FC30 /* Consultations */,
 				7BDB6D0A2D9DBC3A00A74403 /* Registration */,
 				7BDB6D192D9DBF6400A74403 /* Protocols */,
 			);

@@ -103,7 +103,7 @@ struct DBRProfileView: View {
                     case .researchResults:
                         viewModel.showResearchResults()
                     case .consultations:
-                        viewModel.showResearchResults()
+                        viewModel.showConsultationsResults()
                     case .editProfile:
                         viewModel.editProfile()
                     }
