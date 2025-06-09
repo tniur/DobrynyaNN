@@ -27,6 +27,7 @@
 		7B348CE42DCA508400093BA3 /* DBRUtils */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DBRUtils; path = ../DBRUtils; sourceTree = SOURCE_ROOT; };
 		7B673A382DE64EA200F0996A /* DBRAPIService */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DBRAPIService; path = ../DBRAPIService; sourceTree = SOURCE_ROOT; };
 		7BEB5E462D9F22E300A15CF9 /* DBRUIComponents */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DBRUIComponents; path = ../DBRUIComponents; sourceTree = SOURCE_ROOT; };
+		E90CD8522DF472EE0066F617 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		E92A2E802D6CE6C100D0D03C /* DobrynyaNN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DobrynyaNN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E92A2E982D6CE7E900D0D03C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E92A2E992D6CE7E900D0D03C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -194,11 +195,12 @@
 				};
 			};
 			buildConfigurationList = E92A2E7B2D6CE6C100D0D03C /* Build configuration list for PBXProject "DobrynyaNN" */;
-			developmentRegion = en;
+			developmentRegion = ru;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = E92A2E772D6CE6C100D0D03C;
 			minimizedProjectReferenceProxies = 1;
@@ -246,6 +248,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				E92A2E9B2D6CE7E900D0D03C /* Base */,
+				E90CD8522DF472EE0066F617 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -385,6 +389,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
