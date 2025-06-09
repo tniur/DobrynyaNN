@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navigator = ScreenNavigator(window: window)
         let screens = Screens()
         
-        navigator.navigate(to: screens.showLoginRoute())
+        navigator.navigate(to: screens.showSplashRoute())
         
         self.window = window
     }

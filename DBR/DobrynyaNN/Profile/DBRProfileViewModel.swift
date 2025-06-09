@@ -18,7 +18,6 @@ final class DBRProfileViewModel: ObservableObject {
 
     @Injected(\.profileService) private var profileService: DBRProfileService
     @Injected(\.tokenProvider) private var tokenProvider: DBRTokenProvider
-    @Injected(\.authService) private var authService: DBRAuthService
     
     @Published var sections: [DBRProfileSection]
     @Published var patientInfo: DBRPatientInfo?
@@ -55,19 +54,6 @@ final class DBRProfileViewModel: ObservableObject {
     }
     
     // MARK: - Methods
-    
-    @MainActor
-    func verifyCode() {
-        Task {
-            do {
-                let result = try await authService.confirmCode(login: "ivanova@example.com", code: "123456")
-                try tokenProvider.saveToken(result.accessToken)
-                fetchData()
-            } catch {
-                self.errorMessage = "Неверный логин или пароль"
-            }
-        }
-    }
 
     @MainActor
     func showResearchResults() {
@@ -93,7 +79,17 @@ final class DBRProfileViewModel: ObservableObject {
     }
     
     @MainActor
-    private func fetchData() {
+    func logout() {
+        do {
+            try tokenProvider.deleteToken()
+        } catch {
+            print(error.localizedDescription)
+        }
+        screenNavigator.navigate(to: screens.showLoginRoute())
+    }
+    
+    @MainActor
+    func fetchData() {
         isLoading = true
         Task {
             do {

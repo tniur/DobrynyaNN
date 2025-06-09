@@ -94,8 +94,8 @@ extension Screens: DBRMenuScreens {
 
 extension Screens: DBRLoginScreens {
     
-    func showLoginCodeRoute() -> ScreenWindowRoute {
-        let screen = DBRLoginCodeScreen(screens: self)
+    func showLoginCodeRoute(login: String, phoneNumber: String) -> ScreenWindowRoute {
+        let screen = DBRLoginCodeScreen(login: login, phoneNumber: phoneNumber, screens: self)
         
         return ScreenWindowRoute()
             .top(.stack)
@@ -106,8 +106,8 @@ extension Screens: DBRLoginScreens {
 
 extension Screens: DBRRegistrationScreens {
     
-    func showRegistrationPhoneRoute() -> ScreenWindowRoute {
-        let screen = DBRRegistrationPhoneScreen(screens: self)
+    func showRegistrationPhoneRoute(login: String, password: String) -> ScreenWindowRoute {
+        let screen = DBRRegistrationPhoneScreen(login: login, password: password, screens: self)
         
         return ScreenWindowRoute()
             .top(.stack)
@@ -254,6 +254,17 @@ extension Screens: DBRResearchResultsScreens {
     }
 }
 
+extension Screens: DBRRegistrationPhoneScreens {
+    func showRegistrationCodeRoute(login: String, password: String, phoneNumber: String) -> ScreenWindowRoute {
+        let screen = DBRRegisterCodeScreen(login: login, password: password, phoneNumber: phoneNumber, screens: self)
+        
+        return ScreenWindowRoute()
+            .top(.stack)
+            .push(screen)
+            .resolve()
+    }
+}
+
 extension Screens: DBRProfileSettingsScreens {
     
     func backtoProfileRoute() -> ScreenWindowRoute {
@@ -283,8 +294,6 @@ extension Screens: DBRConsultationsScreens {
     }
 }
 
-extension Screens: DBRRegistrationPhoneScreens { }
-
 extension Screens: DBRLoginCodeScreens { }
 
 extension Screens: DBRVisitsScreens { }
@@ -292,3 +301,5 @@ extension Screens: DBRVisitsScreens { }
 extension Screens: DBRResearchResultsDetailScreens { }
 
 extension Screens: DBRConsultationDetailsScreens { }
+
+extension Screens: DBRRegisterCodeScreens { }

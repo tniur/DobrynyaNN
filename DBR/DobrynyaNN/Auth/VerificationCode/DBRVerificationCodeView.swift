@@ -8,11 +8,11 @@
 import SwiftUI
 import DBRUIComponents
 
-struct DBRLoginCodeView: View {
+struct DBRVerificationCodeView<VM: DBRVerificationCodeViewModelProtocol>: View {
     
     // MARK: - Properties
 
-    @StateObject private var viewModel: DBRLoginCodeViewModel
+    @StateObject private var viewModel: VM
     @FocusState private var isFocused: Bool
     
     // MARK: - Body
@@ -39,7 +39,7 @@ struct DBRLoginCodeView: View {
                 Text("Код из смс")
                     .font(DBRFont.B30)
                     .foregroundStyle(DBRColor.base10.swiftUIColor)
-                Text("Мы отправили вам код подтверждения на номер +7 (XXX) XXX 19 90.")
+                Text("Мы отправили вам код подтверждения на номер \(viewModel.phoneNumber).")
                     .font(DBRFont.R14)
                     .foregroundStyle(DBRColor.base5.swiftUIColor)
                     .frame(width: 281)
@@ -51,7 +51,7 @@ struct DBRLoginCodeView: View {
     
     // MARK: - Initializer
 
-    init(viewModel: DBRLoginCodeViewModel) {
+    init(viewModel: VM) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
 }

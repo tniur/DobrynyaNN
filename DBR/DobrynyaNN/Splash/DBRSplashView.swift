@@ -11,6 +11,6 @@ struct DBRSplashView: View {
         VStack {
             Spacer()
         }
-        .onAppear(perform: viewModel.showRegistration)
+        .onAppear(perform: viewModel.checkAuth)
     }
 }
