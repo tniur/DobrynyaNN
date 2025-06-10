@@ -51,8 +51,7 @@ public struct DBRMenuScreen: Screen {
                     with: .index(0)
                 )
         }
-        controller.navigationController?.navigationBar.isHidden = true
-        
+
         controller.tabBar.isTranslucent = true
         controller.tabBar.backgroundImage = nil
         controller.tabBar.shadowImage = nil
