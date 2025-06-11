@@ -18,6 +18,7 @@ struct DBRSuccessfulRecordView: View {
 
     var body: some View {
         contentView
+            .navigationBarBackButtonHidden(true)
             .onAppear(perform: viewModel.fetchData)
             .sheet(isPresented: $viewModel.isCancelApproveViewPresented) {
                 DBRApproveView(
