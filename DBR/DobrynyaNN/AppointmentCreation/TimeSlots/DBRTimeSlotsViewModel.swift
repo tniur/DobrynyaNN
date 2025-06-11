@@ -23,6 +23,10 @@ final class DBRTimeSlotsViewModel: ObservableObject {
     @Published var selectedDate = Date()
     @Published var selectedSlot: DBRSlotDateInterval?
     
+    var today: Date {
+        Calendar.current.startOfDay(for: Date())
+    }
+    
     private var createAppointmentResult: DBRCreateAppointmentResult?
     private let appointmentBuilder: AppointmentBuilder
 

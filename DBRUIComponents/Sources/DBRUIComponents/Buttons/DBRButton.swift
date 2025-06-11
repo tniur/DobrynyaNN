@@ -20,7 +20,7 @@ public struct DBRButton<Label: View>: View {
     // MARK: - Body
 
     public var body: some View {
-        Button( action: action, label: label)
+        Button(action: action, label: label)
             .buttonStyle(style)
             .disabled(!isEnabled)
     }

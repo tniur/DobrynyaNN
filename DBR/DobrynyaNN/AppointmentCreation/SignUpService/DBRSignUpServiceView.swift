@@ -17,11 +17,9 @@ struct DBRSignUpServiceView: View {
     // MARK: - Body
 
     var body: some View {
-        ZStack(alignment: .top) {
-            contentView
-                .navigationTitle("Запись на услугу")
-                .padding()
-        }
+        contentView
+            .navigationTitle("Запись на услугу")
+            .padding()
     }
     
     // MARK: - Subviews
