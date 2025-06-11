@@ -21,6 +21,7 @@ public struct PDFDocumentView: View {
                             showShareSheet = true
                         }) {
                             Image(systemName: "square.and.arrow.up")
+                                .foregroundColor(DBRColor.base10.swiftUIColor)
                         }
                     }
                 }

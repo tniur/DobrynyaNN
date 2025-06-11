@@ -19,6 +19,7 @@ struct DBRSpecialistsView: View {
 
     var body: some View {
         contentView
+            .navigationTitle("Выберите  специалиста")
             .onAppear(perform: viewModel.fetchData)
     }
     

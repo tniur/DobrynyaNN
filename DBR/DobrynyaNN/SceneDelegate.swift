@@ -1,10 +1,19 @@
 import UIKit
 import SwiftUI
 import Nivelir
+import DBRUIComponents
 
 @MainActor
 protocol RootScreens {
     func showSplashRoute() -> ScreenWindowRoute
+}
+
+private func setupNavigationBarAppearance() {
+    let appearance = UINavigationBar.appearance()
+    appearance.tintColor = DBRColor.base10.color
+    
+    let barButtonAppearance = UIBarButtonItem.appearance()
+    barButtonAppearance.setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -1000, vertical: 0), for: .default)
 }
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -17,6 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         options connectionOptions: UIScene.ConnectionOptions
     ) {
         configureWindow(scene: scene)
+        setupNavigationBarAppearance()
     }
     
     private func configureWindow(scene: UIScene) {

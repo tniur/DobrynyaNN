@@ -28,6 +28,7 @@ public struct DBRProfileSettingsScreen: Screen {
         let viewModel = DBRProfileSettingsViewModel(patientInfo: patientInfo, screenNavigator: navigator, screens: screens)
         let view = DBRProfileSettingsView(viewModel: viewModel)
         let controller = UIHostingController(rootView: view)
+        controller.hidesBottomBarWhenPushed = true
         return controller
     }
 }

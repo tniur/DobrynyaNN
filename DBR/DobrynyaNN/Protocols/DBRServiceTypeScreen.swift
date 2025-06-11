@@ -25,6 +25,8 @@ public struct DBRServiceTypeScreen: Screen {
         let builder = DBRAppointmentBuilder()
         let viewModel = DBRServiceTypeViewModel(builder: builder, screenNavigator: navigator, screens: screens)
         let view = DBRServiceTypeView(viewModel: viewModel)
-        return UIHostingController(rootView: view)
+        let controller = UIHostingController(rootView: view)
+        controller.hidesBottomBarWhenPushed = true
+        return controller
     }
 }

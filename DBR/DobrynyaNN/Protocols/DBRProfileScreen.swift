@@ -29,7 +29,6 @@ public struct DBRProfileScreen: Screen {
         let viewModel = DBRProfileViewModel(screenNavigator: navigator, screens: screens)
         let view = DBRProfileView(viewModel: viewModel)
         let controller = UIHostingController(rootView: view)
-        controller.navigationController?.navigationBar.isHidden = true
         return controller
     }
 }

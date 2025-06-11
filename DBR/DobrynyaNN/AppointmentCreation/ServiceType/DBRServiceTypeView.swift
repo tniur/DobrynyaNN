@@ -19,6 +19,7 @@ struct DBRServiceTypeView: View {
 
     var body: some View {
         contentView
+            .navigationTitle("Выберите тип услуги")
             .onAppear(perform: viewModel.fetchData)
     }
     

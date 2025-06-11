@@ -19,6 +19,7 @@ struct DBRProfileSettingsView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             contentView
+                .navigationTitle("Редактировать профиль")
             
             DBRButton("Сохранить", action: viewModel.updatePatientInfo)
                 .disabled(viewModel.buttonDisabled)
