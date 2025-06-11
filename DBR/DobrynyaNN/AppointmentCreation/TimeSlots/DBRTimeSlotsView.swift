@@ -51,6 +51,7 @@ struct DBRTimeSlotsView: View {
                 DatePicker(
                     "",
                     selection: $viewModel.selectedDate,
+                    in: viewModel.today...,
                     displayedComponents: .date
                 )
                 .font(DBRFont.R16)

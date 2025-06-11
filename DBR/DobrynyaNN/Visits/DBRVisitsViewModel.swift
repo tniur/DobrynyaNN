@@ -9,23 +9,28 @@ import Foundation
 import DBRCore
 import Factory
 import Nivelir
+import SwiftUI
 
 final class DBRVisitsViewModel: ObservableObject {
     
     // MARK: - Properties
 
     @Injected(\.appointmentsService) private var appointmentsService: DBRAppointmentsService
-
+    
     @Published var isLoading = false
+    @Published var isCancelApproveViewPresented = false
     @Published var selectedIndex: Int = 0
     @Published var visits: [DBRAppointment] = []
     
+    var selectedVisitId: Int?
     var filteredVisits: [DBRAppointment] {
         switch selectedIndex {
         case 0:
             return visits.filter { $0.status == .upcoming }
         case 1:
-            return visits.filter { $0.status == .completed || $0.status == .refused || $0.status == .unknown }
+            return visits.filter { $0.status == .completed || $0.status == .unknown }
+        case 2:
+            return visits.filter { $0.status == .refused }
         default:
             return visits
         }
@@ -97,5 +102,11 @@ final class DBRVisitsViewModel: ObservableObject {
     @MainActor
     func editAppointment(with id: Int) {
         
+    }
+    
+    @MainActor
+    func changeCancelApproveViewToggle(with id: Int? = nil) {
+        selectedVisitId = id
+        isCancelApproveViewPresented.toggle()
     }
 }
