@@ -18,6 +18,15 @@ struct DBRProfileView: View {
 
     var body: some View {
         contentView
+            .sheet(isPresented: $viewModel.isLogoutApproveViewPresented) {
+                DBRApproveView(
+                    title: "Вы уверены?",
+                    description: "Подтвердите выход из аккаунта",
+                    cancelAction: viewModel.showLogoutApproveView,
+                    approveAction: viewModel.logout
+                )
+                .presentationDragIndicator(.visible)
+            }
     }
     
     // MARK: - Subviews
@@ -36,7 +45,7 @@ struct DBRProfileView: View {
                 
                 Spacer()
                 
-                DBRButton("Выйти", style: .init(.tertiaryRed), action: viewModel.logout)
+                DBRButton("Выйти", style: .init(.tertiaryRed), action: viewModel.showLogoutApproveView)
             }
             .padding(.horizontal)
         }

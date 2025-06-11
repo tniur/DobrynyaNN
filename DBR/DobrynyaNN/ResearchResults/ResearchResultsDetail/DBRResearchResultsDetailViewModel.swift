@@ -45,13 +45,13 @@ final class DBRResearchResultsDetailViewModel: ObservableObject {
                 switch error {
                 case .unauthorized:
                     print(error.localizedDescription)
-                    // навигация до экранок авторизации
+                    // TODO: Navigation to auth route
                 default:
-                    // потеря сети, выключенная связь и другие DomainError
+                    // TODO: Error handling
                     print(error.localizedDescription)
                 }
             } catch {
-                // необрабатываемые ошибки
+                // TODO: Error handling
                 print(error.localizedDescription)
             }
             isLoading = false
@@ -63,6 +63,7 @@ final class DBRResearchResultsDetailViewModel: ObservableObject {
             let pdf = try pdfManager.createPDF(from: string)
             return pdf
         } catch {
+            // TODO: Error handling
             print(error.localizedDescription)
             return nil
         }

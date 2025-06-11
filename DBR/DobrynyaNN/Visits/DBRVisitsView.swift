@@ -88,13 +88,13 @@ struct DBRVisitsView: View {
                                 Button(role: .none) {
                                     viewModel.editAppointment(with: visit.id)
                                 } label: {
-                                    Text("Редактировать")
+                                    Text("Редактировать визит")
                                         .font(DBRFont.R14)
                                 }
                                 Button(role: .destructive) {
                                     viewModel.changeCancelApproveViewToggle(with: visit.id)
                                 } label: {
-                                    Text("Отменить")
+                                    Text("Отменить визит")
                                         .font(DBRFont.R14)
                                 }
                             }

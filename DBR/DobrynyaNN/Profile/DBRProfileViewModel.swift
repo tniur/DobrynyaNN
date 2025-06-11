@@ -25,6 +25,8 @@ final class DBRProfileViewModel: ObservableObject {
     @Published var errorMessage: String?
     @Published var isLoading: Bool = false
     
+    @Published var isLogoutApproveViewPresented = false
+    
     private var screenNavigator: ScreenNavigator
     private let screens: DBRProfileScreens
     
@@ -83,6 +85,7 @@ final class DBRProfileViewModel: ObservableObject {
         do {
             try tokenProvider.deleteToken()
         } catch {
+            // TODO: Error handling
             print(error.localizedDescription)
         }
         screenNavigator.navigate(to: screens.showLoginRoute())
@@ -98,16 +101,21 @@ final class DBRProfileViewModel: ObservableObject {
                 switch error {
                 case .unauthorized:
                     print(error.localizedDescription)
-                    // навигация до экранок авторизации
+                    // TODO: Navigation to auth route
                 default:
-                    // потеря сети, выключенная связь и другие DomainError
+                    // TODO: Error handling
                     print(error.localizedDescription)
                 }
             } catch {
-                // необрабатываемые ошибки
+                // TODO: Error handling
                 print(error.localizedDescription)
             }
             isLoading = false
         }
+    }
+    
+    @MainActor
+    func showLogoutApproveView() {
+        isLogoutApproveViewPresented.toggle()
     }
 }

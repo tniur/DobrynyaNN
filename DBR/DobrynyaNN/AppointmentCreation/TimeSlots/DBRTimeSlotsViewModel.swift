@@ -55,7 +55,10 @@ final class DBRTimeSlotsViewModel: ObservableObject {
             guard
                 let clinicId = appointmentBuilder.getClinicId(),
                 let doctorId = appointmentBuilder.getDoctorId()
-            else { return }
+            else {
+                // TODO: Error handling
+                return
+            }
             do {
                 schedule = try await doctorService.fetchDoctorSchedule(
                     doctorId: doctorId,
@@ -65,13 +68,13 @@ final class DBRTimeSlotsViewModel: ObservableObject {
                 switch error {
                 case .unauthorized:
                     print(error.localizedDescription)
-                    // навигация до экранок авторизации
+                    // TODO: Navigation to auth route
                 default:
-                    // потеря сети, выключенная связь и другие DomainError
+                    // TODO: Error handling
                     print(error.localizedDescription)
                 }
             } catch {
-                // необрабатываемые ошибки
+                // TODO: Error handling
                 print(error.localizedDescription)
             }
             isLoading = false
@@ -84,7 +87,10 @@ final class DBRTimeSlotsViewModel: ObservableObject {
         Task {
             guard
                 let appointment = appointmentBuilder.build()
-            else { return }
+            else {
+                // TODO: Error handling
+                return
+            }
             do {
                 createAppointmentResult = try await appointmentsService.createAppointment(appointment)
                 showSuccessfulRecord(with: createAppointmentResult?.newAppointmentId ?? 0)
@@ -92,13 +98,13 @@ final class DBRTimeSlotsViewModel: ObservableObject {
                 switch error {
                 case .unauthorized:
                     print(error.localizedDescription)
-                    // навигация до экранок авторизации
+                    // TODO: Navigation to auth route
                 default:
-                    // потеря сети, выключенная связь и другие DomainError
+                    // TODO: Error handling
                     print(error.localizedDescription)
                 }
             } catch {
-                // необрабатываемые ошибки
+                // TODO: Error handling
                 print(error.localizedDescription)
             }
             isLoading = false

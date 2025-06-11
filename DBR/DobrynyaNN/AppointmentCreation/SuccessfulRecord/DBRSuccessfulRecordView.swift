@@ -76,6 +76,8 @@ struct DBRSuccessfulRecordView: View {
                 .font(DBRFont.R12)
                 .foregroundStyle(DBRColor.base5.swiftUIColor)
                 .multilineTextAlignment(.leading)
+                .lineLimit(nil)
+                .fixedSize(horizontal: false, vertical: true)
                 .padding(.bottom, 16.0)
             
             DBRButton(

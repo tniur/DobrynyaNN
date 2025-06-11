@@ -58,6 +58,7 @@ final class DBRLoginViewModel: ObservableObject {
                 case .unauthorized:
                     errorMessage = "Неверный логин или пароль"
                 default:
+                    // TODO: Error handling
                     errorMessage = "Произошла ошибка"
                 }
             }
