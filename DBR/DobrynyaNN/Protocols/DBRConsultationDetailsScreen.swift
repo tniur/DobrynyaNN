@@ -26,6 +26,8 @@ public struct DBRConsultationDetailsScreen: Screen {
     public func build(navigator: ScreenNavigator) -> UIViewController {
         let viewModel = DBRConsultationDetailsViewModel(consultationId: consultationId, screenNavigator: navigator, screens: screens)
         let view = DBRConsultationDetailsView(viewModel: viewModel)
-        return UIHostingController(rootView: view)
+        let controller = UIHostingController(rootView: view)
+        controller.hidesBottomBarWhenPushed = true
+        return controller
     }
 }
