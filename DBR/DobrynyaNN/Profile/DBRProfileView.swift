@@ -30,15 +30,8 @@ struct DBRProfileView: View {
                 .ignoresSafeArea()
             
             VStack(alignment: .center, spacing: 24.0) {
-                HStack {
-                    Spacer()
-                    DBRImage.gearshapeIcon.swiftUIImage
-                        .frame(width: 24.0, height: 24.0)
-                }
-                .padding(20.0)
-                
                 avatarView
-                    .padding(.top, 16.0)
+                    .padding(.top, 28.0)
                 buttonsView
                 
                 Spacer()
@@ -50,6 +43,12 @@ struct DBRProfileView: View {
         .onAppear {
             viewModel.fetchData()
         }
+        .navigationBarItems(trailing:
+            Button(action: {}) {
+                DBRImage.gearshapeIcon.swiftUIImage
+                    .frame(width: 24.0, height: 24.0)
+            }
+        )
     }
     
     private var avatarView: some View {
