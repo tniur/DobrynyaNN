@@ -65,6 +65,7 @@ final class DBRRegistrationCodeViewModel: DBRVerificationCodeViewModelProtocol {
                     errorMessage = "Неверный код"
                     isCodeIncorrect = true
                 default:
+                    // TODO: Error handling
                     errorMessage = "Произошла ошибка"
                 }
             }
