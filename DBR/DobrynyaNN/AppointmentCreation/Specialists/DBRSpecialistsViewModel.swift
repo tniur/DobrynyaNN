@@ -46,7 +46,10 @@ final class DBRSpecialistsViewModel: ObservableObject {
             guard
                 let clinicId = appointmentBuilder.getClinicId(),
                 let serviceId = appointmentBuilder.getServiceId()
-            else { return }
+            else {
+                // TODO: Error handling
+                return
+            }
             do {
                 specialists = try await doctorService.fetchDoctors(
                     clinicId: clinicId,
@@ -56,13 +59,13 @@ final class DBRSpecialistsViewModel: ObservableObject {
                 switch error {
                 case .unauthorized:
                     print(error.localizedDescription)
-                    // навигация до экранок авторизации
+                    // TODO: Navigation to auth route
                 default:
-                    // потеря сети, выключенная связь и другие DomainError
+                    // TODO: Error handling
                     print(error.localizedDescription)
                 }
             } catch {
-                // необрабатываемые ошибки
+                // TODO: Error handling
                 print(error.localizedDescription)
             }
             isLoading = false

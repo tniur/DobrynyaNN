@@ -40,14 +40,14 @@ final class DBRResearchResultsViewModel: ObservableObject {
             } catch let error as DBRError {
                 switch error {
                 case .unauthorized:
+                    // TODO: Navigation to auth route
                     print(error.localizedDescription)
-                    // навигация до экранок авторизации
                 default:
-                    // потеря сети, выключенная связь и другие DomainError
+                    // TODO: Error handling
                     print(error.localizedDescription)
                 }
             } catch {
-                // необрабатываемые ошибки
+                // TODO: Error handling
                 print(error.localizedDescription)
             }
             isLoading = false
