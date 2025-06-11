@@ -31,19 +31,19 @@ struct DBRLoginView: View {
 
     private var inputView: some View {
         VStack(alignment: .center, spacing: 32) {
-            Text("Вход")
+            Text(String(localized: "entry"))
                 .font(DBRFont.B30)
                 .foregroundStyle(DBRColor.base10.swiftUIColor)
             
             VStack(alignment: .leading) {
                 DBRTextField(
-                    placeholderText: "Логин",
+                    placeholderText: String(localized: "login"),
                     text: $viewModel.login,
                     errorMessage: .constant(viewModel.errorMessage != nil ? "" : nil)
                 )
                 
                 DBRTextField(
-                    placeholderText: "Пароль",
+                    placeholderText: String(localized: "password"),
                     text: $viewModel.password,
                     isSecure: true,
                     errorMessage: $viewModel.errorMessage
@@ -51,7 +51,7 @@ struct DBRLoginView: View {
                 
                 HStack {
                     Spacer()
-                    Button("Забыли пароль?", action: { })
+                    Button(String(localized: "forgotPassword"), action: { })
                         .font(DBRFont.R14)
                         .foregroundStyle(DBRColor.base10.swiftUIColor)
                         .padding(.horizontal, 8)
@@ -64,18 +64,18 @@ struct DBRLoginView: View {
     private var bottomView: some View {
         VStack(spacing: 24) {
             DBRButton(
-                "Отправить код",
+                String(localized: "sendCode"),
                 style: DBRButtonStyle(.primary),
                 action: viewModel.requestCode
             )
             .environment(\.isEnabled, true)
             
             HStack(spacing: 8) {
-                Text("Нет аккаунта?")
+                Text(String(localized: "dontHaveAccount"))
                     .font(DBRFont.R14)
                     .foregroundStyle(DBRColor.base10.swiftUIColor)
                 
-                Button("Зарегистрироваться", action: viewModel.showRegistration)
+                Button(String(localized: "register"), action: viewModel.showRegistration)
                     .font(DBRFont.R14)
                     .foregroundStyle(DBRColor.blue6.swiftUIColor)
             }
