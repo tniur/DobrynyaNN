@@ -28,7 +28,7 @@ struct DBRVisitsView: View {
         VStack {
             DBRToggle(
                 selectedIndex: $viewModel.selectedIndex,
-                sections: ["Будущие", "Прошедшие"]
+                sections: ["Будущие", "Прошедшие", "Отмененные"]
             )
             
             if viewModel.isLoading {
