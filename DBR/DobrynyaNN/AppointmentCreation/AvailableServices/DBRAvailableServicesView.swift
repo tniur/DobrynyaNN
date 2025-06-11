@@ -19,6 +19,7 @@ struct DBRAvailableServicesView: View {
 
     var body: some View {
         contentView
+            .navigationTitle("Выберите  услугу")
             .onAppear(perform: viewModel.fetchData)
     }
     

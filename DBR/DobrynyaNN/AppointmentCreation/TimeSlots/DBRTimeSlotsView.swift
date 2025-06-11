@@ -23,6 +23,7 @@ struct DBRTimeSlotsView: View {
 
     var body: some View {
         contentView
+            .navigationTitle("Выберите  дату и время")
             .onAppear(perform: viewModel.fetchData)
     }
     

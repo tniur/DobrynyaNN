@@ -18,6 +18,7 @@ struct DBRClinicAdressesView: View {
 
     var body: some View {
         contentView
+            .navigationTitle("Выберите  филиал клиники")
             .onAppear(perform: viewModel.fetchData)
     }
     
