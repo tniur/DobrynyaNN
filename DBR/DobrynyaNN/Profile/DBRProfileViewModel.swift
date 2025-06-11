@@ -25,6 +25,8 @@ final class DBRProfileViewModel: ObservableObject {
     @Published var errorMessage: String?
     @Published var isLoading: Bool = false
     
+    @Published var isLogoutApproveViewPresented = false
+    
     private var screenNavigator: ScreenNavigator
     private let screens: DBRProfileScreens
     
@@ -109,5 +111,10 @@ final class DBRProfileViewModel: ObservableObject {
             }
             isLoading = false
         }
+    }
+    
+    @MainActor
+    func showLogoutApproveView() {
+        isLogoutApproveViewPresented.toggle()
     }
 }
