@@ -17,8 +17,16 @@ final class DBRLoginViewModel: ObservableObject {
 
     @Injected(\.authService) private var authService: DBRAuthService
 
-    @Published var login: String = ""
-    @Published var password: String = ""
+    @Published var login: String = "" {
+        didSet {
+            errorMessage = nil
+        }
+    }
+    @Published var password: String = "" {
+        didSet {
+            errorMessage = nil
+        }
+    }
     @Published var errorMessage: String?
     
     private var screenNavigator: ScreenNavigator

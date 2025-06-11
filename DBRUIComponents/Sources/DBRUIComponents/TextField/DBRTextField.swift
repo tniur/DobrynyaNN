@@ -12,21 +12,31 @@ public struct DBRTextField: View {
     // MARK: - Properties
 
     @Binding var text: String
+    @Binding var errorMessage: String?
 
     @State private var isSecure: Bool
     @State private var isVisible: Bool = false
+
     @FocusState private var isFocused: Bool
+
     @Environment(\.inputType)
+
     private var inputType: DBRInputType
     private let placeholderText: String
 
     // MARK: - Body
 
     public var body: some View {
-        contentView
-            .onTapGesture {
-                isFocused = true
+        VStack(alignment: .leading, spacing: 8.0) {
+            contentView
+                .onTapGesture {
+                    isFocused = true
+                }
+
+            if let errorMessage, !errorMessage.isEmpty {
+                makeErrorView(with: errorMessage)
             }
+        }
     }
 
     private var contentView: some View {
@@ -57,7 +67,10 @@ public struct DBRTextField: View {
         }
         .overlay {
             RoundedRectangle(cornerRadius: 12)
-                .stroke(DBRColor.base3.swiftUIColor, lineWidth: 1)
+                .stroke(
+                    errorMessage != nil ? DBRColor.red6.swiftUIColor : DBRColor.base3.swiftUIColor,
+                    lineWidth: 1
+                )
                 .frame(height: 56)
         }
     }
@@ -104,10 +117,21 @@ public struct DBRTextField: View {
     public init(
         placeholderText: String,
         text: Binding<String>,
-        isSecure: Bool = false
+        isSecure: Bool = false,
+        errorMessage: Binding<String?> = .constant(nil)
     ) {
         self.placeholderText = placeholderText
         self._text = text
         self.isSecure = isSecure
+        self._errorMessage = errorMessage
+    }
+
+    // MARK: - Methods
+
+    private func makeErrorView(with errorMessage: String) -> some View {
+        Text(errorMessage)
+            .font(DBRFont.R14)
+            .foregroundStyle(DBRColor.red6.swiftUIColor)
+            .transition(.opacity)
     }
 }

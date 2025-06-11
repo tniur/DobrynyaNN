@@ -35,9 +35,20 @@ struct DBRLoginView: View {
                 .font(DBRFont.B30)
                 .foregroundStyle(DBRColor.base10.swiftUIColor)
             
-            VStack {
-                DBRTextField(placeholderText: "Логин", text: $viewModel.login)
-                DBRTextField(placeholderText: "Пароль", text: $viewModel.password, isSecure: true)
+            VStack(alignment: .leading) {
+                DBRTextField(
+                    placeholderText: "Логин",
+                    text: $viewModel.login,
+                    errorMessage: .constant(viewModel.errorMessage != nil ? "" : nil)
+                )
+                
+                DBRTextField(
+                    placeholderText: "Пароль",
+                    text: $viewModel.password,
+                    isSecure: true,
+                    errorMessage: $viewModel.errorMessage
+                )
+                
                 HStack {
                     Spacer()
                     Button("Забыли пароль?", action: { })
