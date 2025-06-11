@@ -20,6 +20,19 @@ struct DBRVisitsView: View {
         contentView
             .navigationTitle("Мои визиты")
             .onAppear(perform: viewModel.fetchData)
+            .sheet(isPresented: $viewModel.isCancelApproveViewPresented) {
+                DBRApproveView(
+                    title: "Вы уверены?",
+                    description: "Подтвердите отмену записи",
+                    cancelAction:  { viewModel.changeCancelApproveViewToggle() },
+                    approveAction: {
+                        guard let id = viewModel.selectedVisitId else { return }
+                        viewModel.cancelAppointment(with: id)
+                        viewModel.changeCancelApproveViewToggle()
+                    }
+                )
+                .presentationDragIndicator(.visible)
+            }
     }
     
     // MARK: - Subviews
@@ -79,9 +92,9 @@ struct DBRVisitsView: View {
                                         .font(DBRFont.R14)
                                 }
                                 Button(role: .destructive) {
-                                    viewModel.cancelAppointment(with: visit.id)
+                                    viewModel.changeCancelApproveViewToggle(with: visit.id)
                                 } label: {
-                                    Text("Удалить")
+                                    Text("Отменить")
                                         .font(DBRFont.R14)
                                 }
                             }

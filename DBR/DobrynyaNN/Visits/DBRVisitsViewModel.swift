@@ -9,17 +9,20 @@ import Foundation
 import DBRCore
 import Factory
 import Nivelir
+import SwiftUI
 
 final class DBRVisitsViewModel: ObservableObject {
     
     // MARK: - Properties
 
     @Injected(\.appointmentsService) private var appointmentsService: DBRAppointmentsService
-
+    
     @Published var isLoading = false
+    @Published var isCancelApproveViewPresented = false
     @Published var selectedIndex: Int = 0
     @Published var visits: [DBRAppointment] = []
     
+    var selectedVisitId: Int?
     var filteredVisits: [DBRAppointment] {
         switch selectedIndex {
         case 0:
@@ -99,5 +102,11 @@ final class DBRVisitsViewModel: ObservableObject {
     @MainActor
     func editAppointment(with id: Int) {
         
+    }
+    
+    @MainActor
+    func changeCancelApproveViewToggle(with id: Int? = nil) {
+        selectedVisitId = id
+        isCancelApproveViewPresented.toggle()
     }
 }
