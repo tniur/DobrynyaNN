@@ -56,10 +56,10 @@ final class DBRLoginViewModel: ObservableObject {
             } catch let error as DBRError {
                 switch error {
                 case .unauthorized:
-                    errorMessage = "Неверный логин или пароль"
+                    errorMessage = String(localized: "incorrectLoginOrPassword")
                 default:
                     // TODO: Error handling
-                    errorMessage = "Произошла ошибка"
+                    errorMessage = String(localized: "errorHasOccurred")
                 }
             }
         }

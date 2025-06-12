@@ -40,7 +40,7 @@ final class DBRRegistrationPhoneViewModel: ObservableObject {
     @MainActor
     func showRegistrationCode() {
         guard phoneNumber.count == 18 else {
-            errorMessage = "Проверьте номер телефона"
+            errorMessage = String(localized: "checkPhoneNumber")
             return
         }
         let topController = UIApplication.shared.topViewController()

@@ -12,6 +12,7 @@
 		7B348CED2DCA597800093BA3 /* DBRNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 7B348CEC2DCA597800093BA3 /* DBRNetworking */; };
 		7B348CEF2DCA597D00093BA3 /* DBRUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 7B348CEE2DCA597D00093BA3 /* DBRUtils */; };
 		7BC750E72D889EAE00AA6FF0 /* DBRUIComponents in Frameworks */ = {isa = PBXBuildFile; productRef = 7BC750E62D889EAE00AA6FF0 /* DBRUIComponents */; };
+		7BE93C002DF9C2C200F8C80C /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 7BE93BFF2DF9C2C200F8C80C /* Localizable.xcstrings */; };
 		E900F4D02D6CEBD000A460C2 /* Nivelir in Frameworks */ = {isa = PBXBuildFile; productRef = E900F4CF2D6CEBD000A460C2 /* Nivelir */; };
 		E92A2E9F2D6CE7E900D0D03C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E92A2E992D6CE7E900D0D03C /* Assets.xcassets */; };
 		E92A2EA12D6CE7E900D0D03C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E92A2E9C2D6CE7E900D0D03C /* LaunchScreen.storyboard */; };
@@ -26,6 +27,7 @@
 		7B348CE32DCA507E00093BA3 /* DBRNetworking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DBRNetworking; path = ../DBRNetworking; sourceTree = SOURCE_ROOT; };
 		7B348CE42DCA508400093BA3 /* DBRUtils */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DBRUtils; path = ../DBRUtils; sourceTree = SOURCE_ROOT; };
 		7B673A382DE64EA200F0996A /* DBRAPIService */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DBRAPIService; path = ../DBRAPIService; sourceTree = SOURCE_ROOT; };
+		7BE93BFF2DF9C2C200F8C80C /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		7BEB5E462D9F22E300A15CF9 /* DBRUIComponents */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DBRUIComponents; path = ../DBRUIComponents; sourceTree = SOURCE_ROOT; };
 		E92A2E802D6CE6C100D0D03C /* DobrynyaNN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DobrynyaNN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E92A2E982D6CE7E900D0D03C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				7B167EF12DB6DE510029F0F8 /* ResearchResults */,
 				7BDB6D192D9DBF6400A74403 /* Protocols */,
 				7B6134182D9F2DE900AA138D /* Splash */,
+				7BE93BFF2DF9C2C200F8C80C /* Localizable.xcstrings */,
 			);
 			path = DobrynyaNN;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = E92A2E772D6CE6C100D0D03C;
 			minimizedProjectReferenceProxies = 1;
@@ -230,6 +234,7 @@
 			files = (
 				E92A2E9F2D6CE7E900D0D03C /* Assets.xcassets in Resources */,
 				E92A2EA12D6CE7E900D0D03C /* LaunchScreen.storyboard in Resources */,
+				7BE93C002DF9C2C200F8C80C /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +388,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -439,6 +445,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

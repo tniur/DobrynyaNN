@@ -67,11 +67,11 @@ final class DBRLoginCodeViewModel: DBRVerificationCodeViewModelProtocol {
             } catch let error as DBRError {
                 switch error {
                 case .unauthorized:
-                    errorMessage = "Неверный код"
+                    errorMessage = String(localized: "invalidCode")
                     isCodeIncorrect = true
                 default:
                     // TODO: Error handling
-                    errorMessage = "Произошла ошибка"
+                    errorMessage = String(localized: "errorHasOccurred")
                 }
             }
         }

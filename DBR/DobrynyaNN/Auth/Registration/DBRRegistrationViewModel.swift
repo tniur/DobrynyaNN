@@ -46,7 +46,7 @@ final class DBRRegistrationViewModel: ObservableObject {
     @MainActor
     func showRegistrationPhone() {
         guard password == repeatedPassword else {
-            errorMessage = "Проверьте данные, пароли должны совпадать"
+            errorMessage = String(localized: "checkDataPasswordsMustMatch")
             return
         }
         let topController = UIApplication.shared.topViewController()
