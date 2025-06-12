@@ -17,9 +17,11 @@ struct DBRSignUpServiceView: View {
     // MARK: - Body
 
     var body: some View {
-        contentView
-            .navigationTitle("Запись на услугу")
-            .padding()
+        DBRBackgroundView {
+            contentView
+                .navigationTitle("Запись на услугу")
+                .padding()
+        }
     }
     
     // MARK: - Subviews

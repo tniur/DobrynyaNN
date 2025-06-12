@@ -41,6 +41,11 @@ struct DBRVisitsView: View {
 
     private var contentView: some View {
         VStack {
+            DBRToggle(
+                selectedIndex: $viewModel.selectedIndex,
+                sections: ["Будущие", "Прошедшие", "Отмененные"]
+            )
+            
             if viewModel.isLoading {
                 Spacer()
                 
@@ -56,11 +61,6 @@ struct DBRVisitsView: View {
                 Spacer()
                 
             } else {
-                DBRToggle(
-                    selectedIndex: $viewModel.selectedIndex,
-                    sections: ["Будущие", "Прошедшие", "Отмененные"]
-                )
-                
                 scrollView
             }
         }
@@ -111,7 +111,7 @@ struct DBRVisitsView: View {
     }
     
     private var emptyView: some View {
-        Text("У вас пока нет предстоящих визитов. Как только они появятся, вы сможете просмотреть их здесь.")
+        Text("У вас пока нет визитов. Как только они появятся, вы сможете просмотреть их здесь.")
             .font(DBRFont.R16)
             .foregroundStyle(DBRColor.base4.swiftUIColor)
             .multilineTextAlignment(.center)

@@ -22,9 +22,11 @@ struct DBRTimeSlotsView: View {
     // MARK: - Body
 
     var body: some View {
-        contentView
-            .navigationTitle("Выберите  дату и время")
-            .onAppear(perform: viewModel.fetchData)
+        DBRBackgroundView {
+            contentView
+                .navigationTitle("Выберите  дату и время")
+                .onAppear(perform: viewModel.fetchData)
+        }
     }
     
     // MARK: - Subviews

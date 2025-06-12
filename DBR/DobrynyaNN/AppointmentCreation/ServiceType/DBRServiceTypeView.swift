@@ -18,9 +18,11 @@ struct DBRServiceTypeView: View {
     // MARK: - Body
 
     var body: some View {
-        contentView
-            .navigationTitle("Выберите тип услуги")
-            .onAppear(perform: viewModel.fetchData)
+        DBRBackgroundView {
+            contentView
+                .navigationTitle("Выберите тип услуги")
+                .onAppear(perform: viewModel.fetchData)
+        }
     }
     
     // MARK: - Subviews

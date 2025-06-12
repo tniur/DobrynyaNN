@@ -23,6 +23,7 @@ struct DBRAvailableServicesCard: View {
         contentView
             .padding(20.0)
             .frame(maxWidth: .infinity)
+            .background(.clear)
             .overlay(
                 RoundedRectangle(cornerRadius: 20.0)
                     .stroke(
@@ -36,7 +37,7 @@ struct DBRAvailableServicesCard: View {
 
     private var contentView: some View {
         VStack(alignment: .leading, spacing: 16.0) {
-            VStack(spacing: 8.0) {
+            VStack(alignment: .leading, spacing: 8.0) {
                 Text(service.title)
                     .font(DBRFont.B16)
                     .foregroundStyle(DBRColor.blue6.swiftUIColor)
