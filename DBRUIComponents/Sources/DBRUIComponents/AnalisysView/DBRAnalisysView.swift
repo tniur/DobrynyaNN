@@ -79,7 +79,7 @@ public struct DBRAnalisysView: View {
                 .fill(DBRColor.base0.swiftUIColor)
                 .shadow(
                     color: DBRColor.base10.swiftUIColor.opacity(0.05),
-                    radius: 4,
+                    radius: 20,
                     x: 0,
                     y: 2
                 )

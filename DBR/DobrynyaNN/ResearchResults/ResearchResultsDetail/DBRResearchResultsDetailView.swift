@@ -70,7 +70,8 @@ struct DBRResearchResultsDetailView: View {
                                         .padding()
                                     
                                     Text("unknown.pdf")
-                                        .font(.subheadline)
+                                        .font(DBRFont.R14)
+                                        .foregroundStyle(DBRColor.base10.swiftUIColor)
                                         .multilineTextAlignment(.center)
                                         .padding([.horizontal, .bottom], 8)
                                 }

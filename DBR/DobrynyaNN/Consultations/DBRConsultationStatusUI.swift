@@ -38,40 +38,6 @@ public struct DBRConsultationStatusUI: Sendable {
         }
     }
     
-    var foregroundColor: Color {
-        switch consultationStatus {
-        case .active, .waiting, .done, .unknown:
-            return DBRColor.base3.swiftUIColor
-        }
-    }
-    
-    var backgroundColor: Color {
-        switch consultationStatus {
-        case .active, .done, .unknown:
-            return DBRColor.base0.swiftUIColor
-        case .waiting:
-            return DBRColor.base1.swiftUIColor
-        }
-    }
-    
-    var textForegroundColor: Color {
-        switch consultationStatus {
-        case .active, .done, .unknown:
-            return DBRColor.blue6.swiftUIColor
-        case .waiting:
-            return DBRColor.blue4.swiftUIColor
-        }
-    }
-    
-    var descriptionTextForegroundColor: Color {
-        switch consultationStatus {
-        case .active, .done, .unknown:
-            return DBRColor.base7.swiftUIColor
-        case .waiting:
-            return DBRColor.base5.swiftUIColor
-        }
-    }
-    
     public init(from consultationStatus: DBRConsultationStatus) {
         self.consultationStatus = consultationStatus
         self.localizedTitle = consultationStatus.localizedTitle
