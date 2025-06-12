@@ -55,7 +55,6 @@ public struct DBRTextField: View {
                     .onChange(of: text) { newValue in
                         text = newValue.formatUserInput(type: inputType)
                     }
-                    .textInputAutocapitalization(.never)
             }
         }
         .frame(height: 34)
@@ -92,7 +91,6 @@ public struct DBRTextField: View {
                     .onChange(of: text) { newValue in
                         text = newValue.formatUserInput(type: inputType)
                     }
-                    .textInputAutocapitalization(.never)
             } else {
                 TextField(placeholderText, text: $text)
                     .focused($isFocused)
@@ -106,7 +104,6 @@ public struct DBRTextField: View {
                     .onChange(of: text) { newValue in
                         text = newValue.formatUserInput(type: inputType)
                     }
-                    .textInputAutocapitalization(.never)
             }
 
             Spacer()
