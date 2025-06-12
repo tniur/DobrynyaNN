@@ -20,7 +20,7 @@ struct DBRSpecialistsView: View {
     var body: some View {
         DBRBackgroundView {
             contentView
-                .navigationTitle("Выберите  специалиста")
+                .navigationTitle(String(localized: "chooseSpecialist"))
                 .onAppear(perform: viewModel.fetchData)
         }
     }
@@ -36,7 +36,7 @@ struct DBRSpecialistsView: View {
                 if viewModel.isLoading {
                     Spacer()
                     
-                    ProgressView("Загрузка...")
+                    ProgressView(String(localized: "loading"))
                         .frame(maxWidth: .infinity, alignment: .center)
                     
                     Spacer()
@@ -48,7 +48,7 @@ struct DBRSpecialistsView: View {
             }
             
             DBRButton(
-                "Далее",
+                String(localized: "next"),
                 style: .init(.primary),
                 action: viewModel.showTimeSlots
             )
@@ -60,7 +60,7 @@ struct DBRSpecialistsView: View {
     private var scrollView: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 32.0) {
-                Text("Специалисты")
+                Text(String(localized: "specialists"))
                     .font(DBRFont.R20)
                     .foregroundStyle(DBRColor.blue6.swiftUIColor)
                 
@@ -109,11 +109,11 @@ struct DBRSpecialistsView: View {
     
     private var emptyView: some View {
         VStack(alignment: .leading, spacing: 8.0) {
-            Text("Специалисты недоступны")
+            Text(String(localized: "specialistsUnavailable"))
                 .font(DBRFont.R20)
                 .foregroundStyle(DBRColor.blue6.swiftUIColor)
             
-            Text("На данный момент отсутствуют специалисты для оказания этой услуги. Пожалуйста, выберите другую услугу или обратитесь в клинику.")
+            Text(String(localized: "thereCurrentlyNoSpecialistsAvailable"))
                 .font(DBRFont.R14)
                 .foregroundStyle(DBRColor.base7.swiftUIColor)
             

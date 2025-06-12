@@ -85,6 +85,40 @@
         }
       }
     },
+    "availableServices" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Available services"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Доступные услуги"
+          }
+        }
+      }
+    },
+    "branches" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Branches"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Филиалы"
+          }
+        }
+      }
+    },
     "canceled" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -98,6 +132,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Отмененные"
+          }
+        }
+      }
+    },
+    "cancelEntry" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel entry"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить запись"
           }
         }
       }
@@ -166,6 +217,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Проверьте номер телефона"
+          }
+        }
+      }
+    },
+    "chooseSpecialist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a specialist"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите  специалиста"
           }
         }
       }
@@ -255,6 +323,23 @@
         }
       }
     },
+    "doctorSpecialty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Doctor's specialty"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Специальность врача"
+          }
+        }
+      }
+    },
     "done" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -285,6 +370,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Нет аккаунта?"
+          }
+        }
+      }
+    },
+    "duration" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duration"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Продолжительность"
           }
         }
       }
@@ -646,6 +748,57 @@
         }
       }
     },
+    "noBranchesAvailable" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No branches available"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет доступных филиалов"
+          }
+        }
+      }
+    },
+    "noFreeSlots" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No free slots"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет свободных слотов"
+          }
+        }
+      }
+    },
+    "onMyVisits" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On my visits"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В мои визиты"
+          }
+        }
+      }
+    },
     "password" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -693,6 +846,57 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Отчество"
+          }
+        }
+      }
+    },
+    "pleaseSelectAnotherDate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please select another date."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пожалуйста, выберите другую дату."
+          }
+        }
+      }
+    },
+    "price" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Price"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Стоимость"
+          }
+        }
+      }
+    },
+    "quickEasyWayBookAppointment" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A quick and easy way to book an appointment. Click the button below to begin the process."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Быстрый и удобный способ записаться на прием. Нажмите кнопку ниже, чтобы начать процесс."
           }
         }
       }
@@ -782,6 +986,74 @@
         }
       }
     },
+    "selectBranchOfClinic" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select a branch of the clinic"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите  филиал клиники"
+          }
+        }
+      }
+    },
+    "selectDateAndTime" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select date and time"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите  дату и время"
+          }
+        }
+      }
+    },
+    "selectService" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select a service"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите  услугу"
+          }
+        }
+      }
+    },
+    "selectServiceType" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select service type"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите тип услуги"
+          }
+        }
+      }
+    },
     "sendCode" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -812,6 +1084,195 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Мы отправили вам код подтверждения на номер"
+          }
+        }
+      }
+    },
+    "signUp" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign up"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Записаться"
+          }
+        }
+      }
+    },
+    "signUpForService" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign up for a service"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запись на услугу"
+          }
+        }
+      }
+    },
+    "specialists" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Specialists"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Специалисты"
+          }
+        }
+      }
+    },
+    "specialistsUnavailable" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Specialists are unavailable"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Специалисты недоступны"
+          }
+        }
+      }
+    },
+    "startRecording" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start recording"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Начать запись"
+          }
+        }
+      }
+    },
+    "thereCurrentlyNoBranchesAvailable" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There are currently no branches available for this service. Please try going back and choosing another service."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В настоящий момент филиалы для данной услуги недоступны. Попробуйте вернуться и выбрать другую услугу."
+          }
+        }
+      }
+    },
+    "thereCurrentlyNoSpecialistsAvailable" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There are currently no specialists available to provide this service. Please select another service or contact the clinic."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "На данный момент отсутствуют специалисты для оказания этой услуги. Пожалуйста, выберите другую услугу или обратитесь в клинику."
+          }
+        }
+      }
+    },
+    "thereNoServicesInCategory" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There are no services in this category"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В данной категории нет услуг"
+          }
+        }
+      }
+    },
+    "toCancelAppointmentGoTo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To cancel an appointment, go to the \"My Visits\" section or click the \"Cancel Appointment\" button below."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Для отмены записи перейдите в раздел «Мои визиты», либо нажмите кнопку «Отменить запись» ниже."
+          }
+        }
+      }
+    },
+    "typesOfServices" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Types of services"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Типы услуг"
+          }
+        }
+      }
+    },
+    "unfortunatelyThereCurrentlyNoServicesFound" : {
+
+    },
+    "unfortunatelyThereCurrentlyNoServicesFound " : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unfortunately, there are currently no services found for the selected category. Try another category or contact the clinic."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "К сожалению, сейчас по выбранной категории услуги не найдены. Попробуйте другую категорию или обратитесь в клинику."
           }
         }
       }
@@ -904,92 +1365,39 @@
         }
       }
     },
-    "Быстрый и удобный способ записаться на прием. Нажмите кнопку ниже, чтобы начать процесс." : {
-
+    "youHaveSuccessfullyRegistered" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You have successfully registered!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы успешно записаны!"
+          }
+        }
+      }
     },
-    "В данной категории нет услуг" : {
-
-    },
-    "В настоящий момент филиалы для данной услуги недоступны. Попробуйте вернуться и выбрать другую услугу." : {
-
-    },
-    "Ваша запись на услугу “%@” подтверждена." : {
-
-    },
-    "Вы успешно записаны!" : {
-
-    },
-    "Выберите  дату и время" : {
-
-    },
-    "Выберите  специалиста" : {
-
-    },
-    "Выберите  услугу" : {
-
-    },
-    "Выберите  филиал клиники" : {
-
-    },
-    "Выберите тип услуги" : {
-
-    },
-    "Для отмены записи перейдите в раздел «Мои визиты», либо нажмите кнопку «Отменить запись» ниже." : {
-
-    },
-    "Доступные услуги" : {
-
-    },
-    "Загрузка..." : {
-
-    },
-    "Запись на услугу" : {
-
-    },
-    "К сожалению, сейчас по выбранной категории услуги не найдены. Попробуйте другую категорию или обратитесь в клинику." : {
-
-    },
-    "Консультации" : {
-
-    },
-    "На данный момент отсутствуют специалисты для оказания этой услуги. Пожалуйста, выберите другую услугу или обратитесь в клинику." : {
-
-    },
-    "Нет доступных филиалов" : {
-
-    },
-    "Нет свободных слотов" : {
-
-    },
-    "Пожалуйста, выберите другую дату." : {
-
-    },
-    "Продолжительность" : {
-
-    },
-    "Результат консультации" : {
-
-    },
-    "Специалисты" : {
-
-    },
-    "Специалисты недоступны" : {
-
-    },
-    "Специальность врача" : {
-
-    },
-    "Стоимость" : {
-
-    },
-    "Типы услуг" : {
-
-    },
-    "У вас пока не было консультаций. Как только появятся итоги, вы сможете просмотреть их здесь." : {
-
-    },
-    "Филиалы" : {
-
+    "yourAppointmentForServiceHasBeenConfirmed%@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your appointment for service %@ has been confirmed."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ваша запись на услугу «%@» подтверждена."
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

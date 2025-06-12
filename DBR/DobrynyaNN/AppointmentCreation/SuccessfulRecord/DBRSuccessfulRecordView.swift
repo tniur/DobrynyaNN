@@ -23,8 +23,8 @@ struct DBRSuccessfulRecordView: View {
                 .onAppear(perform: viewModel.fetchData)
                 .sheet(isPresented: $viewModel.isCancelApproveViewPresented) {
                     DBRApproveView(
-                        title: "Вы уверены?",
-                        description: "Подтвердите отмену записи",
+                        title: String(localized: "areYouSure"),
+                        description: String(localized: "confirmCancellationAppointment"),
                         cancelAction: viewModel.showCancelApproveView,
                         approveAction: viewModel.cancelAppointment
                     )
@@ -38,7 +38,7 @@ struct DBRSuccessfulRecordView: View {
     private var contentView: some View {
         ZStack {
             if viewModel.isLoading {
-                ProgressView("Загрузка...")
+                ProgressView(String(localized: "loading"))
                     .frame(maxWidth: .infinity, alignment: .center)
             } else {
                 VStack(alignment: .leading, spacing: 32.0) {
@@ -67,10 +67,10 @@ struct DBRSuccessfulRecordView: View {
 
     private var titleView: some View {
         VStack(alignment: .leading, spacing: 8.0) {
-            Text("Вы успешно записаны!")
+            Text(String(localized: "youHaveSuccessfullyRegistered"))
                 .font(DBRFont.B30)
                 .foregroundStyle(DBRColor.blue6.swiftUIColor)
-            Text("Ваша запись на услугу “\(viewModel.appointment?.serviceTitle ?? "")” подтверждена.")
+            Text(String(localized: "yourAppointmentForServiceHasBeenConfirmed\(viewModel.appointment?.serviceTitle ?? "")"))
                 .font(DBRFont.R14)
                 .foregroundStyle(DBRColor.base7.swiftUIColor)
         }
@@ -78,7 +78,7 @@ struct DBRSuccessfulRecordView: View {
     
     private var buttonsView: some View {
         VStack(alignment: .leading, spacing: .zero) {
-            Text("Для отмены записи перейдите в раздел «Мои визиты», либо нажмите кнопку «Отменить запись» ниже.")
+            Text(String(localized: "toCancelAppointmentGoTo"))
                 .font(DBRFont.R12)
                 .foregroundStyle(DBRColor.base5.swiftUIColor)
                 .multilineTextAlignment(.leading)
@@ -87,14 +87,14 @@ struct DBRSuccessfulRecordView: View {
                 .padding(.bottom, 16.0)
             
             DBRButton(
-                "В мои визиты",
+                String(localized: "onMyVisits"),
                 style: .init(.primary),
                 action: viewModel.showVisits
             )
             .padding(.bottom, 12.0)
             
             DBRButton(
-                "Отменить запись",
+                String(localized: "cancelEntry"),
                 style: .init(.secondaryRed),
                 action: viewModel.showCancelApproveView
             )

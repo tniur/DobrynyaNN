@@ -19,7 +19,7 @@ struct DBRSignUpServiceView: View {
     var body: some View {
         DBRBackgroundView {
             contentView
-                .navigationTitle("Запись на услугу")
+                .navigationTitle(String(localized: "signUpForService"))
                 .padding()
         }
     }
@@ -33,7 +33,7 @@ struct DBRSignUpServiceView: View {
                 .frame(width: 300.0, height: 300.0)
                 .padding(.bottom, 32.0)
             
-            Text("Быстрый и удобный способ записаться на прием. Нажмите кнопку ниже, чтобы начать процесс.")
+            Text(String(localized: "quickEasyWayBookAppointment"))
                 .font(DBRFont.R14)
                 .foregroundStyle(DBRColor.base7.swiftUIColor)
                 .multilineTextAlignment(.center)
@@ -41,7 +41,7 @@ struct DBRSignUpServiceView: View {
                 .padding(.bottom, 16.0)
             
             DBRButton(
-                "Начать запись",
+                String(localized: "startRecording"),
                 style: DBRButtonStyle(.primary),
                 action: viewModel.showServiceType
             )
