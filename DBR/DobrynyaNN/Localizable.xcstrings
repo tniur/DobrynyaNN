@@ -34,6 +34,23 @@
         }
       }
     },
+    "active" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Active"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Активные"
+          }
+        }
+      }
+    },
     "alreadyHaveAnAccount" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -171,9 +188,6 @@
       }
     },
     "confirmCancellationAppointment" : {
-
-    },
-    "confirmCancellationAppointment\n" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -207,6 +221,23 @@
         }
       }
     },
+    "consultationResult" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consultation result\n"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Результат консультации"
+          }
+        }
+      }
+    },
     "consultations" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -220,6 +251,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Консультации"
+          }
+        }
+      }
+    },
+    "done" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Завершенные"
           }
         }
       }
@@ -771,6 +819,23 @@
     "unknown.pdf" : {
 
     },
+    "waiting" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waiting"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ожидают"
+          }
+        }
+      }
+    },
     "youDontHaveAttachmentsYet" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -818,6 +883,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "У вас пока нет визитов. Как только они появятся, вы сможете просмотреть их здесь."
+          }
+        }
+      }
+    },
+    "youHaventHadConsultationsYet" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You haven't had any consultations yet. As soon as the results appear, you will be able to view them here."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "У вас пока не было консультаций. Как только появятся итоги, вы сможете просмотреть их здесь."
           }
         }
       }
