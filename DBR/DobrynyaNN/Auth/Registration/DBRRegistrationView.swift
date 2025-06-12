@@ -17,6 +17,13 @@ struct DBRRegistrationView: View {
     // MARK: - Body
     
     var body: some View {
+       contentView
+            .background(DBRColor.base0.swiftUIColor)
+    }
+    
+    // MARK: - Subviews
+    
+    private var contentView: some View {
         VStack {
             inputView
             Spacer()
@@ -26,8 +33,6 @@ struct DBRRegistrationView: View {
         .padding(.horizontal)
         .padding(.bottom, 32)
     }
-    
-    // MARK: - Subviews
 
     private var inputView: some View {
         VStack(alignment: .center, spacing: 32) {
@@ -36,9 +41,24 @@ struct DBRRegistrationView: View {
                 .foregroundStyle(DBRColor.base10.swiftUIColor)
             
             VStack {
-                DBRTextField(placeholderText: "Логин", text: $viewModel.login)
-                DBRTextField(placeholderText: "Пароль", text: $viewModel.password, isSecure: true)
-                DBRTextField(placeholderText: "Повторите пароль", text: $viewModel.repeatedPassword, isSecure: true)
+                DBRTextField(
+                    placeholderText: "Логин",
+                    text: $viewModel.login,
+                    errorMessage: .constant(viewModel.errorMessage != nil ? "" : nil)
+                )
+                
+                DBRTextField(
+                    placeholderText: "Пароль",
+                    text: $viewModel.password,
+                    isSecure: true,
+                    errorMessage: .constant(viewModel.errorMessage != nil ? "" : nil)
+                )
+                
+                DBRTextField(
+                    placeholderText: "Повторите пароль",
+                    text: $viewModel.repeatedPassword,
+                    isSecure: true,
+                    errorMessage: $viewModel.errorMessage)
             }
         }
     }
@@ -50,7 +70,10 @@ struct DBRRegistrationView: View {
                 style: DBRButtonStyle(.primary),
                 action: viewModel.showRegistrationPhone
             )
-            .environment(\.isEnabled, true)
+            .environment(
+                \.isEnabled,
+                 !viewModel.login.isEmpty && !viewModel.password.isEmpty && !viewModel.repeatedPassword.isEmpty
+            )
             
             HStack(spacing: 8) {
                 Text("Уже есть аккаунт?")

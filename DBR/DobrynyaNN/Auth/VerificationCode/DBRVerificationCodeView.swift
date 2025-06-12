@@ -18,6 +18,13 @@ struct DBRVerificationCodeView<VM: DBRVerificationCodeViewModelProtocol>: View {
     // MARK: - Body
 
     var body: some View {
+        contentView
+            .background(DBRColor.base0.swiftUIColor)
+    }
+    
+    // MARK: - Subviews
+    
+    private var contentView: some View {
         VStack {
             codeInputView
             Spacer()
@@ -30,8 +37,6 @@ struct DBRVerificationCodeView<VM: DBRVerificationCodeViewModelProtocol>: View {
             isFocused = true
         }
     }
-    
-    // MARK: - Subviews
 
     private var codeInputView: some View {
         VStack(spacing: 32) {
