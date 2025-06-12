@@ -17,6 +17,14 @@ struct DBRLoginView: View {
     // MARK: - Body
     
     var body: some View {
+        DBRBackgroundView {
+            contentView
+        }
+    }
+    
+    // MARK: - Subviews
+    
+    private var contentView: some View {
         VStack {
             inputView
             Spacer()
@@ -26,8 +34,6 @@ struct DBRLoginView: View {
         .padding(.horizontal)
         .padding(.bottom, 32.0)
     }
-    
-    // MARK: - Subviews
 
     private var inputView: some View {
         VStack(alignment: .center, spacing: 32) {
@@ -68,7 +74,10 @@ struct DBRLoginView: View {
                 style: DBRButtonStyle(.primary),
                 action: viewModel.requestCode
             )
-            .environment(\.isEnabled, true)
+            .environment(
+                \.isEnabled,
+                 !viewModel.login.isEmpty && !viewModel.password.isEmpty
+            )
             
             HStack(spacing: 8) {
                 Text(String(localized: "dontHaveAccount"))

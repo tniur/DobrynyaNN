@@ -28,7 +28,7 @@ public enum DBRButtonType {
     public var foregroundColor: SwiftUI.Color {
         switch self {
         case .primary:
-            DBRColor.base0.swiftUIColor
+            DBRColor.textPrimaryButton.swiftUIColor
         case .secondary:
             DBRColor.base7.swiftUIColor
         case .secondaryRed:
@@ -65,7 +65,7 @@ public enum DBRButtonType {
     public var pressedForegroundColor: SwiftUI.Color {
         switch self {
         case .primary:
-            DBRColor.base0.swiftUIColor
+            DBRColor.textPrimaryButton.swiftUIColor
         case .secondary, .tertiary:
             DBRColor.base7.swiftUIColor
         case .secondaryRed, .tertiaryRed:
@@ -98,7 +98,7 @@ public enum DBRButtonType {
     public var disabledForegroundColor: SwiftUI.Color {
         switch self {
         case .primary:
-            DBRColor.base0.swiftUIColor
+            DBRColor.textPrimaryButton.swiftUIColor
         case .secondary, .tertiary:
             DBRColor.base3.swiftUIColor
         case .secondaryRed, .tertiaryRed:

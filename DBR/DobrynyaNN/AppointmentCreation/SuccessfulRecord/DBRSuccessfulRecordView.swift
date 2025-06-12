@@ -17,18 +17,20 @@ struct DBRSuccessfulRecordView: View {
     // MARK: - Body
 
     var body: some View {
-        contentView
-            .navigationBarBackButtonHidden(true)
-            .onAppear(perform: viewModel.fetchData)
-            .sheet(isPresented: $viewModel.isCancelApproveViewPresented) {
-                DBRApproveView(
-                    title: "Вы уверены?",
-                    description: "Подтвердите отмену записи",
-                    cancelAction: viewModel.showCancelApproveView,
-                    approveAction: viewModel.cancelAppointment
-                )
-                .presentationDragIndicator(.visible)
-            }
+        DBRBackgroundView {
+            contentView
+                .navigationBarBackButtonHidden(true)
+                .onAppear(perform: viewModel.fetchData)
+                .sheet(isPresented: $viewModel.isCancelApproveViewPresented) {
+                    DBRApproveView(
+                        title: "Вы уверены?",
+                        description: "Подтвердите отмену записи",
+                        cancelAction: viewModel.showCancelApproveView,
+                        approveAction: viewModel.cancelAppointment
+                    )
+                    .presentationDragIndicator(.visible)
+                }
+        }
     }
     
     // MARK: - Subviews
@@ -42,12 +44,16 @@ struct DBRSuccessfulRecordView: View {
                 VStack(alignment: .leading, spacing: 32.0) {
                     titleView
                     
-                    DBRAnalisysView(
+                    let config = DBRAnalysysViewConfig(
                         title: viewModel.appointment?.serviceTitle ?? "",
                         adress: viewModel.appointment?.clinicAddress ?? "",
                         doctorName: viewModel.appointment?.doctorName ?? "",
-                        createdDate: viewModel.appointment?.createdDate ?? ""
+                        date: viewModel.appointment?.date ?? "",
+                        timeStart: viewModel.appointment?.timeStart ?? "",
+                        timeEnd: viewModel.appointment?.timeEnd ?? ""
                     )
+                    
+                    DBRAnalisysView(config)
                     
                     Spacer()
                     

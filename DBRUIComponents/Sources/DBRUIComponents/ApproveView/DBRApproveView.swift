@@ -19,7 +19,7 @@ public struct DBRApproveView: View {
         static let descriptionBPadding: CGFloat = 32.0
         static let buttonsSpacing: CGFloat = 8.0
     }
-    
+
     // MARK: - Properties
 
     private let title: String
@@ -30,6 +30,14 @@ public struct DBRApproveView: View {
     // MARK: - Body
 
     public var body: some View {
+        DBRBackgroundView {
+            contentView
+        }
+    }
+
+    // MARK: - Subviews
+
+    private var contentView: some View {
         VStack(alignment: .leading, spacing: .zero) {
             Text(title)
                 .font(DBRFont.M20)
@@ -55,9 +63,6 @@ public struct DBRApproveView: View {
                 )
             }
         }
-        .background(
-            DBRColor.base0.swiftUIColor
-        )
         .padding()
         .presentationDetents([.height(Constant.height)])
     }

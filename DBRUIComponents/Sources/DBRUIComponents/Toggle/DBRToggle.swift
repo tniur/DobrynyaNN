@@ -37,7 +37,7 @@ public struct DBRToggle: View {
                     Text(sections[index])
                         .font(DBRFont.R14)
                         .foregroundStyle(
-                            selectedIndex == index ? DBRColor.base0.swiftUIColor : DBRColor.base5.swiftUIColor
+                            selectedIndex == index ? DBRColor.textPrimaryButton.swiftUIColor : DBRColor.base5.swiftUIColor
                         )
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12.0)

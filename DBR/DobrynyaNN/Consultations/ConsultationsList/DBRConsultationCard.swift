@@ -25,11 +25,11 @@ struct DBRConsultationCard: View {
             .padding(.trailing)
             .background(
                 RoundedRectangle(cornerRadius: 20.0)
-                    .fill(status.backgroundColor)
+                    .fill(.clear)
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 20.0)
-                    .stroke(status.foregroundColor, lineWidth: 1.0)
+                    .stroke(DBRColor.base3.swiftUIColor, lineWidth: 1.0)
             )
     }
     
@@ -40,19 +40,19 @@ struct DBRConsultationCard: View {
             VStack(alignment: .leading, spacing: .zero) {
                 Text(title)
                     .font(DBRFont.M20)
-                    .foregroundStyle(status.textForegroundColor)
+                    .foregroundStyle(DBRColor.blue6.swiftUIColor)
                     .padding(.bottom, 6.0)
                 
                 HStack(alignment: .center, spacing: 8.0) {
                     DBRImage.medChestIcon.swiftUIImage
                         .resizable()
                         .renderingMode(.template)
-                        .foregroundStyle(status.textForegroundColor)
+                        .foregroundStyle(DBRColor.blue6.swiftUIColor)
                         .frame(width: 28.0, height: 28.0)
                     
                     Text(doctor)
                         .font(DBRFont.R14)
-                        .foregroundStyle(status.descriptionTextForegroundColor)
+                        .foregroundStyle(DBRColor.base7.swiftUIColor)
                 }
                 .padding(.bottom, 12.0)
                
@@ -80,7 +80,7 @@ struct DBRConsultationCard: View {
             DBRImage.chevronForwardIcon.swiftUIImage
                 .resizable()
                 .renderingMode(.template)
-                .foregroundStyle(status.foregroundColor)
+                .foregroundStyle(DBRColor.base3.swiftUIColor)
                 .frame(width: 24.0, height: 24.0)
         }
     }

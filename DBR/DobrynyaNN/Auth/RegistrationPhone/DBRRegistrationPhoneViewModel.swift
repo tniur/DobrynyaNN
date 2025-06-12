@@ -13,7 +13,12 @@ final class DBRRegistrationPhoneViewModel: ObservableObject {
     
     // MARK: - Properties
     
-    @Published var phoneNumber: String = ""
+    @Published var phoneNumber: String = "" {
+        didSet {
+            errorMessage = nil
+        }
+    }
+    @Published var errorMessage: String?
     
     private var screenNavigator: ScreenNavigator
     private let screens: DBRRegistrationPhoneScreens
@@ -34,6 +39,10 @@ final class DBRRegistrationPhoneViewModel: ObservableObject {
 
     @MainActor
     func showRegistrationCode() {
+        guard phoneNumber.count == 18 else {
+            errorMessage = "Проверьте номер телефона"
+            return
+        }
         let topController = UIApplication.shared.topViewController()
         topController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         topController?.navigationController?.navigationBar.tintColor = DBRColor.base10.color

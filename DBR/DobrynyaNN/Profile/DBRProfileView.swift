@@ -18,6 +18,7 @@ struct DBRProfileView: View {
 
     var body: some View {
         contentView
+            .background(DBRColor.base0.swiftUIColor)
             .sheet(isPresented: $viewModel.isLogoutApproveViewPresented) {
                 DBRApproveView(
                     title: "Вы уверены?",

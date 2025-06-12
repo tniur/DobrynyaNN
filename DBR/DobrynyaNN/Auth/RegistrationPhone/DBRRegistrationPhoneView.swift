@@ -17,6 +17,14 @@ struct DBRRegistrationPhoneView: View {
     // MARK: - Body
     
     var body: some View {
+        DBRBackgroundView {
+            contentView
+        }
+    }
+    
+    // MARK: - Subviews
+    
+    private var contentView: some View {
         VStack {
             inputView
             Spacer()
@@ -26,8 +34,6 @@ struct DBRRegistrationPhoneView: View {
         .padding(.horizontal)
         .padding(.bottom, 32)
     }
-    
-    // MARK: - Subviews
 
     private var inputView: some View {
         VStack(alignment: .center, spacing: 32) {
@@ -44,8 +50,12 @@ struct DBRRegistrationPhoneView: View {
             }
             
             VStack {
-                DBRTextField(placeholderText: "Мобильный номер", text: $viewModel.phoneNumber)
-                    .inputType(.phone)
+                DBRTextField(
+                    placeholderText: "Мобильный номер",
+                    text: $viewModel.phoneNumber,
+                    errorMessage: $viewModel.errorMessage
+                )
+                .inputType(.phone)
             }
         }
     }
