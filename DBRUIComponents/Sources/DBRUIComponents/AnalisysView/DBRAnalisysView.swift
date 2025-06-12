@@ -14,7 +14,7 @@ public struct DBRAnalisysView: View {
     private let title: String
     private let adress: String
     private let doctorName: String
-    private let createdDate: String
+    private let date: String
 
     // MARK: - Body
 
@@ -65,7 +65,7 @@ public struct DBRAnalisysView: View {
                         .foregroundStyle(DBRColor.blue6.swiftUIColor)
                         .frame(width: 28.0, height: 28.0)
 
-                    Text(createdDate)
+                    Text(date)
                         .font(DBRFont.R14)
                         .foregroundStyle(DBRColor.base7.swiftUIColor)
                         .lineLimit(1)
@@ -88,15 +88,22 @@ public struct DBRAnalisysView: View {
 
     // MARK: - Initializer
 
-    public init(
+    private init(
         title: String,
         adress: String,
         doctorName: String,
-        createdDate: String
+        date: String
     ) {
         self.title = title
         self.adress = adress
         self.doctorName = doctorName
-        self.createdDate = createdDate
+        self.date = date
+    }
+    
+    public init(_ config: DBRAnalysysViewConfig) {
+        self.title = config.title
+        self.adress = config.adress
+        self.doctorName = config.doctorName
+        self.date = config.date
     }
 }
