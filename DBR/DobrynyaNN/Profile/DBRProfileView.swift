@@ -57,12 +57,6 @@ struct DBRProfileView: View {
         .onAppear {
             viewModel.fetchData()
         }
-        .navigationBarItems(trailing:
-            Button(action: {}) {
-                DBRImage.gearshapeIcon.swiftUIImage
-                    .frame(width: 24.0, height: 24.0)
-            }
-        )
     }
     
     private var avatarView: some View {
