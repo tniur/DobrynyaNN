@@ -19,6 +19,7 @@ struct DBRProfileSettingsView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             contentView
+                .background(DBRColor.base0.swiftUIColor)
                 .navigationTitle("Редактировать профиль")
             
             DBRButton("Сохранить", action: viewModel.updatePatientInfo)

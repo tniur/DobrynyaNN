@@ -17,20 +17,17 @@ struct DBRConsultationsView: View {
     // MARK: - Body
 
     var body: some View {
-        contentView
-            .navigationTitle("Консультации")
-            .onAppear(perform: viewModel.fetchData)
+        DBRBackgroundView {
+            contentView
+                .navigationTitle("Консультации")
+                .onAppear(perform: viewModel.fetchData)
+        }
     }
     
     // MARK: - Subviews
 
     private var contentView: some View {
         VStack {
-            DBRToggle(
-                selectedIndex: $viewModel.selectedIndex,
-                sections: ["Активные", "Ожидают", "Завершенные"]
-            )
-            
             if viewModel.isLoading {
                 Spacer()
                 
@@ -46,6 +43,11 @@ struct DBRConsultationsView: View {
                 Spacer()
                 
             } else {
+                DBRToggle(
+                    selectedIndex: $viewModel.selectedIndex,
+                    sections: ["Активные", "Ожидают", "Завершенные"]
+                )
+                
                 scrollView
             }
         }

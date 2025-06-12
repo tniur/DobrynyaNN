@@ -18,10 +18,12 @@ struct DBRConsultationDetailsView: View {
     // MARK: - Body
 
     var body: some View {
-        contentView
-            .onAppear {
-                viewModel.fetchData()
-            }
+        DBRBackgroundView {
+            contentView
+                .onAppear {
+                    viewModel.fetchData()
+                }
+        }
     }
     
     // MARK: - Subviews

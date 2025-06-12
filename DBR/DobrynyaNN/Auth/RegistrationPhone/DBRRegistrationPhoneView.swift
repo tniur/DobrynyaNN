@@ -17,8 +17,9 @@ struct DBRRegistrationPhoneView: View {
     // MARK: - Body
     
     var body: some View {
-        contentView
-            .background(DBRColor.base0.swiftUIColor)
+        DBRBackgroundView {
+            contentView
+        }
     }
     
     // MARK: - Subviews
