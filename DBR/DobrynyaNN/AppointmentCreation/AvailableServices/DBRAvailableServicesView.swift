@@ -59,7 +59,7 @@ struct DBRAvailableServicesView: View {
     
     private var scrollView: some View {
         ScrollView {
-            LazyVStack(alignment: .center, spacing: 32.0) {
+            LazyVStack(alignment: .leading, spacing: 32.0) {
                 Text("Доступные услуги")
                     .font(DBRFont.R20)
                     .foregroundStyle(DBRColor.blue6.swiftUIColor)

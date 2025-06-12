@@ -76,7 +76,7 @@ public struct DBRAnalisysView: View {
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 20.0)
-                .fill(.clear)
+                .fill(DBRColor.base0.swiftUIColor)
                 .shadow(
                     color: DBRColor.base10.swiftUIColor.opacity(0.05),
                     radius: 4,
