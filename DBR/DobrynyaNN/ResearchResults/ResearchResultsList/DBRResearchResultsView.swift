@@ -17,9 +17,11 @@ struct DBRResearchResultsView: View {
     // MARK: - Body
 
     var body: some View {
-        contentView
-            .navigationTitle("Результаты исследований")
-            .onAppear(perform: viewModel.fetchData)
+        DBRBackgroundView {
+            contentView
+                .navigationTitle("Результаты исследований")
+                .onAppear(perform: viewModel.fetchData)
+        }
     }
     
     // MARK: - Subviews

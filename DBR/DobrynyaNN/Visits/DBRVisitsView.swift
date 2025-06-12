@@ -17,22 +17,24 @@ struct DBRVisitsView: View {
     // MARK: - Body
 
     var body: some View {
-        contentView
-            .navigationTitle("Мои визиты")
-            .onAppear(perform: viewModel.fetchData)
-            .sheet(isPresented: $viewModel.isCancelApproveViewPresented) {
-                DBRApproveView(
-                    title: "Вы уверены?",
-                    description: "Подтвердите отмену записи",
-                    cancelAction:  { viewModel.changeCancelApproveViewToggle() },
-                    approveAction: {
-                        guard let id = viewModel.selectedVisitId else { return }
-                        viewModel.cancelAppointment(with: id)
-                        viewModel.changeCancelApproveViewToggle()
-                    }
-                )
-                .presentationDragIndicator(.visible)
-            }
+        DBRBackgroundView {
+            contentView
+                .navigationTitle("Мои визиты")
+                .onAppear(perform: viewModel.fetchData)
+                .sheet(isPresented: $viewModel.isCancelApproveViewPresented) {
+                    DBRApproveView(
+                        title: "Вы уверены?",
+                        description: "Подтвердите отмену записи",
+                        cancelAction:  { viewModel.changeCancelApproveViewToggle() },
+                        approveAction: {
+                            guard let id = viewModel.selectedVisitId else { return }
+                            viewModel.cancelAppointment(with: id)
+                            viewModel.changeCancelApproveViewToggle()
+                        }
+                    )
+                    .presentationDragIndicator(.visible)
+                }
+        }
     }
     
     // MARK: - Subviews
@@ -109,7 +111,7 @@ struct DBRVisitsView: View {
     }
     
     private var emptyView: some View {
-        Text("У вас пока нет предстоящих визитов. Как только они появятся, вы сможете просмотреть их здесь.")
+        Text("У вас пока нет визитов. Как только они появятся, вы сможете просмотреть их здесь.")
             .font(DBRFont.R16)
             .foregroundStyle(DBRColor.base4.swiftUIColor)
             .multilineTextAlignment(.center)

@@ -17,9 +17,11 @@ struct DBRConsultationsView: View {
     // MARK: - Body
 
     var body: some View {
-        contentView
-            .navigationTitle("Консультации")
-            .onAppear(perform: viewModel.fetchData)
+        DBRBackgroundView {
+            contentView
+                .navigationTitle("Консультации")
+                .onAppear(perform: viewModel.fetchData)
+        }
     }
     
     // MARK: - Subviews

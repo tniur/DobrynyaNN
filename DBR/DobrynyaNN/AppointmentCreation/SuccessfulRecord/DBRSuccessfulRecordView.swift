@@ -17,18 +17,20 @@ struct DBRSuccessfulRecordView: View {
     // MARK: - Body
 
     var body: some View {
-        contentView
-            .navigationBarBackButtonHidden(true)
-            .onAppear(perform: viewModel.fetchData)
-            .sheet(isPresented: $viewModel.isCancelApproveViewPresented) {
-                DBRApproveView(
-                    title: "Вы уверены?",
-                    description: "Подтвердите отмену записи",
-                    cancelAction: viewModel.showCancelApproveView,
-                    approveAction: viewModel.cancelAppointment
-                )
-                .presentationDragIndicator(.visible)
-            }
+        DBRBackgroundView {
+            contentView
+                .navigationBarBackButtonHidden(true)
+                .onAppear(perform: viewModel.fetchData)
+                .sheet(isPresented: $viewModel.isCancelApproveViewPresented) {
+                    DBRApproveView(
+                        title: "Вы уверены?",
+                        description: "Подтвердите отмену записи",
+                        cancelAction: viewModel.showCancelApproveView,
+                        approveAction: viewModel.cancelAppointment
+                    )
+                    .presentationDragIndicator(.visible)
+                }
+        }
     }
     
     // MARK: - Subviews

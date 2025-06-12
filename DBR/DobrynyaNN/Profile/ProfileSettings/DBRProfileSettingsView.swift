@@ -19,6 +19,7 @@ struct DBRProfileSettingsView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             contentView
+                .background(DBRColor.base0.swiftUIColor)
                 .navigationTitle("Редактировать профиль")
             
             DBRButton("Сохранить", action: viewModel.updatePatientInfo)
@@ -36,22 +37,27 @@ struct DBRProfileSettingsView: View {
     // MARK: - Subviews
 
     private var contentView: some View {
-        VStack(spacing: 24.0) {
-            avatarView
-            
-            HStack {
-                Text("ФИО")
-                    .font(DBRFont.M20)
-                    .foregroundStyle(DBRColor.blue6.swiftUIColor)
+        ScrollView {
+            VStack(spacing: 24.0) {
+                avatarView
+                
+                HStack {
+                    Text("ФИО")
+                        .font(DBRFont.M20)
+                        .foregroundStyle(DBRColor.blue6.swiftUIColor)
+                    
+                    Spacer()
+                }
+                
+                textFieldsView
                 
                 Spacer()
             }
-            
-            textFieldsView
-            
-            Spacer()
+            .padding(.top)
+            .padding(.horizontal)
+            .padding(.bottom, 58.0)
         }
-        .padding()
+        .scrollIndicators(.hidden)
     }
     
     private var avatarView: some View {
