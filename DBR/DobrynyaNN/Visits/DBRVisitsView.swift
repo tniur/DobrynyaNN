@@ -17,33 +17,30 @@ struct DBRVisitsView: View {
     // MARK: - Body
 
     var body: some View {
-        contentView
-            .navigationTitle("Мои визиты")
-            .onAppear(perform: viewModel.fetchData)
-            .sheet(isPresented: $viewModel.isCancelApproveViewPresented) {
-                DBRApproveView(
-                    title: "Вы уверены?",
-                    description: "Подтвердите отмену записи",
-                    cancelAction:  { viewModel.changeCancelApproveViewToggle() },
-                    approveAction: {
-                        guard let id = viewModel.selectedVisitId else { return }
-                        viewModel.cancelAppointment(with: id)
-                        viewModel.changeCancelApproveViewToggle()
-                    }
-                )
-                .presentationDragIndicator(.visible)
-            }
+        DBRBackgroundView {
+            contentView
+                .navigationTitle("Мои визиты")
+                .onAppear(perform: viewModel.fetchData)
+                .sheet(isPresented: $viewModel.isCancelApproveViewPresented) {
+                    DBRApproveView(
+                        title: "Вы уверены?",
+                        description: "Подтвердите отмену записи",
+                        cancelAction:  { viewModel.changeCancelApproveViewToggle() },
+                        approveAction: {
+                            guard let id = viewModel.selectedVisitId else { return }
+                            viewModel.cancelAppointment(with: id)
+                            viewModel.changeCancelApproveViewToggle()
+                        }
+                    )
+                    .presentationDragIndicator(.visible)
+                }
+        }
     }
     
     // MARK: - Subviews
 
     private var contentView: some View {
         VStack {
-            DBRToggle(
-                selectedIndex: $viewModel.selectedIndex,
-                sections: ["Будущие", "Прошедшие", "Отмененные"]
-            )
-            
             if viewModel.isLoading {
                 Spacer()
                 
@@ -59,6 +56,11 @@ struct DBRVisitsView: View {
                 Spacer()
                 
             } else {
+                DBRToggle(
+                    selectedIndex: $viewModel.selectedIndex,
+                    sections: ["Будущие", "Прошедшие", "Отмененные"]
+                )
+                
                 scrollView
             }
         }
