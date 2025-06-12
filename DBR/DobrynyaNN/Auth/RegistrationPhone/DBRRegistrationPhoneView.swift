@@ -55,7 +55,7 @@ struct DBRRegistrationPhoneView: View {
                     text: $viewModel.phoneNumber,
                     errorMessage: $viewModel.errorMessage
                 )
-                    .inputType(.phone)
+                .inputType(.phone)
             }
         }
     }

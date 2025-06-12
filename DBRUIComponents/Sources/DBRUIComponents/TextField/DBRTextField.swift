@@ -20,7 +20,6 @@ public struct DBRTextField: View {
     @FocusState private var isFocused: Bool
 
     @Environment(\.inputType)
-
     private var inputType: DBRInputType
     private let placeholderText: String
 
@@ -47,6 +46,9 @@ public struct DBRTextField: View {
                 TextField(placeholderText, text: $text)
                     .focused($isFocused)
                     .font(DBRFont.R14)
+                    .autocorrectionDisabled(false)
+                    .textInputAutocapitalization(.never)
+                    .keyboardType(inputType == .phone ? .phonePad : .default)
                     .foregroundStyle(
                         isFocused || !text.isEmpty ? DBRColor.base10.swiftUIColor : DBRColor.base3.swiftUIColor
                     )
@@ -81,6 +83,9 @@ public struct DBRTextField: View {
                 SecureField(placeholderText, text: $text)
                     .focused($isFocused)
                     .font(DBRFont.R14)
+                    .autocorrectionDisabled(true)
+                    .textInputAutocapitalization(.never)
+                    .keyboardType(inputType == .phone ? .phonePad : .default)
                     .foregroundStyle(
                         isFocused || !text.isEmpty ? DBRColor.base10.swiftUIColor : DBRColor.base3.swiftUIColor
                     )
@@ -92,6 +97,9 @@ public struct DBRTextField: View {
                 TextField(placeholderText, text: $text)
                     .focused($isFocused)
                     .font(DBRFont.R14)
+                    .autocorrectionDisabled(true)
+                    .textInputAutocapitalization(.never)
+                    .keyboardType(inputType == .phone ? .phonePad : .default)
                     .foregroundStyle(
                         isFocused || !text.isEmpty ? DBRColor.base10.swiftUIColor : DBRColor.base3.swiftUIColor
                     )
