@@ -8,10 +8,15 @@
 import Nivelir
 import DBRUIComponents
 import UIKit
+import Factory
+import DBRDIContainer
+import DBRCore
 
 final class DBRRegistrationPhoneViewModel: ObservableObject {
     
     // MARK: - Properties
+    
+    @Injected(\.registerService) private var registerService: DBRRegisterService
     
     @Published var phoneNumber: String = "" {
         didSet {
@@ -43,10 +48,26 @@ final class DBRRegistrationPhoneViewModel: ObservableObject {
             errorMessage = String(localized: "checkPhoneNumber")
             return
         }
-        let topController = UIApplication.shared.topViewController()
-        topController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        topController?.navigationController?.navigationBar.tintColor = DBRColor.base10.color
-        screenNavigator.navigate(to: screens.showRegistrationCodeRoute(login: login, password: password, phoneNumber: phoneNumber))
+        
+        
+        Task {
+            do {
+                let result = try await registerService.requestCode(mobile: phoneNumber)
+                
+                let topController = UIApplication.shared.topViewController()
+                topController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+                topController?.navigationController?.navigationBar.tintColor = DBRColor.base10.color
+                screenNavigator.navigate(to: screens.showRegistrationCodeRoute(login: login, password: password, phoneNumber: phoneNumber))
+            } catch let error as DBRError {
+                switch error {
+                case .conflict:
+                    errorMessage = String(localized: "registerMobileNotAvailable")
+                default:
+                    // TODO: Error handling
+                    errorMessage = String(localized: "errorHasOccurred")
+                }
+            }
+        }
     }
     
     @MainActor
