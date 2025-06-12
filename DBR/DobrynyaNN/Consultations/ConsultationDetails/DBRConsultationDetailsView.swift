@@ -35,7 +35,7 @@ struct DBRConsultationDetailsView: View {
                     if viewModel.isLoading {
                         Spacer()
                         
-                        ProgressView("Загрузка...")
+                        ProgressView(String(localized: "loading"))
                             .frame(maxWidth: .infinity, alignment: .center)
                         
                         Spacer()
@@ -103,7 +103,7 @@ struct DBRConsultationDetailsView: View {
     
     private func descriptionView(with details: DBRConsultationDetails) -> some View {
         VStack(alignment: .leading, spacing: 8.0) {
-            Text("Результат консультации")
+            Text(String(localized: "consultationResult"))
                 .font(DBRFont.B16)
                 .foregroundStyle(DBRColor.blue6.swiftUIColor)
                 .multilineTextAlignment(.leading)

@@ -20,7 +20,7 @@ struct DBRAvailableServicesView: View {
     var body: some View {
         DBRBackgroundView {
             contentView
-                .navigationTitle("Выберите  услугу")
+                .navigationTitle(String(localized: "selectService"))
                 .onAppear(perform: viewModel.fetchData)
         }
     }
@@ -36,7 +36,7 @@ struct DBRAvailableServicesView: View {
                 if viewModel.isLoading {
                     Spacer()
                     
-                    ProgressView("Загрузка...")
+                    ProgressView(String(localized: "loading"))
                         .frame(maxWidth: .infinity, alignment: .center)
                     
                     Spacer()
@@ -48,7 +48,7 @@ struct DBRAvailableServicesView: View {
             }
             
             DBRButton(
-                "Далее",
+                String(localized: "next"),
                 style: .init(.primary),
                 action: viewModel.showClinicAdresses
             )
@@ -60,7 +60,7 @@ struct DBRAvailableServicesView: View {
     private var scrollView: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 32.0) {
-                Text("Доступные услуги")
+                Text(String(localized: "availableServices"))
                     .font(DBRFont.R20)
                     .foregroundStyle(DBRColor.blue6.swiftUIColor)
                 
@@ -84,11 +84,11 @@ struct DBRAvailableServicesView: View {
     
     private var emptyView: some View {
         VStack(alignment: .leading, spacing: 8.0) {
-            Text("В данной категории нет услуг")
+            Text(String(localized: "thereNoServicesInCategory"))
                 .font(DBRFont.R20)
                 .foregroundStyle(DBRColor.blue6.swiftUIColor)
             
-            Text("К сожалению, сейчас по выбранной категории услуги не найдены. Попробуйте другую категорию или обратитесь в клинику.")
+            Text(String(localized: "unfortunatelyThereCurrentlyNoServicesFound"))
                 .font(DBRFont.R14)
                 .foregroundStyle(DBRColor.base7.swiftUIColor)
             

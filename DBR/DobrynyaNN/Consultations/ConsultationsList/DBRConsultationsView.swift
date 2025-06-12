@@ -19,7 +19,7 @@ struct DBRConsultationsView: View {
     var body: some View {
         DBRBackgroundView {
             contentView
-                .navigationTitle("Консультации")
+                .navigationTitle(String(localized: "consultations"))
                 .onAppear(perform: viewModel.fetchData)
         }
     }
@@ -30,13 +30,13 @@ struct DBRConsultationsView: View {
         VStack {
             DBRToggle(
                 selectedIndex: $viewModel.selectedIndex,
-                sections: ["Активные", "Ожидают", "Завершенные"]
+                sections: [String(localized: "active"), String(localized: "waiting"), String(localized: "done")]
             )
             
             if viewModel.isLoading {
                 Spacer()
                 
-                ProgressView("Загрузка...")
+                ProgressView(String(localized: "loading"))
                     .frame(maxWidth: .infinity, alignment: .center)
                 
                 Spacer()
@@ -76,7 +76,7 @@ struct DBRConsultationsView: View {
     }
     
     private var emptyView: some View {
-        Text("У вас пока не было консультаций. Как только появятся итоги, вы сможете просмотреть их здесь.")
+        Text(String(localized: "youHaventHadConsultationsYet"))
             .font(DBRFont.R16)
             .foregroundStyle(DBRColor.base4.swiftUIColor)
             .multilineTextAlignment(.center)

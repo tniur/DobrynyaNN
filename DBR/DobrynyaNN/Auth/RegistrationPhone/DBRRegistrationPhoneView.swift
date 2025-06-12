@@ -38,7 +38,7 @@ struct DBRRegistrationPhoneView: View {
     private var inputView: some View {
         VStack(alignment: .center, spacing: 32) {
             VStack(spacing: 8) {
-                Text(String(localized: "registration"))
+                Text(String(localized: "signUp"))
                     .font(DBRFont.B30)
                     .foregroundStyle(DBRColor.base10.swiftUIColor)
                 
@@ -74,7 +74,7 @@ struct DBRRegistrationPhoneView: View {
                     .font(DBRFont.R14)
                     .foregroundStyle(DBRColor.base10.swiftUIColor)
                 
-                Button(String("enter"), action: viewModel.showLogin)
+                Button(String("logIn"), action: viewModel.showLogin)
                     .font(DBRFont.R14)
                     .foregroundStyle(DBRColor.blue6.swiftUIColor)
             }

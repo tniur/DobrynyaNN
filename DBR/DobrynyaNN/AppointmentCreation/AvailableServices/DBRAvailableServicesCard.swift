@@ -68,7 +68,7 @@ struct DBRAvailableServicesCard: View {
                 .frame(width: 28.0, height: 28.0)
             
             VStack(alignment: .leading, spacing: 2.0) {
-                Text("Стоимость")
+                Text(String(localized: "price"))
                     .font(DBRFont.I12)
                     .foregroundStyle(DBRColor.base5.swiftUIColor)
                 
@@ -86,7 +86,7 @@ struct DBRAvailableServicesCard: View {
                 .frame(width: 28.0, height: 28.0)
             
             VStack(alignment: .leading, spacing: 2.0) {
-                Text("Продолжительность")
+                Text(String(localized: "duration"))
                     .font(DBRFont.I12)
                     .foregroundStyle(DBRColor.base5.swiftUIColor)
                 
@@ -104,7 +104,7 @@ struct DBRAvailableServicesCard: View {
                 .frame(width: 28.0, height: 28.0)
             
             VStack(alignment: .leading, spacing: 2.0) {
-                Text("Специальность врача")
+                Text(String(localized: "selectServiceType"))
                     .font(DBRFont.I12)
                     .foregroundStyle(DBRColor.base5.swiftUIColor)
                 

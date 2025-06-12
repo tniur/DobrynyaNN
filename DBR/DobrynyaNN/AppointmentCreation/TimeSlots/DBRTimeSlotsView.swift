@@ -24,7 +24,7 @@ struct DBRTimeSlotsView: View {
     var body: some View {
         DBRBackgroundView {
             contentView
-                .navigationTitle("Выберите  дату и время")
+                .navigationTitle(String(localized: "selectDateAndTime"))
                 .onAppear(perform: viewModel.fetchData)
         }
     }
@@ -36,7 +36,7 @@ struct DBRTimeSlotsView: View {
             scrollView
             
             DBRButton(
-                "Записаться",
+                String(localized: "signUp"),
                 style: .init(.primary),
                 action: viewModel.createAppointment
             )
@@ -71,7 +71,7 @@ struct DBRTimeSlotsView: View {
                 )
                 
                 if viewModel.isLoading {
-                    ProgressView("Загрузка...")
+                    ProgressView(String(localized: "loading"))
                         .frame(maxWidth: .infinity, alignment: .center)
                 } else if viewModel.slots(for: viewModel.selectedDate).isEmpty {
                     emptyView
@@ -115,11 +115,11 @@ struct DBRTimeSlotsView: View {
     
     private var emptyView: some View {
         VStack(alignment: .leading, spacing: 8.0) {
-            Text("Нет свободных слотов")
+            Text(String(localized: "noFreeSlots"))
                 .font(DBRFont.R20)
                 .foregroundStyle(DBRColor.blue6.swiftUIColor)
             
-            Text("Пожалуйста, выберите другую дату.")
+            Text(String(localized: "pleaseSelectAnotherDate"))
                 .font(DBRFont.R14)
                 .foregroundStyle(DBRColor.base7.swiftUIColor)
         }

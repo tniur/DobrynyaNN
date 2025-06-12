@@ -19,7 +19,7 @@ struct DBRResearchResultsView: View {
     var body: some View {
         DBRBackgroundView {
             contentView
-                .navigationTitle("Результаты исследований")
+                .navigationTitle(String(localized: "researchResults"))
                 .onAppear(perform: viewModel.fetchData)
         }
     }
@@ -31,7 +31,7 @@ struct DBRResearchResultsView: View {
             if viewModel.isLoading {
                 Spacer()
                 
-                ProgressView("Загрузка...")
+                ProgressView(String(localized: "loading"))
                     .frame(maxWidth: .infinity, alignment: .center)
                 
                 Spacer()
@@ -67,7 +67,7 @@ struct DBRResearchResultsView: View {
     }
     
     private var emptyView: some View {
-        Text("У вас пока нет результатов исследований. Как только они появятся, вы сможете просмотреть их здесь.")
+        Text(String(localized: "youDontHaveResearchResultsYet"))
             .font(DBRFont.R16)
             .foregroundStyle(DBRColor.base4.swiftUIColor)
             .multilineTextAlignment(.center)

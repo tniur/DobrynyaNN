@@ -20,9 +20,9 @@ struct DBRProfileSettingsView: View {
         ZStack(alignment: .bottom) {
             contentView
                 .background(DBRColor.base0.swiftUIColor)
-                .navigationTitle("Редактировать профиль")
+                .navigationTitle(String(localized: "editProfile"))
             
-            DBRButton("Сохранить", action: viewModel.updatePatientInfo)
+            DBRButton(String(localized: "save"), action: viewModel.updatePatientInfo)
                 .disabled(viewModel.buttonDisabled)
                 .padding()
         }
@@ -42,7 +42,7 @@ struct DBRProfileSettingsView: View {
                 avatarView
                 
                 HStack {
-                    Text("ФИО")
+                    Text(String(localized: "fullName"))
                         .font(DBRFont.M20)
                         .foregroundStyle(DBRColor.blue6.swiftUIColor)
                     
@@ -95,7 +95,7 @@ struct DBRProfileSettingsView: View {
                     .frame(width: 100, height: 100)
             }
             
-            Text("Изменить фото")
+            Text(String(localized: "changePhoto"))
                 .font(DBRFont.R14)
                 .foregroundStyle(DBRColor.blue6.swiftUIColor)
                 .onTapGesture(perform: viewModel.showImagePicker)
@@ -105,17 +105,17 @@ struct DBRProfileSettingsView: View {
     private var textFieldsView: some View {
         VStack(spacing: .zero) {
             DBRTextField(
-                placeholderText: "Фамилия",
+                placeholderText: String(localized: "lastname"),
                 text: $viewModel.lastName
             )
             
             DBRTextField(
-                placeholderText: "Имя",
+                placeholderText: String(localized: "name"),
                 text: $viewModel.firstName
             )
             
             DBRTextField(
-                placeholderText: "Отчество",
+                placeholderText: String(localized: "patronymic"),
                 text: $viewModel.thirdName
             )
         }

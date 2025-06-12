@@ -20,7 +20,7 @@ struct DBRServiceTypeView: View {
     var body: some View {
         DBRBackgroundView {
             contentView
-                .navigationTitle("Выберите тип услуги")
+                .navigationTitle(String(localized: "selectServiceType"))
                 .onAppear(perform: viewModel.fetchData)
         }
     }
@@ -36,7 +36,7 @@ struct DBRServiceTypeView: View {
                 if viewModel.isLoading {
                     Spacer()
 
-                    ProgressView("Загрузка...")
+                    ProgressView(String(localized: "loading"))
                         .frame(maxWidth: .infinity, alignment: .center)
                     
                     Spacer()
@@ -46,7 +46,7 @@ struct DBRServiceTypeView: View {
             }
             
             DBRButton(
-                "Далее",
+                String(localized: "next"),
                 style: .init(.primary),
                 action: viewModel.showAvailableServices
             )
@@ -58,7 +58,7 @@ struct DBRServiceTypeView: View {
     private var scrollView: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 32.0) {
-                Text("Типы услуг")
+                Text(String(localized: "typesOfServices"))
                     .font(DBRFont.R20)
                     .foregroundStyle(DBRColor.blue6.swiftUIColor)
                 
