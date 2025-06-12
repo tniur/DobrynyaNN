@@ -71,12 +71,16 @@ struct DBRVisitsView: View {
         ScrollView {
             LazyVStack {
                 ForEach(viewModel.filteredVisits) { visit in
-                    let view = DBRAnalisysView(
+                    let config = DBRAnalysysViewConfig(
                         title: visit.serviceTitle,
                         adress: visit.clinicAddress,
                         doctorName: visit.doctorName,
-                        createdDate: visit.createdDate
+                        date: visit.date,
+                        timeStart: visit.timeStart,
+                        timeEnd: visit.timeEnd
                     )
+                    
+                    let view = DBRAnalisysView(config)
                     
                     switch visit.status {
                     case .completed, .refused, .unknown:
