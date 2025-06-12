@@ -37,7 +37,7 @@ struct DBRRegistrationView: View {
 
     private var inputView: some View {
         VStack(alignment: .center, spacing: 32) {
-            Text(String(localized: "registration"))
+            Text(String(localized: "signUp"))
                 .font(DBRFont.B30)
                 .foregroundStyle(DBRColor.base10.swiftUIColor)
             

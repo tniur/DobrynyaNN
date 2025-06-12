@@ -442,23 +442,6 @@
         }
       }
     },
-    "entry" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Entry"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Вход"
-          }
-        }
-      }
-    },
     "errorHasOccurred" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -901,40 +884,6 @@
         }
       }
     },
-    "register" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Register"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Зарегистрироваться"
-          }
-        }
-      }
-    },
-    "registration" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Registration"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Регистрация"
-          }
-        }
-      }
-    },
     "repeatPassword" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1050,23 +999,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Выберите тип услуги"
-          }
-        }
-      }
-    },
-    "sendCode" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Send code"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Отправить код"
           }
         }
       }
@@ -1256,9 +1188,6 @@
           }
         }
       }
-    },
-    "unfortunatelyThereCurrentlyNoServicesFound" : {
-
     },
     "unfortunatelyThereCurrentlyNoServicesFound " : {
       "extractionState" : "manual",
