@@ -11,6 +11,7 @@ public enum DBREndpoint {
     enum Register {
         static let confirmCode = "register/confirmCode"
         static let requestCode = "register/requestCode"
+        static let checkEmailAvailable = "register/checkEmailAvailable"
     }
 
     enum Recover {
