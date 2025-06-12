@@ -21,8 +21,8 @@ struct DBRProfileView: View {
             .background(DBRColor.base0.swiftUIColor)
             .sheet(isPresented: $viewModel.isLogoutApproveViewPresented) {
                 DBRApproveView(
-                    title: "Вы уверены?",
-                    description: "Подтвердите выход из аккаунта",
+                    title: String(localized: "areYouSure"),
+                    description: String(localized: "confirmLogout"),
                     cancelAction: viewModel.showLogoutApproveView,
                     approveAction: viewModel.logout
                 )
@@ -46,7 +46,11 @@ struct DBRProfileView: View {
                 
                 Spacer()
                 
-                DBRButton("Выйти", style: .init(.tertiaryRed), action: viewModel.showLogoutApproveView)
+                DBRButton(
+                    String(localized: "logOut"),
+                    style: .init(.tertiaryRed),
+                    action: viewModel.showLogoutApproveView
+                )
             }
             .padding(.horizontal)
         }

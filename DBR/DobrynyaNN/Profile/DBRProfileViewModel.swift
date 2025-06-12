@@ -38,17 +38,17 @@ final class DBRProfileViewModel: ObservableObject {
         
         self.sections = [
             DBRProfileSection(
-                name: "Результаты исследований",
+                name: String(localized: "researchResults"),
                 icon: DBRImage.heartextIcon.swiftUIImage,
                 type: .researchResults
             ),
             DBRProfileSection(
-                name: "Консультации",
+                name: String(localized: "consultations"),
                 icon: DBRImage.staroflifeIcon.swiftUIImage,
                 type: .consultations
             ),
             DBRProfileSection(
-                name: "Редактировать профиль",
+                name: String(localized: "editProfile"),
                 icon: DBRImage.pencilIcon.swiftUIImage,
                 type: .editProfile
             )
