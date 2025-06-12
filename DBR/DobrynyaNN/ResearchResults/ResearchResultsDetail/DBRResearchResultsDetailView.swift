@@ -37,7 +37,7 @@ struct DBRResearchResultsDetailView: View {
             if viewModel.isLoading {
                 Spacer()
                 
-                ProgressView("Загрузка...")
+                ProgressView(String(localized: "loading"))
                     .frame(maxWidth: .infinity, alignment: .center)
                 
                 Spacer()
@@ -87,7 +87,7 @@ struct DBRResearchResultsDetailView: View {
     }
        
     private var emptyView: some View {
-        Text("У вас пока нет прикрепленных файлов. Как только они появятся, вы сможете просмотреть их здесь.")
+        Text(String(localized: "youDontHaveAttachmentsYet"))
             .font(DBRFont.R16)
             .foregroundStyle(DBRColor.base4.swiftUIColor)
             .multilineTextAlignment(.center)
