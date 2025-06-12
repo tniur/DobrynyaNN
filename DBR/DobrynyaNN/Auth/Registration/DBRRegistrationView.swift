@@ -37,26 +37,26 @@ struct DBRRegistrationView: View {
 
     private var inputView: some View {
         VStack(alignment: .center, spacing: 32) {
-            Text("Регистрация")
+            Text(String(localized: "registration"))
                 .font(DBRFont.B30)
                 .foregroundStyle(DBRColor.base10.swiftUIColor)
             
             VStack {
                 DBRTextField(
-                    placeholderText: "Логин",
+                    placeholderText: String(localized: "login"),
                     text: $viewModel.login,
                     errorMessage: .constant(viewModel.errorMessage != nil ? "" : nil)
                 )
                 
                 DBRTextField(
-                    placeholderText: "Пароль",
+                    placeholderText: String(localized: "password"),
                     text: $viewModel.password,
                     isSecure: true,
                     errorMessage: .constant(viewModel.errorMessage != nil ? "" : nil)
                 )
                 
                 DBRTextField(
-                    placeholderText: "Повторите пароль",
+                    placeholderText: String(localized: "repeatPassword"),
                     text: $viewModel.repeatedPassword,
                     isSecure: true,
                     errorMessage: $viewModel.errorMessage)
@@ -67,7 +67,7 @@ struct DBRRegistrationView: View {
     private var bottomView: some View {
         VStack(spacing: 24) {
             DBRButton(
-                "Дальше",
+                String(localized: "next"),
                 style: DBRButtonStyle(.primary),
                 action: viewModel.showRegistrationPhone
             )
@@ -77,11 +77,11 @@ struct DBRRegistrationView: View {
             )
             
             HStack(spacing: 8) {
-                Text("Уже есть аккаунт?")
+                Text(String(localized: "alreadyHaveAnAccount"))
                     .font(DBRFont.R14)
                     .foregroundStyle(DBRColor.base10.swiftUIColor)
                 
-                Button("Войти", action: viewModel.showLogin)
+                Button(String(localized: "enter"), action: viewModel.showLogin)
                     .font(DBRFont.R14)
                     .foregroundStyle(DBRColor.blue6.swiftUIColor)
             }

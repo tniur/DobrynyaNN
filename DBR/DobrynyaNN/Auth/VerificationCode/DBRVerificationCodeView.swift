@@ -29,7 +29,7 @@ struct DBRVerificationCodeView<VM: DBRVerificationCodeViewModelProtocol>: View {
         VStack {
             codeInputView
             Spacer()
-            DBRButton("Получить новый код", action: { })
+            DBRButton(String(localized: "getNewCode"), action: { })
         }
         .padding(.top, 100.0)
         .padding(.horizontal)
@@ -42,10 +42,10 @@ struct DBRVerificationCodeView<VM: DBRVerificationCodeViewModelProtocol>: View {
     private var codeInputView: some View {
         VStack(spacing: 32) {
             VStack(spacing: 8) {
-                Text("Код из смс")
+                Text(String(localized: "codeFromSMS"))
                     .font(DBRFont.B30)
                     .foregroundStyle(DBRColor.base10.swiftUIColor)
-                Text("Мы отправили вам код подтверждения на номер \(viewModel.phoneNumber).")
+                Text("\(String(localized: "sentYouConfirmationCodeNumber.")) \(viewModel.phoneNumber).")
                     .font(DBRFont.R14)
                     .foregroundStyle(DBRColor.base5.swiftUIColor)
                     .frame(width: 281)

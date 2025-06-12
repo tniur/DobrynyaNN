@@ -38,11 +38,11 @@ struct DBRRegistrationPhoneView: View {
     private var inputView: some View {
         VStack(alignment: .center, spacing: 32) {
             VStack(spacing: 8) {
-                Text("Регистрация")
+                Text(String(localized: "registration"))
                     .font(DBRFont.B30)
                     .foregroundStyle(DBRColor.base10.swiftUIColor)
                 
-                Text("Введите ваш номер телефона, и мы отправим код подтверждения")
+                Text(String(localized: "enterPhoneNumberAndSendCode"))
                     .font(DBRFont.R14)
                     .foregroundStyle(DBRColor.base5.swiftUIColor)
                     .frame(width: 281)
@@ -51,7 +51,7 @@ struct DBRRegistrationPhoneView: View {
             
             VStack {
                 DBRTextField(
-                    placeholderText: "Мобильный номер",
+                    placeholderText: String(localized: "mobileNumber"),
                     text: $viewModel.phoneNumber,
                     errorMessage: $viewModel.errorMessage
                 )
@@ -63,18 +63,18 @@ struct DBRRegistrationPhoneView: View {
     private var bottomView: some View {
         VStack(spacing: 24) {
             DBRButton(
-                "Получить код",
+                String(localized: "getCode"),
                 style: DBRButtonStyle(.primary),
                 action: viewModel.showRegistrationCode
             )
             .environment(\.isEnabled, !viewModel.phoneNumber.isEmpty)
             
             HStack(spacing: 8) {
-                Text("Уже есть аккаунт?")
+                Text(String(localized: "alreadyHaveAnAccount"))
                     .font(DBRFont.R14)
                     .foregroundStyle(DBRColor.base10.swiftUIColor)
                 
-                Button("Войти", action: viewModel.showLogin)
+                Button(String("enter"), action: viewModel.showLogin)
                     .font(DBRFont.R14)
                     .foregroundStyle(DBRColor.blue6.swiftUIColor)
             }
