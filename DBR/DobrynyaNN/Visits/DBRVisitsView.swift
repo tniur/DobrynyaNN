@@ -19,12 +19,12 @@ struct DBRVisitsView: View {
     var body: some View {
         DBRBackgroundView {
             contentView
-                .navigationTitle("Мои визиты")
+                .navigationTitle(String(localized: "myVisits"))
                 .onAppear(perform: viewModel.fetchData)
                 .sheet(isPresented: $viewModel.isCancelApproveViewPresented) {
                     DBRApproveView(
-                        title: "Вы уверены?",
-                        description: "Подтвердите отмену записи",
+                        title: String(localized: "areYouSure"),
+                        description: String(localized: "confirmCancellationAppointment"),
                         cancelAction:  { viewModel.changeCancelApproveViewToggle() },
                         approveAction: {
                             guard let id = viewModel.selectedVisitId else { return }
@@ -43,13 +43,13 @@ struct DBRVisitsView: View {
         VStack {
             DBRToggle(
                 selectedIndex: $viewModel.selectedIndex,
-                sections: ["Будущие", "Прошедшие", "Отмененные"]
+                sections: [String(localized: "future"), String(localized: "past"), String(localized: "canceled")]
             )
             
             if viewModel.isLoading {
                 Spacer()
                 
-                ProgressView("Загрузка...")
+                ProgressView(String(localized: "loading"))
                     .frame(maxWidth: .infinity, alignment: .center)
                 
                 Spacer()
@@ -94,13 +94,13 @@ struct DBRVisitsView: View {
                                 Button(role: .none) {
                                     viewModel.editAppointment(with: visit.id)
                                 } label: {
-                                    Text("Редактировать визит")
+                                    Text(String(localized: "editVisit"))
                                         .font(DBRFont.R14)
                                 }
                                 Button(role: .destructive) {
                                     viewModel.changeCancelApproveViewToggle(with: visit.id)
                                 } label: {
-                                    Text("Отменить визит")
+                                    Text(String(localized: "cancelVisit"))
                                         .font(DBRFont.R14)
                                 }
                             }
@@ -115,7 +115,7 @@ struct DBRVisitsView: View {
     }
     
     private var emptyView: some View {
-        Text("У вас пока нет визитов. Как только они появятся, вы сможете просмотреть их здесь.")
+        Text(String(localized: "youDontHaveVisitsYet"))
             .font(DBRFont.R16)
             .foregroundStyle(DBRColor.base4.swiftUIColor)
             .multilineTextAlignment(.center)
