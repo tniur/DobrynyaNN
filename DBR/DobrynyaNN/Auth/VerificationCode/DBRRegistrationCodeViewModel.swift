@@ -64,6 +64,9 @@ final class DBRRegistrationCodeViewModel: DBRVerificationCodeViewModelProtocol {
                 case .unauthorized:
                     errorMessage = String(localized: "invalidCode")
                     isCodeIncorrect = true
+                case .conflict:
+                    errorMessage = String(localized: "registerNotAvailable")
+                    isCodeIncorrect = true
                 default:
                     // TODO: Error handling
                     errorMessage = String(localized: "errorHasOccurred")

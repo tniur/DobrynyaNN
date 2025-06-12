@@ -3,10 +3,36 @@ import Foundation
 // MARK: - Request Code
 
 extension DBRResources {
-    public struct RegisterRequestCodeResource {
+    public struct RegisterCheckLoginAvailableResource {
         let url: URL
         let path: String
         let login: String
+
+        public var post: DBRRequest<DBRDataResponse<DBRRegisterCheckLoginAvailableDTO>> {
+            DBRRequest(
+                method: .post,
+                url: url,
+                path: path,
+                body: login
+            )
+        }
+    }
+
+    public static func registerCheckLoginAvailable(login: String) -> RegisterCheckLoginAvailableResource {
+        RegisterCheckLoginAvailableResource(
+            url: DBREndpoint.baseURL,
+            path: DBREndpoint.Register.checkEmailAvailable,
+            login: login
+        )
+    }
+}
+
+// MARK: - Request Code
+
+extension DBRResources {
+    public struct RegisterRequestCodeResource {
+        let url: URL
+        let path: String
         let mobile: String
 
         public var post: DBRRequest<DBRDataResponse<DBRRegisterRequestCodeResultDTO>> {
@@ -14,16 +40,15 @@ extension DBRResources {
                 method: .post,
                 url: url,
                 path: path,
-                body: DBRRegisterRequestCodeDTO(login: login, mobile: mobile)
+                body: mobile
             )
         }
     }
 
-    public static func registerRequestCode(login: String, mobile: String) -> RegisterRequestCodeResource {
+    public static func registerRequestCode(mobile: String) -> RegisterRequestCodeResource {
         RegisterRequestCodeResource(
             url: DBREndpoint.baseURL,
             path: DBREndpoint.Register.requestCode,
-            login: login,
             mobile: mobile
         )
     }
