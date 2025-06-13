@@ -91,7 +91,7 @@ public struct DBRCodeView: View {
     }
 
     private var incorrectCodeView: some View {
-        Text("Неверный код подтверждения")
+        Text(String(localized: "invalidVerificationCode", bundle: .module))
             .foregroundColor(DBRColor.red6.swiftUIColor)
             .font(DBRFont.R14)
             .transition(.opacity)

@@ -84,7 +84,7 @@ struct DBRLoginView: View {
                     .font(DBRFont.R14)
                     .foregroundStyle(DBRColor.base10.swiftUIColor)
                 
-                Button(String(localized: "signUp"), action: viewModel.showRegistration)
+                Button(String(localized: "register"), action: viewModel.showRegistration)
                     .font(DBRFont.R14)
                     .foregroundStyle(DBRColor.blue6.swiftUIColor)
             }

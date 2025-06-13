@@ -41,7 +41,7 @@ struct DBRSignUpServiceView: View {
                 .padding(.bottom, 16.0)
             
             DBRButton(
-                String(localized: "startRecording"),
+                String(localized: "startBooking"),
                 style: DBRButtonStyle(.primary),
                 action: viewModel.showServiceType
             )
