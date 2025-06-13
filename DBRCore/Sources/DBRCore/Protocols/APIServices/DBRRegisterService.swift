@@ -1,7 +1,8 @@
 import Foundation
 
 public protocol DBRRegisterService {
-    func requestCode(login: String, mobile: String) async throws -> DBRRegisterRequestCodeResult
+    func checkLoginAvailable(login: String) async throws -> DBRRegisterCheckLoginAvailableResult
+    func requestCode(mobile: String) async throws -> DBRRegisterRequestCodeResult
     func confirmCode(
         login: String,
         password: String,

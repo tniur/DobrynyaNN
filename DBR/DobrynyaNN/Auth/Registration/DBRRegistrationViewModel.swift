@@ -9,10 +9,15 @@ import Foundation
 import Nivelir
 import UIKit
 import DBRUIComponents
+import Factory
+import DBRDIContainer
+import DBRCore
 
 final class DBRRegistrationViewModel: ObservableObject {
     
     // MARK: - Properties
+    
+    @Injected(\.registerService) private var registerService: DBRRegisterService
 
     @Published var login: String = "" {
         didSet {
@@ -49,10 +54,25 @@ final class DBRRegistrationViewModel: ObservableObject {
             errorMessage = String(localized: "checkDataPasswordsMustMatch")
             return
         }
-        let topController = UIApplication.shared.topViewController()
-        topController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        topController?.navigationController?.navigationBar.tintColor = DBRColor.base10.color
-        screenNavigator.navigate(to: screens.showRegistrationPhoneRoute(login: login, password: password))
+        
+        Task {
+            do {
+                let result = try await registerService.checkLoginAvailable(login: login)
+                
+                let topController = UIApplication.shared.topViewController()
+                topController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+                topController?.navigationController?.navigationBar.tintColor = DBRColor.base10.color
+                screenNavigator.navigate(to: screens.showRegistrationPhoneRoute(login: login, password: password))
+            } catch let error as DBRError {
+                switch error {
+                case .conflict:
+                    errorMessage = String(localized: "registerLoginNotAvailable")
+                default:
+                    // TODO: Error handling
+                    errorMessage = String(localized: "errorHasOccurred")
+                }
+            }
+        }
     }
     
     @MainActor

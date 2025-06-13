@@ -901,6 +901,57 @@
         }
       }
     },
+    "registerLoginNotAvailable" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This login in not available"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Этот логин уже занят"
+          }
+        }
+      }
+    },
+    "registerMobileNotAvailable" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This mobile phone is not available"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Этот номер уже занят"
+          }
+        }
+      }
+    },
+    "registerNotAvailable" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Login or mobile phone is not available"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Логин или номер уже заняты"
+          }
+        }
+      }
+    },
     "repeatPassword" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1116,7 +1167,7 @@
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Начать запись"
           }
         }
