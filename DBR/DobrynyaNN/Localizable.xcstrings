@@ -884,6 +884,23 @@
         }
       }
     },
+    "register" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign up"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зарегистрироваться"
+          }
+        }
+      }
+    },
     "registerLoginNotAvailable" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1139,12 +1156,13 @@
         }
       }
     },
-    "startRecording" : {
+    "startBooking" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Start recording"
+            "value" : "Start booking"
           }
         },
         "ru" : {
@@ -1241,9 +1259,6 @@
       }
     },
     "unfortunatelyThereCurrentlyNoServicesFound" : {
-
-    },
-    "unfortunatelyThereCurrentlyNoServicesFound " : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -1261,7 +1276,14 @@
       }
     },
     "unknown.pdf" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "unknown.pdf"
+          }
+        }
+      }
     },
     "waiting" : {
       "extractionState" : "manual",

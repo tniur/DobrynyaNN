@@ -76,8 +76,8 @@ final class DBRProfileSettingsViewModel: ObservableObject {
     @MainActor
     func updatePatientInfo() {
         let info = DBRUpdatePatientInfo(
-            lastName: firstName,
-            firstName: lastName,
+            lastName: lastName,
+            firstName: firstName,
             thirdName: thirdName.isEmpty ? nil : thirdName
         )
         

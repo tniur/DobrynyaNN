@@ -12,8 +12,8 @@ public struct DBRApproveView: View {
     // MARK: - Constants
 
     private enum Constant {
-        static let cancelButtonTitle = String(localized: "Cancel", bundle: .module)
-        static let approveButtonTitle = String(localized: "Approve", bundle: .module)
+        static let cancelButtonTitle = String(localized: "cancel", bundle: .module)
+        static let approveButtonTitle = String(localized: "approve", bundle: .module)
         static let height: CGFloat = 180.0
         static let titleBPadding: CGFloat = 8.0
         static let descriptionBPadding: CGFloat = 32.0
